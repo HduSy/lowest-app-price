@@ -360,27 +360,13 @@ export function detectPeriod(iapName: string): SubscriptionPeriod {
 }
 
 /**
- * 已知非订阅的打赏 / VOD 类 IAP 名（YouTube / TikTok 等平台的创作者经济功能）
- * 这些是平台级"功能购买"，不是订阅档位，跨区聚合会污染 tab 列表
- * 全部使用精确匹配（^...$），避免误伤名字相似的真实订阅档位
- */
-const NOISE_IAP_PATTERNS: RegExp[] = [
-  /^super\s*(chat|thanks|sticker)s?$/i, // YouTube 打赏功能（精确匹配，不挡 "Super Chat Premium"）
-  /^movies?\s*[&]\s*shows?$/i, // YouTube VOD 分类
-  /^movies?\s+and\s+shows?$/i,
-  /^movies?\s*[&]\s*tv$/i, // 类似 VOD 分类
-];
-
-/**
  * 是否为真正的"订阅档位"（用于 UI 档位 tab 过滤）
  * 排除：
  *   - period === 'one_time'（一次性购买，如 Promote Post / Boosted Tweet / NotABot）
  *   - 创作者订阅 "@xxx Subscription"（X 的 Super Follows；价格因人而异，
  *     跨区聚合后档位过于碎片化，不算 App 自家订阅套餐）
- *   - 已知平台打赏 / VOD 类 IAP（Super Chat / Movies & Shows 等）
  * 保留 period === null（如 Netflix Premium / ChatGPT Plus / SuperGrok 等名字里
- * 没有周期关键词的真实订阅，detectPeriod 无法识别但不该被过滤掉；
- * 地区限定的创作者包由 compare.ts 的 filterSparseIaps 按区域覆盖度二次过滤）
+ * 没有周期关键词的真实订阅，detectPeriod 无法识别但不该被过滤掉）
  * 保留 "App 下载"（付费下载 App 的买断价，由 crawler 合成 period='one_time'，
  *   是买断制 App 唯一可比价档位，必须放行，否则买断 App 会误显示"暂无价格数据"）
  */
@@ -392,7 +378,6 @@ export function isSubscriptionIap(
   if (iapName === "App 下载") return true;
   if (period === "one_time") return false;
   if (/^@[\w.]+\s+subscription\b/i.test(iapName)) return false;
-  if (NOISE_IAP_PATTERNS.some((re) => re.test(iapName))) return false;
   return true;
 }
 

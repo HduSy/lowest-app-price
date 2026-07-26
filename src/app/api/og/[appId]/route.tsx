@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 import { getDb, getApp, getPrices } from "@/lib/db";
-import { aggregatePrices, filterSubscriptionIaps, filterSparseIaps } from "@/lib/compare";
+import { aggregatePrices, filterSubscriptionIaps } from "@/lib/compare";
 import { REGION_MAP } from "@/lib/regions";
 
 export const runtime = "nodejs";
@@ -41,7 +41,7 @@ export async function GET(
   }
 
   const rawPrices = await getPrices(db, appId);
-  const allPrices = filterSparseIaps(filterSubscriptionIaps(rawPrices));
+  const allPrices = filterSubscriptionIaps(rawPrices);
   const agg = await aggregatePrices(allPrices, currency);
   // 找到目标 IAP（按 key 匹配；未指定则取最便宜档位）
   const targetIap =

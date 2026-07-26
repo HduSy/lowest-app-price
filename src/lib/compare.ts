@@ -126,32 +126,6 @@ export function filterSubscriptionIaps(prices: PriceRow[]): PriceRow[] {
 }
 
 /**
- * 噪音过滤：drop 仅在 1-2 区出现的地区限定 IAP（创作者包/一次性购买等）。
- * 小 App 豁免：最大覆盖 < 5 区时保留所有 IAP（独占/本地化 App）。
- */
-export function filterSparseIaps(prices: PriceRow[]): PriceRow[] {
-  if (prices.length === 0) return prices;
-  const cov = new Map<string, Set<string>>();
-  for (const p of prices) {
-    let set = cov.get(p.iap_key);
-    if (!set) {
-      set = new Set<string>();
-      cov.set(p.iap_key, set);
-    }
-    set.add(p.region_code);
-  }
-  let maxCov = 0;
-  for (const set of cov.values()) {
-    if (set.size > maxCov) maxCov = set.size;
-  }
-  // 小 App 豁免：最大覆盖 < 5 区（独占 / 本地化 App），保留所有 IAP
-  if (maxCov < 5) return prices;
-  // 绝对阈值 3 区：drop 仅在 1-2 区出现的地区限定噪音
-  const threshold = 3;
-  return prices.filter((p) => (cov.get(p.iap_key)?.size ?? 0) >= threshold);
-}
-
-/**
  * 从全量 prices 提取所有 IAP 元数据（key + name），按最低 amount_usd 升序排
  * 排序保证前 N 个 = filterPricesByAuth 下发的那 N 档，
  * 前端 IapTabs 的 idx >= freeCount 判断才正确（可点 tab 和有数据的 tab 对齐）

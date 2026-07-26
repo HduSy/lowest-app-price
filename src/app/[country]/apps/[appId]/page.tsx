@@ -9,7 +9,7 @@ import { RelatedApps } from "@/components/RelatedApps";
 import { REGION_MAP } from "@/lib/regions";
 import { getCurrentUser } from "@/lib/session";
 import { authorizeAppView } from "@/lib/entitlement";
-import { filterPricesByAuth, extractIapMetadata, computeFreeCount, filterSubscriptionIaps, filterSparseIaps } from "@/lib/compare";
+import { filterPricesByAuth, extractIapMetadata, computeFreeCount, filterSubscriptionIaps } from "@/lib/compare";
 import { formatUtcInTimezone } from "@/lib/format-time";
 
 const PRICE_TTL_HOURS = 6;
@@ -82,10 +82,9 @@ export default async function AppDetailPage({
   ]);
 
   // 先剔除一次性购买 + 创作者订阅 + 未分类项，只保留真正的订阅档位
-  // 再按区域覆盖度过滤，剔除只在少数区出现的地区限定噪音（创作者会员包 / 区域历史遗留档）
   // 与 /api/apps/[appId]/prices 路由保持一致，避免 SSR 与客户端刷新后视觉跳变
-  // 两层过滤必须在 filterPricesByAuth / extractIapMetadata 之前应用
-  const allPrices = filterSparseIaps(filterSubscriptionIaps(rawPrices));
+  // filterSubscriptionIaps 必须在 filterPricesByAuth / extractIapMetadata 之前应用
+  const allPrices = filterSubscriptionIaps(rawPrices);
 
   // 鉴权：当前用户能否查看全量价格（付费 / 今日已解锁此 App / 配额可用）
   const currentUser = await getCurrentUser();

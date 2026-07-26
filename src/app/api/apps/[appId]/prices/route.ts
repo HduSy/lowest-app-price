@@ -8,7 +8,6 @@ import {
   extractIapMetadata,
   computeFreeCount,
   filterSubscriptionIaps,
-  filterSparseIaps,
 } from "@/lib/compare";
 
 const PRICE_TTL_HOURS = 6;
@@ -55,10 +54,9 @@ export async function GET(
       getPrices(db, appId),
     ]);
 
-    // 先剔除一次性购买 + 创作者订阅 + 未分类项 + 已知平台功能（Super Chat / VOD 类）
-    // 再按区域覆盖度过滤，剔除只在少数区出现的地区限定噪音（创作者会员包 / 区域历史遗留档）
+    // 先剔除一次性购买 + 创作者订阅 + 未分类项，只保留真正的订阅档位
     // 这样 totalIaps / freeCount / iaps metadata 都基于干净集合，UI tab 不出现噪声
-    const allPrices = filterSparseIaps(filterSubscriptionIaps(rawPrices));
+    const allPrices = filterSubscriptionIaps(rawPrices);
 
     // 鉴权：当前用户能否查看全量价格
     const session = await auth();
