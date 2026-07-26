@@ -1,0 +1,37 @@
+# App Store 全区比价
+
+> 粘贴 App Store 链接或 App ID，实时抓取 35 个地区的内购/订阅价格，按统一币种换算后从低到高排名。哪国最便宜，一目了然。
+
+## What this tool does
+
+App Store 全区比价 is a free App Store cross-region price comparison tool. A user pastes an App Store link or App ID, and the tool fetches that app's in-app purchase and subscription prices across 35 App Store regions (US, Japan, Korea, Hong Kong, Taiwan, Singapore, UK, Germany, and more), converts them to a single currency using live exchange rates, and ranks them from lowest to highest.
+
+This answers the question: "Which App Store region has the cheapest price for this app's subscription?"
+
+## Key pages
+
+- [Homepage](/us): Tool entry — paste a link to compare prices
+- [All apps](/us/apps): Browse apps already indexed
+- [Pricing](/us#pricing): Free 3 views/day with login, or $1.99 one-time buyout for lifetime unlimited
+- [FAQ](/us#faq): Data source, update frequency, privacy
+
+## Pricing
+
+- **Free**: 3 price views per day (login required). Quota shared across all apps, resets at UTC 00:00.
+- **Buyout**: $1.99 one-time payment. Permanent unlimited access to all apps, all subscription tiers, all 35 regions. No recurring fees.
+
+Full machine-readable pricing: see `/pricing.md`
+
+## Supported regions (35)
+
+United States, Canada, Brazil, Mexico, Japan, Korea, Hong Kong, Taiwan, Singapore, Australia, New Zealand, United Kingdom, Germany, France, Italy, Spain, Netherlands, Sweden, Switzerland, Austria, Belgium, Denmark, Finland, Ireland, Norway, Poland, Portugal, Turkey, United Arab Emirates, Saudi Arabia, South Africa, India, Indonesia, Thailand, Vietnam.
+
+## Data source
+
+Prices are fetched from public App Store pages and converted using live exchange rates. Data refreshes every 6 hours. For reference only — actual purchase price is whatever the App Store shows at time of purchase.
+
+## Important notes
+
+- Not affiliated with Apple Inc.
+- The tool only compares prices; it does not facilitate purchases.
+- Changing App Store region to buy subscriptions must comply with Apple's Terms of Service and local laws.

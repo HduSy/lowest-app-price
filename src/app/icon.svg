@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1d1d1f"/>
+      <stop offset="100%" stop-color="#3a3a3c"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="8" fill="url(#bg)"/>
+  <!-- 3 根柱子并排对比（SF Symbols chart.bar 语言），中间最矮 = 最便宜的区，纯白实色高亮（无彩色） -->
+  <rect x="8" y="10" width="3.5" height="14" fill="#ffffff" opacity="0.4" rx="1.2"/>
+  <rect x="14" y="16" width="3.5" height="8" fill="#ffffff" rx="1.2"/>
+  <rect x="20" y="6" width="3.5" height="18" fill="#ffffff" opacity="0.4" rx="1.2"/>
+</svg>

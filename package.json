@@ -1,0 +1,40 @@
+{
+  "name": "appstore-lowest-price",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "cf-typegen": "wrangler types --env cloudflare",
+    "db:init": "wrangler d1 execute appstore-price --remote --file=migrations/0001_init.sql",
+    "db:seed": "wrangler d1 execute appstore-price --remote --file=migrations/0002_seed_regions.sql",
+    "db:local": "wrangler d1 execute appstore-price --local --file=migrations/0001_init.sql && wrangler d1 execute appstore-price --local --file=migrations/0002_seed_regions.sql"
+  },
+  "dependencies": {
+    "next": "^15.5.0",
+    "next-auth": "^5.0.0-beta.32",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "stripe": "^22.3.2",
+    "zustand": "^5.0.14"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260723.1",
+    "@eslint/eslintrc": "^3.3.6",
+    "@opennextjs/cloudflare": "^1.0.0",
+    "@tailwindcss/postcss": "^4.0.0",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.2.11",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.7.0",
+    "wrangler": "^4.86.0"
+  }
+}

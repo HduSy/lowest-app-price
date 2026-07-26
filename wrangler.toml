@@ -1,0 +1,19 @@
+name = "appstore-lowest-price"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# OpenNext for Cloudflare：worker 入口（必须在 [assets] 之前，保持顶级字段）
+main = ".open-next/worker.js"
+
+# 静态资源（Next.js 静态导出部分）
+[assets]
+directory = ".open-next/assets"
+
+# D1 数据库绑定
+[[d1_databases]]
+binding = "DB"
+database_name = "appstore-price"
+database_id = "15e915b3-5ba0-40a3-9602-57cf2db1aef2"
+
+[observability]
+enabled = true

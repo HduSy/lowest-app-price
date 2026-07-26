@@ -1,0 +1,27 @@
+// Cloudflare bindings 类型增强
+// D1Database 等基础类型来自 @cloudflare/workers-types
+// CloudflareEnv 接口由 @opennextjs/cloudflare 声明为 global，
+// 这里用 interface 合并把 DB 字段加进去（等价于 wrangler types 生成的结果）
+
+declare global {
+  interface CloudflareEnv {
+    DB: D1Database;
+    DEFAULT_CURRENCY?: string;
+    // Auth (Auth.js v5) - OAuth provider credentials + JWT secret
+    AUTH_SECRET?: string;
+    AUTH_GOOGLE_ID?: string;
+    AUTH_GOOGLE_SECRET?: string;
+    AUTH_TWITTER_ID?: string;
+    AUTH_TWITTER_SECRET?: string;
+    AUTH_GITHUB_ID?: string;
+    AUTH_GITHUB_SECRET?: string;
+    // Stripe - $1.99 一次性买断
+    STRIPE_SECRET_KEY?: string;
+    STRIPE_WEBHOOK_SECRET?: string;
+    STRIPE_PRICE_ID?: string;
+    // Admin - 一次性回填/运维接口鉴权
+    ADMIN_TOKEN?: string;
+  }
+}
+
+export {};
