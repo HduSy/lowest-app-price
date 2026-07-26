@@ -9,7 +9,7 @@ export async function refreshPrices(
   db: D1Database,
   appId: string,
   priorityCountry?: string
-): Promise<void> {
+): Promise<{ writtenRegions: number }> {
   const regions = await listRegions(db);
   const rates = await getRates("USD");
 
@@ -61,7 +61,6 @@ export async function refreshPrices(
   }
 
   // Phase 3: iTunes Lookup 兜底补全 HTML 爬取缺失的评分
-  // description / screenshots 主要靠 HTML 爬取（各区本地化文案），不再从 iTunes Lookup 持久化。
   // 评分（rating / ratingCount）HTML 不一定稳定拿到，用 iTunes US 区兜底，真值保护下只补 HTML 没抓到的。
   try {
     const meta = await fetchAppMeta(appId);
@@ -74,6 +73,8 @@ export async function refreshPrices(
   } catch (e) {
     console.error(`[refresh ${appId}] iTunes fallback meta failed:`, e);
   }
+
+  return { writtenRegions };
 }
 
 /** 将抓取结果写入 prices 表，返回成功写入的地区数 */

@@ -2,16 +2,49 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Suspense } from "react";
 import { headers } from "next/headers";
+import type { Metadata } from "next";
 import { getDb, getApp, getPrices, isStale } from "@/lib/db";
 import { AppDetailClient } from "@/components/AppDetailClient";
 import { RelatedApps } from "@/components/RelatedApps";
 import { REGION_MAP } from "@/lib/regions";
 import { getCurrentUser } from "@/lib/session";
 import { authorizeAppView } from "@/lib/entitlement";
-import { filterPricesByAuth, extractIapMetadata, computeFreeCount, filterSubscriptionIaps } from "@/lib/compare";
+import { filterPricesByAuth, extractIapMetadata, computeFreeCount, filterSubscriptionIaps, filterSparseIaps } from "@/lib/compare";
 import { formatUtcInTimezone } from "@/lib/format-time";
 
 const PRICE_TTL_HOURS = 6;
+
+// 动态 metadata：title/description/og:image 都按 app 定制
+// og:image 指向 /api/og/[appId]，社交平台爬虫读 meta 时会触发 OG 图生成
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ country: string; appId: string }>;
+}): Promise<Metadata> {
+  const { appId } = await params;
+  const db = await getDb();
+  const app = await getApp(db, appId);
+  if (!app) return {};
+
+  const ogImageUrl = `/api/og/${appId}`;
+  return {
+    title: `${app.name} 全区比价 - 哪国最便宜`,
+    description: `查看 ${app.name}${
+      app.developer ? `（${app.developer}）` : ""
+    } 在 35 个 App Store 地区的订阅价格，按统一币种换算从低到高排名。`,
+    openGraph: {
+      title: `${app.name} 全区比价`,
+      description: `35 个地区的订阅价格从低到高排开，哪个区最便宜一目了然。`,
+      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: `${app.name} 全区比价` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${app.name} 全区比价`,
+      description: `35 个地区的订阅价格从低到高排开，哪个区最便宜一目了然。`,
+      images: [ogImageUrl],
+    },
+  };
+}
 
 export default async function AppDetailPage({
   params,
@@ -49,9 +82,10 @@ export default async function AppDetailPage({
   ]);
 
   // 先剔除一次性购买 + 创作者订阅 + 未分类项，只保留真正的订阅档位
+  // 再按区域覆盖度过滤，剔除只在少数区出现的地区限定噪音（创作者会员包 / 区域历史遗留档）
   // 与 /api/apps/[appId]/prices 路由保持一致，避免 SSR 与客户端刷新后视觉跳变
-  // filterSubscriptionIaps 必须在 filterPricesByAuth / extractIapMetadata 之前应用
-  const allPrices = filterSubscriptionIaps(rawPrices);
+  // 两层过滤必须在 filterPricesByAuth / extractIapMetadata 之前应用
+  const allPrices = filterSparseIaps(filterSubscriptionIaps(rawPrices));
 
   // 鉴权：当前用户能否查看全量价格（付费 / 今日已解锁此 App / 配额可用）
   const currentUser = await getCurrentUser();

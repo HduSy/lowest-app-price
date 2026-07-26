@@ -8,6 +8,7 @@ import {
   extractIapMetadata,
   computeFreeCount,
   filterSubscriptionIaps,
+  filterSparseIaps,
 } from "@/lib/compare";
 
 const PRICE_TTL_HOURS = 6;
@@ -41,8 +42,12 @@ export async function GET(
           .get("cookie")
           ?.match(/(?:^|;\s*)detected_country=([^;]+)/)?.[1] ||
         undefined;
-      await refreshPrices(db, appId, country || undefined);
-      await markAppFetched(db, appId);
+      const { writtenRegions } = await refreshPrices(db, appId, country || undefined);
+      // 至少一个区成功写入才更新 last_fetched_at，避免全区失败时仍标记为已刷新
+      // 导致 6h 内不再重试（refreshPrices 内部 try/catch 吞掉错误，无法靠抛错判断）
+      if (writtenRegions > 0) {
+        await markAppFetched(db, appId);
+      }
     }
 
     const [refreshedApp, rawPrices] = await Promise.all([
@@ -50,9 +55,10 @@ export async function GET(
       getPrices(db, appId),
     ]);
 
-    // 先剔除一次性购买 + 创作者订阅 + 未分类项，只保留真正的订阅档位
+    // 先剔除一次性购买 + 创作者订阅 + 未分类项 + 已知平台功能（Super Chat / VOD 类）
+    // 再按区域覆盖度过滤，剔除只在少数区出现的地区限定噪音（创作者会员包 / 区域历史遗留档）
     // 这样 totalIaps / freeCount / iaps metadata 都基于干净集合，UI tab 不出现噪声
-    const allPrices = filterSubscriptionIaps(rawPrices);
+    const allPrices = filterSparseIaps(filterSubscriptionIaps(rawPrices));
 
     // 鉴权：当前用户能否查看全量价格
     const session = await auth();

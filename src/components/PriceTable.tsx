@@ -3,12 +3,14 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { PriceRow } from "@/lib/types";
 import { aggregatePrices, computeFreeCount } from "@/lib/compare";
+import { formatCurrency } from "@/lib/currencies";
 import { useCurrency } from "@/lib/app-store";
 import type { AppViewAuth } from "@/lib/entitlement";
 import { DAILY_VIEW_LIMIT } from "@/lib/entitlement";
 import { Flag } from "./Flag";
 import { LoginDialog } from "./LoginDialog";
 import { PricingDialog } from "./PricingDialog";
+import { ShareButton } from "./ShareButton";
 
 export function PriceTable({
   prices: initialPrices,
@@ -35,8 +37,6 @@ export function PriceTable({
     priceLabel: string | null;
     compatibility: string[] | null;
     genres: string[] | null;
-    screenshots: string[] | null;
-    description: string | null;
     last_fetched_at: string | null;
   }) => void;
 }) {
@@ -174,7 +174,7 @@ export function PriceTable({
         </div>
         <p className="font-semibold">暂无价格数据</p>
         <p className="mt-2 text-sm text-[var(--color-ink-48)]">
-          可能是这款 App 没有内购或订阅（买断制或免费 App 不显示价格）。
+          可能是这款 App 没有内购或订阅档位可供比价。
         </p>
       </div>
     );
@@ -209,6 +209,14 @@ export function PriceTable({
               </span>
             )}
           </span>
+          {activeIap && activeIap.lowest && (
+            <ShareButton
+              text={
+                `App Store 全区比价：${activeIap.name} 最低 ${activeIap.lowest.convertedDisplay}` +
+                `（${activeIap.lowest.region.name}）`
+              }
+            />
+          )}
         </div>
       </div>
 
@@ -474,10 +482,13 @@ function IapPriceList({
   const showHighestRed = validCount >= 3;
   const highest = showHighestRed ? iap.highest : null;
 
-  const spread =
-    lowest?.convertedAmount && iap.highest?.convertedAmount
-      ? Math.round(
-          (iap.highest.convertedAmount / lowest.convertedAmount - 1) * 100
+  // 价差：以绝对金额展示「最低比最高省了多少钱」，比百分比更直观
+  // 例：lowest=$9.99, highest=$16.80 → 省了 $6.81
+  const savedAmount =
+    lowest?.convertedAmount != null && iap.highest?.convertedAmount != null
+      ? formatCurrency(
+          iap.highest.convertedAmount - lowest.convertedAmount,
+          currency
         )
       : null;
 
@@ -510,9 +521,12 @@ function IapPriceList({
               </span>
             </span>
           )}
-          {spread != null && (
+          {savedAmount != null && (
             <span className="rounded-full bg-white px-2.5 py-1 font-semibold text-[var(--color-ink-48)]">
-              最高比最低贵 {spread}%
+              最低比最高省了{" "}
+              <span className="text-sm font-bold text-[var(--color-ink)]">
+                {savedAmount}！
+              </span>
             </span>
           )}
         </div>

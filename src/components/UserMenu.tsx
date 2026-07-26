@@ -5,6 +5,7 @@
 // 会员状态：paid=true 显示会员版（蓝色 + 光泽动画），否则免费版
 import { useState, useRef, useEffect } from "react";
 import { signOut } from "next-auth/react";
+import { Avatar } from "./Avatar";
 
 interface UserMenuProps {
   user: {
@@ -76,18 +77,7 @@ export function UserMenu({ user }: UserMenuProps) {
                 </div>
               )}
             </div>
-            {user.image ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={user.image}
-                alt=""
-                className="h-10 w-10 shrink-0 rounded-full object-cover"
-              />
-            ) : (
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-parchment)] text-[15px] font-semibold text-[var(--color-ink)]">
-                {displayName.charAt(0).toUpperCase()}
-              </span>
-            )}
+            <Avatar src={user.image} name={displayName} size={40} />
           </div>
           <div className="my-1 h-px bg-[var(--color-divider)]" />
           <button

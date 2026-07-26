@@ -26,7 +26,7 @@ export default async function AppsPage({
     ? (sortRaw as AppSortKey)
     : "rating_count";
   const db = await getDb();
-  const initial = await listApps(db, { q, page: 1, limit: 20, sort });
+  const initial = await listApps(db, { q, page: 1, limit: 30, sort });
 
   // 本地库无结果且有查询词：调 iTunes Search 兜底，标记哪些已收录
   // 接口本身公开（无副作用），真正的鉴权在用户点「添加」走 POST /api/apps 时
@@ -56,7 +56,7 @@ export default async function AppsPage({
   const hasAnyContent = initial.items.length > 0 || initialExternal.length > 0;
 
   return (
-    <main className="mx-auto max-w-[1200px] px-[22px] py-12">
+    <main className="mx-auto min-h-[calc(100vh-52px)] max-w-[1200px] px-[22px] py-12">
       <div className="mb-6">
         <h1 className="mb-2 text-3xl font-semibold">全部 App</h1>
         <p className="text-[var(--color-ink-48)]">

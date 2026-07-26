@@ -37,8 +37,6 @@ interface RawAppRow {
   compatibility: string | null;
   subtitle: string | null;
   price_label: string | null;
-  screenshots: string | null;
-  description: string | null;
   rating: number | null;
   rating_count: number | null;
   last_fetched_at: string | null;
@@ -57,8 +55,6 @@ function mapApp(r: RawAppRow): App {
     compatibility: parseArr(r.compatibility),
     subtitle: r.subtitle,
     priceLabel: r.price_label,
-    screenshots: parseArr(r.screenshots),
-    description: r.description,
     rating: r.rating,
     ratingCount: r.rating_count,
     last_fetched_at: r.last_fetched_at,
@@ -67,7 +63,7 @@ function mapApp(r: RawAppRow): App {
 }
 
 const APP_COLUMNS =
-  "app_id, name, developer, icon_url, bundle_id, category, genres, compatibility, subtitle, price_label, screenshots, description, rating, rating_count, last_fetched_at, submitted_at";
+  "app_id, name, developer, icon_url, bundle_id, category, genres, compatibility, subtitle, price_label, rating, rating_count, last_fetched_at, submitted_at";
 
 // ============ 地区 ============
 export async function listRegions(db: D1Database): Promise<Region[]> {
@@ -176,8 +172,6 @@ export interface InsertAppInput {
   compatibility: string[] | null;
   subtitle?: string | null;
   priceLabel?: string | null;
-  screenshots?: string[] | null;
-  description?: string | null;
   rating?: number | null;
   ratingCount?: number | null;
 }
@@ -187,8 +181,8 @@ export async function insertApp(db: D1Database, app: InsertAppInput): Promise<vo
     .prepare(
       `INSERT INTO apps
          (app_id, name, developer, icon_url, bundle_id, category, genres, compatibility,
-          subtitle, price_label, screenshots, description, rating, rating_count, submitted_at, updated_at)
-       VALUES (?1,?2,?3,?4,?5,?6,?7,?8,?9,?10,?11,?12,?13,?14,datetime('now'),datetime('now'))`
+          subtitle, price_label, rating, rating_count, submitted_at, updated_at)
+       VALUES (?1,?2,?3,?4,?5,?6,?7,?8,?9,?10,?11,?12,datetime('now'),datetime('now'))`
     )
     .bind(
       app.app_id,
@@ -201,15 +195,13 @@ export async function insertApp(db: D1Database, app: InsertAppInput): Promise<vo
       app.compatibility ? JSON.stringify(app.compatibility) : null,
       app.subtitle ?? null,
       app.priceLabel ?? null,
-      app.screenshots ? JSON.stringify(app.screenshots) : null,
-      app.description ?? null,
       app.rating ?? null,
       app.ratingCount ?? null
     )
     .run();
 }
 
-/** 抓取后回填简介 / 价格摘要 / 兼容设备 / 截图 / 描述 / 评分（仅写入非空值，避免覆盖已有数据） */
+/** 抓取后回填简介 / 价格摘要 / 兼容设备 / 评分（仅写入非空值，避免覆盖已有数据） */
 export async function updateAppMeta(
   db: D1Database,
   appId: string,
@@ -217,8 +209,6 @@ export async function updateAppMeta(
     subtitle?: string | null;
     priceLabel?: string | null;
     compatibility?: string[] | null;
-    screenshots?: string[] | null;
-    description?: string | null;
     rating?: number | null;
     ratingCount?: number | null;
   }
@@ -236,14 +226,6 @@ export async function updateAppMeta(
   if (meta.compatibility) {
     sets.push("compatibility = ?");
     binds.push(JSON.stringify(meta.compatibility));
-  }
-  if (meta.screenshots) {
-    sets.push("screenshots = ?");
-    binds.push(JSON.stringify(meta.screenshots));
-  }
-  if (meta.description) {
-    sets.push("description = ?");
-    binds.push(meta.description);
   }
   if (meta.rating != null && meta.rating > 0) {
     sets.push("rating = ?");

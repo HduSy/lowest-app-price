@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import type { App } from "@/lib/types";
 
@@ -18,36 +17,13 @@ export function AppCard({
   country: string;
   index?: number;
 }) {
-  const ref = useRef<HTMLAnchorElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    // 进入视口才触发入场动画；已在视口内的会在下一帧触发，配合 stagger delay 逐个出现
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          io.disconnect();
-        }
-      },
-      { rootMargin: "0px 0px -10% 0px" }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
   const hasRating = app.rating != null && app.ratingCount != null && app.ratingCount > 0;
 
   return (
     <Link
-      ref={ref}
       href={`/${country}/apps/${app.app_id}`}
       style={{ animationDelay: `${Math.min(index * 50, 500)}ms` }}
-      className={`group flex items-center gap-3 rounded-[var(--radius-md)] border border-black/[0.08] bg-white p-3 transition-colors hover:border-[var(--color-primary-focus)]/40 hover:bg-[var(--color-parchment)] ${
-        visible ? "animate-fade-up" : "opacity-0"
-      }`}
+      className="group flex animate-fade-up items-center gap-3 rounded-[var(--radius-md)] border border-black/[0.08] bg-white p-3 transition-colors hover:border-[var(--color-primary-focus)]/40 hover:bg-[var(--color-parchment)]"
     >
       {app.icon_url ? (
         // eslint-disable-next-line @next/next/no-img-element

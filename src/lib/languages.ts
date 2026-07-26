@@ -15,7 +15,11 @@ export type Language =
   | "th"
   | "vi"
   | "ru"
-  | "ar";
+  | "ar"
+  | "it"
+  | "hi"
+  | "nl"
+  | "pl";
 
 export interface LanguageOption {
   code: Language;
@@ -40,6 +44,10 @@ export const LANGUAGES: LanguageOption[] = [
   { code: "vi", flag: "vn", label: "Tiếng Việt" },
   { code: "ru", flag: "kz", label: "Русский" },
   { code: "ar", flag: "sa", label: "العربية" },
+  { code: "it", flag: "it", label: "Italiano" },
+  { code: "hi", flag: "in", label: "हिंदी" },
+  { code: "nl", flag: "nl", label: "Nederlands" },
+  { code: "pl", flag: "pl", label: "Polski" },
 ];
 
 const LANGUAGE_MAP: Record<string, LanguageOption> = Object.fromEntries(
@@ -59,11 +67,13 @@ const COUNTRY_LANGUAGE: Record<string, Language> = {
   // Portuguese
   br: "pt-BR",
   // Spanish
-  mx: "es", ar: "es", cl: "es", co: "es",
+  mx: "es", ar: "es", cl: "es", co: "es", es: "es",
+  // Italian / Dutch / Polish / Russian
+  it: "it", nl: "nl", pl: "pl", ru: "ru", kz: "ru",
   // Southeast Asia
   id: "id", th: "th", vn: "vi",
-  // Russian / Arabic
-  kz: "ru", ae: "ar", sa: "ar", eg: "ar",
+  // Arabic
+  ae: "ar", sa: "ar", eg: "ar",
   // Nordic / 其他 -> English 兜底
   no: "en", dk: "en", il: "en", my: "en", pk: "en",
 };

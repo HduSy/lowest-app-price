@@ -126,6 +126,46 @@ export function filterSubscriptionIaps(prices: PriceRow[]): PriceRow[] {
 }
 
 /**
+ * 区域覆盖度过滤：丢掉只在 1-2 个区域出现的 IAP
+ *
+ * 根因：Apple 的 IAP shelf 是异质混合体 —— 真订阅档位（YouTube Premium / Netflix Standard）
+ * 通常跨多个销售区可用；而地区限定的创作者会员包 / 区域历史遗留档位 / 区域限定打赏功能
+ * （如 CazéTV / Sean的树洞 / Aslan Paketi）只在 1-2 个区可见。
+ *
+ * 阈值策略（保守，宁可放过不可误伤）：
+ *   - 绝对阈值 3 区：IAP 必须在 >= 3 区有价格才保留
+ *   - 小 App 豁免：App 最大覆盖区数 < 5 时完全不过滤，保护独占 App / 本地化 App 的真实档位
+ *
+ * 不采用相对阈值（如 maxCov/5）的原因：
+ *   会误伤 Netflix "Standard with Ads"（受广告法规限制只在 ~12 区）、
+ *   Spotify "Premium Student"（学生验证只在 ~20 区）、
+ *   Apple Music Voice Plan 启动初期（仅 4 区）、新 tier 滚动发布期等真实档位
+ *
+ * 注意：必须在 filterSubscriptionIaps 之后调用，否则 one_time 项的覆盖会拉高统计
+ */
+export function filterSparseIaps(prices: PriceRow[]): PriceRow[] {
+  if (prices.length === 0) return prices;
+  const cov = new Map<string, Set<string>>();
+  for (const p of prices) {
+    let set = cov.get(p.iap_key);
+    if (!set) {
+      set = new Set<string>();
+      cov.set(p.iap_key, set);
+    }
+    set.add(p.region_code);
+  }
+  let maxCov = 0;
+  for (const set of cov.values()) {
+    if (set.size > maxCov) maxCov = set.size;
+  }
+  // 小 App 豁免：最大覆盖 < 5 区（独占 / 本地化 App），保留所有 IAP
+  if (maxCov < 5) return prices;
+  // 绝对阈值 3 区：drop 仅在 1-2 区出现的地区限定噪音
+  const threshold = 3;
+  return prices.filter((p) => (cov.get(p.iap_key)?.size ?? 0) >= threshold);
+}
+
+/**
  * 从全量 prices 提取所有 IAP 元数据（key + name），按最低 amount_usd 升序排
  * 排序保证前 N 个 = filterPricesByAuth 下发的那 N 档，
  * 前端 IapTabs 的 idx >= freeCount 判断才正确（可点 tab 和有数据的 tab 对齐）

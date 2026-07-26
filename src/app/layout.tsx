@@ -85,8 +85,8 @@ export default async function RootLayout({
       <body className="flex min-h-screen flex-col">
         <AppStoreProvider defaultCurrency={defaultCurrency} defaultLanguage={defaultLanguage} geoSource={geoSource}>
           <Nav user={user} />
-          <div className="flex-1">{children}</div>
-          <footer className="mt-16 bg-[var(--color-parchment)] py-10">
+          <main className="flex-1">{children}</main>
+          <footer className="bg-[var(--color-parchment)] py-10">
             <div className="mx-auto max-w-[980px] px-[22px] text-center">
               <div className="mb-3 flex items-center justify-center gap-2 font-semibold">
                 <LogoMark size={20} />

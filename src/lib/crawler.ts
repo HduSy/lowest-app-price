@@ -23,8 +23,12 @@ export async function fetchHtml(country: string, appId: string): Promise<string>
   if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
   // 落地 URL 必须仍是该 app 的详情页（含 /app/ 且含 id{appId}）。
   // 被重定向到区首页（/cn、/us/iphone/today 等）时视为该区无此 App。
+  // 注意：必须用 new RegExp 构造，不能用正则字面量 /.../ -- 正则字面量里 ${appId}
+  // 不会被插值（JS 正则字面量不是模板字符串），会按字面量 ${appId} 匹配，永远 false，
+  // 导致 fetchHtml 对所有被 Apple 补 slug 重定向的 App 都误抛 "redirected to non-app page"。
   const finalUrl = resp.url;
-  if (!/\/app\/[^/]*\/id${appId}(?:[/?#]|$)/.test(finalUrl) && !/\/app\/id${appId}(?:[/?#]|$)/.test(finalUrl)) {
+  const appUrlRe = new RegExp(`/app/(?:[^/]*/)?id${appId}(?:[/?#]|$)`);
+  if (!appUrlRe.test(finalUrl)) {
     throw new Error(`redirected to non-app page: ${finalUrl}`);
   }
   return await resp.text();
@@ -125,15 +129,48 @@ export function parseAppStoreHtml(
   const dev = html.match(/"developerName":"([^"]+)"/);
   if (dev) out.developer = dev[1].trim();
 
-  // 图标
-  const icon = html.match(/"artworkUrl\d+":"(https:[^"]+100x100[^"]+)"/);
-  if (icon) out.iconUrl = icon[1];
+  // 图标：优先 JSON-LD SoftwareApplication.image（schema.org 标准，最稳定）
+  //   旧逻辑依赖 JSON 字段 artworkUrl100/60，该字段已从 HTML 消失；
+  //   新结构 1：JSON-LD 的 SoftwareApplication.image 字段，URL 是真实图标资源（含 AppIcon / Prod- 等命名）
+  //   新结构 2（兜底）：<img srcset> 里含 "AppIcon" 的 mzstatic URL，128x128 优先，64x64 兜底；
+  //   某些 App 的 srcset 被 Apple 渲染成 {w}x{h}{c}.{f} 模板占位符，srcset 兜底会失败，必须靠 JSON-LD。
+  let icon: string | null = null;
+  for (const ldMatch of html.matchAll(
+    /<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g
+  )) {
+    try {
+      const ld = JSON.parse(ldMatch[1].trim());
+      if (ld && ld["@type"] === "SoftwareApplication") {
+        const img = ld.image;
+        if (typeof img === "string" && img) {
+          icon = img;
+          break;
+        }
+        if (Array.isArray(img) && img.length && typeof img[0] === "string") {
+          icon = img[0];
+          break;
+        }
+      }
+    } catch {
+      /* 单个 JSON-LD 解析失败：忽略，继续尝试下一个 */
+    }
+  }
+  if (!icon) {
+    const m =
+      html.match(/https:\/\/is\d+-ssl\.mzstatic\.com\/image\/thumb\/[^"\s]*AppIcon[^"\s]*\/128x128[^"\s]*/i) ||
+      html.match(/https:\/\/is\d+-ssl\.mzstatic\.com\/image\/thumb\/[^"\s]*AppIcon[^"\s]*\/64x64[^"\s]*/i);
+    if (m) icon = m[0];
+  }
+  if (icon) out.iconUrl = icon;
 
   // 简介（subtitle）：取 SSR <p> 元素内容
-  //   优先精确匹配 svelte-1up5qog（当前 hash），再兜底 subtitle + svelte-xxx，最后 itemDescription JSON
-  const subMatch =
-    html.match(/<p class="svelte-1up5qog">([^<]+)<\/p>/) ||
-    html.match(/<p class="[^"]*subtitle[^"]*svelte-[a-z0-9]+[^"]*">([^<]+)<\/p>/);
+  //   结构稳定为 <p class="subtitle svelte-xxx">...</p>，class 名 "subtitle" 不会随 Apple 重新编译变化，
+  //   只有 svelte hash 会变，因此只按 class 名匹配，不依赖任何具体 hash 值。
+  //   用 (?:^|\\s) 保证 "subtitle" 是独立 class token，避免误匹配 "subtitle-tag" 之类前缀。
+  //   兜底：itemDescription JSON（嵌入式 JSON-LD 的简化字段，Apple 历次改版都保留）
+  const subMatch = html.match(
+    /<p class="(?:[^"]*\s)?subtitle(?:\s[^"]*)?">([^<]+)<\/p>/i
+  );
   if (subMatch) out.subtitle = unescape(subMatch[1]).trim();
   if (!out.subtitle) {
     const itemDesc = html.match(/"itemDescription":"((?:[^"\\]|\\.)*)"/);
@@ -144,29 +181,42 @@ export function parseAppStoreHtml(
   const attr = html.match(/<p class="[^"]*attributes[^"]*">([^<]+)<\/p>/);
   if (attr) out.priceLabel = attr[1].trim();
 
-  // 兼容设备：从 <div class="all-platforms ..."> 块提取已知平台名
+  // 兼容设备：从页面提取已知平台名
+  //   多平台 App：用 <div class="all-platforms ..."> 块作为锚点（含全部支持平台的图标 + 文本）
+  //   单平台 App（如 Mac-only Xcode）：没有 all-platforms 块，改从 <dt>Compatibility</dt><dd>...</dd>
+  //   语义化定义列表提取（这是 Apple 长期使用的稳定结构，"Compatibility" 是 i18n key，多语言页面也保留英文）
+  let compatBlock: string | null = null;
   const apIdx = html.indexOf("all-platforms");
   if (apIdx >= 0) {
-    const block = html.slice(apIdx, apIdx + 3000);
+    compatBlock = html.slice(apIdx, apIdx + 3000);
+  } else {
+    const compatDd = html.match(
+      /<dt[^>]*>\s*Compatibility\s*<\/dt>\s*<dd[^>]*>([\s\S]{0,2000}?)<\/dd>/i
+    );
+    if (compatDd) compatBlock = compatDd[1];
+  }
+  if (compatBlock) {
     const platforms: string[] = [];
     const add = (p: string) => {
       if (!platforms.includes(p)) platforms.push(p);
     };
-    if (/iPhone/i.test(block)) add("iPhone");
-    if (/iPad/i.test(block)) add("iPad");
-    if (/iPod\s*touch/i.test(block)) add("iPod touch");
-    if (/\bMac\b/i.test(block)) add("Mac");
-    if (/Apple\s*TV/i.test(block)) add("Apple TV");
-    if (/Apple\s*Watch/i.test(block)) add("Apple Watch");
-    if (/iMessage/i.test(block)) add("iMessage");
+    if (/iPhone/i.test(compatBlock)) add("iPhone");
+    if (/iPad/i.test(compatBlock)) add("iPad");
+    if (/iPod\s*touch/i.test(compatBlock)) add("iPod touch");
+    if (/\bMac\b/i.test(compatBlock)) add("Mac");
+    if (/Apple\s*TV/i.test(compatBlock)) add("Apple TV");
+    if (/Apple\s*Watch/i.test(compatBlock)) add("Apple Watch");
+    if (/iMessage/i.test(compatBlock)) add("iMessage");
     if (platforms.length) out.compatibility = platforms;
   }
 
   // 相关推荐 App：扫描页面内所有 app 链接（"You Might Also Like" / "More by this developer" 等 shelf）
-  // 链接格式：href="/{cc}/app/{slug}/id{digits}"，当前 App 自身的 canonical 链接由调用方过滤
-  // Apple 的 app 详情页里 app 链接基本只出现在推荐 shelf，截图 shelf 用 <source srcset> 不会被匹配
+  //   链接格式：href="https://apps.apple.com/{cc}/app/{slug}/id{digits}"（绝对路径，当前结构）
+  //   或 href="/{cc}/app/{slug}/id{digits}"（相对路径，旧结构兼容）
+  //   当前 App 自身的 canonical 链接由调用方过滤
+  //   Apple 的 app 详情页里 app 链接基本只出现在推荐 shelf，截图 shelf 用 <source srcset> 不会被匹配
   const seenRel = new Set<string>();
-  const linkRe = /href="\/[a-z]{2}\/app\/[^"]*?\/id(\d+)"/gi;
+  const linkRe = /href="(?:https?:\/\/apps\.apple\.com)?\/[a-z]{2}\/app\/[^"]*?\/id(\d+)"/gi;
   let lm: RegExpExecArray | null;
   while ((lm = linkRe.exec(html)) !== null) {
     const id = lm[1];
@@ -176,28 +226,75 @@ export function parseAppStoreHtml(
     if (out.relatedAppIds.length >= 20) break;
   }
 
-  // IAP：从 items_V3 的 textPair 提取
+  // IAP：从 In-App Purchases 区提取内购档位
+  // 多策略兼容 Apple HTML 迭代（JSON key 名 / 结构会随 App Store 改版变化，
+  // 不依赖 svelte hash，用多种结构互为兜底）：
+  //   策略 1：items_V3 的 textPair 对象
+  //     {"$kind":"textPair","leadingText":"...","trailingText":"..."}
+  //   策略 2（兜底）：items[].AnnotationItem.textPairs 元组
+  //     "textPairs":[["name","$9.99"],["name2","$9.99"]]
+  //   "textPairs" 仅出现在 IAP 区（已验证唯一），结构更简单稳定，
+  //   不依赖 items_V3 / textPair / shouldAlwaysPresentExpanded 任一 key。
   const seen = new Set<string>();
+  const addIap = (name: string, priceRaw: string) => {
+    if (seen.has(name)) return;
+    seen.add(name);
+    const parsed = parsePrice(priceRaw);
+    out.iaps.push({
+      name,
+      priceRaw,
+      amount: parsed.amount ?? 0,
+      currency: resolveCurrency(parsed, storefrontCurrency),
+      period: detectPeriod(name),
+    });
+  };
+
+  // 策略 1：items_V3 textPair 对象
+  // [\\s\\S] 替代 . 以兼容数组内可能出现的换行（Apple 不同区/CDN 可能返回不同格式）
   const sectionRe =
-    /[Ii]n[‑\-][Aa]pp\s*[Pp]urchases[\s\S]*?items_V3":(\[.*?\]),"shouldAlwaysPresentExpanded"/g;
+    /[Ii]n[‑\-][Aa]pp\s*[Pp]urchases[\s\S]*?items_V3":(\[[\s\S]*?\]),"shouldAlwaysPresentExpanded"/g;
   let m: RegExpExecArray | null;
   while ((m = sectionRe.exec(html)) !== null) {
     const pairRe =
       /"\$kind":"textPair","leadingText":"((?:[^"\\]|\\.)*)","trailingText":"((?:[^"\\]|\\.)*)"/g;
     let pm: RegExpExecArray | null;
     while ((pm = pairRe.exec(m[1])) !== null) {
-      const name = unescape(pm[1]);
-      const priceRaw = unescape(pm[2]);
-      if (seen.has(name)) continue;
-      seen.add(name);
-      const parsed = parsePrice(priceRaw);
-      out.iaps.push({
-        name,
-        priceRaw,
-        amount: parsed.amount ?? 0,
-        currency: resolveCurrency(parsed, storefrontCurrency),
-        period: detectPeriod(name),
-      });
+      addIap(unescape(pm[1]), unescape(pm[2]));
+    }
+  }
+
+  // 策略 2（兜底）：textPairs 元组。仅当策略 1 提取失败时启用。
+  // 用括号配平定位 textPairs 数组的闭合 ]，再在内部匹配 ["name","price"] 元组，
+  // 避免懒匹配 .*? 在嵌套数组里截断（items_V3 的 button 元素含空数组 [] 会打断旧正则）。
+  if (out.iaps.length === 0) {
+    const tpIdx = html.indexOf('"textPairs"');
+    if (tpIdx >= 0) {
+      const afterKey = html.slice(tpIdx);
+      const arrStart = afterKey.indexOf("[");
+      if (arrStart >= 0) {
+        let depth = 0;
+        let end = -1;
+        for (let i = arrStart; i < afterKey.length; i++) {
+          const ch = afterKey[i];
+          if (ch === "[") depth++;
+          else if (ch === "]") {
+            depth--;
+            if (depth === 0) {
+              end = i;
+              break;
+            }
+          }
+        }
+        if (end > arrStart) {
+          const arrContent = afterKey.slice(arrStart, end + 1);
+          const tupleRe =
+            /\[\s*"((?:[^"\\]|\\.)*)"\s*,\s*"((?:[^"\\]|\\.)*)"\s*\]/g;
+          let tm: RegExpExecArray | null;
+          while ((tm = tupleRe.exec(arrContent)) !== null) {
+            addIap(unescape(tm[1]), unescape(tm[2]));
+          }
+        }
+      }
     }
   }
   return out;
@@ -263,20 +360,39 @@ export function detectPeriod(iapName: string): SubscriptionPeriod {
 }
 
 /**
+ * 已知非订阅的打赏 / VOD 类 IAP 名（YouTube / TikTok 等平台的创作者经济功能）
+ * 这些是平台级"功能购买"，不是订阅档位，跨区聚合会污染 tab 列表
+ * 全部使用精确匹配（^...$），避免误伤名字相似的真实订阅档位
+ */
+const NOISE_IAP_PATTERNS: RegExp[] = [
+  /^super\s*(chat|thanks|sticker)s?$/i, // YouTube 打赏功能（精确匹配，不挡 "Super Chat Premium"）
+  /^movies?\s*[&]\s*shows?$/i, // YouTube VOD 分类
+  /^movies?\s+and\s+shows?$/i,
+  /^movies?\s*[&]\s*tv$/i, // 类似 VOD 分类
+];
+
+/**
  * 是否为真正的"订阅档位"（用于 UI 档位 tab 过滤）
  * 排除：
  *   - period === 'one_time'（一次性购买，如 Promote Post / Boosted Tweet / NotABot）
  *   - 创作者订阅 "@xxx Subscription"（X 的 Super Follows；价格因人而异，
  *     跨区聚合后档位过于碎片化，不算 App 自家订阅套餐）
+ *   - 已知平台打赏 / VOD 类 IAP（Super Chat / Movies & Shows 等）
  * 保留 period === null（如 Netflix Premium / ChatGPT Plus / SuperGrok 等名字里
- * 没有周期关键词的真实订阅，detectPeriod 无法识别但不该被过滤掉）
+ * 没有周期关键词的真实订阅，detectPeriod 无法识别但不该被过滤掉；
+ * 地区限定的创作者包由 compare.ts 的 filterSparseIaps 按区域覆盖度二次过滤）
+ * 保留 "App 下载"（付费下载 App 的买断价，由 crawler 合成 period='one_time'，
+ *   是买断制 App 唯一可比价档位，必须放行，否则买断 App 会误显示"暂无价格数据"）
  */
 export function isSubscriptionIap(
   iapName: string,
   period: SubscriptionPeriod
 ): boolean {
+  // 付费下载 App 的合成买断价档位，始终保留用于跨区比价
+  if (iapName === "App 下载") return true;
   if (period === "one_time") return false;
   if (/^@[\w.]+\s+subscription\b/i.test(iapName)) return false;
+  if (NOISE_IAP_PATTERNS.some((re) => re.test(iapName))) return false;
   return true;
 }
 
@@ -294,8 +410,6 @@ export async function crawlAllRegions(
     subtitle: string | null;
     priceLabel: string | null;
     compatibility: string[] | null;
-    screenshots: string[] | null;
-    description: string | null;
     rating: number | null;
     ratingCount: number | null;
   };
@@ -303,8 +417,6 @@ export async function crawlAllRegions(
   let subtitle: string | null = null;
   let priceLabel: string | null = null;
   let compatibility: string[] | null = null;
-  let screenshots: string[] | null = null;
-  let description: string | null = null;
   let rating: number | null = null;
   let ratingCount: number | null = null;
   const tasks = regions.map(async (region) => {
@@ -314,15 +426,9 @@ export async function crawlAllRegions(
         fetchLookupMeta(region.code, appId),
       ]);
       const parsed = parseAppStoreHtml(html, region.currency);
-      // 截图兜底：HTML 爬取失败时用 iTunes Lookup 的 screenshotUrls（更稳定）
-      if (!parsed.screenshots && lookupMeta.screenshots) {
-        parsed.screenshots = lookupMeta.screenshots;
-      }
       if (parsed.subtitle && !subtitle) subtitle = parsed.subtitle;
       if (parsed.priceLabel && !priceLabel) priceLabel = parsed.priceLabel;
       if (parsed.compatibility && !compatibility) compatibility = parsed.compatibility;
-      if (parsed.screenshots && !screenshots) screenshots = parsed.screenshots;
-      if (parsed.description && !description) description = parsed.description;
       // 评分取首个非空（通常各区一致，取 US 区即可）
       if (lookupMeta.rating != null && rating == null) rating = lookupMeta.rating;
       if (lookupMeta.ratingCount != null && ratingCount == null) ratingCount = lookupMeta.ratingCount;
@@ -357,6 +463,6 @@ export async function crawlAllRegions(
   const results = await Promise.all(tasks);
   return {
     results,
-    meta: { subtitle, priceLabel, compatibility, screenshots, description, rating, ratingCount },
+    meta: { subtitle, priceLabel, compatibility, rating, ratingCount },
   };
 }

@@ -68,13 +68,9 @@ export function AppsListClient({
     const io = new IntersectionObserver(
       (entries) => {
         if (!entries[0].isIntersecting) return;
+        // 请求在途时跳过；请求完成后 loadMore 内部会主动检查是否还需要继续
         if (loadingRef.current || !hasMoreRef.current) return;
-        // 物理停止观察：加载期间 IO 不可能再触发，彻底杜绝并发请求
-        // 加载完成后若还有更多数据，恢复观察
-        io.unobserve(sentinel);
-        loadMore().finally(() => {
-          if (hasMoreRef.current) io.observe(sentinel);
-        });
+        loadMore();
       },
       { rootMargin: "200px" }
     );
@@ -96,7 +92,7 @@ export function AppsListClient({
     try {
       const params = new URLSearchParams({
         page: String(nextPage),
-        limit: "20",
+        limit: "30",
       });
       if (query) params.set("q", query);
       if (sort && sort !== "recent") params.set("sort", sort);
@@ -124,6 +120,17 @@ export function AppsListClient({
       if (abortRef.current === controller) abortRef.current = null;
       setLoading(false);
       loadingRef.current = false;
+      // 补偿机制：请求完成后若 sentinel 仍在视窗内（用户快速滚动），主动再触发一次。
+      // IO 在请求在途期间会因 loadingRef 跳过，请求完成后即使 sentinel 还在视窗内，
+      // IO 也可能不会再回调（浏览器只在交叉变化时通知），这里主动检查兜底。
+      if (hasMoreRef.current && sentinelRef.current) {
+        const rect = sentinelRef.current.getBoundingClientRect();
+        const inView = rect.top < window.innerHeight + 200; // 200 = rootMargin
+        if (inView) {
+          // 微任务延后，避免在 finally 同步调用导致栈过深
+          Promise.resolve().then(() => loadMore());
+        }
+      }
     }
   }
 
@@ -137,7 +144,7 @@ export function AppsListClient({
                 key={app.app_id}
                 app={app}
                 country={country}
-                index={i % 20}
+                index={i % 30}
               />
             ))}
           </div>
@@ -179,7 +186,11 @@ export function AppsListClient({
         </div>
       )}
 
+      {/* 哨兵：IO 观察它触发加载更多。
+          下方留 60vh buffer：加载新内容时 footer 不会被反复推入/推出视窗，
+          避免"footer 不断出现又消失"的抖动。 */}
       <div ref={sentinelRef} className="h-4" />
+      {hasMore && <div className="h-[60vh]" aria-hidden="true" />}
       {error && (
         <div className="mt-6 rounded-[var(--radius-md)] bg-[rgba(255,59,48,0.08)] px-4 py-3 text-center text-sm text-[var(--color-red)]">
           <i className="ph ph-warning-circle" /> {error}

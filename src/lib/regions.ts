@@ -22,6 +22,12 @@ export const REGIONS: Region[] = [
   { code: "ch", name: "瑞士", name_en: "Switzerland", flag: "🇨🇭", currency: "CHF", sort_order: 15 },
   { code: "dk", name: "丹麦", name_en: "Denmark", flag: "🇩🇰", currency: "DKK", sort_order: 16 },
   { code: "il", name: "以色列", name_en: "Israel", flag: "🇮🇱", currency: "ILS", sort_order: 17 },
+  // 欧洲补充：5 个高价值独立定价区（EUR / PLN / RUB 都有独立定价，与现有欧洲区不重叠）
+  { code: "es", name: "西班牙", name_en: "Spain", flag: "🇪🇸", currency: "EUR", sort_order: 18 },
+  { code: "it", name: "意大利", name_en: "Italy", flag: "🇮🇹", currency: "EUR", sort_order: 19 },
+  { code: "nl", name: "荷兰", name_en: "Netherlands", flag: "🇳🇱", currency: "EUR", sort_order: 25 },
+  { code: "pl", name: "波兰", name_en: "Poland", flag: "🇵🇱", currency: "PLN", sort_order: 26 },
+  { code: "ru", name: "俄罗斯", name_en: "Russia", flag: "🇷🇺", currency: "RUB", sort_order: 29 },
   // 中东 + 非洲
   { code: "ae", name: "阿联酋", name_en: "United Arab Emirates", flag: "🇦🇪", currency: "AED", sort_order: 20 },
   { code: "sa", name: "沙特", name_en: "Saudi Arabia", flag: "🇸🇦", currency: "SAR", sort_order: 21 },
