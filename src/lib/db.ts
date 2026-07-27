@@ -388,6 +388,96 @@ export async function getUserById(db: D1Database, id: string): Promise<UserRow |
     .first<UserRow>();
 }
 
+// ============ Magic Link 邮箱登录 ============
+
+/** 创建 magic link token（已哈希）入库，返回入库后的 row */
+export async function createMagicLinkToken(
+  db: D1Database,
+  input: { email: string; tokenHash: string; expiresAt: string; ip: string | null }
+): Promise<void> {
+  const id = crypto.randomUUID();
+  await db
+    .prepare(
+      `INSERT INTO magic_link_tokens (id, email, token_hash, expires_at, created_at, ip)
+       VALUES (?1, ?2, ?3, ?4, datetime('now'), ?5)`
+    )
+    .bind(id, input.email.toLowerCase(), input.tokenHash, input.expiresAt, input.ip)
+    .run();
+}
+
+/** 检查 email 在最近 N 秒内是否已发过 magic link（用于限流） */
+export async function recentMagicLinkForEmail(
+  db: D1Database,
+  email: string,
+  withinSeconds: number
+): Promise<boolean> {
+  const r = await db
+    .prepare(
+      `SELECT 1 FROM magic_link_tokens
+       WHERE email = ?1
+         AND datetime(created_at) > datetime('now', ?2)
+       LIMIT 1`
+    )
+    .bind(email.toLowerCase(), `-${withinSeconds} seconds`)
+    .first<{ "1": number }>();
+  return !!r;
+}
+
+/** 验证 magic link token：返回 email + 是否成功消费 */
+export async function consumeMagicLinkToken(
+  db: D1Database,
+  tokenHash: string
+): Promise<{ ok: true; email: string } | { ok: false; reason: "not_found" | "expired" | "used" }> {
+  const row = await db
+    .prepare(
+      `SELECT email, expires_at, used_at FROM magic_link_tokens WHERE token_hash = ?1`
+    )
+    .bind(tokenHash)
+    .first<{ email: string; expires_at: string; used_at: string | null }>();
+  if (!row) return { ok: false, reason: "not_found" };
+  if (row.used_at) return { ok: false, reason: "used" };
+  // D1 SQLite datetime 比较用 ISO8601 字符串字典序自然有序
+  const now = new Date().toISOString();
+  if (row.expires_at < now) return { ok: false, reason: "expired" };
+  // 标记消费（其他并发请求即便拿到同样的 hash 也会被 used_at 拦截）
+  await db
+    .prepare(`UPDATE magic_link_tokens SET used_at = datetime('now') WHERE token_hash = ?1`)
+    .bind(tokenHash)
+    .run();
+  return { ok: true, email: row.email };
+}
+
+/** 按邮箱 upsert 用户：用于 magic link 登录
+ *  - 若已有 oauth_provider='email' 的用户：复用 id，更新 name/image
+ *  - 否则新建（即使存在其他 OAuth provider 的同邮箱用户，也新建 email 用户，
+ *    避免账户合并引发的权限混淆；如未来要做账户绑定再单独处理）
+ */
+export async function upsertUserByEmail(
+  db: D1Database,
+  email: string
+): Promise<{ id: string; name: string | null; image: string | null; email: string | null; role: string }> {
+  const lower = email.toLowerCase();
+  const existing = await db
+    .prepare(
+      `SELECT id, name, image, email, role FROM users
+       WHERE oauth_provider = 'email' AND oauth_account_id = ?1`
+    )
+    .bind(lower)
+    .first<{ id: string; name: string | null; image: string | null; email: string | null; role: string }>();
+  if (existing) return existing;
+
+  const id = crypto.randomUUID();
+  const name = lower.split("@")[0]; // 兜底显示名：取邮箱 @ 前部分
+  await db
+    .prepare(
+      `INSERT INTO users (id, email, name, image, oauth_provider, oauth_account_id, created_at, updated_at)
+       VALUES (?1, ?2, ?3, NULL, 'email', ?4, datetime('now'), datetime('now'))`
+    )
+    .bind(id, lower, name, lower)
+    .run();
+  return { id, name, image: null, email: lower, role: "user" };
+}
+
 // ============ 购买记录（$1.99 买断） ============
 
 /** 插入购买记录（幂等：stripe_session_id 冲突时忽略） */

@@ -1,10 +1,13 @@
-// Auth.js v5 配置：Google / Twitter(X) / GitHub 三家 OAuth + JWT strategy
+// Auth.js v5 配置：Google OAuth + Magic Link（CredentialsProvider 桥接）+ JWT strategy
 // JWT 无状态，不依赖 KV/D1 session，Cloudflare Workers 友好
+// Twitter / GitHub providers 保留配置但 LoginDialog 暂时不展示（Console 审核未过）
 import NextAuth, { type DefaultUser } from "next-auth";
 import Google from "next-auth/providers/google";
 import Twitter from "next-auth/providers/twitter";
 import GitHub from "next-auth/providers/github";
-import { getDb, getUserByProvider, upsertUser } from "./db";
+import Credentials from "next-auth/providers/credentials";
+import { getDb, getUserByProvider, upsertUser, upsertUserByEmail } from "./db";
+import { verifyEmailSignature } from "./magic-token";
 
 // 扩展类型：把 D1 内部 user id + role 注入 session.user 和 jwt token
 declare module "next-auth" {
@@ -30,6 +33,7 @@ export const authConfig = {
       clientId: process.env.AUTH_GOOGLE_ID,
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
     }),
+    // Twitter / GitHub 暂不展示在 LoginDialog，但 provider 配置保留以便审核过后直接放出
     Twitter({
       clientId: process.env.AUTH_TWITTER_ID,
       clientSecret: process.env.AUTH_TWITTER_SECRET,
@@ -38,10 +42,45 @@ export const authConfig = {
       clientId: process.env.AUTH_GITHUB_ID,
       clientSecret: process.env.AUTH_GITHUB_SECRET,
     }),
+    // Magic Link 桥接：verify 接口验完 DB token 后，签 HMAC 走此 provider 登入
+    // authorize 只信任本服务签的 HMAC，外部直接调 signIn("credentials", {...}) 会被 sig 校验拦下
+    Credentials({
+      id: "magic-link",
+      name: "Magic Link",
+      credentials: {
+        email: { label: "Email", type: "email" },
+        sig: { label: "Signature", type: "text" },
+      },
+      async authorize(creds) {
+        const email = creds?.email;
+        const sig = creds?.sig;
+        if (typeof email !== "string" || typeof sig !== "string") return null;
+        if (!(await verifyEmailSignature(email, sig))) {
+          console.warn("[auth] magic-link authorize: invalid signature");
+          return null;
+        }
+        try {
+          const db = await getDb();
+          const u = await upsertUserByEmail(db, email);
+          return {
+            id: u.id,
+            email: u.email,
+            name: u.name,
+            image: u.image,
+            // 自定义字段，jwt callback 用
+            role: u.role,
+          } as DefaultUser & { role: string };
+        } catch (e) {
+          console.error("[auth] magic-link authorize upsert failed:", e);
+          return null;
+        }
+      },
+    }),
   ],
   callbacks: {
-    // 登录时 upsert 用户到 D1 users 表
+    // 登录时 upsert 用户到 D1 users 表（仅 OAuth 走此分支；magic-link 已在 authorize 内完成 upsert）
     async signIn({ user, account }) {
+      if (account?.provider === "magic-link") return true;
       if (!account?.provider || !account?.providerAccountId) return true;
       try {
         const db = await getDb();
@@ -59,9 +98,15 @@ export const authConfig = {
       return true;
     },
     // 首次登录时把 D1 user id + role 存入 JWT token
-    // 后续请求（无 user/account 参数）直接用 token 里的值，不查 DB
-    // 注意：手动改 role 后需重新登录才能生效
+    // OAuth：按 provider + providerAccountId 查
+    // Magic Link：authorize 返回的 user.id 已经是 D1 user id，直接用
     async jwt({ token, user, account }) {
+      if (user && account?.provider === "magic-link") {
+        token.dbUserId = user.id;
+        const role = (user as DefaultUser & { role?: string }).role;
+        if (role) token.role = role;
+        return token;
+      }
       if (user && account?.provider && account?.providerAccountId) {
         try {
           const db = await getDb();
