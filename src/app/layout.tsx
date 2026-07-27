@@ -9,7 +9,7 @@ import { LogoMark } from "@/components/Logo";
 import { auth } from "@/lib/auth";
 import { getEntitlement } from "@/lib/entitlement";
 import { currencyForCountry, REGION_MAP } from "@/lib/regions";
-import { languageForCountry } from "@/lib/languages";
+import { languageForCountry, LANGUAGES, type Language } from "@/lib/languages";
 import "./globals.css";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -63,10 +63,10 @@ export default async function RootLayout({
   const cookieHeader = h.get("cookie") || "";
   const langMatch = cookieHeader.match(/(?:^|;\s*)language=([^;]+)/);
   const cookieLang = langMatch ? decodeURIComponent(langMatch[1]) : null;
-  const langs = ["en", "zh-CN"] as const;
-  const defaultLanguage =
-    cookieLang && (langs as readonly string[]).includes(cookieLang)
-      ? (cookieLang as (typeof langs)[number])
+  const validLangCodes = LANGUAGES.map((l) => l.code);
+  const defaultLanguage: Language =
+    cookieLang && (validLangCodes as string[]).includes(cookieLang)
+      ? (cookieLang as Language)
       : languageForCountry(detectedCountry);
   // 是否由 Cloudflare 边缘 req.cf 检测到；fallback 时客户端会补检
   const geoSource = h.get("x-geo-source") === "cf" ? "cf" : "fallback";

@@ -1,9 +1,10 @@
 import { getRequestConfig } from "next-intl/server";
 import { headers } from "next/headers";
-import { languageForCountry } from "@/lib/languages";
+import { languageForCountry, LANGUAGES, type Language } from "@/lib/languages";
 
-export const locales = ["en", "zh-CN"] as const;
-export type Locale = (typeof locales)[number];
+// 与 src/lib/languages.ts 的 LANGUAGES 保持同步（单一数据源）
+export const locales = LANGUAGES.map((l) => l.code) as readonly Language[];
+export type Locale = Language;
 export const defaultLocale: Locale = "en";
 
 /**
