@@ -1,10 +1,10 @@
 {
   "Nav": {
     "home": "首页",
-    "apps": "应用",
-    "regions": "地区",
+    "apps": "全部应用",
+    "regions": "支持地区",
     "faq": "常见问题",
-    "price": "价格",
+    "price": "产品定价",
     "login": "登录",
     "mainNav": "主导航",
     "languagePicker": "界面语种",

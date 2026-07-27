@@ -1,8 +1,8 @@
 {
   "Nav": {
     "home": "Home",
-    "apps": "Apps",
-    "regions": "Regions",
+    "apps": "All Apps",
+    "regions": "Supported Regions",
     "faq": "FAQ",
     "price": "Pricing",
     "login": "Sign in",
