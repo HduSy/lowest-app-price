@@ -58,17 +58,8 @@ export function LoginDialog({ open, onClose }: LoginDialogProps) {
           </p>
         </div>
 
-        <MagicLinkForm />
-
-        {/* 分隔线 */}
-        <div className="my-5 flex items-center gap-3">
-          <div className="h-px flex-1 bg-black/[0.08]" />
-          <span className="text-[11px] uppercase tracking-wider text-[var(--color-ink-48)]">或</span>
-          <div className="h-px flex-1 bg-black/[0.08]" />
-        </div>
-
         {/* OAuth：仅展示 Google（Twitter / GitHub 等过审后再放出） */}
-        <div className="flex flex-col gap-2.5">
+        <div className="mt-5 flex flex-col gap-2.5">
           <button
             type="button"
             onClick={() => handleSignIn("google")}
@@ -96,6 +87,15 @@ export function LoginDialog({ open, onClose }: LoginDialogProps) {
           </button>
           */}
         </div>
+
+        {/* 分隔线 */}
+        <div className="my-5 flex items-center gap-3">
+          <div className="h-px flex-1 bg-black/[0.08]" />
+          <span className="text-[11px] uppercase tracking-wider text-[var(--color-ink-48)]">或</span>
+          <div className="h-px flex-1 bg-black/[0.08]" />
+        </div>
+
+        <MagicLinkForm />
 
         <button
           type="button"
