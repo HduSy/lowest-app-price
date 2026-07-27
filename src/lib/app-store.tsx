@@ -72,6 +72,14 @@ function createAppStore(defaultCurrency: string, defaultLanguage: Language) {
     setLanguage: (l) => {
       set({ language: l });
       writePrefs({ language: l });
+      // 同步写 cookie，让 next-intl 的 i18n/request.ts 在 SSR 时读到
+      try {
+        document.cookie = `language=${encodeURIComponent(l)}; max-age=31536000; path=/; samesite=lax`;
+      } catch {
+        /* 忽略隐私模式等写入失败 */
+      }
+      // 注意：reload 由调用方触发（Nav 的 onChange），这里不直接 reload
+      // 否则 useEffect 首挂载恢复 prefs 时会触发死循环
     },
     applyGeoDefaults: (currency, language) => set({ currency, language }),
   }));

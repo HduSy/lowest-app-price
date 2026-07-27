@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getDb, listApps } from "@/lib/db";
+import { getTranslations } from "next-intl/server";
 import type { App } from "@/lib/types";
 
 /**
@@ -14,6 +15,7 @@ import type { App } from "@/lib/types";
  * 服务端渲染，静默失败--DB 不可用或无 App 时不渲染。
  */
 export async function SupportedAppsSection({ country }: { country: string }) {
+  const t = await getTranslations("SupportedApps");
   let apps: App[] = [];
   let total = 0;
   try {
@@ -83,10 +85,10 @@ export async function SupportedAppsSection({ country }: { country: string }) {
       {/* 标题 */}
       <div className="mx-auto mb-10 max-w-[1100px] px-[22px] text-center">
         <h2 className="text-[clamp(28px,4vw,40px)] font-semibold">
-          已收录 {total} 个 App，还在加
+          {t("title", { count: total })}
         </h2>
         <p className="mx-auto mt-2 max-w-[42ch] leading-relaxed text-[var(--color-ink-80)]">
-          粘贴链接即可查看全部地区价格——库在长，每天加。
+          {t("desc")}
         </p>
       </div>
 

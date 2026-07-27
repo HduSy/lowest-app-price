@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import Link from "next/link";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Nav } from "@/components/Nav";
 import { AppStoreProvider } from "@/lib/app-store";
 import { LogoMark } from "@/components/Logo";
@@ -10,36 +12,38 @@ import { currencyForCountry, REGION_MAP } from "@/lib/regions";
 import { languageForCountry } from "@/lib/languages";
 import "./globals.css";
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://appstore-lowest-price.alifeiliu.workers.dev"),
-  title: "App Store 全区比价 - 哪国最便宜，一目了然",
-  description:
-    "粘贴 App Store 链接或 App ID，实时抓取 35 个地区的订阅价格，按统一币种换算后从低到高排名。最便宜的区，一眼可见。",
-  keywords: [
-    "App Store 比价",
-    "App Store 全区比价",
-    "App Store 不同地区价格",
-    "App Store 哪个区最便宜",
-    "App Store 订阅价格对比",
-    "App Store 内购价格",
-    "App Store 换区",
-    "App Store price comparison",
-    "cheapest App Store region",
-  ],
-  openGraph: {
-    type: "website",
-    locale: "zh_CN",
-    title: "App Store 全区比价 - 哪国最便宜，一目了然",
-    description:
-      "粘贴 App Store 链接或 App ID，实时抓取 35 个地区的订阅价格，按统一币种换算后从低到高排名。最便宜的区，一眼可见。",
-    siteName: "App Store 全区比价",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "App Store 全区比价",
-    description: "粘贴链接，35 个地区的订阅价格从低到高排开——哪个区最便宜，一秒看见。",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("Layout");
+  const title = t("siteName");
+  const description = t("metadataDescription");
+  return {
+    metadataBase: new URL("https://appstore-lowest-price.alifeiliu.workers.dev"),
+    title,
+    description,
+    keywords: [
+      "App Store 比价",
+      "App Store 全区比价",
+      "App Store 不同地区价格",
+      "App Store 哪个区最便宜",
+      "App Store 订阅价格对比",
+      "App Store 内购价格",
+      "App Store 换区",
+      "App Store price comparison",
+      "cheapest App Store region",
+    ],
+    openGraph: {
+      type: "website",
+      title,
+      description,
+      siteName: title,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+  };
+}
 
 export default async function RootLayout({
   children,
@@ -54,9 +58,22 @@ export default async function RootLayout({
       ? h.get("x-detected-country")!.toLowerCase()
       : "us";
   const defaultCurrency = currencyForCountry(detectedCountry);
-  const defaultLanguage = languageForCountry(detectedCountry);
+  // defaultLanguage 优先级：cookie(language) > IP 检测国家映射
+  // 跟 i18n/request.ts 的 resolveLocale 保持一致，避免 client store 跟 SSR locale 不一致
+  const cookieHeader = h.get("cookie") || "";
+  const langMatch = cookieHeader.match(/(?:^|;\s*)language=([^;]+)/);
+  const cookieLang = langMatch ? decodeURIComponent(langMatch[1]) : null;
+  const langs = ["en", "zh-CN"] as const;
+  const defaultLanguage =
+    cookieLang && (langs as readonly string[]).includes(cookieLang)
+      ? (cookieLang as (typeof langs)[number])
+      : languageForCountry(detectedCountry);
   // 是否由 Cloudflare 边缘 req.cf 检测到；fallback 时客户端会补检
   const geoSource = h.get("x-geo-source") === "cf" ? "cf" : "fallback";
+
+  // next-intl locale（从 cookie 读用户偏好，兜底走 IP 检测国家映射）
+  const locale = await getLocale();
+  const t = await getTranslations("Layout");
 
   // 当前登录用户（Auth.js session，无则 null）
   // try/catch：auth() 在 AUTH_SECRET 缺失或 JWT 验证失败时可能抛错，不阻塞页面渲染
@@ -78,56 +95,57 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang="zh-CN">
+    <html lang={locale}>
       <head>
         <script src="https://unpkg.com/@phosphor-icons/web@2.1.1" />
       </head>
       <body className="flex min-h-screen flex-col">
-        <AppStoreProvider defaultCurrency={defaultCurrency} defaultLanguage={defaultLanguage} geoSource={geoSource}>
+        <NextIntlClientProvider>
+          <AppStoreProvider defaultCurrency={defaultCurrency} defaultLanguage={defaultLanguage} geoSource={geoSource}>
           <Nav user={user} />
           <main className="flex-1">{children}</main>
           <footer className="bg-[var(--color-parchment)] py-10">
             <div className="mx-auto max-w-[980px] px-[22px] text-center">
               <div className="mb-3 flex items-center justify-center gap-2 font-semibold">
                 <LogoMark size={20} />
-                <span>App Store 全区比价</span>
+                <span>{t("siteName")}</span>
               </div>
               <p className="mx-auto mb-6 max-w-[60ch] text-xs leading-relaxed text-[var(--color-ink-48)]">
-                不附属于 Apple Inc.。价格数据来自公开 App Store，按实时汇率换算，仅供参考——实际购买以
-                App Store 当时显示为准，并需遵守 Apple 服务条款与当地法律。
+                {t("footerDisclaimer")}
               </p>
               <div className="mx-auto mb-3 max-w-[720px] border-t border-black/[0.08] pt-5">
                 <p className="text-xs text-[var(--color-ink-48)]">
-                  Copyright © {new Date().getFullYear()} App Store 全区比价. 保留所有权利。
+                  {t("footerCopyright", { year: new Date().getFullYear() })}
                 </p>
                 <nav
                   className="mt-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-[var(--color-ink-48)]"
-                  aria-label="页脚链接"
+                  aria-label={t("footerLinks")}
                 >
                   <Link href="/privacy" className="transition-colors hover:text-[var(--color-ink)]">
-                    隐私政策
+                    {t("privacy")}
                   </Link>
                   <span className="text-black/15">|</span>
                   <Link href="/terms" className="transition-colors hover:text-[var(--color-ink)]">
-                    使用条款
+                    {t("terms")}
                   </Link>
                   <span className="text-black/15">|</span>
                   <Link href="/refunds" className="transition-colors hover:text-[var(--color-ink)]">
-                    退款政策
+                    {t("refunds")}
                   </Link>
                   <span className="text-black/15">|</span>
                   <Link href="/legal" className="transition-colors hover:text-[var(--color-ink)]">
-                    法律声明
+                    {t("legal")}
                   </Link>
                   <span className="text-black/15">|</span>
                   <Link href="/sitemap" className="transition-colors hover:text-[var(--color-ink)]">
-                    网站地图
+                    {t("sitemap")}
                   </Link>
                 </nav>
               </div>
             </div>
           </footer>
         </AppStoreProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

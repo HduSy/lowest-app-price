@@ -3,6 +3,7 @@
 // 首页定价区：内嵌两档方案，$1.99 档高亮"最划算"
 // client 组件：需要调 checkout API + 开 LoginDialog
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { LoginDialog } from "./LoginDialog";
 
 interface PricingSectionProps {
@@ -10,6 +11,7 @@ interface PricingSectionProps {
 }
 
 export function PricingSection({ loggedIn }: PricingSectionProps) {
+  const t = useTranslations("Pricing");
   const [loginOpen, setLoginOpen] = useState(false);
   const [buying, setBuying] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -27,11 +29,11 @@ export function PricingSection({ loggedIn }: PricingSectionProps) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ callbackUrl: window.location.href }),
       });
-      if (!res.ok) throw new Error("创建支付订单失败");
+      if (!res.ok) throw new Error("Failed to create checkout session");
       const { url } = await res.json();
       if (url) window.location.href = url;
     } catch (e) {
-      setError(e instanceof Error ? e.message : "购买失败");
+      setError(e instanceof Error ? e.message : "Purchase failed");
     } finally {
       setBuying(false);
     }
@@ -41,10 +43,9 @@ export function PricingSection({ loggedIn }: PricingSectionProps) {
     <section id="pricing" className="px-[22px] py-20">
       <div className="mx-auto max-w-[980px]">
         <h2 className="mb-3 text-center text-[clamp(28px,4vw,40px)] font-semibold">
-          先免费试，值得再买
+          {t("title")}
         </h2>
-        <p className="mx-auto mb-10 max-w-[680px] text-center text-[var(--color-ink-80)]">
-          登录每天免费看 3 个 App，或 $1.99 一次买断——所有 App、所有订阅档位、所有地区，永久无限看。
+        <p className="mx-auto mb-10 max-w-[900px] text-center text-[var(--color-ink-80)]">          {t("desc")}
         </p>
 
         <div className="mx-auto grid max-w-[680px] grid-cols-1 gap-4 sm:grid-cols-2">
@@ -53,25 +54,25 @@ export function PricingSection({ loggedIn }: PricingSectionProps) {
             <div className="flex items-center gap-2">
               <i className="ph ph-gift text-[20px] text-[var(--color-ink-48)]" />
               <span className="text-sm font-semibold text-[var(--color-ink-48)]">
-                免费
+                {t("freeTier")}
               </span>
             </div>
             <div className="mt-3 text-[32px] font-semibold leading-none">
-              每天 3 次，免费
+              {t("freePrice")}
             </div>
-            <p className="mt-1 text-xs text-[var(--color-ink-48)]">登录就送</p>
+            <p className="mt-1 text-xs text-[var(--color-ink-48)]">{t("freeNote")}</p>
             <ul className="mt-5 space-y-2.5 text-sm text-[var(--color-ink-80)]">
               <li className="flex items-center gap-2">
                 <i className="ph ph-check-circle text-[16px] text-[var(--color-green)]" />
-                所有订阅档位都能看
+                {t("freeFeature1")}
               </li>
               <li className="flex items-center gap-2">
                 <i className="ph ph-check-circle text-[16px] text-[var(--color-green)]" />
-                每天 UTC 0 点重置
+                {t("freeFeature2")}
               </li>
               <li className="flex items-center gap-2">
                 <i className="ph ph-check-circle text-[16px] text-[var(--color-green)]" />
-                多个 App 共用额度
+                {t("freeFeature3")}
               </li>
             </ul>
             <button
@@ -80,7 +81,7 @@ export function PricingSection({ loggedIn }: PricingSectionProps) {
               disabled={loggedIn}
               className="mt-6 w-full rounded-full border border-black/[0.1] bg-white px-4 py-2.5 text-sm font-semibold transition-colors hover:bg-[var(--color-parchment)] disabled:cursor-default disabled:opacity-60"
             >
-              {loggedIn ? "当前方案" : "登录领取"}
+              {loggedIn ? t("currentPlan") : t("loginToClaim")}
             </button>
           </div>
 
@@ -88,33 +89,33 @@ export function PricingSection({ loggedIn }: PricingSectionProps) {
           <div className="relative rounded-[18px] border-2 border-[var(--color-primary-focus)] bg-white p-6 shadow-[0_4px_24px_rgba(0,113,227,0.12)]">
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[var(--color-primary-focus)] px-3 py-1 text-[11px] font-semibold text-white shadow-sm">
               <i className="ph ph-star mr-1" />
-              最划算
+              {t("bestValue")}
             </div>
             <div className="flex items-center gap-2">
               <i className="ph ph-crown text-[20px] text-[var(--color-primary-focus)]" />
               <span className="text-sm font-semibold text-[var(--color-primary-focus)]">
-                一次买断
+                {t("paidTier")}
               </span>
             </div>
             <div className="mt-3 flex items-baseline gap-1">
               <span className="text-[32px] font-semibold leading-none">$1.99</span>
-              <span className="text-sm text-[var(--color-ink-48)]">一次，永久</span>
+              <span className="text-sm text-[var(--color-ink-48)]">{t("paidPriceNote")}</span>
             </div>
             <p className="mt-1 text-xs text-[var(--color-ink-48)]">
-              不限 App、不限地区、不限次数
+              {t("paidNote")}
             </p>
             <ul className="mt-5 space-y-2.5 text-sm text-[var(--color-ink-80)]">
               <li className="flex items-center gap-2">
                 <i className="ph ph-check-circle text-[16px] text-[var(--color-green)]" />
-                永久无限查看
+                {t("paidFeature1")}
               </li>
               <li className="flex items-center gap-2">
                 <i className="ph ph-check-circle text-[16px] text-[var(--color-green)]" />
-                所有 App 的所有订阅档位与地区
+                {t("paidFeature2")}
               </li>
               <li className="flex items-center gap-2">
                 <i className="ph ph-check-circle text-[16px] text-[var(--color-green)]" />
-                不再受每日额度限制
+                {t("paidFeature3")}
               </li>
             </ul>
             <button
@@ -126,9 +127,9 @@ export function PricingSection({ loggedIn }: PricingSectionProps) {
               {buying ? (
                 <span className="spinner" />
               ) : loggedIn ? (
-                "$1.99 买断"
+                t("buyButton")
               ) : (
-                "登录后购买"
+                t("loginToBuy")
               )}
             </button>
           </div>

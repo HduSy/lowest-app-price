@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { REGIONS, REGION_MAP } from "@/lib/regions";
@@ -18,11 +19,11 @@ const CURRENCY_OPTIONS = [...new Set(REGIONS.map((r) => r.currency))].sort();
 
 // 相对路径链接（会自动拼上当前 URL country 前缀，仅用于浏览区导航）
 const REL_LINKS = [
-  { path: "", label: "首页" },
-  { path: "/apps", label: "应用" },
-  { path: "/#regions", label: "地区" },
-  { path: "/#pricing", label: "价格" },
-  { path: "/#faq", label: "常见问题" },
+  { path: "", labelKey: "home" },
+  { path: "/apps", labelKey: "apps" },
+  { path: "/#regions", labelKey: "regions" },
+  { path: "/#pricing", labelKey: "price" },
+  { path: "/#faq", labelKey: "faq" },
 ];
 
 export interface NavUser {
@@ -34,6 +35,7 @@ export interface NavUser {
 }
 
 export function Nav({ user = null }: { user?: NavUser | null }) {
+  const t = useTranslations("Nav");
   const pathname = usePathname() || "/";
   // URL 段 = 浏览区（可随意输），仅用于拼 nav 链接前缀
   const segs = pathname.split("/").filter(Boolean);
@@ -55,7 +57,7 @@ export function Nav({ user = null }: { user?: NavUser | null }) {
     <nav
       className="sticky top-0 z-50 h-[52px] border-b border-black/[0.08] backdrop-blur-xl"
       style={{ background: "rgba(245,245,247,0.8)" }}
-      aria-label="主导航"
+      aria-label={t("mainNav")}
     >
       <div className="mx-auto flex h-full max-w-[1024px] items-center justify-center gap-6 px-[22px]">
         <Link
@@ -83,16 +85,21 @@ export function Nav({ user = null }: { user?: NavUser | null }) {
                   : navTextCls
               }`}
             >
-              {l.label}
+              {t(l.labelKey)}
             </Link>
           );
         })}
 
         <Picker
-          ariaLabel="界面语种"
+          ariaLabel={t("languagePicker")}
           variant="text"
           value={language}
-          onChange={(v) => setLanguage(v as Language)}
+          onChange={(v) => {
+            setLanguage(v as Language);
+            // cookie-based locale 模式：client 切换后必须 reload 让 SSR 重读 cookie
+            // setLanguage 内部不直接 reload（避免 useEffect 恢复 prefs 时死循环）
+            setTimeout(() => window.location.reload(), 0);
+          }}
           options={LANGUAGES.map((l) => ({
             value: l.code,
             label: l.label,
@@ -101,7 +108,7 @@ export function Nav({ user = null }: { user?: NavUser | null }) {
         />
 
         <Picker
-          ariaLabel="展示币种"
+          ariaLabel={t("currencyPicker")}
           variant="text"
           value={currency}
           onChange={setCurrency}
@@ -133,9 +140,9 @@ export function Nav({ user = null }: { user?: NavUser | null }) {
             type="button"
             onClick={() => setLoginOpen(true)}
             className={navTextCls}
-            aria-label="登录"
+            aria-label={t("login")}
           >
-            登录
+            {t("login")}
           </button>
         )}
       </div>

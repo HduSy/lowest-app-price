@@ -132,11 +132,11 @@ export function PriceTable({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ callbackUrl: window.location.href }),
       });
-      if (!res.ok) throw new Error("创建支付订单失败");
+      if (!res.ok) throw new Error("Failed to create checkout session");
       const { url } = await res.json();
       if (url) window.location.href = url;
     } catch (e) {
-      setUnlockError(e instanceof Error ? e.message : "购买失败");
+      setUnlockError(e instanceof Error ? e.message : "Purchase failed");
     } finally {
       setUnlocking(false);
     }

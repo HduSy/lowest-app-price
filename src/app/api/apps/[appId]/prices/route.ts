@@ -28,7 +28,7 @@ export async function GET(
     const db = await getDb();
     const app = await getApp(db, appId);
     if (!app) {
-      return error("App 不存在，请先添加。", 404);
+      return error("App not in our database. Please add it first.", 404);
     }
 
     const needFetch = force || isStale(app.last_fetched_at, PRICE_TTL_HOURS);

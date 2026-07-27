@@ -33,3 +33,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# claude code 个人配置
+CLAUDE.md
+
+# 临时调试端点
+src/app/api/debug/

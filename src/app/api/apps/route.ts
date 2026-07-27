@@ -44,7 +44,7 @@ export async function POST(req: Request) {
     const body = (await req.json().catch(() => ({}))) as { input?: string };
     const parsed = parseAppInput(body.input || "");
     if (!parsed) {
-      return error("无法识别输入。请粘贴 App Store 链接或纯 App ID。", 400);
+      return error("Invalid input. Paste an App Store link or a plain App ID.", 400);
     }
     const appId = parsed.appId;
 
@@ -60,7 +60,7 @@ export async function POST(req: Request) {
     const meta = await fetchAppMeta(appId);
     if (!meta.name) {
       return error(
-        "Apple 接口未找到该 App，请确认 App ID 正确。",
+        "Apple API didn't find this App. Please double-check the App ID.",
         404
       );
     }

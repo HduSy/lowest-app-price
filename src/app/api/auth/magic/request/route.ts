@@ -19,10 +19,10 @@ export async function POST(req: Request) {
     const body = (await req.json().catch(() => ({}))) as { email?: string };
     email = (body.email || "").trim().toLowerCase();
   } catch {
-    return error("无效请求", 400);
+    return error("Invalid request", 400);
   }
   if (!EMAIL_RE.test(email) || email.length > 254) {
-    return error("请输入有效的邮箱地址", 400);
+    return error("Please enter a valid email address", 400);
   }
 
   try {

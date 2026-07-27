@@ -1,6 +1,9 @@
 import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
+import createNextIntlPlugin from "next-intl/plugin";
 
 initOpenNextCloudflareForDev();
+
+const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -19,4 +22,4 @@ const nextConfig = {
   // （OpenNext 不支持在 route handler 里声明 edge runtime，会报 "cannot use the edge runtime"）
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);
