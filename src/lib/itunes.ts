@@ -3,6 +3,17 @@
 // 注意：原 screenshotUrls / ipadScreenshotUrls / macScreenshotUrls 不再持久化到 DB，
 //       但 ItunesResult 上保留这三个字段，供 inferCompatibility 在 supportedDevices 为空时兜底推断平台
 
+// 注意 (2026-07)：itunes.apple.com 在 Cloudflare Workers 上会被按出口 IP 段 403 拦截，
+// 加 UA 也无法绕过（已验证）。RelatedApps 已改走 apps.apple.com HTML 抓取绕开此限制；
+// 但 fetchAppMeta / fetchAppsMeta 仍被 /api/apps、refresh、admin import-from-sitemap 调用，
+// 在 CF Workers 上调用这些函数会静默失败 —— 调用方需自行做 HTML fallback 或迁移出 CF。
+const ITUNES_HEADERS = {
+  "User-Agent":
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15",
+  Accept: "application/json",
+  "Accept-Language": "en-US,en;q=0.9",
+};
+
 export interface AppMeta {
   name: string | null;
   developer: string | null;
@@ -94,7 +105,8 @@ function mapResult(r: ItunesResult): AppMeta {
 export async function fetchAppMeta(appId: string): Promise<AppMeta> {
   try {
     const resp = await fetch(
-      `https://itunes.apple.com/lookup?id=${appId}&country=us`
+      `https://itunes.apple.com/lookup?id=${appId}&country=us`,
+      { headers: ITUNES_HEADERS }
     );
     const data = (await resp.json()) as {
       resultCount: number;
@@ -131,9 +143,8 @@ export async function fetchAppsMeta(
   for (let i = 0; i < appIds.length; i += BATCH) {
     const batch = appIds.slice(i, i + BATCH);
     try {
-      const resp = await fetch(
-        `https://itunes.apple.com/lookup?id=${batch.join(",")}&country=us`
-      );
+      const url = `https://itunes.apple.com/lookup?id=${batch.join(",")}&country=us`;
+      const resp = await fetch(url, { headers: ITUNES_HEADERS });
       const data = (await resp.json()) as { results?: ItunesResult[] };
       const found = new Set<string>();
       for (const r of data.results || []) {
@@ -163,6 +174,7 @@ export async function fetchAppsMeta(
         }
       }
     } catch (e) {
+      console.error(`[fetchAppsMeta] batch failed (size=${batch.length}):`, e);
       for (const id of batch) {
         if (!out[id]) {
           // 批次整体失败：name 设为 null，调用方应据此重试或跳过
@@ -213,6 +225,7 @@ export async function searchAppStore(
       term
     )}&entity=software&limit=${limit}`;
     const resp = await fetch(url, {
+      headers: ITUNES_HEADERS,
       signal: AbortSignal.timeout(5000),
     });
     if (!resp.ok) return [];

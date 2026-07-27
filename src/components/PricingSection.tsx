@@ -50,7 +50,7 @@ export function PricingSection({ loggedIn }: PricingSectionProps) {
 
         <div className="mx-auto grid max-w-[680px] grid-cols-1 gap-4 sm:grid-cols-2">
           {/* 免费方案 */}
-          <div className="rounded-[18px] border border-black/[0.08] bg-white p-6">
+          <div className="flex flex-col rounded-[18px] border border-black/[0.08] bg-white p-6">
             <div className="flex items-center gap-2">
               <i className="ph ph-gift text-[20px] text-[var(--color-ink-48)]" />
               <span className="text-sm font-semibold text-[var(--color-ink-48)]">
@@ -75,18 +75,20 @@ export function PricingSection({ loggedIn }: PricingSectionProps) {
                 {t("freeFeature3")}
               </li>
             </ul>
-            <button
-              type="button"
-              onClick={loggedIn ? undefined : () => setLoginOpen(true)}
-              disabled={loggedIn}
-              className="mt-6 w-full rounded-full border border-black/[0.1] bg-white px-4 py-2.5 text-sm font-semibold transition-colors hover:bg-[var(--color-parchment)] disabled:cursor-default disabled:opacity-60"
-            >
-              {loggedIn ? t("currentPlan") : t("loginToClaim")}
-            </button>
+            <div className="mt-auto pt-6">
+              <button
+                type="button"
+                onClick={loggedIn ? undefined : () => setLoginOpen(true)}
+                disabled={loggedIn}
+                className="w-full rounded-full border border-black/[0.1] bg-white px-4 py-2.5 text-sm font-semibold transition-colors hover:bg-[var(--color-parchment)] disabled:cursor-default disabled:opacity-60"
+              >
+                {loggedIn ? t("currentPlan") : t("loginToClaim")}
+              </button>
+            </div>
           </div>
 
           {/* 付费方案 - 高亮选中（最划算）*/}
-          <div className="relative rounded-[18px] border-2 border-[var(--color-primary-focus)] bg-white p-6 shadow-[0_4px_24px_rgba(0,113,227,0.12)]">
+          <div className="relative flex flex-col rounded-[18px] border-2 border-[var(--color-primary-focus)] bg-white p-6 shadow-[0_4px_24px_rgba(0,113,227,0.12)]">
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[var(--color-primary-focus)] px-3 py-1 text-[11px] font-semibold text-white shadow-sm">
               <i className="ph ph-star mr-1" />
               {t("bestValue")}
@@ -118,20 +120,22 @@ export function PricingSection({ loggedIn }: PricingSectionProps) {
                 {t("paidFeature3")}
               </li>
             </ul>
-            <button
-              type="button"
-              onClick={handleBuy}
-              disabled={buying}
-              className="mt-6 w-full rounded-full bg-[var(--color-primary-focus)] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-primary)] disabled:opacity-50"
-            >
-              {buying ? (
-                <span className="spinner" />
-              ) : loggedIn ? (
-                t("buyButton")
-              ) : (
-                t("loginToBuy")
-              )}
-            </button>
+            <div className="mt-auto pt-6">
+              <button
+                type="button"
+                onClick={handleBuy}
+                disabled={buying}
+                className="w-full rounded-full bg-[var(--color-primary-focus)] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-primary)] disabled:opacity-50"
+              >
+                {buying ? (
+                  <span className="spinner" />
+                ) : loggedIn ? (
+                  t("buyButton")
+                ) : (
+                  t("loginToBuy")
+                )}
+              </button>
+            </div>
           </div>
         </div>
 

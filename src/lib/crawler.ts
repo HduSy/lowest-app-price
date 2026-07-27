@@ -46,7 +46,14 @@ async function fetchLookupMeta(
 }> {
   try {
     const resp = await fetch(
-      `https://itunes.apple.com/lookup?id=${appId}&country=${country}`
+      `https://itunes.apple.com/lookup?id=${appId}&country=${country}`,
+      {
+        headers: {
+          "User-Agent": UA,
+          Accept: "application/json",
+          "Accept-Language": "en-US,en;q=0.9",
+        },
+      }
     );
     if (!resp.ok) return { price: null, rating: null, ratingCount: null };
     const data = (await resp.json()) as {

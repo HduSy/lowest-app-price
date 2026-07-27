@@ -3,13 +3,57 @@
 // 用 iTunes Lookup 批量补全元信息后渲染卡片。
 // - 已收录：渲染为站内跳转卡片（RelatedAppCard，纯服务端 Link）
 // - 未收录：渲染为 ExternalAppCard，展示「添加」按钮；未登录点击会弹 LoginDialog
+//
+// 注意：iTunes Lookup API (itunes.apple.com) 在 Cloudflare Workers 上被 Apple 按出口 IP 段 403 拦截，
+// 但 apps.apple.com 详情页 HTML 可以正常抓取。所以这里并发抓每个推荐 App 的 HTML 解析 meta，
+// 完全绕开 itunes.apple.com。
 import { fetchHtml, parseAppStoreHtml } from "@/lib/crawler";
-import { fetchAppsMeta, type AppMeta } from "@/lib/itunes";
 import { getDb, getExistingAppIds } from "@/lib/db";
 import { ExternalAppCard } from "./ExternalAppCard";
 import Link from "next/link";
 
 const MAX_RELATED = 10;
+// 并发抓推荐 App HTML 的 worker 数（太多会被 Apple 限流，太少会慢）
+const FETCH_CONCURRENCY = 5;
+
+type RelatedMeta = {
+  name: string;
+  developer: string | null;
+  iconUrl: string | null;
+};
+
+/** 并发抓 appIds 的 HTML 解析 meta，限并发避免被 Apple 限流 */
+async function fetchRelatedMeta(
+  appIds: string[],
+  country: string
+): Promise<Record<string, RelatedMeta>> {
+  const out: Record<string, RelatedMeta> = {};
+  let cursor = 0;
+  async function worker() {
+    while (cursor < appIds.length) {
+      const id = appIds[cursor++];
+      try {
+        const html = await fetchHtml(country, id);
+        const parsed = parseAppStoreHtml(html);
+        if (parsed.name) {
+          out[id] = {
+            name: parsed.name,
+            developer: parsed.developer,
+            iconUrl: parsed.iconUrl,
+          };
+        }
+      } catch {
+        // 单个失败不影响其他：该 id 不写入 out，后续被过滤掉
+      }
+    }
+  }
+  await Promise.all(
+    Array.from({ length: Math.min(FETCH_CONCURRENCY, appIds.length) }, () =>
+      worker()
+    )
+  );
+  return out;
+}
 
 export async function RelatedApps({
   appId,
@@ -38,20 +82,18 @@ export async function RelatedApps({
   const db = await getDb();
   const existingIds = await getExistingAppIds(db, relatedIds);
 
-  // iTunes Lookup 批量补全元信息（每批 10 个，一次 HTTP）
-  const metaMap = await fetchAppsMeta(relatedIds);
+  // 并发抓每个推荐 App 的 HTML 解析 meta（绕过被 Workers 封禁的 itunes.apple.com）
+  const metaMap = await fetchRelatedMeta(relatedIds, country);
 
-  // 配对 appId + meta + 是否已收录，过滤掉 iTunes 未找到的 stub（name === null 或无图标）
-  type Item = { appId: string; meta: AppMeta; indexed: boolean };
+  // 配对 appId + meta + 是否已收录，过滤掉没抓到 name 的（HTML 抓取失败或 404）
+  type Item = { appId: string; meta: RelatedMeta; indexed: boolean };
   const items = relatedIds
     .map((id) => ({
       appId: id,
       meta: metaMap[id],
       indexed: existingIds.has(id),
     }))
-    .filter(
-      (x): x is Item => !!x.meta && !!x.meta.name && !!x.meta.iconUrl
-    );
+    .filter((x): x is Item => !!x.meta && !!x.meta.name);
 
   if (items.length === 0) return null;
 
@@ -66,10 +108,10 @@ export async function RelatedApps({
             <RelatedAppCard
               key={x.appId}
               appId={x.appId}
-              name={x.meta.name!}
+              name={x.meta.name}
               developer={x.meta.developer}
               iconUrl={x.meta.iconUrl}
-              category={x.meta.category}
+              category={null}
               country={country}
               index={i}
             />
@@ -79,10 +121,10 @@ export async function RelatedApps({
               country={country}
               item={{
                 appId: x.appId,
-                name: x.meta.name!,
+                name: x.meta.name,
                 developer: x.meta.developer,
                 iconUrl: x.meta.iconUrl,
-                category: x.meta.category,
+                category: null,
                 isIndexed: false,
               }}
             />
