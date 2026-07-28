@@ -60,14 +60,17 @@ interface AppState {
 }
 
 function createAppStore(defaultCurrency: string, defaultLanguage: Language) {
+  // 客户端首挂载时同步读取 localStorage 偏好，避免 hydration 后再切换导致的闪烁
+  // SSR 时 readPrefs 返回 {}（typeof window === "undefined"），不影响服务端渲染
+  const initialPrefs = readPrefs();
   return create<AppState>((set) => ({
-    currency: defaultCurrency,
+    currency: initialPrefs.currency || defaultCurrency,
     defaultCurrency,
     setCurrency: (c) => {
       set({ currency: c });
       writePrefs({ currency: c });
     },
-    language: defaultLanguage,
+    language: initialPrefs.language || defaultLanguage,
     defaultLanguage,
     setLanguage: (l) => {
       set({ language: l });
@@ -114,10 +117,9 @@ export function AppStoreProvider({
   //    由浏览器直接请求 Geo IP 服务 —— 请求会走用户系统代理（如 Clash），
   //    因此服务看到的是用户真实出口 IP，而非 dev server 看到的 localhost。
   useEffect(() => {
+    // prefs 已在 createAppStore 初始化时同步恢复，这里只处理无偏好时的 IP 补检
     const prefs = readPrefs();
     const hasPref = Boolean(prefs.currency || prefs.language);
-    if (prefs.currency) store.getState().setCurrency(prefs.currency);
-    if (prefs.language) store.getState().setLanguage(prefs.language);
 
     if (!hasPref && geoSource !== "cf") {
       detectGeo().then((info) => {
