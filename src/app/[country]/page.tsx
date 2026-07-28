@@ -27,7 +27,13 @@ export default async function HomePage({
       ? h.get("x-detected-country")!.toLowerCase()
       : country;
   const detectedRegion = REGION_MAP[detectedCode];
-  const detectedCurrency = currencyForCountry(detectedCode);
+  // detectedCurrency 优先级：cookie(currency) > IP 检测国家映射
+  // 跟 layout.tsx 的 defaultCurrency 逻辑一致，SSR 直接读到用户选择，无闪烁
+  const cookieHeader = h.get("cookie") || "";
+  const curMatch = cookieHeader.match(/(?:^|;\s*)currency=([^;]+)/);
+  const detectedCurrency = curMatch
+    ? decodeURIComponent(curMatch[1])
+    : currencyForCountry(detectedCode);
 
   // 当前登录状态（定价区 CTA 用）
   const currentUser = await getCurrentUser();

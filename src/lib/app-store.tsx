@@ -60,17 +60,20 @@ interface AppState {
 }
 
 function createAppStore(defaultCurrency: string, defaultLanguage: Language) {
-  // 客户端首挂载时同步读取 localStorage 偏好，避免 hydration 后再切换导致的闪烁
-  // SSR 时 readPrefs 返回 {}（typeof window === "undefined"），不影响服务端渲染
-  const initialPrefs = readPrefs();
   return create<AppState>((set) => ({
-    currency: initialPrefs.currency || defaultCurrency,
+    currency: defaultCurrency,
     defaultCurrency,
     setCurrency: (c) => {
       set({ currency: c });
       writePrefs({ currency: c });
+      // 同步写 cookie，让 SSR 在下次请求时直接读到用户选择的币种，跳过 IP 检测
+      try {
+        document.cookie = `currency=${encodeURIComponent(c)}; max-age=31536000; path=/; samesite=lax`;
+      } catch {
+        /* 忽略隐私模式等写入失败 */
+      }
     },
-    language: initialPrefs.language || defaultLanguage,
+    language: defaultLanguage,
     defaultLanguage,
     setLanguage: (l) => {
       set({ language: l });
@@ -117,9 +120,18 @@ export function AppStoreProvider({
   //    由浏览器直接请求 Geo IP 服务 —— 请求会走用户系统代理（如 Clash），
   //    因此服务看到的是用户真实出口 IP，而非 dev server 看到的 localhost。
   useEffect(() => {
-    // prefs 已在 createAppStore 初始化时同步恢复，这里只处理无偏好时的 IP 补检
     const prefs = readPrefs();
     const hasPref = Boolean(prefs.currency || prefs.language);
+
+    // 迁移：老用户 localStorage 有偏好但 cookie 未写（currency cookie 是新加的）
+    // 补写 cookie，下次刷新 SSR 即可直接读到，不再依赖客户端补恢复
+    if (prefs.currency) {
+      try {
+        document.cookie = `currency=${encodeURIComponent(prefs.currency)}; max-age=31536000; path=/; samesite=lax`;
+      } catch {
+        /* 忽略 */
+      }
+    }
 
     if (!hasPref && geoSource !== "cf") {
       detectGeo().then((info) => {

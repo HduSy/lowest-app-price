@@ -57,10 +57,14 @@ export default async function RootLayout({
     REGION_MAP[h.get("x-detected-country")!.toLowerCase()]
       ? h.get("x-detected-country")!.toLowerCase()
       : "us";
-  const defaultCurrency = currencyForCountry(detectedCountry);
+  // defaultCurrency 优先级：cookie(currency) > IP 检测国家映射
+  // cookie 由用户在 header 切换币种时写入，SSR 直接读到，跳过 IP 检测，无闪烁
+  const cookieHeader = h.get("cookie") || "";
+  const curMatch = cookieHeader.match(/(?:^|;\s*)currency=([^;]+)/);
+  const cookieCurrency = curMatch ? decodeURIComponent(curMatch[1]) : null;
+  const defaultCurrency = cookieCurrency || currencyForCountry(detectedCountry);
   // defaultLanguage 优先级：cookie(language) > IP 检测国家映射
   // 跟 i18n/request.ts 的 resolveLocale 保持一致，避免 client store 跟 SSR locale 不一致
-  const cookieHeader = h.get("cookie") || "";
   const langMatch = cookieHeader.match(/(?:^|;\s*)language=([^;]+)/);
   const cookieLang = langMatch ? decodeURIComponent(langMatch[1]) : null;
   const validLangCodes = LANGUAGES.map((l) => l.code);
