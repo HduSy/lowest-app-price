@@ -74,5 +74,16 @@
     "paidFeature3": "Không giới hạn hạn mức hàng ngày",
     "buyButton": "Mua $1.99",
     "loginToBuy": "Đăng nhập để mua"
+  },
+  "ClaudeDemo": {
+    "tierMeta": "{tierName} · {count} khu vực / {currency}",
+    "lowest": "Rẻ nhất",
+    "yourRegion": "Khu vực của bạn",
+    "highest": "Đắt nhất",
+    "cta": "Xem tất cả {count} khu vực của Claude",
+    "isLowest": "Đã rẻ nhất",
+    "isHighest": "Đã đắt nhất",
+    "vsYourRegion": "so với khu vực của bạn",
+    "noPrice": "Không có giá cho khu vực này"
   }
 }

@@ -74,5 +74,16 @@
     "paidFeature3": "Tanpa batas kuota harian",
     "buyButton": "Beli $1.99",
     "loginToBuy": "Masuk untuk membeli"
+  },
+  "ClaudeDemo": {
+    "tierMeta": "{tierName} · {count} wilayah / {currency}",
+    "lowest": "Termurah",
+    "yourRegion": "Wilayah Anda",
+    "highest": "Termahal",
+    "cta": "Lihat semua {count} wilayah Claude",
+    "isLowest": "Sudah termurah",
+    "isHighest": "Sudah termahal",
+    "vsYourRegion": "vs wilayah Anda",
+    "noPrice": "Tidak ada harga untuk wilayah ini"
   }
 }

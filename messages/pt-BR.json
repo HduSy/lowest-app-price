@@ -74,5 +74,16 @@
     "paidFeature3": "Sem limites de cota diária",
     "buyButton": "Comprar $1.99",
     "loginToBuy": "Entre para comprar"
+  },
+  "ClaudeDemo": {
+    "tierMeta": "{tierName} · {count} regiões / {currency}",
+    "lowest": "Mais barato",
+    "yourRegion": "Sua região",
+    "highest": "Mais caro",
+    "cta": "Ver todas as {count} regiões do Claude",
+    "isLowest": "Já é o mais barato",
+    "isHighest": "Já é o mais caro",
+    "vsYourRegion": "vs sua região",
+    "noPrice": "Sem preço para esta região"
   }
 }

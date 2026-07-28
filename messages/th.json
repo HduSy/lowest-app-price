@@ -74,5 +74,16 @@
     "paidFeature3": "ไม่มีข้อจำกัดโควต้ารายวัน",
     "buyButton": "ซื้อ $1.99",
     "loginToBuy": "เข้าสู่ระบบเพื่อซื้อ"
+  },
+  "ClaudeDemo": {
+    "tierMeta": "{tierName} · {count} ภูมิภาค / {currency}",
+    "lowest": "ถูกที่สุด",
+    "yourRegion": "ภูมิภาคของคุณ",
+    "highest": "แพงที่สุด",
+    "cta": "ดู {count} ภูมิภาคของ Claude ทั้งหมด",
+    "isLowest": "ถูกที่สุดแล้ว",
+    "isHighest": "แพงที่สุดแล้ว",
+    "vsYourRegion": "เทียบกับภูมิภาคของคุณ",
+    "noPrice": "ไม่มีราคาสำหรับภูมิภาคนี้"
   }
 }

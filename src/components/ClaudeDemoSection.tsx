@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { getDb, getApp, getPrices } from "@/lib/db";
 import { adaptPricesForCompare, aggregate } from "@/lib/compare";
 import { getRates } from "@/lib/exchange";
@@ -114,6 +115,7 @@ export async function ClaudeDemoSection({
       : null;
 
   const regionCount = agg.regionsCovered.length;
+  const t = await getTranslations("ClaudeDemo");
 
   return (
     <section className="px-[22px] py-8">
@@ -133,7 +135,7 @@ export async function ClaudeDemoSection({
               {app.name}
             </div>
             <div className="mt-0.5 text-sm leading-tight text-[var(--color-ink-48)]">
-              {tier.name} · {regionCount} 个地区 / {displayCurrency}
+              {t("tierMeta", { tierName: tier.name, count: regionCount, currency: displayCurrency })}
             </div>
           </div>
         </div>
@@ -141,31 +143,34 @@ export async function ClaudeDemoSection({
         {/* 高低起伏：最便宜（左，最矮）· 你所在区（中）· 最贵（右，最高） */}
         <div className="flex flex-col gap-3 md:items-end md:justify-center md:gap-5 md:flex-row">
           <PriceCard
-            label="最便宜"
+            label={t("lowest")}
             icon="ph-tag"
             entry={lowest}
             accent="low"
             heightClass="md:min-h-[232px]"
             currency={displayCurrency}
+            t={t}
             discountPct={discountPct}
           />
           <PriceCard
-            label="你所在区"
+            label={t("yourRegion")}
             icon="ph-navigation-arrow"
             entry={ipEntry}
             accent="ip"
             heightClass="md:min-h-[256px]"
             currency={displayCurrency}
+            t={t}
             ipIsLowest={ipIsLowest}
             ipIsHighest={ipIsHighest}
           />
           <PriceCard
-            label="最贵"
+            label={t("highest")}
             icon="ph-tag"
             entry={highest}
             accent="high"
             heightClass="md:min-h-[284px]"
             currency={displayCurrency}
+            t={t}
             premiumPct={premiumPct}
           />
         </div>
@@ -176,7 +181,7 @@ export async function ClaudeDemoSection({
             href={`/${country}/apps/${CLAUDE_APP_ID}`}
             className="inline-flex items-center gap-2 rounded-full border border-[var(--color-primary-focus)] px-6 py-2.5 text-sm font-semibold text-[var(--color-primary-focus)] transition-all hover:bg-[var(--color-primary-focus)] hover:text-white active:scale-95"
           >
-            查看 Claude 全部 {regionCount} 个地区比价
+            {t("cta", { count: regionCount })}
             <i className="ph ph-arrow-right" />
           </Link>
         </div>
@@ -192,6 +197,7 @@ function PriceCard({
   accent,
   heightClass,
   currency,
+  t,
   ipIsLowest,
   ipIsHighest,
   discountPct,
@@ -203,6 +209,7 @@ function PriceCard({
   accent: Accent;
   heightClass: string;
   currency: string;
+  t: (key: string, values?: Record<string, unknown>) => string;
   ipIsLowest?: boolean;
   ipIsHighest?: boolean;
   discountPct?: number | null;
@@ -222,12 +229,12 @@ function PriceCard({
         </span>
         {accent === "ip" && ipIsLowest && (
           <span className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--color-green-strong)]">
-            <i className="ph ph-check-circle" /> 已是最低
+            <i className="ph ph-check-circle" /> {t("isLowest")}
           </span>
         )}
         {accent === "ip" && ipIsHighest && (
           <span className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--color-red)]">
-            <i className="ph ph-warning-circle" /> 已是最高
+            <i className="ph ph-warning-circle" /> {t("isHighest")}
           </span>
         )}
       </div>
@@ -241,7 +248,7 @@ function PriceCard({
             <span className="ml-1.5 text-sm font-bold tracking-wide">OFF</span>
           </div>
           <div className="mt-1.5 text-[11px] text-[var(--color-ink-48)]">
-            比你所在区
+            {t("vsYourRegion")}
           </div>
         </div>
       )}
@@ -252,7 +259,7 @@ function PriceCard({
             <span className="ml-0.5 text-lg">%</span>
           </div>
           <div className="mt-1.5 text-[11px] text-[var(--color-ink-48)]">
-            比你所在区
+            {t("vsYourRegion")}
           </div>
         </div>
       )}
@@ -284,7 +291,7 @@ function PriceCard({
       ) : (
         <div className="py-6 text-center text-sm text-[var(--color-ink-48)]">
           <i className="ph ph-minus-circle mb-2 block text-2xl" />
-          该地区暂无价格
+          {t("noPrice")}
         </div>
       )}
     </div>

@@ -74,5 +74,16 @@
     "paidFeature3": "Bez dziennych limitów",
     "buyButton": "Kup $1.99",
     "loginToBuy": "Zaloguj się, aby kupić"
+  },
+  "ClaudeDemo": {
+    "tierMeta": "{tierName} · {count} regionów / {currency}",
+    "lowest": "Najtańszy",
+    "yourRegion": "Twój region",
+    "highest": "Najdroższy",
+    "cta": "Zobacz wszystkie {count} regiony Claude",
+    "isLowest": "Już najtańszy",
+    "isHighest": "Już najdroższy",
+    "vsYourRegion": "vs Twój region",
+    "noPrice": "Brak ceny dla tego regionu"
   }
 }

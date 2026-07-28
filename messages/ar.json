@@ -74,5 +74,16 @@
     "paidFeature3": "بلا حدود للحصة اليومية",
     "buyButton": "اشترِ بـ $1.99",
     "loginToBuy": "سجّل الدخول للشراء"
+  },
+  "ClaudeDemo": {
+    "tierMeta": "{tierName} · {count} مناطق / {currency}",
+    "lowest": "الأرخص",
+    "yourRegion": "منطقتك",
+    "highest": "الأغلى",
+    "cta": "عرض جميع مناطق Claude البالغ عددها {count}",
+    "isLowest": "الأرخص بالفعل",
+    "isHighest": "الأغلى بالفعل",
+    "vsYourRegion": "مقارنة بمنطقتك",
+    "noPrice": "لا يوجد سعر لهذه المنطقة"
   }
 }

@@ -74,5 +74,16 @@
     "paidFeature3": "Без ежедневных лимитов",
     "buyButton": "Купить за $1.99",
     "loginToBuy": "Войдите, чтобы купить"
+  },
+  "ClaudeDemo": {
+    "tierMeta": "{tierName} · {count} регионов / {currency}",
+    "lowest": "Самый дешёвый",
+    "yourRegion": "Ваш регион",
+    "highest": "Самый дорогой",
+    "cta": "Смотреть все {count} регионов Claude",
+    "isLowest": "Уже самый дешёвый",
+    "isHighest": "Уже самый дорогой",
+    "vsYourRegion": "vs ваш регион",
+    "noPrice": "Нет цены для этого региона"
   }
 }

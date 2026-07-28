@@ -74,5 +74,16 @@
     "paidFeature3": "Günlük kota limiti yok",
     "buyButton": "$1.99 satın al",
     "loginToBuy": "Satın almak için giriş yapın"
+  },
+  "ClaudeDemo": {
+    "tierMeta": "{tierName} · {count} bölge / {currency}",
+    "lowest": "En ucuz",
+    "yourRegion": "Bölgeniz",
+    "highest": "En pahalı",
+    "cta": "Claude için tüm {count} bölgeyi gör",
+    "isLowest": "Zaten en ucuz",
+    "isHighest": "Zaten en pahalı",
+    "vsYourRegion": "bölgenize göre",
+    "noPrice": "Bu bölge için fiyat yok"
   }
 }

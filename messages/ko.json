@@ -74,5 +74,16 @@
     "paidFeature3": "일일 할당량 제한 없음",
     "buyButton": "$1.99 구매",
     "loginToBuy": "로그인 후 구매"
+  },
+  "ClaudeDemo": {
+    "tierMeta": "{tierName} · {count}개 지역 / {currency}",
+    "lowest": "최저가",
+    "yourRegion": "현재 지역",
+    "highest": "최고가",
+    "cta": "Claude 전체 {count}개 지역 보기",
+    "isLowest": "이미 최저가",
+    "isHighest": "이미 최고가",
+    "vsYourRegion": "현재 지역 대비",
+    "noPrice": "이 지역 가격 정보 없음"
   }
 }

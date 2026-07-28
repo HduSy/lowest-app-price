@@ -74,5 +74,16 @@
     "paidFeature3": "不再受每日额度限制",
     "buyButton": "$1.99 买断",
     "loginToBuy": "登录后购买"
+  },
+  "ClaudeDemo": {
+    "tierMeta": "{tierName} · {count} 个地区 / {currency}",
+    "lowest": "最便宜",
+    "yourRegion": "你所在区",
+    "highest": "最贵",
+    "cta": "查看 Claude 全部 {count} 个地区比价",
+    "isLowest": "已是最低",
+    "isHighest": "已是最高",
+    "vsYourRegion": "比你所在区",
+    "noPrice": "该地区暂无价格"
   }
 }

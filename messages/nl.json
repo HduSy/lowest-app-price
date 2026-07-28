@@ -74,5 +74,16 @@
     "paidFeature3": "Geen dagelijkse quotumlimieten",
     "buyButton": "Koop $1.99",
     "loginToBuy": "Log in om te kopen"
+  },
+  "ClaudeDemo": {
+    "tierMeta": "{tierName} · {count} regio's / {currency}",
+    "lowest": "Goedkoopste",
+    "yourRegion": "Jouw regio",
+    "highest": "Duurste",
+    "cta": "Bekijk alle {count} regio's van Claude",
+    "isLowest": "Al goedkoopste",
+    "isHighest": "Al duurste",
+    "vsYourRegion": "vs jouw regio",
+    "noPrice": "Geen prijs voor deze regio"
   }
 }

@@ -140,10 +140,7 @@ export default async function HomePage({
                 </span>
                 <div className="min-w-0">
                   <div className="truncate text-sm font-semibold leading-tight transition-colors group-hover:text-[var(--color-primary-focus)]">
-                    {r.name_en}
-                  </div>
-                  <div className="truncate text-[11px] text-[var(--color-ink-48)]">
-                    {r.currency} · {r.name_en}
+                    {r.name_en} <span className="font-normal text-[var(--color-ink-48)]">· {r.currency}</span>
                   </div>
                 </div>
               </div>

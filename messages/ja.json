@@ -74,5 +74,16 @@
     "paidFeature3": "毎日の枠制限なし",
     "buyButton": "$1.99 買い切り",
     "loginToBuy": "ログインして購入"
+  },
+  "ClaudeDemo": {
+    "tierMeta": "{tierName} · {count} 地域 / {currency}",
+    "lowest": "最安値",
+    "yourRegion": "あなたの地域",
+    "highest": "最高値",
+    "cta": "Claude の全 {count} 地域を表示",
+    "isLowest": "すでに最安値",
+    "isHighest": "すでに最高値",
+    "vsYourRegion": "あなたの地域と比較",
+    "noPrice": "この地域の価格はありません"
   }
 }

@@ -74,5 +74,16 @@
     "paidFeature3": "Keine täglichen Kontingentlimits",
     "buyButton": "$1.99 kaufen",
     "loginToBuy": "Anmelden zum Kaufen"
+  },
+  "ClaudeDemo": {
+    "tierMeta": "{tierName} · {count} Regionen / {currency}",
+    "lowest": "Günstigste",
+    "yourRegion": "Deine Region",
+    "highest": "Teuerste",
+    "cta": "Alle {count} Regionen für Claude ansehen",
+    "isLowest": "Bereits am günstigsten",
+    "isHighest": "Bereits am teuersten",
+    "vsYourRegion": "ggü. deiner Region",
+    "noPrice": "Kein Preis für diese Region"
   }
 }
