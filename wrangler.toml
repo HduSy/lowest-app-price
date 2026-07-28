@@ -18,10 +18,9 @@ database_id = "15e915b3-5ba0-40a3-9602-57cf2db1aef2"
 [observability]
 enabled = true
 
-# Cron Triggers：定时刷新首页 Claude 演示区价格数据
-# OpenNext 不支持 scheduled handler，用外部 cron 调 admin 端点替代：
-#   curl "https://appstore-lowest-price.alifeiliu.workers.dev/api/admin/refresh-claude-demo?token=$ADMIN_TOKEN"
-# 建议每 6 小时执行一次（与 PRICE_TTL_HOURS 一致）
-# 如需启用 Cloudflare 原生 cron，取消下方注释并实现 scheduled handler：
-# [triggers]
-# crons = ["0 */6 * * *"]
+# 首页 Claude 演示区数据保活：
+# GitHub Actions 定时调 /api/admin/refresh-claude-demo（每 6h），见
+#   .github/workflows/refresh-claude-demo.yml
+# 需在 GitHub repo Settings > Secrets 配置：
+#   SITE_URL   = https://appstore-lowest-price.alifeiliu.workers.dev
+#   ADMIN_TOKEN = (与 Cloudflare env.ADMIN_TOKEN 一致)

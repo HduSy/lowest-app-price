@@ -1,0 +1,20 @@
+# 定时刷新首页 Claude 演示区价格数据
+# 每 6 小时调一次 admin 端点，抓取 35+ 地区价格写入 D1
+# ADMIN_TOKEN 存在 GitHub Secrets 里，不进代码
+name: Refresh Claude Demo
+
+on:
+  schedule:
+    # 每 6 小时（UTC 0/6/12/18 点）执行一次
+    - cron: "0 */6 * * *"
+  # 支持手动触发（首次部署后点一下即可填充初始数据）
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger refresh endpoint
+        run: |
+          curl -fsS --max-time 120 \
+            "${{ secrets.SITE_URL }}/api/admin/refresh-claude-demo?token=${{ secrets.ADMIN_TOKEN }}&country=us"

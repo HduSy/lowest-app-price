@@ -442,26 +442,25 @@ export async function crawlAllRegions(
   let ratingCount: number | null = null;
 
   // 单区抓取任务（try/catch 隔离，单区失败不影响其他区）
+  // 只 fetch HTML 1 次（不再调 iTunes Lookup API），评分/付费价都从 HTML 提取，
+  // 每区 subrequest 从 2 降到 1，40 区总共 40 subrequests（免费计划 50 限额内）。
   const crawlOne = async (region: Region): Promise<RegionFetchResult> => {
     try {
-      const [html, lookupMeta] = await Promise.all([
-        fetchHtml(region.code, appId),
-        fetchLookupMeta(region.code, appId),
-      ]);
+      const html = await fetchHtml(region.code, appId);
       const parsed = parseAppStoreHtml(html, region.currency);
       if (parsed.subtitle && !subtitle) subtitle = parsed.subtitle;
       if (parsed.priceLabel && !priceLabel) priceLabel = parsed.priceLabel;
       if (parsed.compatibility && !compatibility) compatibility = parsed.compatibility;
       // 评分取首个非空（通常各区一致，取 US 区即可）
-      if (lookupMeta.rating != null && rating == null) rating = lookupMeta.rating;
-      if (lookupMeta.ratingCount != null && ratingCount == null) ratingCount = lookupMeta.ratingCount;
-      // 付费下载 App：买断价格作为一个档位加入 iaps（免费 App price=null 跳过）
-      if (lookupMeta.price) {
+      if (parsed.rating != null && rating == null) rating = parsed.rating;
+      if (parsed.ratingCount != null && ratingCount == null) ratingCount = parsed.ratingCount;
+      // 付费下载 App：买断价格作为一个档位加入 iaps（免费 App paidPrice=null 跳过）
+      if (parsed.paidPrice) {
         parsed.iaps.unshift({
           name: "App 下载",
-          priceRaw: lookupMeta.price.formattedPrice,
-          amount: lookupMeta.price.price,
-          currency: lookupMeta.price.currency,
+          priceRaw: parsed.paidPrice.formattedPrice,
+          amount: parsed.paidPrice.price,
+          currency: parsed.paidPrice.currency,
           period: "one_time",
         });
       }
@@ -484,10 +483,8 @@ export async function crawlAllRegions(
     }
   };
 
-  // 分批并发：Cloudflare Workers subrequest 有上限（免费 50 / 付费 1000/请求），
-  // 全量 Promise.all 40 区 × 2 fetch = 80 subrequests 会超限导致大部分区被杀。
-  // 每批 5 区 = 10 subrequests，远低于限制；批间串行等上一批完成再发下一批，
-  // 也给 Apple 端留间隔避免瞬时并发被限流。
+  // 分批并发：Cloudflare Workers subrequest 有上限（免费 50 / 付费 1000/请求）。
+  // 每区 1 subrequest（只 fetch HTML），每批 5 区 = 5 subrequests，远低于限制。
   const CRAWL_CONCURRENCY = 5;
   const results: RegionFetchResult[] = [];
   for (let i = 0; i < regions.length; i += CRAWL_CONCURRENCY) {
