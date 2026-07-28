@@ -121,6 +121,7 @@ export default async function HomePage({
       </header>
 
       {/* 实例演示：以 Claude 订阅为例，展示 IP 区 / 最便宜 / 最贵 三档价格 */}
+      {/* 数据由 cron 定时爬取（/api/admin/refresh-claude-demo），SSR 只读 D1，即时渲染 */}
       <ClaudeDemoFetcher
         detectedCode={detectedCode}
         initialCurrency={detectedCurrency}
@@ -219,9 +220,8 @@ function FaqItem({ q, children }: { q: string; children: React.ReactNode }) {
 }
 
 /**
- * 服务端 fetcher：拉取 Claude app 数据后传给客户端组件 ClaudeDemoSection。
- * 客户端组件订阅 zustand 币种 store，切币种时实时换算。
- * 静默失败--DB 不可用或无 Claude 数据时不渲染。
+ * 服务端 fetcher：只读 D1，即时返回。数据由 cron 定时爬取。
+ * 兜底：数据缺失或过期时用 waitUntil 后台刷新（不阻塞响应），下次访问即有数据。
  */
 async function ClaudeDemoFetcher({
   detectedCode,
@@ -241,11 +241,17 @@ async function ClaudeDemoFetcher({
       getRates("USD"),
     ]);
 
-    // Claude 价格未抓取或已过期（6h TTL，与详情页一致）：触发抓取
-    // 首次访问 / 过期访问时同步抓取 35+ 地区，后续访问走缓存
+    // 兜底：数据缺失或过期（6h）时后台异步刷新，不阻塞当前响应
+    // 正常流程由 cron 定时调 /api/admin/refresh-claude-demo 保活
     if (app && isStale(app.last_fetched_at, 6)) {
-      await refreshPrices(db, "6473753684", detectedCode);
-      prices = await getPrices(db, "6473753684");
+      try {
+        const { getCloudflareContext } = await import("@opennextjs/cloudflare");
+        getCloudflareContext()?.ctx?.waitUntil(
+          refreshPrices(db, "6473753684", detectedCode)
+        );
+      } catch {
+        // 非 CF 环境（本地 dev）：无法后台执行，静默跳过
+      }
     }
   } catch (e) {
     console.error("[ClaudeDemoFetcher]", e instanceof Error ? e.message : e);

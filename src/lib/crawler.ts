@@ -101,6 +101,10 @@ export interface ParsedAppStoreHtml {
   compatibility: string[] | null;
   iaps: IapEntry[];
   relatedAppIds: string[];
+  rating: number | null;
+  ratingCount: number | null;
+  /** 付费下载价（从 priceLabel 解析）；免费 App 为 null */
+  paidPrice: { price: number; currency: string; formattedPrice: string } | null;
 }
 
 /** 从 App Store HTML 解析 App 元信息 + IAP 档位 */
@@ -117,6 +121,9 @@ export function parseAppStoreHtml(
     compatibility: null,
     iaps: [],
     relatedAppIds: [],
+    rating: null,
+    ratingCount: null,
+    paidPrice: null,
   };
 
   // App 名称：og:title 去后缀
@@ -151,12 +158,17 @@ export function parseAppStoreHtml(
         const img = ld.image;
         if (typeof img === "string" && img) {
           icon = img;
-          break;
         }
         if (Array.isArray(img) && img.length && typeof img[0] === "string") {
           icon = img[0];
-          break;
         }
+        // 评分：JSON-LD aggregateRating（schema.org 标准，等价于 iTunes API 的 averageUserRating / userRatingCount）
+        const ar = ld.aggregateRating;
+        if (ar) {
+          if (typeof ar.ratingValue === "number") out.rating = ar.ratingValue;
+          if (typeof ar.reviewCount === "number") out.ratingCount = ar.reviewCount;
+        }
+        if (icon) break;
       }
     } catch {
       /* 单个 JSON-LD 解析失败：忽略，继续尝试下一个 */
@@ -187,6 +199,23 @@ export function parseAppStoreHtml(
   // 价格摘要（如 "Free · In‑App Purchases"）：取 SSR <p class="...attributes">
   const attr = html.match(/<p class="[^"]*attributes[^"]*">([^<]+)<\/p>/);
   if (attr) out.priceLabel = attr[1].trim();
+
+  // 付费下载价：从 priceLabel 解析（如 "$14.99 · In‑App Purchases" -> price=14.99 currency=USD）
+  // 免费 App priceLabel 以 "Free" 开头，跳过。替代原 fetchLookupMeta 的 per-region iTunes API 调用，
+  // 省掉每区第 2 个 subrequest（40 区从 80 降到 40 subrequests）。
+  if (out.priceLabel && !/^\s*free/i.test(out.priceLabel)) {
+    const pricePart = out.priceLabel.split(/\s*[·•・]\s*/)[0].trim();
+    if (pricePart) {
+      const parsed = parsePrice(pricePart);
+      if (parsed.amount != null) {
+        out.paidPrice = {
+          price: parsed.amount,
+          currency: resolveCurrency(parsed, storefrontCurrency),
+          formattedPrice: pricePart,
+        };
+      }
+    }
+  }
 
   // 兼容设备：从页面提取已知平台名
   //   多平台 App：用 <div class="all-platforms ..."> 块作为锚点（含全部支持平台的图标 + 文本）
