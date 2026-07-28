@@ -262,7 +262,7 @@ function PriceCard({
         <div>
           <div className="mb-2 flex items-center gap-2">
             <Flag code={entry.region.code} size={22} />
-            <span className="font-semibold">{entry.region.name}</span>
+            <span className="font-semibold">{entry.region.name_en}</span>
           </div>
           <div className="text-sm text-[var(--color-ink-48)] mono-num">
             {entry.priceRaw}

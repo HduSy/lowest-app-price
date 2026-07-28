@@ -30,6 +30,7 @@ export interface PriceRow {
   app_id: string;
   region_code: string;
   region_name: string;
+  region_name_en: string;
   flag: string;
   iap_key: string;
   iap_name: string;

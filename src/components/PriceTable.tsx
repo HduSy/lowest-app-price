@@ -213,7 +213,7 @@ export function PriceTable({
             <ShareButton
               text={
                 `App Store 全区比价：${activeIap.name} 最低 ${activeIap.lowest.convertedDisplay}` +
-                `（${activeIap.lowest.region.name}）`
+                `（${activeIap.lowest.region.name_en}）`
               }
             />
           )}
@@ -508,7 +508,7 @@ function IapPriceList({
               <i className="ph ph-tag" />
               最低 {lowest.convertedDisplay}
               <span className="inline-flex items-center gap-1 font-normal">
-                · <Flag code={lowest.region.code} size={14} /> {lowest.region.name}
+                · <Flag code={lowest.region.code} size={14} /> {lowest.region.name_en}
               </span>
             </span>
           )}
@@ -517,7 +517,7 @@ function IapPriceList({
               <i className="ph ph-tag" />
               最高 {highest.convertedDisplay}
               <span className="inline-flex items-center gap-1 font-normal">
-                · <Flag code={highest.region.code} size={14} /> {highest.region.name}
+                · <Flag code={highest.region.code} size={14} /> {highest.region.name_en}
               </span>
             </span>
           )}
@@ -577,15 +577,15 @@ function IapPriceList({
               <span className="flex items-center gap-2">
                 <Flag code={e.region.code} size={18} />
                 <span>
-                  {e.region.name}
+                  {e.region.name_en}
                   {labelChip}
                 </span>
                 <a
                   href={`https://apps.apple.com/${e.region.code}/app/id${appId}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  title={`在 ${e.region.name} App Store 中查看`}
-                  aria-label={`在 ${e.region.name} App Store 中查看`}
+                  title={`View on ${e.region.name_en} App Store`}
+                  aria-label={`View on ${e.region.name_en} App Store`}
                   className="inline-flex items-center text-[var(--color-ink-48)] opacity-0 transition-opacity hover:text-[var(--color-primary-focus)] group-hover:opacity-100"
                 >
                   <i className="ph ph-arrow-square-out" />

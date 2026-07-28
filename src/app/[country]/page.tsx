@@ -95,7 +95,7 @@ export default async function HomePage({
             <i className="ph ph-navigation-arrow text-[var(--color-primary-focus)]" />
             <span className="text-[var(--color-ink-48)]">{t("heroLocationLabel")}</span>
             <Flag code={detectedCode} size={14} />
-            <strong>{detectedRegion.name}</strong>
+            <strong>{detectedRegion.name_en}</strong>
             <span className="text-[var(--color-ink-48)]">· {t("heroDefaultLabel")}</span>
             <span className="mono-num font-semibold">{detectedCurrency}</span>
             <span className="text-[var(--color-ink-48)]">{t("heroPriceHint")}</span>

@@ -265,7 +265,7 @@ export async function getPrices(
     .prepare(
       `SELECT p.app_id, p.region_code, p.iap_key, p.iap_name, p.price_raw,
               p.amount, p.currency, p.amount_usd, p.period, p.fetched_at,
-              r.name AS region_name, r.flag
+              r.name AS region_name, r.name_en AS region_name_en, r.flag
        FROM prices p
        JOIN regions r ON r.code = p.region_code
        WHERE p.app_id = ?1

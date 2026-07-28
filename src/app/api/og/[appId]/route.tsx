@@ -190,7 +190,7 @@ export async function GET(
                       color: "#1d1d1f",
                     }}
                   >
-                    {e.region.name}
+                    {e.region.name_en}
                   </span>
                   {isLow && (
                     <span

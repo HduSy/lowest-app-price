@@ -86,7 +86,7 @@ export function adaptPricesForCompare(prices: PriceRow[]): RegionFetchResult[] {
         region: {
           code: p.region_code,
           name: p.region_name,
-          name_en: "",
+          name_en: p.region_name_en,
           flag: p.flag,
           currency: p.currency,
         },
