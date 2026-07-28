@@ -10,6 +10,7 @@ import { getCurrentUser } from "@/lib/session";
 import { getTranslations } from "next-intl/server";
 import { getDb, getApp, getPrices } from "@/lib/db";
 import { getRates, type Rates } from "@/lib/exchange";
+import { refreshPrices } from "./apps/[appId]/refresh";
 
 export default async function HomePage({
   params,
@@ -239,7 +240,15 @@ async function ClaudeDemoFetcher({
       getPrices(db, "6473753684"),
       getRates("USD"),
     ]);
-  } catch {
+
+    // Claude 在库中但价格从未抓取过（last_fetched_at=null）：触发首次抓取
+    // 这是一次性开销，后续访问走缓存。详情页也有同样的懒抓逻辑。
+    if (app && !prices.length) {
+      await refreshPrices(db, "6473753684", detectedCode);
+      prices = await getPrices(db, "6473753684");
+    }
+  } catch (e) {
+    console.error("[ClaudeDemoFetcher]", e instanceof Error ? e.message : e);
     return null;
   }
   if (!app || !prices.length || !rates) return null;
