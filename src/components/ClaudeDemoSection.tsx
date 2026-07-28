@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { useCurrency } from "@/lib/app-store";
 import type { AggregatedEntry, App, PriceRow } from "@/lib/types";
 import { adaptPricesForCompare, aggregate } from "@/lib/compare";
-import { getRates } from "@/lib/exchange";
+import { getRates, type Rates } from "@/lib/exchange";
 import { Flag } from "./Flag";
 import { AnimatedNumber } from "./AnimatedNumber";
 
@@ -46,12 +46,14 @@ const ACCENT_STYLES: Record<
 export function ClaudeDemoSection({
   detectedCode,
   initialCurrency,
+  initialRates,
   country,
   app,
   prices,
 }: {
   detectedCode: string;
   initialCurrency: string;
+  initialRates: Rates;
   country: string;
   app: App;
   prices: PriceRow[];
@@ -61,9 +63,10 @@ export function ClaudeDemoSection({
   const storeCurrency = useCurrency((s) => s.currency);
   const displayCurrency = storeCurrency || initialCurrency;
 
-  // 汇率缓存：避免每次币种变化都重新请求
-  const [rates, setRates] = useState<Record<string, number> | null>(null);
+  // 汇率：SSR 预取的 initialRates 作为初始值，首屏即完整渲染
+  const [rates, setRates] = useState<Rates | null>(initialRates);
   useEffect(() => {
+    // 客户端可选刷新汇率（initialRates 可能过期），但不阻塞首屏
     let cancelled = false;
     getRates("USD")
       .then((r) => {

@@ -9,6 +9,7 @@ import { SupportedAppsSection } from "@/components/SupportedAppsSection";
 import { getCurrentUser } from "@/lib/session";
 import { getTranslations } from "next-intl/server";
 import { getDb, getApp, getPrices } from "@/lib/db";
+import { getRates, type Rates } from "@/lib/exchange";
 
 export default async function HomePage({
   params,
@@ -224,22 +225,24 @@ async function ClaudeDemoFetcher({
   initialCurrency: string;
   country: string;
 }) {
-  let app, prices;
+  let app, prices, rates;
   try {
     const db = await getDb();
-    [app, prices] = await Promise.all([
+    [app, prices, rates] = await Promise.all([
       getApp(db, "6473753684"),
       getPrices(db, "6473753684"),
+      getRates("USD"),
     ]);
   } catch {
     return null;
   }
-  if (!app || !prices.length) return null;
+  if (!app || !prices.length || !rates) return null;
 
   return (
     <ClaudeDemoSection
       detectedCode={detectedCode}
       initialCurrency={initialCurrency}
+      initialRates={rates}
       country={country}
       app={app}
       prices={prices}
