@@ -143,7 +143,7 @@ export default async function HomePage({
                     {r.name_en}
                   </div>
                   <div className="truncate text-[11px] text-[var(--color-ink-48)]">
-                    {r.currency}
+                    {r.currency} · {r.name_en}
                   </div>
                 </div>
               </div>
