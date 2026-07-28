@@ -411,7 +411,9 @@ export async function crawlAllRegions(
   let compatibility: string[] | null = null;
   let rating: number | null = null;
   let ratingCount: number | null = null;
-  const tasks = regions.map(async (region) => {
+
+  // 单区抓取任务（try/catch 隔离，单区失败不影响其他区）
+  const crawlOne = async (region: Region): Promise<RegionFetchResult> => {
     try {
       const [html, lookupMeta] = await Promise.all([
         fetchHtml(region.code, appId),
@@ -451,8 +453,19 @@ export async function crawlAllRegions(
         error: e instanceof Error ? e.message : String(e),
       } as RegionFetchResult;
     }
-  });
-  const results = await Promise.all(tasks);
+  };
+
+  // 分批并发：Cloudflare Workers subrequest 有上限（免费 50 / 付费 1000/请求），
+  // 全量 Promise.all 40 区 × 2 fetch = 80 subrequests 会超限导致大部分区被杀。
+  // 每批 5 区 = 10 subrequests，远低于限制；批间串行等上一批完成再发下一批，
+  // 也给 Apple 端留间隔避免瞬时并发被限流。
+  const CRAWL_CONCURRENCY = 5;
+  const results: RegionFetchResult[] = [];
+  for (let i = 0; i < regions.length; i += CRAWL_CONCURRENCY) {
+    const batch = regions.slice(i, i + CRAWL_CONCURRENCY);
+    const batchResults = await Promise.all(batch.map(crawlOne));
+    results.push(...batchResults);
+  }
   return {
     results,
     meta: { subtitle, priceLabel, compatibility, rating, ratingCount },

@@ -8,7 +8,7 @@ import { ClaudeDemoSection } from "@/components/ClaudeDemoSection";
 import { SupportedAppsSection } from "@/components/SupportedAppsSection";
 import { getCurrentUser } from "@/lib/session";
 import { getTranslations } from "next-intl/server";
-import { getDb, getApp, getPrices } from "@/lib/db";
+import { getDb, getApp, getPrices, isStale } from "@/lib/db";
 import { getRates, type Rates } from "@/lib/exchange";
 import { refreshPrices } from "./apps/[appId]/refresh";
 
@@ -241,9 +241,9 @@ async function ClaudeDemoFetcher({
       getRates("USD"),
     ]);
 
-    // Claude 在库中但价格从未抓取过（last_fetched_at=null）：触发首次抓取
-    // 这是一次性开销，后续访问走缓存。详情页也有同样的懒抓逻辑。
-    if (app && !prices.length) {
+    // Claude 价格未抓取或已过期（6h TTL，与详情页一致）：触发抓取
+    // 首次访问 / 过期访问时同步抓取 35+ 地区，后续访问走缓存
+    if (app && isStale(app.last_fetched_at, 6)) {
       await refreshPrices(db, "6473753684", detectedCode);
       prices = await getPrices(db, "6473753684");
     }
