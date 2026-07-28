@@ -143,42 +143,62 @@ export function parseAppStoreHtml(
   const dev = html.match(/"developerName":"([^"]+)"/);
   if (dev) out.developer = dev[1].trim();
 
-  // 图标：优先 JSON-LD SoftwareApplication.image（schema.org 标准，最稳定）
-  //   旧逻辑依赖 JSON 字段 artworkUrl100/60，该字段已从 HTML 消失；
-  //   新结构 1：JSON-LD 的 SoftwareApplication.image 字段，URL 是真实图标资源（含 AppIcon / Prod- 等命名）
-  //   新结构 2（兜底）：<img srcset> 里含 "AppIcon" 的 mzstatic URL，128x128 优先，64x64 兜底；
-  //   某些 App 的 srcset 被 Apple 渲染成 {w}x{h}{c}.{f} 模板占位符，srcset 兜底会失败，必须靠 JSON-LD。
-  let icon: string | null = null;
+  // 图标：从 HTML 里所有 mzstatic.com/image/thumb 资源里挑一个真正的正方形 icon。
+  //   Apple 的图标 URL 形如 https://is{N}-ssl.mzstatic.com/image/thumb/{...}/<W>x<H><fmt>.<ext>
+  //   尾部 <W>x<H> 是关键：正方形（W==H）才是 icon，宽幅（如 1200x630wa）是 podcast/banner 宣传图。
+  //   策略：
+  //     1) 扫全部 mzstatic thumb URL，挑出尾部 W==H 的（去掉模板占位 {w}x{h}）；
+  //     2) 优先取 URL 路径含 AppIcon / Prod- / icon 字样的（最可能是 icon），其次任意正方形；
+  //     3) 多个候选尺寸时取最大的（图标更清晰）。
+  //   兜底：JSON-LD SoftwareApplication.image —— 但 podcast 类目会塞 1200x630wa 横幅，
+  //   所以同样只接受尾部正方形的。
+  function isSquare(u: string): boolean {
+    const m = u.match(/\/(\d+)x(\d+)[a-z]*\./i);
+    return !!m && m[1] === m[2];
+  }
+  const allThumbUrls = Array.from(
+    html.matchAll(/https:\/\/is\d+-ssl\.mzstatic\.com\/image\/thumb\/[^"\s'<>]+/gi)
+  ).map((m) => m[0]);
+  const squareUrls = allThumbUrls.filter(isSquare);
+  // 偏好显式 icon 命名；没有就用任意正方形。最后按尺寸降序，取最大那个。
+  const ranked = squareUrls.sort((a, b) => {
+    const aIcon = /appicon|prod-|icon/i.test(a) ? 1 : 0;
+    const bIcon = /appicon|prod-|icon/i.test(b) ? 1 : 0;
+    if (aIcon !== bIcon) return bIcon - aIcon;
+    const aSize = parseInt((a.match(/\/(\d+)x\1[a-z]*\./i) || [])[1] || "0", 10);
+    const bSize = parseInt((b.match(/\/(\d+)x\1[a-z]*\./i) || [])[1] || "0", 10);
+    return bSize - aSize;
+  });
+  let icon: string | null = ranked[0] || null;
+
   for (const ldMatch of html.matchAll(
     /<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g
   )) {
     try {
       const ld = JSON.parse(ldMatch[1].trim());
       if (ld && ld["@type"] === "SoftwareApplication") {
-        const img = ld.image;
-        if (typeof img === "string" && img) {
-          icon = img;
-        }
-        if (Array.isArray(img) && img.length && typeof img[0] === "string") {
-          icon = img[0];
-        }
         // 评分：JSON-LD aggregateRating（schema.org 标准，等价于 iTunes API 的 averageUserRating / userRatingCount）
         const ar = ld.aggregateRating;
         if (ar) {
           if (typeof ar.ratingValue === "number") out.rating = ar.ratingValue;
           if (typeof ar.reviewCount === "number") out.ratingCount = ar.reviewCount;
         }
-        if (icon) break;
+        // 图标：仅在 HTML 正则未命中时考虑 JSON-LD image，且必须是正方形 URL（/WxH… 中 W==H）
+        if (!icon) {
+          const img = Array.isArray(ld.image)
+            ? typeof ld.image[0] === "string"
+              ? ld.image[0]
+              : null
+            : typeof ld.image === "string"
+            ? ld.image
+            : null;
+          if (img && isSquare(img)) icon = img;
+        }
+        break;
       }
     } catch {
       /* 单个 JSON-LD 解析失败：忽略，继续尝试下一个 */
     }
-  }
-  if (!icon) {
-    const m =
-      html.match(/https:\/\/is\d+-ssl\.mzstatic\.com\/image\/thumb\/[^"\s]*AppIcon[^"\s]*\/128x128[^"\s]*/i) ||
-      html.match(/https:\/\/is\d+-ssl\.mzstatic\.com\/image\/thumb\/[^"\s]*AppIcon[^"\s]*\/64x64[^"\s]*/i);
-    if (m) icon = m[0];
   }
   if (icon) out.iconUrl = icon;
 

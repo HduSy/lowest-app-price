@@ -31,7 +31,7 @@ export function AppCard({
           src={app.icon_url}
           alt=""
           loading="lazy"
-          className="h-12 w-12 shrink-0 rounded-[var(--radius-md)]"
+          className="h-12 w-12 shrink-0 rounded-[var(--radius-md)] object-cover"
         />
       ) : (
         <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-tile)] text-white">

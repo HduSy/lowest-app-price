@@ -6,6 +6,7 @@ export interface CurrentUser {
   email: string | null;
   name: string | null;
   image: string | null;
+  role: string;
 }
 
 export async function getCurrentUser(): Promise<CurrentUser | null> {
@@ -16,5 +17,6 @@ export async function getCurrentUser(): Promise<CurrentUser | null> {
     email: session.user.email ?? null,
     name: session.user.name ?? null,
     image: session.user.image ?? null,
+    role: session.user.role ?? "user",
   };
 }

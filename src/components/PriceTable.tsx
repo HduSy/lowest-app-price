@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import type { PriceRow } from "@/lib/types";
 import { aggregatePrices, computeFreeCount } from "@/lib/compare";
 import { formatCurrency } from "@/lib/currencies";
@@ -12,14 +13,31 @@ import { LoginDialog } from "./LoginDialog";
 import { PricingDialog } from "./PricingDialog";
 import { ShareButton } from "./ShareButton";
 
+// admin refresh 端点返回结构（保持与 /api/admin/refresh-prices 一致）
+type RefreshResponse = {
+  app?: {
+    name: string;
+    developer: string | null;
+    icon_url: string | null;
+    subtitle: string | null;
+    priceLabel: string | null;
+    compatibility: string[] | null;
+    genres: string[] | null;
+    last_fetched_at: string | null;
+  };
+  prices?: PriceRow[];
+  iaps?: { key: string; name: string }[];
+};
+
 export function PriceTable({
   prices: initialPrices,
   iaps: initialIaps,
-  cached,
+  cached: cachedProp,
   lastFetchedAt,
   appId,
   auth: initialAuth,
   needsRefresh,
+  isAdmin,
   onAppRefreshed,
 }: {
   prices: PriceRow[];
@@ -29,6 +47,7 @@ export function PriceTable({
   appId: string;
   auth: AppViewAuth;
   needsRefresh?: boolean;
+  isAdmin?: boolean;
   onAppRefreshed?: (app: {
     name: string;
     developer: string | null;
@@ -40,9 +59,13 @@ export function PriceTable({
     last_fetched_at: string | null;
   }) => void;
 }) {
+  const t = useTranslations("PriceTable");
   const currency = useCurrency((s) => s.currency);
   const [prices, setPrices] = useState<PriceRow[]>(initialPrices);
   const [iaps, setIaps] = useState(initialIaps);
+  // cached 升级为 state：两条刷新路径（stale 自动 + admin 手动）成功后都切到 false，
+  // 否则按钮点的"强制刷新"在 UI 上毫无反馈（标签永远停在 SSR 渲染的"上次更新"灰底态）
+  const [cached, setCached] = useState(cachedProp);
   const [agg, setAgg] = useState<Awaited<ReturnType<typeof aggregatePrices>> | null>(
     null
   );
@@ -58,6 +81,8 @@ export function PriceTable({
   const [unlockError, setUnlockError] = useState<string | null>(null);
   const [pricingOpen, setPricingOpen] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
+  // admin 手动刷新独立 loading，避免和 stale 自动刷新 spinner 撞车
+  const [adminRefreshing, setAdminRefreshing] = useState(false);
 
   // 数据过期或首次加载时，客户端触发刷新（避免 SSR 阻塞导致点击进详情页白屏）
   useEffect(() => {
@@ -75,9 +100,11 @@ export function PriceTable({
         if (data.iaps) setIaps(data.iaps);
         if (data.auth) setAuth(data.auth);
         if (data.app && onAppRefreshed) onAppRefreshed(data.app);
+        // 刚抓完全区，UI 切到"最新"绿底态
+        setCached(false);
       })
       .catch((e) => {
-        if (!cancelled) setError(e instanceof Error ? e.message : "刷新失败");
+        if (!cancelled) setError(e instanceof Error ? e.message : t("refreshFailed"));
       })
       .finally(() => {
         if (!cancelled) setRefreshing(false);
@@ -85,7 +112,30 @@ export function PriceTable({
     return () => {
       cancelled = true;
     };
-  }, [needsRefresh, appId]);
+  }, [needsRefresh, appId, t]);
+
+  // admin 手动强制刷新：调专用端点，忽略 TTL 重新抓取全区
+  const handleAdminRefresh = () => {
+    setAdminRefreshing(true);
+    setError(null);
+    fetch(`/api/admin/refresh-prices?appId=${encodeURIComponent(appId)}`)
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then((data) => {
+        const d = data as RefreshResponse;
+        if (d.prices) setPrices(d.prices);
+        if (d.iaps) setIaps(d.iaps);
+        if (d.app && onAppRefreshed) onAppRefreshed(d.app);
+        // admin 强制刷新后同样切到"最新"绿底态
+        setCached(false);
+      })
+      .catch((e) => {
+        setError(e instanceof Error ? e.message : t("refreshFailed"));
+      })
+      .finally(() => setAdminRefreshing(false));
+  };
 
   // locked = 当前不可查看全量（未付费且今日未解锁此 App）
   const locked = !auth.canViewFull;
@@ -156,7 +206,7 @@ export function PriceTable({
   if (refreshing && !prices.length) {
     return (
       <div className="rounded-[var(--radius-lg)] border border-black/[0.08] p-12 text-center">
-        <div className="flex items-center justify-center gap-2 text-sm font-semibold text-[var(--color-primary-focus)]">
+        <div className="flex items-center justify-center gap-2 text-sm font-semibold text-[var(--color-ink-48)]">
           <span className="spinner" /> 正在抓取全球价格…
         </div>
         <p className="mt-3 text-xs text-[var(--color-ink-48)]">
@@ -190,8 +240,8 @@ export function PriceTable({
       {/* 顶部：统计 + 币种 + 缓存标签 */}
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap gap-5">
-          <Stat label="个地区已比价" value={agg?.regionsCovered.length ?? 0} />
-          <Stat label="个订阅档位" value={iaps.length} />
+          <Stat label={t("regionsStatLabel")} value={agg?.regionsCovered.length ?? 0} />
+          <Stat label={t("tiersStatLabel")} value={iaps.length} />
         </div>
         <div className="flex items-center gap-3">
           <span
@@ -202,13 +252,48 @@ export function PriceTable({
             }`}
           >
             <i className={`ph ${cached ? "ph-clock" : "ph-check"}`} />{" "}
-            {cached ? "上次更新" : "最新"}
+            {cached ? t("cachedLabel") : t("freshLabel")}
             {lastFetchedAt && (
               <span className="ml-1 font-normal opacity-70">
                 · {lastFetchedAt}
               </span>
             )}
           </span>
+          {isAdmin && (
+            <button
+              type="button"
+              onClick={handleAdminRefresh}
+              disabled={adminRefreshing || refreshing}
+              title={t("forceRefresh")}
+              aria-label={t("forceRefresh")}
+              className="inline-flex items-center gap-1 rounded-full bg-[var(--color-parchment)] px-3 py-1 text-xs font-semibold text-[var(--color-primary-focus)] transition-colors hover:bg-[rgba(0,113,227,0.1)] disabled:opacity-50"
+            >
+              {adminRefreshing ? (
+                <>
+                  <span className="spinner" /> {t("refreshing")}
+                </>
+              ) : (
+                <>
+                  <svg
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-rotate-cw"
+                    aria-hidden="true"
+                  >
+                    <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" />
+                    <path d="M21 3v5h-5" />
+                  </svg>{" "}
+                  {t("forceRefresh")}
+                </>
+              )}
+            </button>
+          )}
           {activeIap && activeIap.lowest && (
             <ShareButton
               text={
@@ -263,13 +348,13 @@ export function PriceTable({
       ) : null}
 
       <p className="mt-6 text-xs text-[var(--color-ink-48)]">
-        价格每 6 小时更新一次，按当前汇率换算，仅供参考。
+        {t("disclaimer", { hours: 6 })}
         <span className="ml-2 inline-flex items-center gap-1.5 align-middle">
-          <LegendDot className="bg-[var(--color-green)]" /> 最低
+          <LegendDot className="bg-[var(--color-green)]" /> {t("lowest")}
         </span>
         {activeIap && activeIap.entries.length >= 3 && (
           <span className="ml-2 inline-flex items-center gap-1.5 align-middle">
-            <LegendDot className="bg-[var(--color-red)]" /> 最高
+            <LegendDot className="bg-[var(--color-red)]" /> {t("highest")}
           </span>
         )}
       </p>
@@ -309,15 +394,16 @@ function LockedBanner({
   onBuy: () => void;
   onLogin: () => void;
 }) {
+  const t = useTranslations("PriceTable");
   return (
     <div className="mb-4 rounded-[var(--radius-md)] border border-[var(--color-primary-focus)]/20 bg-[rgba(0,113,227,0.06)] px-4 py-3">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2 text-sm">
           <i className="ph ph-lock-key text-[var(--color-primary-focus)]" />
           {!auth.loggedIn ? (
-            <span>登录后每天免费看 {DAILY_VIEW_LIMIT} 个 App 的完整价格</span>
+            <span>{t("lockedHintUnsigned", { limit: DAILY_VIEW_LIMIT })}</span>
           ) : (
-            <span>今日 {DAILY_VIEW_LIMIT} 次免费额度已用完 · $1.99 永久买断后无限看</span>
+            <span>{t("lockedHintExhausted", { limit: DAILY_VIEW_LIMIT })}</span>
           )}
         </div>
         <div className="flex items-center gap-2">
@@ -327,7 +413,7 @@ function LockedBanner({
               onClick={onLogin}
               className="rounded-full bg-[var(--color-primary-focus)] px-4 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-[var(--color-primary)]"
             >
-              登录
+              {t("loginCta")}
             </button>
           ) : (
             <button
@@ -336,7 +422,7 @@ function LockedBanner({
               disabled={unlocking}
               className="rounded-full bg-[var(--color-primary-focus)] px-4 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-[var(--color-primary)] disabled:opacity-50"
             >
-              {unlocking ? <span className="spinner" /> : "$1.99 买断"}
+              {unlocking ? <span className="spinner" /> : t("buyCta")}
             </button>
           )}
         </div>
@@ -373,6 +459,7 @@ function IapTabs({
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canLeft, setCanLeft] = useState(false);
   const [canRight, setCanRight] = useState(false);
+  const t = useTranslations("PriceTable");
 
   const syncScrollState = () => {
     const el = scrollRef.current;
@@ -397,7 +484,7 @@ function IapTabs({
   return (
     <div className="mb-5">
       <h3 className="mb-2.5 text-[13px] font-semibold text-[var(--color-ink-48)]">
-        订阅档位
+        {t("tierLabel")}
       </h3>
       <div className="relative">
         <div
@@ -422,7 +509,7 @@ function IapTabs({
                  }`}
                >
                  {isLocked && <i className="ph ph-lock-key text-[11px]" />}
-                 <span className="truncate max-w-[20ch]">{iap.name}</span>
+                 <span className="whitespace-nowrap">{iap.name}</span>
                </button>
              );
            })}
@@ -474,6 +561,7 @@ function IapPriceList({
   currency: string;
   appId: string;
 }) {
+  const t = useTranslations("PriceTable");
   const lowest = iap.lowest;
   // 只有当至少 3 个有效条目时，才把"最高"标红--避免和最低重叠
   const validCount = iap.entries.filter(
@@ -499,14 +587,14 @@ function IapPriceList({
         <div className="min-w-0">
           <div className="text-sm font-semibold">{iap.name}</div>
           <div className="text-xs text-[var(--color-ink-48)]">
-            共 {iap.entries.length} 个地区
+            {t("tierRegionsCount", { count: iap.entries.length })}
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-4 text-xs">
           {lowest && (
             <span className="inline-flex items-center gap-1.5 rounded-full bg-[rgba(52,199,89,0.1)] px-2.5 py-1 font-semibold text-[var(--color-green-strong)]">
               <i className="ph ph-tag" />
-              最低 {lowest.convertedDisplay}
+              {t("lowest")} {lowest.convertedDisplay}
               <span className="inline-flex items-center gap-1 font-normal">
                 · <Flag code={lowest.region.code} size={14} /> {lowest.region.name_en}
               </span>
@@ -515,7 +603,7 @@ function IapPriceList({
           {highest && showHighestRed && (
             <span className="inline-flex items-center gap-1.5 rounded-full bg-[rgba(255,59,48,0.08)] px-2.5 py-1 font-semibold text-[var(--color-red)]">
               <i className="ph ph-tag" />
-              最高 {highest.convertedDisplay}
+              {t("highest")} {highest.convertedDisplay}
               <span className="inline-flex items-center gap-1 font-normal">
                 · <Flag code={highest.region.code} size={14} /> {highest.region.name_en}
               </span>
@@ -523,10 +611,14 @@ function IapPriceList({
           )}
           {savedAmount != null && (
             <span className="rounded-full bg-white px-2.5 py-1 font-semibold text-[var(--color-ink-48)]">
-              最低比最高省了{" "}
-              <span className="text-sm font-bold text-[var(--color-ink)]">
-                {savedAmount}！
-              </span>
+              {t.rich("savedHint", {
+                amount: savedAmount,
+                bold: (chunks) => (
+                  <span className="text-sm font-bold text-[var(--color-ink)]">
+                    {chunks}
+                  </span>
+                ),
+              })}
             </span>
           )}
         </div>
@@ -535,9 +627,9 @@ function IapPriceList({
       {/* 表格头 */}
       <div className="grid grid-cols-[2rem_1fr_1fr_auto] gap-3 border-b border-[var(--color-divider)] px-4 py-2 text-xs font-semibold uppercase tracking-wide text-[var(--color-ink-48)]">
         <span>#</span>
-        <span>地区</span>
-        <span>本地价格</span>
-        <span className="text-right">换算（{currency}）</span>
+        <span>{t("colRegion")}</span>
+        <span>{t("colLocalPrice")}</span>
+        <span className="text-right">{t("colConverted", { currency })}</span>
       </div>
       <div>
         {iap.entries.map((e, idx) => {
@@ -558,7 +650,7 @@ function IapPriceList({
                     : "bg-[rgba(255,59,48,0.12)] text-[var(--color-red)]"
                 }`}
               >
-                {isLowest ? "最低" : "最高"}
+                {isLowest ? t("lowest") : t("highest")}
               </span>
             ) : null;
           const priceColor = isLowest

@@ -111,6 +111,32 @@
     "name": "名前 A-Z",
     "sortByLabel": "並び替え"
   },
+  "PriceTable": {
+    "forceRefresh": "強制更新",
+    "refreshing": "更新中",
+    "refreshFailed": "更新に失敗しました",
+    "tierLabel": "サブスクリプションプラン",
+    "regionsStatLabel": "地域比較済み",
+    "tiersStatLabel": "プラン数",
+    "cachedLabel": "キャッシュ",
+    "freshLabel": "最新",
+    "lockedHintUnsigned": "ログインで毎日 {limit} アプリを無料閲覧",
+    "lockedHintExhausted": "本日の {limit} 回分の無料枠を使い切りました · $1.99 の買い切りで無制限",
+    "loginCta": "ログイン",
+    "buyCta": "$1.99 を購入",
+    "tierRegionsCount": "全 {count} 地域",
+    "colRegion": "地域",
+    "colLocalPrice": "現地価格",
+    "colConverted": "換算（{currency}）",
+    "lowest": "最低",
+    "highest": "最高",
+    "savedHint": "最低は最高より <bold>{amount}</bold> お得！",
+    "disclaimer": "価格は {hours} 時間ごとに更新され、現在の為替レートで換算されます。参考のみ。"
+  },
+  "RelatedApps": {
+    "title": "こちらもおすすめ",
+    "loading": "おすすめを読み込み中..."
+  },
   "AppsList": {
     "loadingMore": "さらに読み込み中...",
     "allLoaded": "全 {count} アプリを読み込みました",

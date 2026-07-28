@@ -23,6 +23,7 @@ export function AppDetailClient({
   lastFetchedAtLocal: initialLastFetchedAtLocal,
   auth,
   needsRefresh,
+  isAdmin,
 }: {
   app: App;
   prices: PriceRow[];
@@ -34,6 +35,7 @@ export function AppDetailClient({
   lastFetchedAtLocal: string | null;
   auth: AppViewAuth;
   needsRefresh?: boolean;
+  isAdmin?: boolean;
 }) {
   const [app, setApp] = useState<App>(initialApp);
   // "上次更新"本地时间字符串：SSR 阶段已转换，客户端刷新后用同一时区重新格式化
@@ -130,6 +132,7 @@ export function AppDetailClient({
         appId={appId}
         auth={auth}
         needsRefresh={needsRefresh}
+        isAdmin={isAdmin}
         onAppRefreshed={(updated) => {
           setApp((prev) => ({ ...prev, ...updated }));
           // 刷新拿到新的 last_fetched_at（UTC），用同一时区重新格式化本地时间

@@ -5,7 +5,7 @@ import { headers } from "next/headers";
 import type { Metadata } from "next";
 import { getDb, getApp, getPrices, isStale } from "@/lib/db";
 import { AppDetailClient } from "@/components/AppDetailClient";
-import { RelatedApps } from "@/components/RelatedApps";
+import { RelatedApps, RelatedAppsSkeleton } from "@/components/RelatedApps";
 import { REGION_MAP } from "@/lib/regions";
 import { getCurrentUser } from "@/lib/session";
 import { authorizeAppView } from "@/lib/entitlement";
@@ -124,10 +124,11 @@ export default async function AppDetailPage({
         lastFetchedAtLocal={lastFetchedAtLocal}
         auth={authResult}
         needsRefresh={needFetch}
+        isAdmin={currentUser?.role === "admin"}
       />
 
       {/* 相关推荐 App：独立服务端组件流式加载，不阻塞主体渲染 */}
-      <Suspense fallback={null}>
+      <Suspense fallback={<RelatedAppsSkeleton />}>
         <RelatedApps appId={appId} country={country} />
       </Suspense>
     </main>

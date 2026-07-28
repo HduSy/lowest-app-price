@@ -12,8 +12,8 @@ App Store 全区比价 - a bilingual (zh-CN / en) web tool where users paste an 
 
 ```bash
 # Local dev
-npm run dev           # next dev; next.config.mjs calls initOpenNextCloudflareForDev() so D1 bindings are wired locally
-npm run preview       # OpenNext build + wrangler preview on port 8788 (full wrangler fidelity; use when debugging deploy-only issues)
+npm run dev           # next dev; next.config.mjs calls initOpenNextCloudflareForDev() so D1 bindings are wired locally. Listens on http://localhost:3000 (see "Local Server Port" below)
+npm run preview       # OpenNext build + wrangler preview on http://localhost:8787 (full wrangler fidelity; for deploy-only debugging). Mutually exclusive with `npm run dev`.
 
 # Production
 npm run deploy        # Build + deploy to Cloudflare Workers
@@ -114,3 +114,18 @@ All routes are Next.js Route Handlers under `/api/*`:
 - **Responses**: use `src/lib/api-response.ts` `json()` / `error()` helpers in route handlers.
 - **Icons**: Phosphor Icons loaded from unpkg in `src/app/layout.tsx`.
 - `env.d.ts` declares the global `CloudflareEnv` interface with `DB` binding + all secret keys (`AUTH_*` incl. `AUTH_GOOGLE_*` / `AUTH_TWITTER_*` / `AUTH_GITHUB_*` / `AUTH_SECRET`, `STRIPE_*`, `ADMIN_TOKEN`, `DEFAULT_CURRENCY`, `RESEND_API_KEY`, `MAIL_FROM`). Keep it in sync when adding bindings/secrets to `wrangler.toml` or `.dev.vars`.
+
+## Local Server Port
+
+**原则：每个功能的服务端口固定，不随机、不并存。** 当前两个功能端口：
+
+| 功能 | 命令 | 端口 | 说明 |
+|------|------|------|------|
+| 日常开发 | `npm run dev` | **http://localhost:3000** | `next dev` + `initOpenNextCloudflareForDev()`，D1 绑定已内嵌，无需 wrangler sidecar |
+| Deploy-only 调试 | `npm run preview` | **http://localhost:8787** | OpenNext build + wrangler preview，完整 wrangler 保真度 |
+
+**强制规则：**
+
+- **3000 与 8787 互斥**：同一时刻只能有一个在跑。要切到另一个，先 kill 当前的整个进程树，确认 `lsof -i:3000 -i:8787 -sTCP:LISTEN -P` 为空，再起另一个。并存会导致浏览器调试到旧构建、D1 数据分裂。
+- **端口坏掉时不要绕到其他端口**：先 `kill` 占用进程 → 确认端口空闲 → 用固定命令重启。绝不用 `--port` 改成 3001/8788 之类。
+- **默认走 3000**：日常开发永远用 `npm run dev`。`npm run preview` 仅用于排查 deploy-only 问题（构建产物行为 vs 源码行为差异）。

@@ -111,6 +111,32 @@
     "name": "ชื่อ A-Z",
     "sortByLabel": "เรียงตาม"
   },
+  "PriceTable": {
+    "forceRefresh": "บังคับรีเฟรช",
+    "refreshing": "กำลังรีเฟรช",
+    "refreshFailed": "รีเฟรชล้มเหลว",
+    "tierLabel": "ระดับการสมัครสมาชิก",
+    "regionsStatLabel": "ภูมิภาคที่เปรียบเทียบ",
+    "tiersStatLabel": "ระดับที่ติดตาม",
+    "cachedLabel": "แคช",
+    "freshLabel": "ล่าสุด",
+    "lockedHintUnsigned": "เข้าสู่ระบบเพื่อดูแอปฟรี {limit} รายการต่อวัน",
+    "lockedHintExhausted": "ใช้โควต้าฟรี {limit} ครั้งในวันนี้แล้ว · $1.99 ปลดล็อกถาวรไม่จำกัด",
+    "loginCta": "เข้าสู่ระบบ",
+    "buyCta": "ซื้อ $1.99",
+    "tierRegionsCount": "{count} ภูมิภาค",
+    "colRegion": "ภูมิภาค",
+    "colLocalPrice": "ราคาท้องถิ่น",
+    "colConverted": "แปลงแล้ว ({currency})",
+    "lowest": "ต่ำสุด",
+    "highest": "สูงสุด",
+    "savedHint": "ต่ำสุดประหยัด <bold>{amount}</bold> เทียบกับสูงสุด!",
+    "disclaimer": "ราคาอัปเดตทุก {hours} ชั่วโมง แปลงตามอัตราแลกเปลี่ยนปัจจุบัน เพื่ออ้างอิงเท่านั้น"
+  },
+  "RelatedApps": {
+    "title": "คุณอาจชอบสิ่งนี้",
+    "loading": "กำลังโหลดคำแนะนำ..."
+  },
   "AppsList": {
     "loadingMore": "กำลังโหลดเพิ่ม...",
     "allLoaded": "โหลดแอปทั้งหมด {count} แอปแล้ว",

@@ -30,6 +30,9 @@ yarn-error.log*
 .dev.vars
 .open-next/
 
+# IDE local history（VSCode Local History 扩展会快照 .dev.vars，含敏感密钥）
+.history/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

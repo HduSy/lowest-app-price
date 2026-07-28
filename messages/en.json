@@ -111,6 +111,32 @@
     "name": "Name A-Z",
     "sortByLabel": "Sort by"
   },
+  "PriceTable": {
+    "forceRefresh": "Force refresh",
+    "refreshing": "Refreshing",
+    "refreshFailed": "Refresh failed",
+    "tierLabel": "Subscription tier",
+    "regionsStatLabel": "regions compared",
+    "tiersStatLabel": "tiers tracked",
+    "cachedLabel": "Cached",
+    "freshLabel": "Fresh",
+    "lockedHintUnsigned": "Sign in for {limit} free App views daily",
+    "lockedHintExhausted": "Daily {limit} free lookups exhausted · $1.99 lifetime unlock for unlimited",
+    "loginCta": "Sign in",
+    "buyCta": "Buy $1.99",
+    "tierRegionsCount": "{count} regions",
+    "colRegion": "Region",
+    "colLocalPrice": "Local price",
+    "colConverted": "Converted ({currency})",
+    "lowest": "Lowest",
+    "highest": "Highest",
+    "savedHint": "Lowest saves <bold>{amount}</bold> vs highest!",
+    "disclaimer": "Prices update every {hours} hours, converted at current FX rates, for reference only."
+  },
+  "RelatedApps": {
+    "title": "You might also like",
+    "loading": "Loading recommendations..."
+  },
   "AppsList": {
     "loadingMore": "Loading more...",
     "allLoaded": "All {count} apps loaded",

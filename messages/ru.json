@@ -111,6 +111,32 @@
     "name": "Название A-Z",
     "sortByLabel": "Сортировать"
   },
+  "PriceTable": {
+    "forceRefresh": "Принудительно обновить",
+    "refreshing": "Обновление",
+    "refreshFailed": "Не удалось обновить",
+    "tierLabel": "Уровень подписки",
+    "regionsStatLabel": "регионов сравнено",
+    "tiersStatLabel": "уровней отслеживается",
+    "cachedLabel": "Из кэша",
+    "freshLabel": "Свежие",
+    "lockedHintUnsigned": "Войдите, чтобы бесплатно просматривать {limit} приложений в день",
+    "lockedHintExhausted": "Дневной лимит {limit} бесплатных исчерпан · $1.99 разовая разблокировка навсегда",
+    "loginCta": "Войти",
+    "buyCta": "Купить за $1.99",
+    "tierRegionsCount": "{count} регионов",
+    "colRegion": "Регион",
+    "colLocalPrice": "Локальная цена",
+    "colConverted": "Конвертировано ({currency})",
+    "lowest": "Минимум",
+    "highest": "Максимум",
+    "savedHint": "Минимум экономит <bold>{amount}</bold> относительно максимума!",
+    "disclaimer": "Цены обновляются каждые {hours} часов, конвертируются по текущим курсам, только для справки."
+  },
+  "RelatedApps": {
+    "title": "Вам также может понравиться",
+    "loading": "Загрузка рекомендаций..."
+  },
   "AppsList": {
     "loadingMore": "Загрузка...",
     "allLoaded": "Загружено {count} приложений",

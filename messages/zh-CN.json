@@ -111,6 +111,32 @@
     "name": "名称 A-Z",
     "sortByLabel": "排序方式"
   },
+  "PriceTable": {
+    "forceRefresh": "强制刷新",
+    "refreshing": "刷新中",
+    "refreshFailed": "刷新失败",
+    "tierLabel": "订阅档位",
+    "regionsStatLabel": "个地区已比价",
+    "tiersStatLabel": "个订阅档位",
+    "cachedLabel": "上次更新",
+    "freshLabel": "最新",
+    "lockedHintUnsigned": "登录后每天免费看 {limit} 个 App 的完整价格",
+    "lockedHintExhausted": "今日 {limit} 次免费额度已用完 · $1.99 永久买断后无限看",
+    "loginCta": "登录",
+    "buyCta": "$1.99 买断",
+    "tierRegionsCount": "共 {count} 个地区",
+    "colRegion": "地区",
+    "colLocalPrice": "本地价格",
+    "colConverted": "换算（{currency}）",
+    "lowest": "最低",
+    "highest": "最高",
+    "savedHint": "最低比最高省了 <bold>{amount}！</bold>",
+    "disclaimer": "价格每 {hours} 小时更新一次，按当前汇率换算，仅供参考。"
+  },
+  "RelatedApps": {
+    "title": "你可能也喜欢",
+    "loading": "正在加载推荐…"
+  },
   "AppsList": {
     "loadingMore": "正在加载更多…",
     "allLoaded": "已加载全部 {count} 个 App",

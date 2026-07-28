@@ -111,6 +111,32 @@
     "name": "이름 A-Z",
     "sortByLabel": "정렬 기준"
   },
+  "PriceTable": {
+    "forceRefresh": "강제 새로고침",
+    "refreshing": "새로고침 중",
+    "refreshFailed": "새로고침 실패",
+    "tierLabel": "구독 등급",
+    "regionsStatLabel": "비교 지역 수",
+    "tiersStatLabel": "추적 등급 수",
+    "cachedLabel": "캐시됨",
+    "freshLabel": "최신",
+    "lockedHintUnsigned": "로그인하면 매일 {limit}개 앱을 무료로 볼 수 있습니다",
+    "lockedHintExhausted": "일일 {limit}회 무료 한도 소진 · $1.99 일회성 구매로 무제한 이용",
+    "loginCta": "로그인",
+    "buyCta": "$1.99 구매",
+    "tierRegionsCount": "{count}개 지역",
+    "colRegion": "지역",
+    "colLocalPrice": "현지 가격",
+    "colConverted": "환산({currency})",
+    "lowest": "최저",
+    "highest": "최고",
+    "savedHint": "최저가는 최고가 대비 <bold>{amount}</bold> 절약!",
+    "disclaimer": "가격은 {hours}시간마다 업데이트되며 현재 환율로 환산됩니다. 참고용입니다."
+  },
+  "RelatedApps": {
+    "title": "이것도 좋아할 수 있어요",
+    "loading": "추천 불러오는 중..."
+  },
   "AppsList": {
     "loadingMore": "더 불러오는 중...",
     "allLoaded": "모든 {count}개 앱 로드됨",

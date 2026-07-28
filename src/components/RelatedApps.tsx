@@ -10,6 +10,7 @@
 import { fetchHtml, parseAppStoreHtml } from "@/lib/crawler";
 import { getDb, getExistingAppIds } from "@/lib/db";
 import { ExternalAppCard } from "./ExternalAppCard";
+import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 
 const MAX_RELATED = 10;
@@ -97,10 +98,12 @@ export async function RelatedApps({
 
   if (items.length === 0) return null;
 
+  const t = await getTranslations("RelatedApps");
+
   return (
     <section className="mt-10">
       <h2 className="mb-3 text-[13px] font-semibold uppercase tracking-wide text-[var(--color-ink-48)]">
-        你可能也喜欢
+        {t("title")}
       </h2>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((x, i) =>
@@ -130,6 +133,23 @@ export async function RelatedApps({
             />
           )
         )}
+      </div>
+    </section>
+  );
+}
+
+/** 加载占位：「你可能也喜欢」流式加载期间的提示，跟订阅比价区同款 spinner 风格。 */
+export async function RelatedAppsSkeleton() {
+  const t = await getTranslations("RelatedApps");
+  return (
+    <section className="mt-10">
+      <h2 className="mb-3 text-[13px] font-semibold uppercase tracking-wide text-[var(--color-ink-48)]">
+        {t("title")}
+      </h2>
+      <div className="rounded-[var(--radius-lg)] border border-black/[0.08] p-12 text-center">
+        <div className="flex items-center justify-center gap-2 text-sm text-[var(--color-ink-48)]">
+          <span className="spinner" /> {t("loading")}
+        </div>
       </div>
     </section>
   );
@@ -165,7 +185,7 @@ function RelatedAppCard({
           src={iconUrl}
           alt=""
           loading="lazy"
-          className="h-12 w-12 shrink-0 rounded-[var(--radius-md)]"
+          className="h-12 w-12 shrink-0 rounded-[var(--radius-md)] object-cover"
         />
       ) : (
         <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-tile)] text-white">

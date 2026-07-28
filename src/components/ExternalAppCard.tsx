@@ -143,7 +143,7 @@ function CardMedia({ item }: { item: ExternalSearchItem }) {
         src={item.iconUrl}
         alt=""
         loading="lazy"
-        className="h-12 w-12 shrink-0 rounded-[var(--radius-md)]"
+        className="h-12 w-12 shrink-0 rounded-[var(--radius-md)] object-cover"
       />
     );
   }

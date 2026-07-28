@@ -111,6 +111,32 @@
     "name": "Nama A-Z",
     "sortByLabel": "Urutkan"
   },
+  "PriceTable": {
+    "forceRefresh": "Paksa segarkan",
+    "refreshing": "Menyegarkan",
+    "refreshFailed": "Gagal menyegarkan",
+    "tierLabel": "Tier langganan",
+    "regionsStatLabel": "wilayah dibandingkan",
+    "tiersStatLabel": "tier dilacak",
+    "cachedLabel": "Tembolok",
+    "freshLabel": "Baru",
+    "lockedHintUnsigned": "Masuk untuk {limit} lihat app gratis harian",
+    "lockedHintExhausted": "Kuota harian {limit} gratis habis · $1.99 buka kunci seumur hidup tanpa batas",
+    "loginCta": "Masuk",
+    "buyCta": "Beli $1.99",
+    "tierRegionsCount": "{count} wilayah",
+    "colRegion": "Wilayah",
+    "colLocalPrice": "Harga lokal",
+    "colConverted": "Dikonversi ({currency})",
+    "lowest": "Terendah",
+    "highest": "Tertinggi",
+    "savedHint": "Terendah hemat <bold>{amount}</bold> dibanding tertinggi!",
+    "disclaimer": "Harga diperbarui setiap {hours} jam, dikonversi ke nilai tukar saat ini, hanya untuk referensi."
+  },
+  "RelatedApps": {
+    "title": "Mungkin juga kamu suka",
+    "loading": "Memuat rekomendasi..."
+  },
   "AppsList": {
     "loadingMore": "Memuat lebih banyak...",
     "allLoaded": "Semua {count} app dimuat",

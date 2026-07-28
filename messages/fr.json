@@ -111,6 +111,32 @@
     "name": "Nom A-Z",
     "sortByLabel": "Trier par"
   },
+  "PriceTable": {
+    "forceRefresh": "Forcer l'actualisation",
+    "refreshing": "Actualisation…",
+    "refreshFailed": "Échec de l'actualisation",
+    "tierLabel": "Niveau d'abonnement",
+    "regionsStatLabel": "régions comparées",
+    "tiersStatLabel": "niveaux suivis",
+    "cachedLabel": "En cache",
+    "freshLabel": "Récent",
+    "lockedHintUnsigned": "Connectez-vous pour {limit} vues d'apps gratuites par jour",
+    "lockedHintExhausted": "Quota quotidien de {limit} gratuités épuisé · $1.99 débloque à vie en illimité",
+    "loginCta": "Se connecter",
+    "buyCta": "Acheter $1.99",
+    "tierRegionsCount": "{count} régions",
+    "colRegion": "Région",
+    "colLocalPrice": "Prix local",
+    "colConverted": "Converti ({currency})",
+    "lowest": "Minimum",
+    "highest": "Maximum",
+    "savedHint": "Le minimum t'économise <bold>{amount}</bold> vs le maximum !",
+    "disclaimer": "Prix mis à jour toutes les {hours} heures, convertis aux taux de change actuels, à titre indicatif uniquement."
+  },
+  "RelatedApps": {
+    "title": "Vous pourriez aussi aimer",
+    "loading": "Chargement des recommandations..."
+  },
   "AppsList": {
     "loadingMore": "Chargement...",
     "allLoaded": "Toutes les {count} apps chargées",

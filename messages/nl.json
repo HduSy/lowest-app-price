@@ -111,6 +111,32 @@
     "name": "Naam A-Z",
     "sortByLabel": "Sorteren op"
   },
+  "PriceTable": {
+    "forceRefresh": "Vernieuwen forceren",
+    "refreshing": "Vernieuwen",
+    "refreshFailed": "Vernieuwen mislukt",
+    "tierLabel": "Abonnementsniveau",
+    "regionsStatLabel": "regio's vergeleken",
+    "tiersStatLabel": "niveaus bijgehouden",
+    "cachedLabel": "In cache",
+    "freshLabel": "Actueel",
+    "lockedHintUnsigned": "Log in voor {limit} gratis app-weergaven per dag",
+    "lockedHintExhausted": "Dagelijks {limit} gratis keer opgebruikt · $1.99 eenmalige ontgrendeling voor onbeperkt",
+    "loginCta": "Inloggen",
+    "buyCta": "$1.99 kopen",
+    "tierRegionsCount": "{count} regio's",
+    "colRegion": "Regio",
+    "colLocalPrice": "Lokale prijs",
+    "colConverted": "Omgezet ({currency})",
+    "lowest": "Laagste",
+    "highest": "Hoogste",
+    "savedHint": "Het laagste bespaart je <bold>{amount}</bold> vs het hoogste!",
+    "disclaimer": "Prijzen worden elke {hours} uur bijgewerkt, omgerekend naar actuele wisselkoersen, alleen ter referentie."
+  },
+  "RelatedApps": {
+    "title": "Misschien vind je dit ook leuk",
+    "loading": "Aanbevelingen laden..."
+  },
   "AppsList": {
     "loadingMore": "Meer laden...",
     "allLoaded": "Alle {count} apps geladen",

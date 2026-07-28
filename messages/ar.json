@@ -111,6 +111,32 @@
     "name": "الاسم A-Z",
     "sortByLabel": "ترتيب حسب"
   },
+  "PriceTable": {
+    "forceRefresh": "تحديث إجباري",
+    "refreshing": "جارٍ التحديث",
+    "refreshFailed": "فشل التحديث",
+    "tierLabel": "مستوى الاشتراك",
+    "regionsStatLabel": "منطقة تمت مقارنتها",
+    "tiersStatLabel": "مستوى متتبع",
+    "cachedLabel": "مخزّن مؤقتًا",
+    "freshLabel": "حديث",
+    "lockedHintUnsigned": "سجّل الدخول لمشاهدة {limit} تطبيقات مجانًا يوميًا",
+    "lockedHintExhausted": "نفدت الحصة اليومية البالغة {limit} مجانية · $1.99 فتح دائم غير محدود",
+    "loginCta": "تسجيل الدخول",
+    "buyCta": "شراء $1.99",
+    "tierRegionsCount": "{count} مناطق",
+    "colRegion": "المنطقة",
+    "colLocalPrice": "السعر المحلي",
+    "colConverted": "محوّل ({currency})",
+    "lowest": "الأقل",
+    "highest": "الأعلى",
+    "savedHint": "الأقل يوفّر <bold>{amount}</bold> مقارنة بالأعلى!",
+    "disclaimer": "تُحدَّث الأسعار كل {hours} ساعات، وتُحوَّل وفق أسعار الصرف الحالية، للاسترشاد فقط."
+  },
+  "RelatedApps": {
+    "title": "قد يعجبك أيضًا",
+    "loading": "جارٍ تحميل التوصيات..."
+  },
   "AppsList": {
     "loadingMore": "جارٍ التحميل...",
     "allLoaded": "تم تحميل {count} تطبيق",

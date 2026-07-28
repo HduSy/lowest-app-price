@@ -111,6 +111,32 @@
     "name": "Tên A-Z",
     "sortByLabel": "Sắp xếp"
   },
+  "PriceTable": {
+    "forceRefresh": "Buộc làm mới",
+    "refreshing": "Đang làm mới",
+    "refreshFailed": "Làm mới thất bại",
+    "tierLabel": "Cấp đăng ký",
+    "regionsStatLabel": "khu vực đã so sánh",
+    "tiersStatLabel": "cấp đã theo dõi",
+    "cachedLabel": "Đã lưu",
+    "freshLabel": "Mới",
+    "lockedHintUnsigned": "Đăng nhập để xem miễn phí {limit} ứng dụng mỗi ngày",
+    "lockedHintExhausted": "Đã hết hạn ngạch miễn phí {limit} hằng ngày · $1.99 mở khóa vĩnh viễn không giới hạn",
+    "loginCta": "Đăng nhập",
+    "buyCta": "Mua $1.99",
+    "tierRegionsCount": "{count} khu vực",
+    "colRegion": "Khu vực",
+    "colLocalPrice": "Giá nội địa",
+    "colConverted": "Đã quy đổi ({currency})",
+    "lowest": "Thấp nhất",
+    "highest": "Cao nhất",
+    "savedHint": "Thấp nhất tiết kiệm <bold>{amount}</bold> so với cao nhất!",
+    "disclaimer": "Giá cập nhật mỗi {hours} giờ, quy đổi theo tỷ giá hiện tại, chỉ mang tính tham khảo."
+  },
+  "RelatedApps": {
+    "title": "Bạn có thể cũng thích",
+    "loading": "Đang tải gợi ý..."
+  },
   "AppsList": {
     "loadingMore": "Đang tải thêm...",
     "allLoaded": "Đã tải tất cả {count} ứng dụng",

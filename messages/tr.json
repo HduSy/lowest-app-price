@@ -111,6 +111,32 @@
     "name": "İsim A-Z",
     "sortByLabel": "Sırala"
   },
+  "PriceTable": {
+    "forceRefresh": "Zorla yenile",
+    "refreshing": "Yenileniyor",
+    "refreshFailed": "Yenileme başarısız",
+    "tierLabel": "Abonelik seviyesi",
+    "regionsStatLabel": "bölge karşılaştırıldı",
+    "tiersStatLabel": "seviye izlendi",
+    "cachedLabel": "Önbelleğe alındı",
+    "freshLabel": "Güncel",
+    "lockedHintUnsigned": "Günlük {limit} ücretsiz uygulama görüntüleme için giriş yap",
+    "lockedHintExhausted": "Günlük {limit} ücretsiz hak tükendi · $1.99 tek seferlik ödeme ile sınırsız",
+    "loginCta": "Giriş yap",
+    "buyCta": "$1.99 satın al",
+    "tierRegionsCount": "{count} bölge",
+    "colRegion": "Bölge",
+    "colLocalPrice": "Yerel fiyat",
+    "colConverted": "Dönüştürüldü ({currency})",
+    "lowest": "En düşük",
+    "highest": "En yüksek",
+    "savedHint": "En düşük, en yüksek karşısında <bold>{amount}</bold> tasarruf ettirir!",
+    "disclaimer": "Fiyatlar her {hours} saatte bir güncellenir, cari döviz kurlarına göre dönüştürülür, yalnızca referans amaçlıdır."
+  },
+  "RelatedApps": {
+    "title": "Şunlar da hoşunuza gidebilir",
+    "loading": "Öneriler yükleniyor..."
+  },
   "AppsList": {
     "loadingMore": "Daha fazla yükleniyor...",
     "allLoaded": "Tüm {count} uygulama yüklendi",
