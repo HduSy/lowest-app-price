@@ -52,7 +52,8 @@
   },
   "SupportedApps": {
     "title": "{count} app terindeks",
-    "desc": "Tidak ada di perpustakaan? Tambahkan sendiri - pencarian instan."
+    "desc": "Tidak ada di perpustakaan? Tambahkan sendiri - pencarian instan.",
+    "viewAll": "Lihat semua app"
   },
   "Pricing": {
     "title": "Coba gratis dulu, bayar jika sepadan",
@@ -85,5 +86,49 @@
     "isHighest": "Sudah termahal",
     "vsYourRegion": "vs wilayah Anda",
     "noPrice": "Tidak ada harga untuk wilayah ini"
+  },
+  "AppsPage": {
+    "title": "Semua app",
+    "desc": "Cari dan bandingkan harga App Store di seluruh dunia.",
+    "totalCount": "{count} app terindeks",
+    "searchResults": "{count} hasil ditemukan",
+    "noMatch": "Tidak ada app untuk \"{q}\". Tempel link atau ID App Store untuk menambahkan.",
+    "empty": "Perpustakaan kosong. Tempel link atau ID App Store untuk menambahkan app pertama."
+  },
+  "AppsToolbar": {
+    "searchPlaceholder": "Cari berdasarkan nama, atau tempel link / ID App Store",
+    "addToLibrary": "Tambah ke perpustakaan",
+    "adding": "Menambahkan...",
+    "clearSearch": "Hapus pencarian",
+    "loginRequired": "Masuk untuk menambahkan app",
+    "viewOnAppStore": "Lihat di App Store"
+  },
+  "AppsSort": {
+    "sortBy": "Urutkan",
+    "recent": "Baru ditambahkan",
+    "rating_count": "Paling banyak diulas",
+    "rating": "Peringkat tertinggi",
+    "name": "Nama A-Z",
+    "sortByLabel": "Urutkan"
+  },
+  "AppsList": {
+    "loadingMore": "Memuat lebih banyak...",
+    "allLoaded": "Semua {count} app dimuat",
+    "noLocalMatch": "Tidak ada hasil lokal, {count} hasil dari direktori Apple dapat ditambahkan",
+    "addHint": "Klik \"Tambah\" untuk mengambil dari Apple dan memulai perayapan harga 35 wilayah. Login diperlukan."
+  },
+  "LoginDialog": {
+    "title": "Masuk untuk melihat harga lengkap",
+    "desc": "3 gratis harian · atau $1.99 seumur hidup",
+    "google": "Lanjut dengan Google",
+    "or": "atau",
+    "later": "Nanti saja",
+    "emailPlaceholder": "Email",
+    "sendLink": "Kirim link login",
+    "sending": "Mengirim...",
+    "linkSent": "Link login dikirim ke",
+    "checkEmail": "Periksa email dalam 15 menit dan klik tombol untuk masuk.",
+    "changeEmail": "Email lain",
+    "ariaLabel": "Login"
   }
 }

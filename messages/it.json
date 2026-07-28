@@ -52,7 +52,8 @@
   },
   "SupportedApps": {
     "title": "{count} app indicizzate",
-    "desc": "Non in libreria? Aggiungila tu stesso - consultazione istantanea."
+    "desc": "Non in libreria? Aggiungila tu stesso - consultazione istantanea.",
+    "viewAll": "Vedi tutte le app"
   },
   "Pricing": {
     "title": "Prova gratis prima, paga se ne vale la pena",
@@ -85,5 +86,49 @@
     "isHighest": "Già il più caro",
     "vsYourRegion": "vs la tua regione",
     "noPrice": "Nessun prezzo per questa regione"
+  },
+  "AppsPage": {
+    "title": "Tutte le app",
+    "desc": "Cerca e confronta i prezzi dell'App Store in tutto il mondo.",
+    "totalCount": "{count} app indicizzate",
+    "searchResults": "{count} risultati trovati",
+    "noMatch": "Nessuna app per \"{q}\". Incolla un link o un ID App Store per aggiungere.",
+    "empty": "Libreria vuota. Incolla un link o un ID App Store per aggiungere la prima."
+  },
+  "AppsToolbar": {
+    "searchPlaceholder": "Cerca per nome, o incolla link / ID App Store",
+    "addToLibrary": "Aggiungi alla libreria",
+    "adding": "Aggiunta...",
+    "clearSearch": "Cancella ricerca",
+    "loginRequired": "Accedi per aggiungere app",
+    "viewOnAppStore": "Vedi su App Store"
+  },
+  "AppsSort": {
+    "sortBy": "Ordina",
+    "recent": "Aggiunte di recente",
+    "rating_count": "Più recensioni",
+    "rating": "Valutazione più alta",
+    "name": "Nome A-Z",
+    "sortByLabel": "Ordina per"
+  },
+  "AppsList": {
+    "loadingMore": "Caricamento...",
+    "allLoaded": "Tutte le {count} app caricate",
+    "noLocalMatch": "Nessuna corrispondenza locale, {count} risultati dalla directory Apple aggiungibili",
+    "addHint": "Clicca \"Aggiungi\" per recuperare da Apple e avviare la raccolta prezzi in 35 regioni. Accesso richiesto."
+  },
+  "LoginDialog": {
+    "title": "Accedi per vedere tutti i prezzi",
+    "desc": "3 gratis al giorno · o $1.99 a vita",
+    "google": "Continua con Google",
+    "or": "o",
+    "later": "Forse più tardi",
+    "emailPlaceholder": "Email",
+    "sendLink": "Invia link",
+    "sending": "Invio...",
+    "linkSent": "Link inviato a",
+    "checkEmail": "Controlla la tua email entro 15 minuti e clicca il pulsante per accedere.",
+    "changeEmail": "Altra email",
+    "ariaLabel": "Accesso"
   }
 }

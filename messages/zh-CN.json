@@ -52,7 +52,8 @@
   },
   "SupportedApps": {
     "title": "已收录 {count} 个 App",
-    "desc": "库没收录？自己添加，立刻就能查。"
+    "desc": "库没收录？自己添加，立刻就能查。",
+    "viewAll": "查看全部 App"
   },
   "Pricing": {
     "title": "先免费试，值得再买",
@@ -85,5 +86,49 @@
     "isHighest": "已是最高",
     "vsYourRegion": "比你所在区",
     "noPrice": "该地区暂无价格"
+  },
+  "AppsPage": {
+    "title": "全部 App",
+    "desc": "搜索并对比全球 App Store 价格。",
+    "totalCount": "共 {count} 个已收录 App",
+    "searchResults": "搜到 {count} 个结果",
+    "noMatch": "没找到匹配 \"{q}\" 的 App。可以试试粘贴 App Store 链接或 ID 添加。",
+    "empty": "库里还空着。粘贴一个 App Store 链接或 ID 添加第一个。"
+  },
+  "AppsToolbar": {
+    "searchPlaceholder": "搜索名称，或粘贴 App Store 链接 / ID 添加",
+    "addToLibrary": "添加到库",
+    "adding": "添加中",
+    "clearSearch": "清除搜索",
+    "loginRequired": "请先登录后再添加 App",
+    "viewOnAppStore": "前往 App Store 查看"
+  },
+  "AppsSort": {
+    "sortBy": "排序",
+    "recent": "最新收录",
+    "rating_count": "评论数最多",
+    "rating": "评分最高",
+    "name": "名称 A-Z",
+    "sortByLabel": "排序方式"
+  },
+  "AppsList": {
+    "loadingMore": "正在加载更多…",
+    "allLoaded": "已加载全部 {count} 个 App",
+    "noLocalMatch": "本地库暂无匹配，Apple 目录有 {count} 个结果可添加",
+    "addHint": "点击「添加」会从 Apple 拉取该 App 信息并触发 35 区价格抓取，需要登录。"
+  },
+  "LoginDialog": {
+    "title": "登录后，看到完整价格",
+    "desc": "每天 3 次免费 · 或 $1.99 永久买断",
+    "google": "使用 Google 登录",
+    "or": "或",
+    "later": "稍后再说",
+    "emailPlaceholder": "邮箱",
+    "sendLink": "发送登录链接",
+    "sending": "发送中",
+    "linkSent": "登录链接已发送至",
+    "checkEmail": "请在 15 分钟内查收邮件并点击其中的按钮登录。",
+    "changeEmail": "换个邮箱",
+    "ariaLabel": "登录"
   }
 }

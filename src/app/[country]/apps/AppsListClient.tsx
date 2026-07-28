@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import type { App, ExternalSearchItem } from "@/lib/types";
 import type { AppSortKey } from "@/lib/db";
 import { AppCard } from "@/components/AppCard";
@@ -28,6 +29,7 @@ export function AppsListClient({
   const [items, setItems] = useState(initialItems);
   const [hasMore, setHasMore] = useState(initialHasMore);
   const [loading, setLoading] = useState(false);
+  const t = useTranslations("AppsList");
   const [error, setError] = useState<string | null>(null);
   // 外部搜索结果：仅在本地库 0 结果时展示。SSR 已做过滤，这里直接当受控状态
   const [external, setExternal] = useState(initialExternal);
@@ -152,12 +154,12 @@ export function AppsListClient({
               sentinel 是稳定元素，始终渲染在最后，IO 一直观察它 */}
           {loading && (
             <div className="mt-6 flex items-center justify-center gap-2 py-4 text-sm text-[var(--color-ink-48)]">
-              <span className="spinner" /> 正在加载更多…
+              <span className="spinner" /> {t("loadingMore")}
             </div>
           )}
           {!loading && !hasMore && (
             <div className="mt-6 py-4 text-center text-xs text-[var(--color-ink-48)]">
-              已加载全部 {items.length} 个 App
+              {t("allLoaded", { count: items.length })}
             </div>
           )}
         </>
@@ -168,7 +170,7 @@ export function AppsListClient({
         <div>
           <div className="mb-4 flex items-center justify-between">
             <h2 className="text-sm font-semibold text-[var(--color-ink-48)]">
-              本地库暂无匹配，Apple 目录有 {external.length} 个结果可添加
+              {t("noLocalMatch", { count: external.length })}
             </h2>
           </div>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -181,7 +183,7 @@ export function AppsListClient({
             ))}
           </div>
           <p className="mt-4 text-xs text-[var(--color-ink-48)]">
-            点击「添加」会从 Apple 拉取该 App 信息并触发 35 区价格抓取，需要登录。
+            {t("addHint")}
           </p>
         </div>
       )}

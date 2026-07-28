@@ -52,7 +52,8 @@
   },
   "SupportedApps": {
     "title": "{count} apps indexados",
-    "desc": "Não está na biblioteca? Adicione você mesmo - consulta instantânea."
+    "desc": "Não está na biblioteca? Adicione você mesmo - consulta instantânea.",
+    "viewAll": "Ver todos os apps"
   },
   "Pricing": {
     "title": "Experimente grátis primeiro, pague se valer a pena",
@@ -85,5 +86,49 @@
     "isHighest": "Já é o mais caro",
     "vsYourRegion": "vs sua região",
     "noPrice": "Sem preço para esta região"
+  },
+  "AppsPage": {
+    "title": "Todos os apps",
+    "desc": "Pesquise e compare preços da App Store mundialmente.",
+    "totalCount": "{count} apps indexados",
+    "searchResults": "{count} resultados encontrados",
+    "noMatch": "Nenhum app para \"{q}\". Cole um link ou ID da App Store para adicionar.",
+    "empty": "Biblioteca vazia. Cole um link ou ID da App Store para adicionar o primeiro."
+  },
+  "AppsToolbar": {
+    "searchPlaceholder": "Pesquisar por nome, ou colar link / ID da App Store",
+    "addToLibrary": "Adicionar à biblioteca",
+    "adding": "Adicionando...",
+    "clearSearch": "Limpar pesquisa",
+    "loginRequired": "Entre para adicionar apps",
+    "viewOnAppStore": "Ver na App Store"
+  },
+  "AppsSort": {
+    "sortBy": "Ordenar",
+    "recent": "Recentemente adicionados",
+    "rating_count": "Mais avaliados",
+    "rating": "Melhor avaliados",
+    "name": "Nome A-Z",
+    "sortByLabel": "Ordenar por"
+  },
+  "AppsList": {
+    "loadingMore": "Carregando mais...",
+    "allLoaded": "Todos os {count} apps carregados",
+    "noLocalMatch": "Sem correspondência local, {count} resultados do diretório Apple podem ser adicionados",
+    "addHint": "Clique em \"Adicionar\" para buscar do Apple e iniciar rastreamento de preços em 35 regiões. Login necessário."
+  },
+  "LoginDialog": {
+    "title": "Entre para ver preços completos",
+    "desc": "3 grátis por dia · ou $1.99 vitalício",
+    "google": "Continuar com Google",
+    "or": "ou",
+    "later": "Talvez depois",
+    "emailPlaceholder": "E-mail",
+    "sendLink": "Enviar link de login",
+    "sending": "Enviando...",
+    "linkSent": "Link de login enviado para",
+    "checkEmail": "Verifique seu e-mail em 15 minutos e clique no botão para entrar.",
+    "changeEmail": "Outro e-mail",
+    "ariaLabel": "Login"
   }
 }

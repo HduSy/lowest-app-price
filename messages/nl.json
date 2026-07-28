@@ -52,7 +52,8 @@
   },
   "SupportedApps": {
     "title": "{count} apps geïndexeerd",
-    "desc": "Niet in de bibliotheek? Voeg zelf toe - direct opzoeken."
+    "desc": "Niet in de bibliotheek? Voeg zelf toe - direct opzoeken.",
+    "viewAll": "Alle apps bekijken"
   },
   "Pricing": {
     "title": "Probeer eerst gratis, betaal als het de moeite waard is",
@@ -85,5 +86,49 @@
     "isHighest": "Al duurste",
     "vsYourRegion": "vs jouw regio",
     "noPrice": "Geen prijs voor deze regio"
+  },
+  "AppsPage": {
+    "title": "Alle apps",
+    "desc": "Zoek en vergelijk App Store-prijzen wereldwijd.",
+    "totalCount": "{count} apps geïndexeerd",
+    "searchResults": "{count} resultaten gevonden",
+    "noMatch": "Geen apps voor \"{q}\". Plak een App Store-link of ID om toe te voegen.",
+    "empty": "Bibliotheek is leeg. Plak een App Store-link of ID om de eerste toe te voegen."
+  },
+  "AppsToolbar": {
+    "searchPlaceholder": "Zoek op naam, of plak App Store-link / ID",
+    "addToLibrary": "Aan bibliotheek toevoegen",
+    "adding": "Toevoegen...",
+    "clearSearch": "Zoekopdracht wissen",
+    "loginRequired": "Log in om apps toe te voegen",
+    "viewOnAppStore": "Bekijk in App Store"
+  },
+  "AppsSort": {
+    "sortBy": "Sorteren",
+    "recent": "Recent toegevoegd",
+    "rating_count": "Meeste reviews",
+    "rating": "Hoogste beoordeling",
+    "name": "Naam A-Z",
+    "sortByLabel": "Sorteren op"
+  },
+  "AppsList": {
+    "loadingMore": "Meer laden...",
+    "allLoaded": "Alle {count} apps geladen",
+    "noLocalMatch": "Geen lokale match, {count} resultaten van Apple-directory kunnen worden toegevoegd",
+    "addHint": "Klik op \"Toevoegen\" om van Apple te fetchen en 35-regio prijscrawling te starten. Login vereist."
+  },
+  "LoginDialog": {
+    "title": "Log in voor volledige prijzen",
+    "desc": "3 gratis per dag · of $1.99 levenslang",
+    "google": "Doorgaan met Google",
+    "or": "of",
+    "later": "Misschien later",
+    "emailPlaceholder": "E-mail",
+    "sendLink": "Log in-link verzenden",
+    "sending": "Verzenden...",
+    "linkSent": "Link verzonden naar",
+    "checkEmail": "Controleer je e-mail binnen 15 minuten en klik op de knop om in te loggen.",
+    "changeEmail": "Ander e-mailadres",
+    "ariaLabel": "Inloggen"
   }
 }

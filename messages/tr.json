@@ -52,7 +52,8 @@
   },
   "SupportedApps": {
     "title": "{count} uygulama dizine eklendi",
-    "desc": "Kitaplıkta yok mu? Kendiniz ekleyin - anında sorgulayın."
+    "desc": "Kitaplıkta yok mu? Kendiniz ekleyin - anında sorgulayın.",
+    "viewAll": "Tüm uygulamaları gör"
   },
   "Pricing": {
     "title": "Önce ücretsiz dene, değerse öde",
@@ -85,5 +86,49 @@
     "isHighest": "Zaten en pahalı",
     "vsYourRegion": "bölgenize göre",
     "noPrice": "Bu bölge için fiyat yok"
+  },
+  "AppsPage": {
+    "title": "Tüm uygulamalar",
+    "desc": "Dünya genelinde App Store fiyatlarını arayın ve karşılaştırın.",
+    "totalCount": "{count} uygulama dizine eklendi",
+    "searchResults": "{count} sonuç bulundu",
+    "noMatch": "\"{q}\" ile eşleşen uygulama yok. Eklemek için App Store bağlantısı veya ID yapıştırın.",
+    "empty": "Kitaplık boş. İlk uygulamayı eklemek için App Store bağlantısı veya ID yapıştırın."
+  },
+  "AppsToolbar": {
+    "searchPlaceholder": "İsme göre ara, veya App Store bağlantısı / ID yapıştır",
+    "addToLibrary": "Kitaplığa ekle",
+    "adding": "Ekleniyor...",
+    "clearSearch": "Aramayı temizle",
+    "loginRequired": "Uygulama eklemek için giriş yapın",
+    "viewOnAppStore": "App Store'da gör"
+  },
+  "AppsSort": {
+    "sortBy": "Sırala",
+    "recent": "Son eklenen",
+    "rating_count": "En çok değerlendirilen",
+    "rating": "En yüksek puan",
+    "name": "İsim A-Z",
+    "sortByLabel": "Sırala"
+  },
+  "AppsList": {
+    "loadingMore": "Daha fazla yükleniyor...",
+    "allLoaded": "Tüm {count} uygulama yüklendi",
+    "noLocalMatch": "Yerel eşleşme yok, Apple dizininden {count} sonuç eklenebilir",
+    "addHint": "\"Ekle\"ye tıklayarak Apple'dan veri çekin ve 35 bölge fiyat taramasını başlatın. Giriş gerekli."
+  },
+  "LoginDialog": {
+    "title": "Tüm fiyatları görmek için giriş yapın",
+    "desc": "Günlük 3 ücretsiz · veya $1.99 ömür boyu",
+    "google": "Google ile devam et",
+    "or": "veya",
+    "later": "Daha sonra",
+    "emailPlaceholder": "E-posta",
+    "sendLink": "Giriş linki gönder",
+    "sending": "Gönderiliyor...",
+    "linkSent": "Giriş linki gönderildi:",
+    "checkEmail": "15 dakika içinde e-postanızı kontrol edin ve giriş yapmak için butona tıklayın.",
+    "changeEmail": "Farklı e-posta",
+    "ariaLabel": "Giriş"
   }
 }

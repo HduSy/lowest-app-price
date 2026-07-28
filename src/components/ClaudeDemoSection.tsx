@@ -149,7 +149,6 @@ export async function ClaudeDemoSection({
             accent="low"
             heightClass="md:min-h-[232px]"
             currency={displayCurrency}
-            t={t}
             discountPct={discountPct}
           />
           <PriceCard
@@ -159,7 +158,6 @@ export async function ClaudeDemoSection({
             accent="ip"
             heightClass="md:min-h-[256px]"
             currency={displayCurrency}
-            t={t}
             ipIsLowest={ipIsLowest}
             ipIsHighest={ipIsHighest}
           />
@@ -170,7 +168,6 @@ export async function ClaudeDemoSection({
             accent="high"
             heightClass="md:min-h-[284px]"
             currency={displayCurrency}
-            t={t}
             premiumPct={premiumPct}
           />
         </div>
@@ -190,14 +187,13 @@ export async function ClaudeDemoSection({
   );
 }
 
-function PriceCard({
+async function PriceCard({
   label,
   icon,
   entry,
   accent,
   heightClass,
   currency,
-  t,
   ipIsLowest,
   ipIsHighest,
   discountPct,
@@ -209,12 +205,12 @@ function PriceCard({
   accent: Accent;
   heightClass: string;
   currency: string;
-  t: (key: string, values?: Record<string, unknown>) => string;
   ipIsLowest?: boolean;
   ipIsHighest?: boolean;
   discountPct?: number | null;
   premiumPct?: number | null;
 }) {
+  const t = await getTranslations("ClaudeDemo");
   const s = ACCENT_STYLES[accent];
   return (
     <div

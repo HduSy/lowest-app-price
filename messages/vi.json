@@ -52,7 +52,8 @@
   },
   "SupportedApps": {
     "title": "{count} ứng dụng đã lập chỉ mục",
-    "desc": "Không có trong thư viện? Tự thêm - tra cứu ngay."
+    "desc": "Không có trong thư viện? Tự thêm - tra cứu ngay.",
+    "viewAll": "Xem tất cả ứng dụng"
   },
   "Pricing": {
     "title": "Dùng thử miễn phí trước, trả tiền nếu xứng đáng",
@@ -85,5 +86,49 @@
     "isHighest": "Đã đắt nhất",
     "vsYourRegion": "so với khu vực của bạn",
     "noPrice": "Không có giá cho khu vực này"
+  },
+  "AppsPage": {
+    "title": "Tất cả ứng dụng",
+    "desc": "Tìm kiếm và so sánh giá App Store trên toàn thế giới.",
+    "totalCount": "{count} ứng dụng đã lập chỉ mục",
+    "searchResults": "{count} kết quả",
+    "noMatch": "Không có ứng dụng cho \"{q}\". Dán liên kết hoặc ID App Store để thêm.",
+    "empty": "Thư viện trống. Dán liên kết hoặc ID App Store để thêm ứng dụng đầu tiên."
+  },
+  "AppsToolbar": {
+    "searchPlaceholder": "Tìm theo tên, hoặc dán liên kết / ID App Store",
+    "addToLibrary": "Thêm vào thư viện",
+    "adding": "Đang thêm...",
+    "clearSearch": "Xóa tìm kiếm",
+    "loginRequired": "Đăng nhập để thêm ứng dụng",
+    "viewOnAppStore": "Xem trên App Store"
+  },
+  "AppsSort": {
+    "sortBy": "Sắp xếp",
+    "recent": "Mới thêm",
+    "rating_count": "Nhiều đánh giá nhất",
+    "rating": "Đánh giá cao nhất",
+    "name": "Tên A-Z",
+    "sortByLabel": "Sắp xếp"
+  },
+  "AppsList": {
+    "loadingMore": "Đang tải thêm...",
+    "allLoaded": "Đã tải tất cả {count} ứng dụng",
+    "noLocalMatch": "Không có kết quả nội bộ, {count} kết quả từ danh bạ Apple có thể thêm",
+    "addHint": "Nhấp \"Thêm\" để lấy từ Apple và bắt đầu thu thập giá 35 khu vực. Cần đăng nhập."
+  },
+  "LoginDialog": {
+    "title": "Đăng nhập để xem giá đầy đủ",
+    "desc": "3 miễn phí mỗi ngày · hoặc $1.99 trọn đời",
+    "google": "Tiếp tục với Google",
+    "or": "hoặc",
+    "later": "Để sau",
+    "emailPlaceholder": "Email",
+    "sendLink": "Gửi liên kết đăng nhập",
+    "sending": "Đang gửi...",
+    "linkSent": "Liên kết đã gửi đến",
+    "checkEmail": "Kiểm tra email trong 15 phút và nhấp nút để đăng nhập.",
+    "changeEmail": "Email khác",
+    "ariaLabel": "Đăng nhập"
   }
 }

@@ -52,7 +52,8 @@
   },
   "SupportedApps": {
     "title": "{count} aplikacji zindeksowanych",
-    "desc": "Nie ma w bibliotece? Dodaj sam - natychmiastowe wyszukiwanie."
+    "desc": "Nie ma w bibliotece? Dodaj sam - natychmiastowe wyszukiwanie.",
+    "viewAll": "Zobacz wszystkie aplikacje"
   },
   "Pricing": {
     "title": "Najpierw wypróbuj za darmo, zapłać jeśli warto",
@@ -85,5 +86,49 @@
     "isHighest": "Już najdroższy",
     "vsYourRegion": "vs Twój region",
     "noPrice": "Brak ceny dla tego regionu"
+  },
+  "AppsPage": {
+    "title": "Wszystkie aplikacje",
+    "desc": "Szukaj i porównuj ceny App Store na całym świecie.",
+    "totalCount": "{count} aplikacji zindeksowanych",
+    "searchResults": "{count} wyników",
+    "noMatch": "Brak aplikacji dla \"{q}\". Wklej link lub ID App Store, aby dodać.",
+    "empty": "Biblioteka pusta. Wklej link lub ID App Store, aby dodać pierwszą."
+  },
+  "AppsToolbar": {
+    "searchPlaceholder": "Szukaj po nazwie, lub wklej link / ID App Store",
+    "addToLibrary": "Dodaj do biblioteki",
+    "adding": "Dodawanie...",
+    "clearSearch": "Wyczyść wyszukiwanie",
+    "loginRequired": "Zaloguj się, aby dodawać aplikacje",
+    "viewOnAppStore": "Zobacz w App Store"
+  },
+  "AppsSort": {
+    "sortBy": "Sortuj",
+    "recent": "Ostatnio dodane",
+    "rating_count": "Najwięcej opinii",
+    "rating": "Najwyżej oceniane",
+    "name": "Nazwa A-Z",
+    "sortByLabel": "Sortuj według"
+  },
+  "AppsList": {
+    "loadingMore": "Ładowanie...",
+    "allLoaded": "Wczytano wszystkie {count} aplikacje",
+    "noLocalMatch": "Brak lokalnych wyników, {count} wyników z katalogu Apple można dodać",
+    "addHint": "Kliknij \"Dodaj\", aby pobrać z Apple i uruchomić zbieranie cen w 35 regionach. Wymagany login."
+  },
+  "LoginDialog": {
+    "title": "Zaloguj się, aby zobaczyć pełne ceny",
+    "desc": "3 darmowe dziennie · lub $1.99 dożywotnio",
+    "google": "Kontynuuj z Google",
+    "or": "lub",
+    "later": "Może później",
+    "emailPlaceholder": "E-mail",
+    "sendLink": "Wyślij link logowania",
+    "sending": "Wysyłanie...",
+    "linkSent": "Link wysłany do",
+    "checkEmail": "Sprawdź e-mail w ciągu 15 minut i kliknij przycisk, aby się zalogować.",
+    "changeEmail": "Inny e-mail",
+    "ariaLabel": "Logowanie"
   }
 }

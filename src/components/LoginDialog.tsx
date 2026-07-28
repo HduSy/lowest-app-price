@@ -7,6 +7,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { signIn } from "next-auth/react";
+import { useTranslations } from "next-intl";
 import { GoogleIcon } from "./BrandIcons";
 
 interface LoginDialogProps {
@@ -15,6 +16,7 @@ interface LoginDialogProps {
 }
 
 export function LoginDialog({ open, onClose }: LoginDialogProps) {
+  const t = useTranslations("LoginDialog");
   // Esc 关闭 + 锁定背景滚动
   useEffect(() => {
     if (!open) return;
@@ -41,7 +43,7 @@ export function LoginDialog({ open, onClose }: LoginDialogProps) {
       onClick={onClose}
       role="dialog"
       aria-modal="true"
-      aria-label="登录"
+      aria-label={t("ariaLabel")}
     >
       <div
         className="picker-panel w-[min(380px,calc(100vw-32px))] cursor-default rounded-[18px] bg-white p-7 shadow-[0_12px_48px_rgba(0,0,0,0.18)]"
@@ -51,10 +53,10 @@ export function LoginDialog({ open, onClose }: LoginDialogProps) {
         <div className="text-center">
           <i className="ph ph-lock-key text-[28px] text-[var(--color-primary-focus)]" />
           <h2 className="mt-2 text-[20px] font-semibold leading-tight">
-            登录后，看到完整价格
+            {t("title")}
           </h2>
           <p className="mt-1.5 text-[13px] text-[var(--color-ink-48)]">
-            每天 3 次免费 · 或 $1.99 永久买断
+            {t("desc")}
           </p>
         </div>
 
@@ -66,7 +68,7 @@ export function LoginDialog({ open, onClose }: LoginDialogProps) {
             className="flex w-full items-center justify-center gap-3 rounded-full border border-black/[0.08] bg-white px-5 py-3 text-[15px] font-medium transition-colors hover:bg-[var(--color-parchment)]"
           >
             <GoogleIcon size={18} />
-            使用 Google 登录
+            {t("google")}
           </button>
           {/* Twitter / GitHub 暂时隐藏 — 恢复时取消注释：
           <button
@@ -91,7 +93,7 @@ export function LoginDialog({ open, onClose }: LoginDialogProps) {
         {/* 分隔线 */}
         <div className="my-5 flex items-center gap-3">
           <div className="h-px flex-1 bg-black/[0.08]" />
-          <span className="text-[11px] uppercase tracking-wider text-[var(--color-ink-48)]">或</span>
+          <span className="text-[11px] uppercase tracking-wider text-[var(--color-ink-48)]">{t("or")}</span>
           <div className="h-px flex-1 bg-black/[0.08]" />
         </div>
 
@@ -102,7 +104,7 @@ export function LoginDialog({ open, onClose }: LoginDialogProps) {
           onClick={onClose}
           className="mt-4 w-full text-center text-[13px] text-[var(--color-ink-48)] transition-colors hover:text-[var(--color-ink)]"
         >
-          稍后再说
+          {t("later")}
         </button>
       </div>
     </div>,
@@ -112,6 +114,7 @@ export function LoginDialog({ open, onClose }: LoginDialogProps) {
 
 /** 邮箱 Magic Link 表单：输入邮箱 → POST /api/auth/magic/request → 显示"已发送"提示 */
 function MagicLinkForm() {
+  const t = useTranslations("LoginDialog");
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -143,13 +146,13 @@ function MagicLinkForm() {
       <div className="mt-5 rounded-[var(--radius-md)] bg-[rgba(52,199,89,0.08)] px-4 py-3 text-center">
         <i className="ph ph-check-circle text-[20px] text-[var(--color-green-strong)]" />
         <div className="mt-1 text-[13px] font-medium text-[var(--color-ink-80)]">
-          登录链接已发送至
+          {t("linkSent")}
         </div>
         <div className="text-[14px] font-semibold text-[var(--color-ink)]">
           {email}
         </div>
         <div className="mt-1 text-[12px] text-[var(--color-ink-48)]">
-          请在 15 分钟内查收邮件并点击其中的按钮登录。
+          {t("checkEmail")}
         </div>
         <button
           type="button"
@@ -159,7 +162,7 @@ function MagicLinkForm() {
           }}
           className="mt-2 text-[12px] font-medium text-[var(--color-primary-focus)] transition-colors hover:text-[var(--color-primary)]"
         >
-          换个邮箱
+          {t("changeEmail")}
         </button>
       </div>
     );
@@ -174,7 +177,7 @@ function MagicLinkForm() {
           inputMode="email"
           autoComplete="email"
           required
-          placeholder="邮箱"
+          placeholder={t("emailPlaceholder")}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           disabled={status === "sending"}
@@ -188,11 +191,11 @@ function MagicLinkForm() {
       >
         {status === "sending" ? (
           <>
-            <span className="spinner" /> 发送中
+            <span className="spinner" /> {t("sending")}
           </>
         ) : (
           <>
-            <i className="ph ph-paper-plane-tilt" /> 发送登录链接
+            <i className="ph ph-paper-plane-tilt" /> {t("sendLink")}
           </>
         )}
       </button>

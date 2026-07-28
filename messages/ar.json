@@ -52,7 +52,8 @@
   },
   "SupportedApps": {
     "title": "{count} تطبيق مفهرس",
-    "desc": "ليس في المكتبة؟ أضفه بنفسك - بحث فوري."
+    "desc": "ليس في المكتبة؟ أضفه بنفسك - بحث فوري.",
+    "viewAll": "عرض جميع التطبيقات"
   },
   "Pricing": {
     "title": "جرّب مجاناً أولاً، ادفع إذا كان يستحق",
@@ -85,5 +86,49 @@
     "isHighest": "الأغلى بالفعل",
     "vsYourRegion": "مقارنة بمنطقتك",
     "noPrice": "لا يوجد سعر لهذه المنطقة"
+  },
+  "AppsPage": {
+    "title": "جميع التطبيقات",
+    "desc": "ابحث وقارن أسعار App Store حول العالم.",
+    "totalCount": "{count} تطبيق مفهرس",
+    "searchResults": "{count} نتائج",
+    "noMatch": "لا تطبيقات لـ \"{q}\". الصق رابط أو ID App Store للإضافة.",
+    "empty": "المكتبة فارغة. الصق رابط أو ID App Store لإضافة أول تطبيق."
+  },
+  "AppsToolbar": {
+    "searchPlaceholder": "ابحث بالاسم، أو الصق رابط / ID App Store",
+    "addToLibrary": "أضف إلى المكتبة",
+    "adding": "جارٍ الإضافة...",
+    "clearSearch": "مسح البحث",
+    "loginRequired": "سجّل الدخول لإضافة التطبيقات",
+    "viewOnAppStore": "عرض في App Store"
+  },
+  "AppsSort": {
+    "sortBy": "ترتيب",
+    "recent": "أضيفت حديثاً",
+    "rating_count": "الأكثر تقييماً",
+    "rating": "أعلى تقييم",
+    "name": "الاسم A-Z",
+    "sortByLabel": "ترتيب حسب"
+  },
+  "AppsList": {
+    "loadingMore": "جارٍ التحميل...",
+    "allLoaded": "تم تحميل {count} تطبيق",
+    "noLocalMatch": "لا نتائج محلية، {count} نتيجة من دليل Apple يمكن إضافتها",
+    "addHint": "انقر \"إضافة\" لجلب البيانات من Apple وبدء تجميع الأسعار في 35 منطقة. تسجيل الدخول مطلوب."
+  },
+  "LoginDialog": {
+    "title": "سجّل الدخول لرؤية الأسعار الكاملة",
+    "desc": "3 مجاني يومياً · أو $1.99 مدى الحياة",
+    "google": "المتابعة مع Google",
+    "or": "أو",
+    "later": "لاحقاً",
+    "emailPlaceholder": "البريد الإلكتروني",
+    "sendLink": "إرسال رابط الدخول",
+    "sending": "جارٍ الإرسال...",
+    "linkSent": "تم إرسال الرابط إلى",
+    "checkEmail": "تحقق من بريدك خلال 15 دقيقة وانقر على الزر لتسجيل الدخول.",
+    "changeEmail": "بريد آخر",
+    "ariaLabel": "تسجيل الدخول"
   }
 }

@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import type { AppSortKey } from "@/lib/db";
 import { parseAppInput } from "@/lib/parse-input";
 
@@ -15,6 +16,7 @@ export function AppsToolbar({
   initialSort: AppSortKey;
 }) {
   const router = useRouter();
+  const t = useTranslations("AppsToolbar");
   const [input, setInput] = useState(initialQ);
   const [adding, setAdding] = useState(false);
   const [addError, setAddError] = useState<string | null>(null);
@@ -89,7 +91,7 @@ export function AppsToolbar({
         app?: { app_id: string };
       };
       if (!resp.ok) {
-        if (resp.status === 401) throw new Error("请先登录后再添加 App");
+        if (resp.status === 401) throw new Error(t("loginRequired"));
         // no_pricing 等带 appStoreUrl 的拒绝：保留链接供用户跳转
         if (data.appStoreUrl) setAddAppStoreUrl(data.appStoreUrl);
         throw new Error(data.error || `HTTP ${resp.status}`);
@@ -121,7 +123,7 @@ export function AppsToolbar({
             onKeyDown={(e) => {
               if (e.key === "Enter" && parsedInput && !adding) handleDirectAdd();
             }}
-            placeholder="搜索名称，或粘贴 App Store 链接 / ID 添加"
+            placeholder={t("searchPlaceholder")}
             autoCorrect="off"
             spellCheck={false}
             className="w-full rounded-[var(--radius-md)] border border-black/[0.08] bg-white py-2.5 pl-9 pr-9 text-sm outline-none transition-colors focus:border-[var(--color-primary-focus)]"
@@ -131,7 +133,7 @@ export function AppsToolbar({
               type="button"
               onClick={() => onSearchChange("")}
               className="absolute right-2 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full text-[var(--color-ink-48)] transition-colors hover:bg-[var(--color-parchment)] hover:text-[var(--color-ink)]"
-              aria-label="清除搜索"
+              aria-label={t("clearSearch")}
             >
               <i className="ph ph-x text-sm" />
             </button>
@@ -148,11 +150,11 @@ export function AppsToolbar({
           >
             {adding ? (
               <>
-                <span className="spinner" /> 添加中
+                <span className="spinner" /> {t("adding")}
               </>
             ) : (
               <>
-                <i className="ph ph-plus text-base" /> 添加到库
+                <i className="ph ph-plus text-base" /> {t("addToLibrary")}
               </>
             )}
           </button>
@@ -172,7 +174,7 @@ export function AppsToolbar({
               rel="noopener noreferrer"
               className="mt-1.5 inline-flex items-center gap-1 text-xs font-semibold text-[var(--color-red)] underline decoration-[var(--color-red)]/40 underline-offset-2 hover:decoration-[var(--color-red)]"
             >
-              前往 App Store 查看
+              {t("viewOnAppStore")}
               <i className="ph ph-arrow-square-out" />
             </a>
           )}

@@ -52,7 +52,8 @@
   },
   "SupportedApps": {
     "title": "{count}개 App 수록",
-    "desc": "라이브러리에 없나요? 직접 추가 - 즉시 조회."
+    "desc": "라이브러리에 없나요? 직접 추가 - 즉시 조회.",
+    "viewAll": "모든 앱 보기"
   },
   "Pricing": {
     "title": "먼저 무료로, 가치가 있으면 결제",
@@ -85,5 +86,49 @@
     "isHighest": "이미 최고가",
     "vsYourRegion": "현재 지역 대비",
     "noPrice": "이 지역 가격 정보 없음"
+  },
+  "AppsPage": {
+    "title": "모든 앱",
+    "desc": "전 세계 App Store 가격을 검색하고 비교하세요.",
+    "totalCount": "{count}개 앱 수록",
+    "searchResults": "{count}개 결과 찾음",
+    "noMatch": "\"{q}\"와 일치하는 앱이 없습니다. App Store 링크나 ID를 붙여넣어 추가해보세요.",
+    "empty": "라이브러리가 비어 있습니다. App Store 링크나 ID를 붙여넣어 첫 앱을 추가하세요."
+  },
+  "AppsToolbar": {
+    "searchPlaceholder": "이름 검색, 또는 App Store 링크 / ID 붙여넣기",
+    "addToLibrary": "라이브러리에 추가",
+    "adding": "추가 중...",
+    "clearSearch": "검색 지우기",
+    "loginRequired": "앱을 추가하려면 로그인하세요",
+    "viewOnAppStore": "App Store에서 보기"
+  },
+  "AppsSort": {
+    "sortBy": "정렬",
+    "recent": "최신순",
+    "rating_count": "리뷰 많은순",
+    "rating": "평점순",
+    "name": "이름 A-Z",
+    "sortByLabel": "정렬 기준"
+  },
+  "AppsList": {
+    "loadingMore": "더 불러오는 중...",
+    "allLoaded": "모든 {count}개 앱 로드됨",
+    "noLocalMatch": "로컬 일치 없음, Apple 디렉토리에서 {count}개 결과 추가 가능",
+    "addHint": "\"추가\"를 클릭하면 Apple에서 정보를 가져오고 35개 지역 가격 크롤링이 시작됩니다. 로그인 필요."
+  },
+  "LoginDialog": {
+    "title": "로그인하여 전체 가격 확인",
+    "desc": "매일 3회 무료 · 또는 $1.99 영구 해제",
+    "google": "Google로 계속하기",
+    "or": "또는",
+    "later": "나중에",
+    "emailPlaceholder": "이메일",
+    "sendLink": "로그인 링크 보내기",
+    "sending": "보내는 중...",
+    "linkSent": "로그인 링크 전송됨:",
+    "checkEmail": "15분 이내에 이메일을 확인하고 버튼을 클릭하여 로그인하세요.",
+    "changeEmail": "다른 이메일 사용",
+    "ariaLabel": "로그인"
   }
 }

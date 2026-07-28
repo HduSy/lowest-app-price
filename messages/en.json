@@ -52,7 +52,8 @@
   },
   "SupportedApps": {
     "title": "{count} Apps indexed",
-    "desc": "Not in the library? Add it yourself — instant lookup."
+    "desc": "Not in the library? Add it yourself — instant lookup.",
+    "viewAll": "View all apps"
   },
   "Pricing": {
     "title": "Try free first, pay if it is worth",
@@ -85,5 +86,49 @@
     "isHighest": "Already highest",
     "vsYourRegion": "vs your region",
     "noPrice": "No price for this region"
+  },
+  "AppsPage": {
+    "title": "All Apps",
+    "desc": "Search and compare App Store prices worldwide.",
+    "totalCount": "{count} apps indexed",
+    "searchResults": "{count} results found",
+    "noMatch": "No apps matching \"{q}\". Try pasting an App Store link or ID to add.",
+    "empty": "Library is empty. Paste an App Store link or ID to add the first one."
+  },
+  "AppsToolbar": {
+    "searchPlaceholder": "Search by name, or paste App Store link / ID to add",
+    "addToLibrary": "Add to library",
+    "adding": "Adding...",
+    "clearSearch": "Clear search",
+    "loginRequired": "Please sign in to add apps",
+    "viewOnAppStore": "View on App Store"
+  },
+  "AppsSort": {
+    "sortBy": "Sort",
+    "recent": "Recently added",
+    "rating_count": "Most reviewed",
+    "rating": "Highest rated",
+    "name": "Name A-Z",
+    "sortByLabel": "Sort by"
+  },
+  "AppsList": {
+    "loadingMore": "Loading more...",
+    "allLoaded": "All {count} apps loaded",
+    "noLocalMatch": "No local match, {count} results from Apple directory can be added",
+    "addHint": "Click \"Add\" to fetch from Apple and trigger 35-region price crawling. Sign in required."
+  },
+  "LoginDialog": {
+    "title": "Sign in to see full prices",
+    "desc": "3 free daily · or $1.99 lifetime unlock",
+    "google": "Continue with Google",
+    "or": "or",
+    "later": "Maybe later",
+    "emailPlaceholder": "Email",
+    "sendLink": "Send login link",
+    "sending": "Sending...",
+    "linkSent": "Login link sent to",
+    "checkEmail": "Check your email within 15 minutes and click the button to sign in.",
+    "changeEmail": "Use a different email",
+    "ariaLabel": "Login"
   }
 }

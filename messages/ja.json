@@ -52,7 +52,8 @@
   },
   "SupportedApps": {
     "title": "{count} App 収録",
-    "desc": "ライブラリにない？自分で追加 - すぐに検索。"
+    "desc": "ライブラリにない？自分で追加 - すぐに検索。",
+    "viewAll": "すべてのアプリを表示"
   },
   "Pricing": {
     "title": "まず無料で試す、価値があれば払う",
@@ -85,5 +86,49 @@
     "isHighest": "すでに最高値",
     "vsYourRegion": "あなたの地域と比較",
     "noPrice": "この地域の価格はありません"
+  },
+  "AppsPage": {
+    "title": "すべてのアプリ",
+    "desc": "世界中の App Store 価格を検索・比較。",
+    "totalCount": "{count} アプリ収録",
+    "searchResults": "{count} 件見つかりました",
+    "noMatch": "\"{q}\" に一致するアプリはありません。App Store リンクまたは ID を貼り付けて追加してください。",
+    "empty": "ライブラリは空です。App Store リンクまたは ID を貼り付けて最初のアプリを追加してください。"
+  },
+  "AppsToolbar": {
+    "searchPlaceholder": "名前で検索、または App Store リンク / ID を貼り付け",
+    "addToLibrary": "ライブラリに追加",
+    "adding": "追加中...",
+    "clearSearch": "検索をクリア",
+    "loginRequired": "アプリを追加するにはログインしてください",
+    "viewOnAppStore": "App Store で表示"
+  },
+  "AppsSort": {
+    "sortBy": "並び替え",
+    "recent": "新着順",
+    "rating_count": "レビュー数順",
+    "rating": "評価順",
+    "name": "名前 A-Z",
+    "sortByLabel": "並び替え"
+  },
+  "AppsList": {
+    "loadingMore": "さらに読み込み中...",
+    "allLoaded": "全 {count} アプリを読み込みました",
+    "noLocalMatch": "ローカルに一致なし、Apple ディレクトリに {count} 件追加可能",
+    "addHint": "「追加」をクリックすると Apple から情報を取得し、35 地域の価格取得を開始します。ログインが必要です。"
+  },
+  "LoginDialog": {
+    "title": "ログインして全価格を表示",
+    "desc": "毎日 3 回無料 · または $1.99 で永久解放",
+    "google": "Google でログイン",
+    "or": "または",
+    "later": "後で",
+    "emailPlaceholder": "メール",
+    "sendLink": "ログインリンクを送信",
+    "sending": "送信中...",
+    "linkSent": "ログインリンクを送信しました:",
+    "checkEmail": "15分以内にメールを確認し、ボタンをクリックしてログインしてください。",
+    "changeEmail": "別のメールアドレス",
+    "ariaLabel": "ログイン"
   }
 }

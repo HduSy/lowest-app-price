@@ -52,7 +52,8 @@
   },
   "SupportedApps": {
     "title": "{count} apps répertoriées",
-    "desc": "Pas dans la bibliothèque ? Ajoutez-la vous-même - recherche instantanée."
+    "desc": "Pas dans la bibliothèque ? Ajoutez-la vous-même - recherche instantanée.",
+    "viewAll": "Voir toutes les apps"
   },
   "Pricing": {
     "title": "Essayez d'abord gratuitement, payez si ça vaut le coup",
@@ -85,5 +86,49 @@
     "isHighest": "Déjà le plus cher",
     "vsYourRegion": "vs votre région",
     "noPrice": "Pas de prix pour cette région"
+  },
+  "AppsPage": {
+    "title": "Toutes les apps",
+    "desc": "Rechercher et comparer les prix App Store dans le monde.",
+    "totalCount": "{count} apps répertoriées",
+    "searchResults": "{count} résultats trouvés",
+    "noMatch": "Aucune app pour \"{q}\". Collez un lien App Store ou un ID pour ajouter.",
+    "empty": "La bibliothèque est vide. Collez un lien App Store ou un ID pour ajouter la première."
+  },
+  "AppsToolbar": {
+    "searchPlaceholder": "Rechercher par nom, ou coller un lien App Store / ID",
+    "addToLibrary": "Ajouter à la bibliothèque",
+    "adding": "Ajout...",
+    "clearSearch": "Effacer la recherche",
+    "loginRequired": "Connectez-vous pour ajouter des apps",
+    "viewOnAppStore": "Voir sur l'App Store"
+  },
+  "AppsSort": {
+    "sortBy": "Trier",
+    "recent": "Récemment ajoutées",
+    "rating_count": "Plus d'avis",
+    "rating": "Mieux notées",
+    "name": "Nom A-Z",
+    "sortByLabel": "Trier par"
+  },
+  "AppsList": {
+    "loadingMore": "Chargement...",
+    "allLoaded": "Toutes les {count} apps chargées",
+    "noLocalMatch": "Pas de résultat local, {count} résultats du catalogue Apple ajoutables",
+    "addHint": "Cliquez sur \"Ajouter\" pour récupérer depuis Apple et lancer le crawl des prix sur 35 régions. Connexion requise."
+  },
+  "LoginDialog": {
+    "title": "Connectez-vous pour voir tous les prix",
+    "desc": "3 gratuits par jour · ou $1.99 à vie",
+    "google": "Continuer avec Google",
+    "or": "ou",
+    "later": "Plus tard",
+    "emailPlaceholder": "E-mail",
+    "sendLink": "Envoyer le lien",
+    "sending": "Envoi...",
+    "linkSent": "Lien envoyé à",
+    "checkEmail": "Vérifiez votre e-mail dans les 15 minutes et cliquez sur le bouton pour vous connecter.",
+    "changeEmail": "Autre e-mail",
+    "ariaLabel": "Connexion"
   }
 }

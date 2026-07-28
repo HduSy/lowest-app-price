@@ -52,7 +52,8 @@
   },
   "SupportedApps": {
     "title": "{count} Apps erfasst",
-    "desc": "Nicht in der Bibliothek? Selbst hinzufügen - sofortige Abfrage."
+    "desc": "Nicht in der Bibliothek? Selbst hinzufügen - sofortige Abfrage.",
+    "viewAll": "Alle apps ansehen"
   },
   "Pricing": {
     "title": "Erst kostenlos testen, zahlen wenn es sich lohnt",
@@ -85,5 +86,49 @@
     "isHighest": "Bereits am teuersten",
     "vsYourRegion": "ggü. deiner Region",
     "noPrice": "Kein Preis für diese Region"
+  },
+  "AppsPage": {
+    "title": "Alle Apps",
+    "desc": "App Store-Preise weltweit suchen und vergleichen.",
+    "totalCount": "{count} Apps erfasst",
+    "searchResults": "{count} Ergebnisse gefunden",
+    "noMatch": "Keine Apps für \"{q}\". Versuche einen App Store-Link oder eine ID einzufügen.",
+    "empty": "Bibliothek ist leer. Füge einen App Store-Link oder eine ID hinzu."
+  },
+  "AppsToolbar": {
+    "searchPlaceholder": "Nach Name suchen, oder App Store-Link / ID einfügen",
+    "addToLibrary": "Zur Bibliothek hinzufügen",
+    "adding": "Wird hinzugefügt...",
+    "clearSearch": "Suche löschen",
+    "loginRequired": "Bitte melde dich an, um Apps hinzuzufügen",
+    "viewOnAppStore": "Im App Store ansehen"
+  },
+  "AppsSort": {
+    "sortBy": "Sortieren",
+    "recent": "Zuletzt hinzugefügt",
+    "rating_count": "Meiste Bewertungen",
+    "rating": "Beste Bewertung",
+    "name": "Name A-Z",
+    "sortByLabel": "Sortieren nach"
+  },
+  "AppsList": {
+    "loadingMore": "Mehr laden...",
+    "allLoaded": "Alle {count} Apps geladen",
+    "noLocalMatch": "Kein lokaler Treffer, {count} Ergebnisse aus dem Apple-Verzeichnis können hinzugefügt werden",
+    "addHint": "Klicke auf \"Hinzufügen\", um Daten von Apple abzurufen und 35-Regionen-Preis-Crawling auszulösen. Anmeldung erforderlich."
+  },
+  "LoginDialog": {
+    "title": "Anmelden für vollständige Preise",
+    "desc": "Täglich 3 kostenlos · oder $1.99 dauerhaft",
+    "google": "Mit Google fortfahren",
+    "or": "oder",
+    "later": "Vielleicht später",
+    "emailPlaceholder": "E-Mail",
+    "sendLink": "Login-Link senden",
+    "sending": "Wird gesendet...",
+    "linkSent": "Login-Link gesendet an",
+    "checkEmail": "Prüfe deine E-Mail innerhalb von 15 Minuten und klicke auf den Button zum Anmelden.",
+    "changeEmail": "Andere E-Mail verwenden",
+    "ariaLabel": "Anmelden"
   }
 }

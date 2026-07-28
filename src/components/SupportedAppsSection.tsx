@@ -118,7 +118,7 @@ export async function SupportedAppsSection({ country }: { country: string }) {
           href={`/${country}/apps`}
           className="inline-flex items-center gap-2 rounded-full border border-[var(--color-primary-focus)] px-6 py-2.5 text-sm font-semibold text-[var(--color-primary-focus)] transition-all hover:bg-[var(--color-primary-focus)] hover:text-white active:scale-95"
         >
-          查看全部 App
+          {t("viewAll")}
           <i className="ph ph-arrow-right" />
         </Link>
       </div>
