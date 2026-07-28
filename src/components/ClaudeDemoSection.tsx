@@ -1,9 +1,11 @@
-import Link from "next/link";
-import { getTranslations } from "next-intl/server";
-import { getDb, getApp, getPrices } from "@/lib/db";
+"use client";
+
+import { useEffect, useState, useMemo } from "react";
+import { useTranslations } from "next-intl";
+import { useCurrency } from "@/lib/app-store";
+import type { AggregatedEntry, App, PriceRow } from "@/lib/types";
 import { adaptPricesForCompare, aggregate } from "@/lib/compare";
 import { getRates } from "@/lib/exchange";
-import type { AggregatedEntry } from "@/lib/types";
 import { Flag } from "./Flag";
 import { AnimatedNumber } from "./AnimatedNumber";
 
@@ -37,41 +39,61 @@ const ACCENT_STYLES: Record<
 
 /**
  * 首页演示区：以 Claude app 订阅为例，展示「最便宜 / 你所在区 / 最贵」三档价格。
- * - 顺序：低价（左，最高）· 你所在区（中）· 高价（右，最矮）
- * - 最便宜卡：-XX% OFF（绿 #248a3d，滚动动效）
- * - 最贵卡：+XX%（红 #ff3b30，滚动动效）
- * - 价格数字均带滚动动效
- * 服务端渲染，静默失败--DB 不可用或无 Claude 数据时不渲染。
+ * - 客户端组件：订阅 zustand 币种 store，切币种时实时换算
+ * - SSR 传入初始数据（app + prices + 初始币种），避免首屏白屏
+ * - 静默失败--DB 不可用或无 Claude 数据时父级不渲染本组件
  */
-export async function ClaudeDemoSection({
+export function ClaudeDemoSection({
   detectedCode,
-  displayCurrency,
+  initialCurrency,
   country,
+  app,
+  prices,
 }: {
   detectedCode: string;
-  displayCurrency: string;
+  initialCurrency: string;
   country: string;
+  app: App;
+  prices: PriceRow[];
 }) {
-  let app, prices;
-  try {
-    const db = await getDb();
-    [app, prices] = await Promise.all([
-      getApp(db, CLAUDE_APP_ID),
-      getPrices(db, CLAUDE_APP_ID),
-    ]);
-  } catch {
-    return null;
-  }
-  if (!app || !prices.length) return null;
+  const t = useTranslations("ClaudeDemo");
+  // 全局展示币种（用户可在 header 切换）；SSR 用 initialCurrency 兜底
+  const storeCurrency = useCurrency((s) => s.currency);
+  const displayCurrency = storeCurrency || initialCurrency;
 
-  let agg;
-  try {
-    const rates = await getRates("USD");
-    agg = aggregate(adaptPricesForCompare(prices), displayCurrency, rates);
-  } catch {
-    return null;
+  // 汇率缓存：避免每次币种变化都重新请求
+  const [rates, setRates] = useState<Record<string, number> | null>(null);
+  useEffect(() => {
+    let cancelled = false;
+    getRates("USD")
+      .then((r) => {
+        if (!cancelled) setRates(r);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // 币种/汇率变化时重新聚合
+  const agg = useMemo(() => {
+    if (!rates) return null;
+    try {
+      return aggregate(adaptPricesForCompare(prices), displayCurrency, rates);
+    } catch {
+      return null;
+    }
+  }, [prices, displayCurrency, rates]);
+
+  if (!agg || !agg.iaps.length) {
+    return (
+      <section className="px-[22px] py-8">
+        <div className="mx-auto max-w-[1100px]">
+          <ClaudeHeader app={app} tierName="" regionCount={0} displayCurrency={displayCurrency} t={t} />
+        </div>
+      </section>
+    );
   }
-  if (!agg.iaps.length) return null;
 
   // 与详情页默认一致：取最低价档位（iaps 已按 lowest 升序排列）
   const tier = agg.iaps[0];
@@ -89,7 +111,6 @@ export async function ClaudeDemoSection({
   const ipIsHighest = !!ipEntry && !!highest && ipEntry.region.code === highest.region.code;
 
   // 百分比均以「你所在区」为基准
-  // discountPct = 最便宜比你所在区便宜多少
   const discountPct =
     ipEntry?.convertedAmount != null &&
     lowest.convertedAmount != null &&
@@ -101,7 +122,6 @@ export async function ClaudeDemoSection({
             100
         )
       : null;
-  // premiumPct = 最贵比你所在区贵多少
   const premiumPct =
     ipEntry?.convertedAmount != null &&
     highest?.convertedAmount != null &&
@@ -115,30 +135,11 @@ export async function ClaudeDemoSection({
       : null;
 
   const regionCount = agg.regionsCovered.length;
-  const t = await getTranslations("ClaudeDemo");
 
   return (
     <section className="px-[22px] py-8">
       <div className="mx-auto max-w-[1100px]">
-        {/* 凸显 Claude app */}
-        <div className="mb-6 flex items-center justify-center gap-3.5">
-          {app.icon_url && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={app.icon_url}
-              alt=""
-              className="h-14 w-14 rounded-[12px] object-cover shadow-[0_2px_10px_rgba(0,0,0,0.1)]"
-            />
-          )}
-          <div className="text-left">
-            <div className="text-xl font-semibold leading-tight">
-              {app.name}
-            </div>
-            <div className="mt-0.5 text-sm leading-tight text-[var(--color-ink-48)]">
-              {t("tierMeta", { tierName: tier.name, count: regionCount, currency: displayCurrency })}
-            </div>
-          </div>
-        </div>
+        <ClaudeHeader app={app} tierName={tier.name} regionCount={regionCount} displayCurrency={displayCurrency} t={t} />
 
         {/* 高低起伏：最便宜（左，最矮）· 你所在区（中）· 最贵（右，最高） */}
         <div className="flex flex-col gap-3 md:items-end md:justify-center md:gap-5 md:flex-row">
@@ -150,6 +151,7 @@ export async function ClaudeDemoSection({
             heightClass="md:min-h-[232px]"
             currency={displayCurrency}
             discountPct={discountPct}
+            t={t}
           />
           <PriceCard
             label={t("yourRegion")}
@@ -160,6 +162,7 @@ export async function ClaudeDemoSection({
             currency={displayCurrency}
             ipIsLowest={ipIsLowest}
             ipIsHighest={ipIsHighest}
+            t={t}
           />
           <PriceCard
             label={t("highest")}
@@ -169,31 +172,68 @@ export async function ClaudeDemoSection({
             heightClass="md:min-h-[284px]"
             currency={displayCurrency}
             premiumPct={premiumPct}
+            t={t}
           />
         </div>
 
         {/* CTA */}
         <div className="mt-6 text-center">
-          <Link
+          <a
             href={`/${country}/apps/${CLAUDE_APP_ID}`}
             className="inline-flex items-center gap-2 rounded-full border border-[var(--color-primary-focus)] px-6 py-2.5 text-sm font-semibold text-[var(--color-primary-focus)] transition-all hover:bg-[var(--color-primary-focus)] hover:text-white active:scale-95"
           >
             {t("cta", { count: regionCount })}
             <i className="ph ph-arrow-right" />
-          </Link>
+          </a>
         </div>
       </div>
     </section>
   );
 }
 
-async function PriceCard({
+type TFunc = ReturnType<typeof useTranslations<"ClaudeDemo">>;
+
+function ClaudeHeader({
+  app,
+  tierName,
+  regionCount,
+  displayCurrency,
+  t,
+}: {
+  app: App;
+  tierName: string;
+  regionCount: number;
+  displayCurrency: string;
+  t: TFunc;
+}) {
+  return (
+    <div className="mb-6 flex items-center justify-center gap-3.5">
+      {app.icon_url && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={app.icon_url}
+          alt=""
+          className="h-14 w-14 rounded-[12px] object-cover shadow-[0_2px_10px_rgba(0,0,0,0.1)]"
+        />
+      )}
+      <div className="text-left">
+        <div className="text-xl font-semibold leading-tight">{app.name}</div>
+        <div className="mt-0.5 text-sm leading-tight text-[var(--color-ink-48)]">
+          {t("tierMeta", { tierName, count: regionCount, currency: displayCurrency })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function PriceCard({
   label,
   icon,
   entry,
   accent,
   heightClass,
   currency,
+  t,
   ipIsLowest,
   ipIsHighest,
   discountPct,
@@ -205,12 +245,12 @@ async function PriceCard({
   accent: Accent;
   heightClass: string;
   currency: string;
+  t: TFunc;
   ipIsLowest?: boolean;
   ipIsHighest?: boolean;
   discountPct?: number | null;
   premiumPct?: number | null;
 }) {
-  const t = await getTranslations("ClaudeDemo");
   const s = ACCENT_STYLES[accent];
   return (
     <div

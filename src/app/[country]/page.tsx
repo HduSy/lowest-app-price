@@ -8,6 +8,7 @@ import { ClaudeDemoSection } from "@/components/ClaudeDemoSection";
 import { SupportedAppsSection } from "@/components/SupportedAppsSection";
 import { getCurrentUser } from "@/lib/session";
 import { getTranslations } from "next-intl/server";
+import { getDb, getApp, getPrices } from "@/lib/db";
 
 export default async function HomePage({
   params,
@@ -112,9 +113,9 @@ export default async function HomePage({
       </header>
 
       {/* 实例演示：以 Claude 订阅为例，展示 IP 区 / 最便宜 / 最贵 三档价格 */}
-      <ClaudeDemoSection
+      <ClaudeDemoFetcher
         detectedCode={detectedCode}
-        displayCurrency={detectedCurrency}
+        initialCurrency={detectedCurrency}
         country={country}
       />
       </div>
@@ -206,5 +207,42 @@ function FaqItem({ q, children }: { q: string; children: React.ReactNode }) {
         {children}
       </p>
     </details>
+  );
+}
+
+/**
+ * 服务端 fetcher：拉取 Claude app 数据后传给客户端组件 ClaudeDemoSection。
+ * 客户端组件订阅 zustand 币种 store，切币种时实时换算。
+ * 静默失败--DB 不可用或无 Claude 数据时不渲染。
+ */
+async function ClaudeDemoFetcher({
+  detectedCode,
+  initialCurrency,
+  country,
+}: {
+  detectedCode: string;
+  initialCurrency: string;
+  country: string;
+}) {
+  let app, prices;
+  try {
+    const db = await getDb();
+    [app, prices] = await Promise.all([
+      getApp(db, "6473753684"),
+      getPrices(db, "6473753684"),
+    ]);
+  } catch {
+    return null;
+  }
+  if (!app || !prices.length) return null;
+
+  return (
+    <ClaudeDemoSection
+      detectedCode={detectedCode}
+      initialCurrency={initialCurrency}
+      country={country}
+      app={app}
+      prices={prices}
+    />
   );
 }
