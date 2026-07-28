@@ -8,7 +8,6 @@ import { REGIONS, REGION_MAP } from "@/lib/regions";
 import { Picker } from "./Picker";
 import { useCurrency, useLanguage } from "@/lib/app-store";
 import { LANGUAGES, languageOption } from "@/lib/languages";
-import { currencyNames } from "@/lib/currencies";
 import type { Language } from "@/lib/languages";
 import { LoginDialog } from "./LoginDialog";
 import { UserMenu } from "./UserMenu";
@@ -36,6 +35,7 @@ export interface NavUser {
 
 export function Nav({ user = null }: { user?: NavUser | null }) {
   const t = useTranslations("Nav");
+  const tCur = useTranslations("Currencies");
   const pathname = usePathname() || "/";
   // URL 段 = 浏览区（可随意输），仅用于拼 nav 链接前缀
   const segs = pathname.split("/").filter(Boolean);
@@ -114,13 +114,11 @@ export function Nav({ user = null }: { user?: NavUser | null }) {
           onChange={setCurrency}
           options={CURRENCY_OPTIONS.map((c) => ({
             value: c,
-            label: currencyNames[c] ? (
+            label: (
               <span className="flex items-center gap-2">
                 <span className="font-semibold">{c}</span>
-                <span className="text-[var(--color-ink-48)]">{currencyNames[c]}</span>
+                <span className="text-[var(--color-ink-48)]">{tCur(c)}</span>
               </span>
-            ) : (
-              c
             ),
           }))}
           trigger={<span>{currency}</span>}
