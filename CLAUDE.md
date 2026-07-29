@@ -48,7 +48,25 @@ Also: OpenNext does not support `export const runtime = "edge"` in route handler
 
 ### i18n (`next-intl`)
 
-The app is bilingual: `messages/zh-CN.json` + `messages/en.json`. `src/i18n/request.ts` exports `getRequestConfig` and resolves locale by: cookie(`language`) > IP-detected country mapping (`src/lib/languages.ts` `languageForCountry()`) > defaultLocale (`en`). The `next-intl/plugin` is wired in `next.config.mjs` via `withNextIntl`. Server components use `getTranslations()` from `next-intl/server`; client components use `useTranslations()`. The `/<country>/...` URL segment carries only the country, never the language - language is cookie-driven. `AppStoreProvider` (client) also mirrors the language in Zustand for the in-page picker.
+The app supports **18 languages**: `messages/{locale}.json` for `ar / de / en / es / fr / hi / id / it / ja / ko / nl / pl / pt-BR / ru / th / tr / vi / zh-CN` (default `en`). `src/i18n/request.ts` exports `getRequestConfig` and resolves locale by: cookie(`language`) > IP-detected country mapping (`src/lib/languages.ts` `languageForCountry()`) > defaultLocale (`en`). The `next-intl/plugin` is wired in `next.config.mjs` via `withNextIntl`. Server components use `getTranslations()` from `next-intl/server`; client components use `useTranslations()`. The `/<country>/...` URL segment carries only the country, never the language - language is cookie-driven. `AppStoreProvider` (client) also mirrors the language in Zustand for the in-page picker.
+
+#### i18n 翻译流程（改任何 UI 文案必须遵守）
+
+**核心原则：任何 UI 文案改动 = 18 种语言全部同步**。漏翻会让对应语言用户看到 fallback 到 `en` 或 raw key 名，体验降级。流程：
+
+1. **加 key**：先在 `messages/zh-CN.json`（中文母语原文）和 `messages/en.json`（英文参考）同时加新 key；JSON 顶层 namespace 按组件分（`PriceTable` / `ShareButton` / `RelatedApps` / `LoginDialog` 等）。
+2. **同步 16 种其他语言**：每个新 key 都要翻成 ar/de/es/fr/hi/id/it/ja/ko/nl/pl/pt-BR/ru/th/tr/vi。可写 Node 脚本批量注入（参考历次 `messages/*.json` 注入脚本：`JSON.parse` → 改 `PriceTable`/新 namespace 段 → `JSON.stringify(data, null, 2)` 保留 2 空格缩进）。**幂等保护**：脚本开头先检查 key 是否已存在，已存在则跳过，避免重复执行覆盖手工精修。
+3. **代码接入**：client component 用 `const t = useTranslations("Namespace");`，server component（含 `async function`）用 `const t = await getTranslations("Namespace");`。
+4. **占位符规范**：
+   - 变量插值用 ICU `{varName}`，调用时 `t("key", { varName: value })`。
+   - 富文本（含 `<bold>` 等内联 JSX 包裹）用 `t.rich("key", { bold: (chunks) => <span ...>{chunks}</span> })`，messages 里写 `"text <bold>{var}</bold> more"`。
+   - **`$1.99` 是品牌价，所有语言保留字面 `$1.99`，不本地化货币符号或换算**。
+5. **JSON 验证**：改完跑 `node -e "JSON.parse(require('fs').readFileSync('messages/X.json','utf8'))"` 或循环全部 18 个文件，避免尾随逗号 / 缺逗号导致 next-intl 启动报错。
+6. **lint + type check**：`npm run lint` 干净 + `tsc --noEmit` 不引入新错误（预存在的 fetch-返回-unknown 等错误忽略）。
+
+**翻译质量**：拉丁语系（de/es/fr/it/nl/pl/pt-BR/ru）+ 日韩越印尼 把握高；ar/hi/th/tr 用母语化表达（如价格语境 ar 用 `الأرخص/الأغلى` 而非 `الأقل/الأعلى`，hi 弃音译 `सब्सक्रिप्शन` 改母语 `सदस्यता`，th 表头用 `คิดเป็น` 而非 `แปลงแล้ว`）。改这些语种时优先参考已有同类 key 的用词。
+
+**已 i18n 化的组件**：`PriceTable` / `LockedBanner`（PriceTable 内子组件）/ `IapTabs` / `IapPriceList` / `RelatedApps` + `RelatedAppsSkeleton` / `ShareButton`。仍可能有零散硬编码中文，发现就按上述流程补。
 
 ### Data Flow
 
@@ -108,7 +126,7 @@ All routes are Next.js Route Handlers under `/api/*`:
 
 ## Conventions
 
-- **UI 文案**：通过 next-intl 做 i18n，messages 在 `messages/{locale}.json`（当前支持 zh-CN / en）。代码注释仍用中文。locale 来源优先级：cookie(`language`) > IP 检测国家映射 > 兜底 en。路由 `/<country>/...` 只承载国家，语种走 cookie 不进路由。
+- **UI 文案**：通过 next-intl 做 i18n，messages 在 `messages/{locale}.json`（**18 种语言**，详见上文「i18n 翻译流程」小节）。代码注释仍用中文。locale 来源优先级：cookie(`language`) > IP 检测国家映射 > 兜底 en。路由 `/<country>/...` 只承载国家，语种走 cookie 不进路由。**改任何 UI 文案都必须同步全 18 种语言**，不能只改 zh-CN + en。
 - **Path alias**: `@/*` -> `./src/*`.
 - **Types**: shared interfaces live in `src/lib/types.ts` (`Region`, `App`, `PriceRow`, `IapEntry`, `RegionFetchResult`, `AggregatedIap`, `RegionRankItem`, `PricesResponse`, `ExternalSearchItem`, `SubscriptionPeriod`).
 - **Responses**: use `src/lib/api-response.ts` `json()` / `error()` helpers in route handlers.
