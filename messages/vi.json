@@ -120,8 +120,8 @@
     "tierLabel": "Cấp đăng ký",
     "regionsStatLabel": "khu vực đã so sánh",
     "tiersStatLabel": "cấp đã theo dõi",
-    "cachedLabel": "Đã lưu",
-    "freshLabel": "Mới",
+    "cachedLabel": "Cập nhật lần cuối",
+    "freshLabel": "Vừa xong",
     "lockedHintUnsigned": "Đăng nhập để xem miễn phí {limit} ứng dụng mỗi ngày",
     "lockedHintExhausted": "Đã hết hạn ngạch miễn phí {limit} hằng ngày · $1.99 mở khóa vĩnh viễn không giới hạn",
     "loginCta": "Đăng nhập",
@@ -138,7 +138,8 @@
     "emptyDesc": "Ứng dụng này có thể không có mua hàng trong ứng dụng hoặc cấp đăng ký để so sánh.",
     "initialLoadingTitle": "Đang lấy giá toàn cầu…",
     "initialLoadingHint": "Lần đầu tải 35 khu vực, mất vài giây",
-    "refreshingBanner": "Đang làm mới giá toàn cầu…"
+    "refreshingBanner": "Đang làm mới giá toàn cầu…",
+    "converting": "Đang quy đổi…"
   },
   "RelatedApps": {
     "title": "Bạn có thể cũng thích",

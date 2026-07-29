@@ -120,8 +120,8 @@
     "tierLabel": "Subscription tier",
     "regionsStatLabel": "regions compared",
     "tiersStatLabel": "tiers tracked",
-    "cachedLabel": "Cached",
-    "freshLabel": "Fresh",
+    "cachedLabel": "Last updated",
+    "freshLabel": "Just now",
     "lockedHintUnsigned": "Sign in for {limit} free App views daily",
     "lockedHintExhausted": "Daily {limit} free lookups exhausted · $1.99 lifetime unlock for unlimited",
     "loginCta": "Sign in",
@@ -138,7 +138,8 @@
     "emptyDesc": "This App may not have in-app purchases or subscription tiers to compare.",
     "initialLoadingTitle": "Fetching global prices…",
     "initialLoadingHint": "First load fetches 35 regions, takes a few seconds",
-    "refreshingBanner": "Refreshing global prices…"
+    "refreshingBanner": "Refreshing global prices…",
+    "converting": "Converting…"
   },
   "RelatedApps": {
     "title": "You might also like",

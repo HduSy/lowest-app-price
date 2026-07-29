@@ -120,8 +120,8 @@
     "tierLabel": "सदस्यता स्तर",
     "regionsStatLabel": "तुलना किए गए क्षेत्र",
     "tiersStatLabel": "ट्रैक किए गए स्तर",
-    "cachedLabel": "कैश्ड",
-    "freshLabel": "नवीनतम",
+    "cachedLabel": "अंतिम अपडेट",
+    "freshLabel": "अभी",
     "lockedHintUnsigned": "रोज़ {limit} ऐप्स मुफ़्त देखने के लिए लॉग इन करें",
     "lockedHintExhausted": "आज की {limit} मुफ़्त बार की सीमा समाप्त · $1.99 एकमुश्त अनलॉक, असीमित उपयोग",
     "loginCta": "लॉग इन",
@@ -138,7 +138,8 @@
     "emptyDesc": "इस ऐप में तुलना के लिए इन-ऐप खरीद या सदस्यता स्तर नहीं हो सकते।",
     "initialLoadingTitle": "वैश्विक मूल्य लाए जा रहे हैं…",
     "initialLoadingHint": "पहली बार 35 क्षेत्र लोड होते हैं, कुछ सेकंड लगते हैं",
-    "refreshingBanner": "वैश्विक मूल्य ताज़ा कर रहे हैं…"
+    "refreshingBanner": "वैश्विक मूल्य ताज़ा कर रहे हैं…",
+    "converting": "रूपांतरित कर रहे हैं…"
   },
   "RelatedApps": {
     "title": "आपको यह भी पसंद आ सकता है",

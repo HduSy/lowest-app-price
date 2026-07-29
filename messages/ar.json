@@ -120,8 +120,8 @@
     "tierLabel": "مستوى الاشتراك",
     "regionsStatLabel": "منطقة مُقارَنة",
     "tiersStatLabel": "مستوى مُتابَع",
-    "cachedLabel": "مخزّن مؤقتًا",
-    "freshLabel": "حديث",
+    "cachedLabel": "آخر تحديث",
+    "freshLabel": "الآن",
     "lockedHintUnsigned": "سجّل الدخول لمشاهدة {limit} تطبيقات مجانًا يوميًا",
     "lockedHintExhausted": "تم استنفاد حصتك اليومية من {limit} مشاهدات مجانية · $1.99 فتح دائم غير محدود",
     "loginCta": "تسجيل الدخول",
@@ -138,7 +138,8 @@
     "emptyDesc": "قد لا يحتوي هذا التطبيق على مشتريات داخل التطبيق أو مستويات اشتراك للمقارنة.",
     "initialLoadingTitle": "جارٍ جلب الأسعار العالمية…",
     "initialLoadingHint": "التحميل الأول يجلب 35 منطقة، يستغرق بضع ثوانٍ",
-    "refreshingBanner": "جارٍ تحديث الأسعار العالمية…"
+    "refreshingBanner": "جارٍ تحديث الأسعار العالمية…",
+    "converting": "جارٍ التحويل…"
   },
   "RelatedApps": {
     "title": "قد يعجبك أيضًا",

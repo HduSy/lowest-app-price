@@ -120,8 +120,8 @@
     "tierLabel": "Abonelik seviyesi",
     "regionsStatLabel": "bölge karşılaştırıldı",
     "tiersStatLabel": "izlenen seviye",
-    "cachedLabel": "Önbelleğe alındı",
-    "freshLabel": "Güncel",
+    "cachedLabel": "Son güncelleme",
+    "freshLabel": "Az önce",
     "lockedHintUnsigned": "Günlük {limit} ücretsiz uygulama görüntüleme için giriş yap",
     "lockedHintExhausted": "Bugünkü {limit} ücretsiz hakkınız tükendi · $1.99 tek seferlik ödeme ile sınırsız erişim",
     "loginCta": "Giriş yap",
@@ -138,7 +138,8 @@
     "emptyDesc": "Bu uygulamada karşılaştırılacak uygulama içi satın alım veya abonelik seviyeleri olmayabilir.",
     "initialLoadingTitle": "Küresel fiyatlar getiriliyor…",
     "initialLoadingHint": "İlk yükleme 35 bölgeyi getirir, birkaç saniye sürer",
-    "refreshingBanner": "Küresel fiyatlar yenileniyor…"
+    "refreshingBanner": "Küresel fiyatlar yenileniyor…",
+    "converting": "Dönüştürülüyor…"
   },
   "RelatedApps": {
     "title": "Şunlar da hoşunuza gidebilir",

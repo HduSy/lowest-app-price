@@ -120,8 +120,8 @@
     "tierLabel": "Niveau d'abonnement",
     "regionsStatLabel": "régions comparées",
     "tiersStatLabel": "niveaux suivis",
-    "cachedLabel": "En cache",
-    "freshLabel": "Récent",
+    "cachedLabel": "Dernière mise à jour",
+    "freshLabel": "À l'instant",
     "lockedHintUnsigned": "Connectez-vous pour {limit} vues d'apps gratuites par jour",
     "lockedHintExhausted": "Quota quotidien de {limit} gratuités épuisé · $1.99 débloque à vie en illimité",
     "loginCta": "Se connecter",
@@ -138,7 +138,8 @@
     "emptyDesc": "Cette app n'a peut-être pas d'achats intégrés ni de niveaux d'abonnement à comparer.",
     "initialLoadingTitle": "Récupération des prix mondiaux…",
     "initialLoadingHint": "Le premier chargement récupère 35 régions, prend quelques secondes",
-    "refreshingBanner": "Actualisation des prix mondiaux…"
+    "refreshingBanner": "Actualisation des prix mondiaux…",
+    "converting": "Conversion…"
   },
   "RelatedApps": {
     "title": "Vous pourriez aussi aimer",

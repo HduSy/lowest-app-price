@@ -120,8 +120,8 @@
     "tierLabel": "Livello abbonamento",
     "regionsStatLabel": "regioni confrontate",
     "tiersStatLabel": "livelli monitorati",
-    "cachedLabel": "In cache",
-    "freshLabel": "Aggiornato",
+    "cachedLabel": "Ultimo aggiornamento",
+    "freshLabel": "Adesso",
     "lockedHintUnsigned": "Accedi per {limit} visualizzazioni app gratuite giornaliere",
     "lockedHintExhausted": "Quota giornaliera di {limit} gratuita esaurita · $1.99 sblocco unico illimitato",
     "loginCta": "Accedi",
@@ -138,7 +138,8 @@
     "emptyDesc": "Questa app potrebbe non avere acquisti in-app o livelli di abbonamento da confrontare.",
     "initialLoadingTitle": "Recupero dei prezzi globali…",
     "initialLoadingHint": "Il primo caricamento recupera 35 regioni, richiede alcuni secondi",
-    "refreshingBanner": "Aggiornamento dei prezzi globali…"
+    "refreshingBanner": "Aggiornamento dei prezzi globali…",
+    "converting": "Conversione…"
   },
   "RelatedApps": {
     "title": "Potrebbero interessarti",

@@ -121,7 +121,7 @@
     "regionsStatLabel": "个地区已比价",
     "tiersStatLabel": "个订阅档位",
     "cachedLabel": "上次更新",
-    "freshLabel": "最新",
+    "freshLabel": "刚刚",
     "lockedHintUnsigned": "登录后每天免费看 {limit} 个 App 的完整价格",
     "lockedHintExhausted": "今日 {limit} 次免费额度已用完 · $1.99 永久买断后无限看",
     "loginCta": "登录",
@@ -138,7 +138,8 @@
     "emptyDesc": "可能是这款 App 没有内购或订阅档位可供比价。",
     "initialLoadingTitle": "正在抓取全球价格…",
     "initialLoadingHint": "首次加载需抓取 35 个地区数据，约几秒",
-    "refreshingBanner": "正在刷新全球价格…"
+    "refreshingBanner": "正在刷新全球价格…",
+    "converting": "换算中…"
   },
   "RelatedApps": {
     "title": "你可能也喜欢",

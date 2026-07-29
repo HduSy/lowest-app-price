@@ -120,8 +120,8 @@
     "tierLabel": "Nível de assinatura",
     "regionsStatLabel": "regiões comparadas",
     "tiersStatLabel": "níveis rastreados",
-    "cachedLabel": "Em cache",
-    "freshLabel": "Atualizado",
+    "cachedLabel": "Última atualização",
+    "freshLabel": "Agora",
     "lockedHintUnsigned": "Entre para {limit} visualizações grátis de apps por dia",
     "lockedHintExhausted": "Cota diária de {limit} gratuitos esgotada · $1.99 desbloqueio único ilimitado",
     "loginCta": "Entrar",
@@ -138,7 +138,8 @@
     "emptyDesc": "Este app pode não ter compras integradas ou níveis de assinatura para comparar.",
     "initialLoadingTitle": "Buscando preços globais…",
     "initialLoadingHint": "O primeiro carregamento busca 35 regiões, leva alguns segundos",
-    "refreshingBanner": "Atualizando preços globais…"
+    "refreshingBanner": "Atualizando preços globais…",
+    "converting": "Convertendo…"
   },
   "RelatedApps": {
     "title": "Você também pode gostar",

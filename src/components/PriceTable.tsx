@@ -144,6 +144,12 @@ export function PriceTable({
   // 仅当存在被锁档位（总档位 > 可见数）时才真正限制
   const hasLockedIaps = locked && iaps.length > freeCount;
 
+  // 标签显示"最新/刚刚"还是"上次更新"：
+  // 只有刚刷新完（cached=false）且当前没在刷新中（!refreshing）才显示绿色"刚刚"，
+  // 其余情况（TTL 内未刷新 / 过期刷新中 / admin 刷新中）一律显示灰色"上次更新 + 旧时间"，
+  // 避免刷新过程中"正在刷新"横幅和"最新"标签语义冲突。
+  const showFresh = !cached && !refreshing && !adminRefreshing;
+
   useEffect(() => {
     let cancelled = false;
     setLoading(true);
@@ -246,13 +252,13 @@ export function PriceTable({
         <div className="flex items-center gap-3">
           <span
             className={`rounded-full px-3 py-1 text-xs font-semibold ${
-              cached
-                ? "bg-[var(--color-parchment)] text-[var(--color-ink-48)]"
-                : "bg-[rgba(52,199,89,0.1)] text-[var(--color-green-strong)]"
+              showFresh
+                ? "bg-[rgba(52,199,89,0.1)] text-[var(--color-green-strong)]"
+                : "bg-[var(--color-parchment)] text-[var(--color-ink-48)]"
             }`}
           >
-            <i className={`ph ${cached ? "ph-clock" : "ph-check"}`} />{" "}
-            {cached ? t("cachedLabel") : t("freshLabel")}
+            <i className={`ph ${showFresh ? "ph-check" : "ph-clock"}`} />{" "}
+            {showFresh ? t("freshLabel") : t("cachedLabel")}
             {lastFetchedAt && (
               <span className="ml-1 font-normal opacity-70">
                 · {lastFetchedAt}
@@ -337,7 +343,7 @@ export function PriceTable({
       {/* 当前激活档位的地区价格表（套餐内所有地区可见）*/}
       {loading ? (
         <div className="flex items-center justify-center gap-2 py-16 text-sm text-[var(--color-ink-48)]">
-          <span className="spinner" /> 换算中…
+          <span className="spinner" /> {t("converting")}
         </div>
       ) : activeIap ? (
         <IapPriceList

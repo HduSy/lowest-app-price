@@ -120,8 +120,8 @@
     "tierLabel": "Poziom subskrypcji",
     "regionsStatLabel": "regionów porównanych",
     "tiersStatLabel": "poziomów śledzonych",
-    "cachedLabel": "Z pamięci podręcznej",
-    "freshLabel": "Aktualne",
+    "cachedLabel": "Ostatnio zaktualizowano",
+    "freshLabel": "Przed chwilą",
     "lockedHintUnsigned": "Zaloguj się, aby codziennie oglądać {limit} aplikacji za darmo",
     "lockedHintExhausted": "Dzienny limit {limit} darmowych wykorzystany · $1.99 jednorazowe odblokowanie nielimitowane",
     "loginCta": "Zaloguj się",
@@ -138,7 +138,8 @@
     "emptyDesc": "Ten app może nie mieć zakupów w aplikacji ani poziomów subskrypcji do porównania.",
     "initialLoadingTitle": "Pobieranie światowych cen…",
     "initialLoadingHint": "Pierwsze ładowanie pobiera 35 regionów, trwa kilka sekund",
-    "refreshingBanner": "Odświeżanie światowych cen…"
+    "refreshingBanner": "Odświeżanie światowych cen…",
+    "converting": "Przeliczanie…"
   },
   "RelatedApps": {
     "title": "Może ci się spodobać również",

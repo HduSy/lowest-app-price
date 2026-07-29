@@ -120,8 +120,8 @@
     "tierLabel": "Abonnement-Stufe",
     "regionsStatLabel": "Regionen verglichen",
     "tiersStatLabel": "Stufen erfasst",
-    "cachedLabel": "Zwischengespeichert",
-    "freshLabel": "Aktuell",
+    "cachedLabel": "Zuletzt aktualisiert",
+    "freshLabel": "Gerade eben",
     "lockedHintUnsigned": "Anmelden für {limit} kostenlose App-Ansichten täglich",
     "lockedHintExhausted": "Tägliche {limit} kostenlose Ansichten aufgebraucht · $1.99 einmalige Freischaltung für unbegrenzt",
     "loginCta": "Anmelden",
@@ -138,7 +138,8 @@
     "emptyDesc": "Diese App hat möglicherweise keine In-App-Käufe oder Abonnement-Stufen zum Vergleichen.",
     "initialLoadingTitle": "Globale Preise werden abgerufen…",
     "initialLoadingHint": "Erster Abruf lädt 35 Regionen, dauert wenige Sekunden",
-    "refreshingBanner": "Globale Preise werden aktualisiert…"
+    "refreshingBanner": "Globale Preise werden aktualisiert…",
+    "converting": "Umrechnen…"
   },
   "RelatedApps": {
     "title": "Das könnte dir auch gefallen",

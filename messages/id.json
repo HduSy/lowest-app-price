@@ -120,8 +120,8 @@
     "tierLabel": "Tier langganan",
     "regionsStatLabel": "wilayah dibandingkan",
     "tiersStatLabel": "tier dilacak",
-    "cachedLabel": "Tembolok",
-    "freshLabel": "Baru",
+    "cachedLabel": "Terakhir diperbarui",
+    "freshLabel": "Baru saja",
     "lockedHintUnsigned": "Masuk untuk {limit} lihat app gratis harian",
     "lockedHintExhausted": "Kuota harian {limit} gratis habis · $1.99 buka kunci seumur hidup tanpa batas",
     "loginCta": "Masuk",
@@ -138,7 +138,8 @@
     "emptyDesc": "Aplikasi ini mungkin tidak memiliki pembelian dalam aplikasi atau tier langganan untuk dibandingkan.",
     "initialLoadingTitle": "Mengambil harga global…",
     "initialLoadingHint": "Muat awal mengambil 35 wilayah, butuh beberapa detik",
-    "refreshingBanner": "Menyegarkan harga global…"
+    "refreshingBanner": "Menyegarkan harga global…",
+    "converting": "Mengonversi…"
   },
   "RelatedApps": {
     "title": "Mungkin juga kamu suka",

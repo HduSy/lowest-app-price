@@ -120,8 +120,8 @@
     "tierLabel": "サブスクリプションプラン",
     "regionsStatLabel": "地域比較済み",
     "tiersStatLabel": "プラン数",
-    "cachedLabel": "キャッシュ",
-    "freshLabel": "最新",
+    "cachedLabel": "最終更新",
+    "freshLabel": "たった今",
     "lockedHintUnsigned": "ログインで毎日 {limit} アプリを無料閲覧",
     "lockedHintExhausted": "本日の {limit} 回分の無料枠を使い切りました · $1.99 の買い切りで無制限",
     "loginCta": "ログイン",
@@ -138,7 +138,8 @@
     "emptyDesc": "このアプリには比較対象のアプリ内課金やサブスクリプションプランがない可能性があります。",
     "initialLoadingTitle": "全世界の価格を取得中…",
     "initialLoadingHint": "初回読み込み時に 35 地域を取得するため、数秒かかります",
-    "refreshingBanner": "世界の価格を更新中…"
+    "refreshingBanner": "世界の価格を更新中…",
+    "converting": "換算中…"
   },
   "RelatedApps": {
     "title": "こちらもおすすめ",
