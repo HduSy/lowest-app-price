@@ -154,6 +154,13 @@
     "noLocalMatch": "ローカルに一致なし、Apple ディレクトリに {count} 件追加可能",
     "addHint": "「追加」をクリックすると Apple から情報を取得し、35 地域の価格取得を開始します。ログインが必要です。"
   },
+  "UserMenu": {
+    "proBadge": "Pro",
+    "freeBadge": "無料",
+    "defaultName": "ユーザー",
+    "menuAriaLabel": "アカウントメニュー",
+    "signOutCta": "ログアウト"
+  },
   "LoginDialog": {
     "title": "ログインして全価格を表示",
     "desc": "毎日 3 回無料 · または $1.99 で永久解放",

@@ -154,6 +154,13 @@
     "noLocalMatch": "Tidak ada hasil lokal, {count} hasil dari direktori Apple dapat ditambahkan",
     "addHint": "Klik \"Tambah\" untuk mengambil dari Apple dan memulai perayapan harga 35 wilayah. Login diperlukan."
   },
+  "UserMenu": {
+    "proBadge": "Pro",
+    "freeBadge": "Gratis",
+    "defaultName": "Pengguna",
+    "menuAriaLabel": "Menu akun",
+    "signOutCta": "Keluar"
+  },
   "LoginDialog": {
     "title": "Masuk untuk melihat harga lengkap",
     "desc": "3 gratis harian · atau $1.99 seumur hidup",

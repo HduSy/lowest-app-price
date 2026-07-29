@@ -154,6 +154,13 @@
     "noLocalMatch": "Yerel eşleşme yok, Apple dizininden {count} sonuç eklenebilir",
     "addHint": "\"Ekle\"ye tıklayarak Apple'dan veri çekin ve 35 bölge fiyat taramasını başlatın. Giriş gerekli."
   },
+  "UserMenu": {
+    "proBadge": "Pro",
+    "freeBadge": "Ücretsiz",
+    "defaultName": "Kullanıcı",
+    "menuAriaLabel": "Hesap menüsü",
+    "signOutCta": "Çıkış yap"
+  },
   "LoginDialog": {
     "title": "Tüm fiyatları görmek için giriş yapın",
     "desc": "Günlük 3 ücretsiz · veya $1.99 ömür boyu",

@@ -154,6 +154,13 @@
     "noLocalMatch": "Nessuna corrispondenza locale, {count} risultati dalla directory Apple aggiungibili",
     "addHint": "Clicca \"Aggiungi\" per recuperare da Apple e avviare la raccolta prezzi in 35 regioni. Accesso richiesto."
   },
+  "UserMenu": {
+    "proBadge": "Pro",
+    "freeBadge": "Gratis",
+    "defaultName": "Utente",
+    "menuAriaLabel": "Menu account",
+    "signOutCta": "Esci"
+  },
   "LoginDialog": {
     "title": "Accedi per vedere tutti i prezzi",
     "desc": "3 gratis al giorno · o $1.99 a vita",

@@ -154,6 +154,13 @@
     "noLocalMatch": "本地库暂无匹配，Apple 目录有 {count} 个结果可添加",
     "addHint": "点击「添加」会从 Apple 拉取该 App 信息并触发 35 区价格抓取，需要登录。"
   },
+  "UserMenu": {
+    "proBadge": "会员版",
+    "freeBadge": "免费版",
+    "defaultName": "用户",
+    "menuAriaLabel": "账户菜单",
+    "signOutCta": "退出登录"
+  },
   "LoginDialog": {
     "title": "登录后，看到完整价格",
     "desc": "每天 3 次免费 · 或 $1.99 永久买断",

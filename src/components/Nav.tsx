@@ -104,7 +104,12 @@ export function Nav({ user = null }: { user?: NavUser | null }) {
             value: l.code,
             label: l.label,
           }))}
-          trigger={<span>{langOpt.label}</span>}
+          trigger={
+            <>
+              <i className="ph-bold ph-translate text-[13px]" />
+              <span>{langOpt.label}</span>
+            </>
+          }
         />
 
         <Picker

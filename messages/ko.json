@@ -154,6 +154,13 @@
     "noLocalMatch": "로컬 일치 없음, Apple 디렉토리에서 {count}개 결과 추가 가능",
     "addHint": "\"추가\"를 클릭하면 Apple에서 정보를 가져오고 35개 지역 가격 크롤링이 시작됩니다. 로그인 필요."
   },
+  "UserMenu": {
+    "proBadge": "Pro",
+    "freeBadge": "무료",
+    "defaultName": "사용자",
+    "menuAriaLabel": "계정 메뉴",
+    "signOutCta": "로그아웃"
+  },
   "LoginDialog": {
     "title": "로그인하여 전체 가격 확인",
     "desc": "매일 3회 무료 · 또는 $1.99 영구 해제",

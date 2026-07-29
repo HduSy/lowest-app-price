@@ -154,6 +154,13 @@
     "noLocalMatch": "Không có kết quả nội bộ, {count} kết quả từ danh bạ Apple có thể thêm",
     "addHint": "Nhấp \"Thêm\" để lấy từ Apple và bắt đầu thu thập giá 35 khu vực. Cần đăng nhập."
   },
+  "UserMenu": {
+    "proBadge": "Pro",
+    "freeBadge": "Miễn phí",
+    "defaultName": "Người dùng",
+    "menuAriaLabel": "Menu tài khoản",
+    "signOutCta": "Đăng xuất"
+  },
   "LoginDialog": {
     "title": "Đăng nhập để xem giá đầy đủ",
     "desc": "3 miễn phí mỗi ngày · hoặc $1.99 trọn đời",

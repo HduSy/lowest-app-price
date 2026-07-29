@@ -5,6 +5,7 @@
 // 会员状态：paid=true 显示会员版（蓝色 + 光泽动画），否则免费版
 import { useState, useRef, useEffect } from "react";
 import { signOut } from "next-auth/react";
+import { useTranslations } from "next-intl";
 import { Avatar } from "./Avatar";
 
 interface UserMenuProps {
@@ -17,6 +18,7 @@ interface UserMenuProps {
 }
 
 export function UserMenu({ user }: UserMenuProps) {
+  const t = useTranslations("UserMenu");
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -36,10 +38,10 @@ export function UserMenu({ user }: UserMenuProps) {
     };
   }, [open]);
 
-  const displayName = user.name || user.email || "用户";
+  const displayName = user.name || user.email || t("defaultName");
   const badge = user.paid
-    ? { cls: "bg-[rgba(0,113,227,0.1)] text-[var(--color-primary-focus)]", icon: "ph-crown", label: "会员版" }
-    : { cls: "bg-[var(--color-parchment)] text-[var(--color-ink-48)]", icon: "ph-gift", label: "免费版" };
+    ? { cls: "bg-[rgba(0,113,227,0.1)] text-[var(--color-primary-focus)]", icon: "ph-crown", label: t("proBadge") }
+    : { cls: "bg-[var(--color-parchment)] text-[var(--color-ink-48)]", icon: "ph-gift", label: t("freeBadge") };
 
   return (
     <div ref={ref} className="relative">
@@ -47,7 +49,7 @@ export function UserMenu({ user }: UserMenuProps) {
         type="button"
         onClick={() => setOpen((v) => !v)}
         className="flex items-center gap-1 text-xs font-semibold text-[var(--color-ink)] transition-colors hover:text-[var(--color-ink-48)]"
-        aria-label="账户菜单"
+        aria-label={t("menuAriaLabel")}
         aria-haspopup="menu"
         aria-expanded={open}
       >
@@ -87,7 +89,7 @@ export function UserMenu({ user }: UserMenuProps) {
             role="menuitem"
           >
             <i className="ph ph-sign-out text-[15px]" />
-            退出登录
+            {t("signOutCta")}
           </button>
         </div>
       )}

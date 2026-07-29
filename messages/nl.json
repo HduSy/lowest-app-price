@@ -154,6 +154,13 @@
     "noLocalMatch": "Geen lokale match, {count} resultaten van Apple-directory kunnen worden toegevoegd",
     "addHint": "Klik op \"Toevoegen\" om van Apple te fetchen en 35-regio prijscrawling te starten. Login vereist."
   },
+  "UserMenu": {
+    "proBadge": "Pro",
+    "freeBadge": "Gratis",
+    "defaultName": "Gebruiker",
+    "menuAriaLabel": "Accountmenu",
+    "signOutCta": "Uitloggen"
+  },
   "LoginDialog": {
     "title": "Log in voor volledige prijzen",
     "desc": "3 gratis per dag · of $1.99 levenslang",

@@ -34,8 +34,11 @@ export async function GET(req: NextRequest) {
 
   // 优先抓用户所在区：从 query 参数取，没有就 fallback 到 us
   const country = req.nextUrl.searchParams.get("country") || "us";
-  const { writtenRegions } = await refreshPrices(db, appId, country);
-  if (writtenRegions > 0) {
+  const { writtenRegions, attemptedRegions } = await refreshPrices(db, appId, country);
+  // 用 attemptedRegions（页面成功拿到的区域数）而非 writtenRegions（写出价格数）
+  // 判断是否 markAppFetched：免费 App 无 IAP -> written=0 但 attempted>0，
+  // 否则免费 App 永远 stale，下次进页面又触发刷新。详见 prices/route.ts 同名修复。
+  if (attemptedRegions > 0) {
     await markAppFetched(db, appId);
   }
 

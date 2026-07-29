@@ -154,6 +154,13 @@
     "noLocalMatch": "Sem correspondência local, {count} resultados do diretório Apple podem ser adicionados",
     "addHint": "Clique em \"Adicionar\" para buscar do Apple e iniciar rastreamento de preços em 35 regiões. Login necessário."
   },
+  "UserMenu": {
+    "proBadge": "Pro",
+    "freeBadge": "Grátis",
+    "defaultName": "Usuário",
+    "menuAriaLabel": "Menu da conta",
+    "signOutCta": "Sair"
+  },
   "LoginDialog": {
     "title": "Entre para ver preços completos",
     "desc": "3 grátis por dia · ou $1.99 vitalício",

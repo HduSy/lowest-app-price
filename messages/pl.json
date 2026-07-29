@@ -154,6 +154,13 @@
     "noLocalMatch": "Brak lokalnych wyników, {count} wyników z katalogu Apple można dodać",
     "addHint": "Kliknij \"Dodaj\", aby pobrać z Apple i uruchomić zbieranie cen w 35 regionach. Wymagany login."
   },
+  "UserMenu": {
+    "proBadge": "Pro",
+    "freeBadge": "Darmowe",
+    "defaultName": "Użytkownik",
+    "menuAriaLabel": "Menu konta",
+    "signOutCta": "Wyloguj się"
+  },
   "LoginDialog": {
     "title": "Zaloguj się, aby zobaczyć pełne ceny",
     "desc": "3 darmowe dziennie · lub $1.99 dożywotnio",

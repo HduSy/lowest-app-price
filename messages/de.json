@@ -154,6 +154,13 @@
     "noLocalMatch": "Kein lokaler Treffer, {count} Ergebnisse aus dem Apple-Verzeichnis können hinzugefügt werden",
     "addHint": "Klicke auf \"Hinzufügen\", um Daten von Apple abzurufen und 35-Regionen-Preis-Crawling auszulösen. Anmeldung erforderlich."
   },
+  "UserMenu": {
+    "proBadge": "Pro",
+    "freeBadge": "Kostenlos",
+    "defaultName": "Benutzer",
+    "menuAriaLabel": "Kontomenü",
+    "signOutCta": "Abmelden"
+  },
   "LoginDialog": {
     "title": "Anmelden für vollständige Preise",
     "desc": "Täglich 3 kostenlos · oder $1.99 dauerhaft",

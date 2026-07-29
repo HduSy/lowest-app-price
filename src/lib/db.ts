@@ -314,6 +314,9 @@ export async function upsertPrice(
 export function isStale(ts: string | null, ttlHours: number): boolean {
   if (!ts) return true;
   const t = new Date(ts.replace(" ", "T") + "Z").getTime();
+  // 解析失败（格式异常）时按"不过期"返回，避免因时间戳格式抖动导致狂刷。
+  // 配合 prices/route.ts 的 force=1 去抖，把"格式问题引发的全区重抓"风险降到最低。
+  if (Number.isNaN(t)) return false;
   return Date.now() - t > ttlHours * 3600 * 1000;
 }
 

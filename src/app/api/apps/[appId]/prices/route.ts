@@ -33,7 +33,21 @@ export async function GET(
 
     const needFetch = force || isStale(app.last_fetched_at, PRICE_TTL_HOURS);
 
-    if (needFetch) {
+    // force=1 去抖：即便客户端发 force=1，若距上次成功抓取不足 FORCE_DEBOUNCE_SECONDS，
+    // 也跳过全区抓取（直接走缓存返回）。避免 SSR 给 needsRefresh=true 时客户端每次进页面
+    // 都触发 35 区重抓（尤其是免费 App 之前因 written=0 永不 markAppFetched 的历史遗留）。
+    const FORCE_DEBOUNCE_SECONDS = 60;
+    let debouncedSkip = false;
+    if (needFetch && app.last_fetched_at) {
+      const lastTs = new Date(
+        app.last_fetched_at.replace(" ", "T") + "Z"
+      ).getTime();
+      if (!Number.isNaN(lastTs) && Date.now() - lastTs < FORCE_DEBOUNCE_SECONDS * 1000) {
+        debouncedSkip = true;
+      }
+    }
+
+    if (needFetch && !debouncedSkip) {
       // 优先抓取用户所在区：从 cookie 或 query 参数取国家 code
       const country =
         url.searchParams.get("country") ||
@@ -41,10 +55,10 @@ export async function GET(
           .get("cookie")
           ?.match(/(?:^|;\s*)detected_country=([^;]+)/)?.[1] ||
         undefined;
-      const { writtenRegions } = await refreshPrices(db, appId, country || undefined);
-      // 至少一个区成功写入才更新 last_fetched_at，避免全区失败时仍标记为已刷新
-      // 导致 6h 内不再重试（refreshPrices 内部 try/catch 吞掉错误，无法靠抛错判断）
-      if (writtenRegions > 0) {
+      const { attemptedRegions } = await refreshPrices(db, appId, country || undefined);
+      // 只要爬虫成功拿到页面（attempted>0）就更新 last_fetched_at，
+      // 即便该 App 无 IAP（written=0）。否则免费 App 永远 stale，每次进页面都重抓 35 区。
+      if (attemptedRegions > 0) {
         await markAppFetched(db, appId);
       }
     }

@@ -9,7 +9,7 @@ export async function refreshPrices(
   db: D1Database,
   appId: string,
   priorityCountry?: string
-): Promise<{ writtenRegions: number }> {
+): Promise<{ writtenRegions: number; attemptedRegions: number }> {
   const regions = await listRegions(db);
   const rates = await getRates("USD");
 
@@ -27,6 +27,11 @@ export async function refreshPrices(
   }
 
   let writtenRegions = 0;
+  // attemptedRegions：成功拿到页面（status=ok 或 no-iap）的区域数。
+  // 区别于 writtenRegions（实际写出 IAP 价格的区域数）——免费 App 无 IAP，
+  // written=0 但 attempted>0，此时应视为"已抓取过"并更新 last_fetched_at，
+  // 否则免费 App 的 last_fetched_at 永远 null -> 每次进页面都触发刷新。
+  let attemptedRegions = 0;
 
   // Phase 1: 优先区（用户所选语种国家）--立即写 meta + 价格
   const { results: pResults, meta: pMeta } = await crawlAllRegions(
@@ -34,13 +39,14 @@ export async function refreshPrices(
     appId
   );
   writtenRegions += await writePrices(db, appId, pResults, rates);
+  attemptedRegions += countAttempted(pResults);
   try {
     await updateAppMeta(db, appId, pMeta);
   } catch (e) {
     console.error(`[refresh ${appId}] updateAppMeta (priority) failed:`, e);
   }
   console.log(
-    `[refresh ${appId}] phase-1 priority=${priorityCountry || "all"} written=${writtenRegions}`
+    `[refresh ${appId}] phase-1 priority=${priorityCountry || "all"} written=${writtenRegions} attempted=${attemptedRegions}`
   );
 
   // Phase 2: 其余区--补全价格，补充 meta（优先区没拿到的字段）
@@ -50,13 +56,14 @@ export async function refreshPrices(
       appId
     );
     writtenRegions += await writePrices(db, appId, rResults, rates);
+    attemptedRegions += countAttempted(rResults);
     try {
       await updateAppMeta(db, appId, rMeta);
     } catch (e) {
       console.error(`[refresh ${appId}] updateAppMeta (rest) failed:`, e);
     }
     console.log(
-      `[refresh ${appId}] phase-2 done total-written=${writtenRegions}/${regions.length}`
+      `[refresh ${appId}] phase-2 done total-written=${writtenRegions}/${regions.length} attempted=${attemptedRegions}`
     );
   }
 
@@ -74,7 +81,16 @@ export async function refreshPrices(
     console.error(`[refresh ${appId}] iTunes fallback meta failed:`, e);
   }
 
-  return { writtenRegions };
+  return { writtenRegions, attemptedRegions };
+}
+
+/** 统计"成功拿到 App Store 页面"的区域数（status=ok 或 no-iap）。
+ *  排除 error（网络失败 / redirect trap）和 parse-fail（页面拿到但解析挂了）。
+ *  用于决定是否更新 last_fetched_at：免费 App 无 IAP -> written=0 但 attempted>0。 */
+function countAttempted(results: RegionFetchResult[]): number {
+  return results.filter(
+    (r) => r.status === "ok" || r.status === "no-iap"
+  ).length;
 }
 
 /** 将抓取结果写入 prices 表，返回成功写入的地区数 */

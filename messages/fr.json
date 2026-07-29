@@ -154,6 +154,13 @@
     "noLocalMatch": "Pas de résultat local, {count} résultats du catalogue Apple ajoutables",
     "addHint": "Cliquez sur \"Ajouter\" pour récupérer depuis Apple et lancer le crawl des prix sur 35 régions. Connexion requise."
   },
+  "UserMenu": {
+    "proBadge": "Pro",
+    "freeBadge": "Gratuit",
+    "defaultName": "Utilisateur",
+    "menuAriaLabel": "Menu du compte",
+    "signOutCta": "Se déconnecter"
+  },
   "LoginDialog": {
     "title": "Connectez-vous pour voir tous les prix",
     "desc": "3 gratuits par jour · ou $1.99 à vie",

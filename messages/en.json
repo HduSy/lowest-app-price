@@ -154,6 +154,13 @@
     "noLocalMatch": "No local match, {count} results from Apple directory can be added",
     "addHint": "Click \"Add\" to fetch from Apple and trigger 35-region price crawling. Sign in required."
   },
+  "UserMenu": {
+    "proBadge": "Pro",
+    "freeBadge": "Free",
+    "defaultName": "User",
+    "menuAriaLabel": "Account menu",
+    "signOutCta": "Sign out"
+  },
   "LoginDialog": {
     "title": "Sign in to see full prices",
     "desc": "3 free daily · or $1.99 lifetime unlock",
