@@ -66,7 +66,7 @@
     "freeFeature3": "Quota partagé entre toutes les apps",
     "currentPlan": "Offre actuelle",
     "loginToClaim": "Connectez-vous pour profiter",
-    "bestValue": "Meilleure offre",
+    "bestValue": "Recommandé",
     "paidTier": "Achat unique",
     "paidPriceNote": "une fois, à vie",
     "paidNote": "Apps, régions, recherches illimitées",
@@ -137,7 +137,8 @@
     "emptyTitle": "Aucune donnée de prix",
     "emptyDesc": "Cette app n'a peut-être pas d'achats intégrés ni de niveaux d'abonnement à comparer.",
     "initialLoadingTitle": "Récupération des prix mondiaux…",
-    "initialLoadingHint": "Le premier chargement récupère 35 régions, prend quelques secondes"
+    "initialLoadingHint": "Le premier chargement récupère 35 régions, prend quelques secondes",
+    "refreshingBanner": "Actualisation des prix mondiaux…"
   },
   "RelatedApps": {
     "title": "Vous pourriez aussi aimer",

@@ -66,7 +66,7 @@
     "freeFeature3": "Cuota compartida entre todas las apps",
     "currentPlan": "Plan actual",
     "loginToClaim": "Inicia sesión para reclamar",
-    "bestValue": "Mejor valor",
+    "bestValue": "Recomendado",
     "paidTier": "Compra única",
     "paidPriceNote": "una vez, de por vida",
     "paidNote": "Apps, regiones, consultas ilimitadas",
@@ -137,7 +137,8 @@
     "emptyTitle": "Sin datos de precios",
     "emptyDesc": "Es posible que esta app no tenga compras integradas ni niveles de suscripción para comparar.",
     "initialLoadingTitle": "Obteniendo precios globales…",
-    "initialLoadingHint": "La primera carga obtiene 35 regiones, tarda unos segundos"
+    "initialLoadingHint": "La primera carga obtiene 35 regiones, tarda unos segundos",
+    "refreshingBanner": "Actualizando precios globales…"
   },
   "RelatedApps": {
     "title": "También te puede gustar",

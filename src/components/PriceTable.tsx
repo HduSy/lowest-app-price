@@ -234,7 +234,7 @@ export function PriceTable({
     <div>
       {refreshing && (
         <div className="mb-4 flex items-center gap-2 rounded-[var(--radius-md)] bg-[rgba(0,113,227,0.06)] px-4 py-2.5 text-sm font-semibold text-[var(--color-primary-focus)]">
-          <span className="spinner" /> 正在刷新全球价格…
+          <span className="spinner" /> {t("refreshingBanner")}
         </div>
       )}
       {/* 顶部：统计 + 币种 + 缓存标签 */}

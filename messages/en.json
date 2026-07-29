@@ -66,7 +66,7 @@
     "freeFeature3": "Shared quota across Apps",
     "currentPlan": "Current plan",
     "loginToClaim": "Sign in to claim",
-    "bestValue": "Best value",
+    "bestValue": "Recommended",
     "paidTier": "One-time purchase",
     "paidPriceNote": "once, lifetime",
     "paidNote": "Unlimited Apps, regions, lookups",
@@ -137,7 +137,8 @@
     "emptyTitle": "No pricing data",
     "emptyDesc": "This App may not have in-app purchases or subscription tiers to compare.",
     "initialLoadingTitle": "Fetching global prices…",
-    "initialLoadingHint": "First load fetches 35 regions, takes a few seconds"
+    "initialLoadingHint": "First load fetches 35 regions, takes a few seconds",
+    "refreshingBanner": "Refreshing global prices…"
   },
   "RelatedApps": {
     "title": "You might also like",

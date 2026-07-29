@@ -66,7 +66,7 @@
     "freeFeature3": "全 App で枠を共有",
     "currentPlan": "現在のプラン",
     "loginToClaim": "ログインして受け取る",
-    "bestValue": "お得",
+    "bestValue": "おすすめ",
     "paidTier": "買い切り",
     "paidPriceNote": "一回、永久",
     "paidNote": "App、地域、回数すべて無制限",
@@ -137,7 +137,8 @@
     "emptyTitle": "価格データなし",
     "emptyDesc": "このアプリには比較対象のアプリ内課金やサブスクリプションプランがない可能性があります。",
     "initialLoadingTitle": "全世界の価格を取得中…",
-    "initialLoadingHint": "初回読み込み時に 35 地域を取得するため、数秒かかります"
+    "initialLoadingHint": "初回読み込み時に 35 地域を取得するため、数秒かかります",
+    "refreshingBanner": "世界の価格を更新中…"
   },
   "RelatedApps": {
     "title": "こちらもおすすめ",

@@ -66,7 +66,7 @@
     "freeFeature3": "多个 App 共用额度",
     "currentPlan": "当前方案",
     "loginToClaim": "登录领取",
-    "bestValue": "最划算",
+    "bestValue": "最推荐",
     "paidTier": "一次买断",
     "paidPriceNote": "一次，永久",
     "paidNote": "不限 App、不限地区、不限次数",
@@ -137,7 +137,8 @@
     "emptyTitle": "暂无价格数据",
     "emptyDesc": "可能是这款 App 没有内购或订阅档位可供比价。",
     "initialLoadingTitle": "正在抓取全球价格…",
-    "initialLoadingHint": "首次加载需抓取 35 个地区数据，约几秒"
+    "initialLoadingHint": "首次加载需抓取 35 个地区数据，约几秒",
+    "refreshingBanner": "正在刷新全球价格…"
   },
   "RelatedApps": {
     "title": "你可能也喜欢",

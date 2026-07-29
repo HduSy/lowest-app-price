@@ -66,7 +66,7 @@
     "freeFeature3": "Gedeeld quotum voor alle apps",
     "currentPlan": "Huidig abonnement",
     "loginToClaim": "Log in om te claimen",
-    "bestValue": "Beste waarde",
+    "bestValue": "Aanbevolen",
     "paidTier": "Eenmalige aankoop",
     "paidPriceNote": "eenmaal, levenslang",
     "paidNote": "Onbeperkte apps, regio's, opzoekacties",
@@ -137,7 +137,8 @@
     "emptyTitle": "Geen prijsgegevens",
     "emptyDesc": "Deze app heeft mogelijk geen in-app aankopen of abonnementsniveaus om te vergelijken.",
     "initialLoadingTitle": "Wereldwijde prijzen ophalen…",
-    "initialLoadingHint": "Eerste keer laden haalt 35 regio's op, duurt enkele seconden"
+    "initialLoadingHint": "Eerste keer laden haalt 35 regio's op, duurt enkele seconden",
+    "refreshingBanner": "Wereldwijde prijzen vernieuwen…"
   },
   "RelatedApps": {
     "title": "Misschien vind je dit ook leuk",

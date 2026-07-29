@@ -66,7 +66,7 @@
     "freeFeature3": "Geteiltes Kontingent über alle Apps",
     "currentPlan": "Aktueller Plan",
     "loginToClaim": "Anmelden zum Einlösen",
-    "bestValue": "Bestes Angebot",
+    "bestValue": "Empfohlen",
     "paidTier": "Einmaliger Kauf",
     "paidPriceNote": "einmalig, dauerhaft",
     "paidNote": "Unbegrenzte Apps, Regionen, Abfragen",
@@ -137,7 +137,8 @@
     "emptyTitle": "Keine Preisdaten",
     "emptyDesc": "Diese App hat möglicherweise keine In-App-Käufe oder Abonnement-Stufen zum Vergleichen.",
     "initialLoadingTitle": "Globale Preise werden abgerufen…",
-    "initialLoadingHint": "Erster Abruf lädt 35 Regionen, dauert wenige Sekunden"
+    "initialLoadingHint": "Erster Abruf lädt 35 Regionen, dauert wenige Sekunden",
+    "refreshingBanner": "Globale Preise werden aktualisiert…"
   },
   "RelatedApps": {
     "title": "Das könnte dir auch gefallen",

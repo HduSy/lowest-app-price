@@ -66,7 +66,7 @@
     "freeFeature3": "Hạn mức dùng chung cho mọi ứng dụng",
     "currentPlan": "Gói hiện tại",
     "loginToClaim": "Đăng nhập để nhận",
-    "bestValue": "Giá trị tốt nhất",
+    "bestValue": "Đề xuất",
     "paidTier": "Mua một lần",
     "paidPriceNote": "một lần, trọn đời",
     "paidNote": "Không giới hạn ứng dụng, khu vực, tra cứu",
@@ -137,7 +137,8 @@
     "emptyTitle": "Không có dữ liệu giá",
     "emptyDesc": "Ứng dụng này có thể không có mua hàng trong ứng dụng hoặc cấp đăng ký để so sánh.",
     "initialLoadingTitle": "Đang lấy giá toàn cầu…",
-    "initialLoadingHint": "Lần đầu tải 35 khu vực, mất vài giây"
+    "initialLoadingHint": "Lần đầu tải 35 khu vực, mất vài giây",
+    "refreshingBanner": "Đang làm mới giá toàn cầu…"
   },
   "RelatedApps": {
     "title": "Bạn có thể cũng thích",

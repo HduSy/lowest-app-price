@@ -66,7 +66,7 @@
     "freeFeature3": "Quota condivisa tra tutte le app",
     "currentPlan": "Piano attuale",
     "loginToClaim": "Accedi per richiederlo",
-    "bestValue": "Miglior valore",
+    "bestValue": "Consigliato",
     "paidTier": "Acquisto unico",
     "paidPriceNote": "una volta, a vita",
     "paidNote": "App, regioni, consultazioni illimitate",
@@ -137,7 +137,8 @@
     "emptyTitle": "Nessun dato prezzi",
     "emptyDesc": "Questa app potrebbe non avere acquisti in-app o livelli di abbonamento da confrontare.",
     "initialLoadingTitle": "Recupero dei prezzi globali…",
-    "initialLoadingHint": "Il primo caricamento recupera 35 regioni, richiede alcuni secondi"
+    "initialLoadingHint": "Il primo caricamento recupera 35 regioni, richiede alcuni secondi",
+    "refreshingBanner": "Aggiornamento dei prezzi globali…"
   },
   "RelatedApps": {
     "title": "Potrebbero interessarti",

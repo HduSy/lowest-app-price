@@ -66,7 +66,7 @@
     "freeFeature3": "Tüm uygulamalarda paylaşılan kota",
     "currentPlan": "Mevcut plan",
     "loginToClaim": "Kullanmak için giriş yapın",
-    "bestValue": "En avantajlı",
+    "bestValue": "Önerilen",
     "paidTier": "Tek seferlik satın alma",
     "paidPriceNote": "bir kez, ömür boyu",
     "paidNote": "Sınırsız uygulama, bölge, sorgu",
@@ -137,7 +137,8 @@
     "emptyTitle": "Fiyat verisi yok",
     "emptyDesc": "Bu uygulamada karşılaştırılacak uygulama içi satın alım veya abonelik seviyeleri olmayabilir.",
     "initialLoadingTitle": "Küresel fiyatlar getiriliyor…",
-    "initialLoadingHint": "İlk yükleme 35 bölgeyi getirir, birkaç saniye sürer"
+    "initialLoadingHint": "İlk yükleme 35 bölgeyi getirir, birkaç saniye sürer",
+    "refreshingBanner": "Küresel fiyatlar yenileniyor…"
   },
   "RelatedApps": {
     "title": "Şunlar da hoşunuza gidebilir",
