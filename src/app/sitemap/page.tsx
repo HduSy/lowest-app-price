@@ -1,11 +1,21 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
-export const metadata = {
-  title: "网站地图 - App Store 全区比价",
-  description: "App Store 全区比价的所有页面索引。",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("Sitemap");
+  const tLayout = await getTranslations("Layout");
+  return {
+    title: t("metaTitle", { siteName: tLayout("siteName") }),
+    description: t("metaDescription", { siteName: tLayout("siteName") }),
+  };
+}
 
-export default function SitemapPage() {
+export default async function SitemapPage() {
+  const t = await getTranslations("Sitemap");
+  const tLayout = await getTranslations("Layout");
+  const tNav = await getTranslations("Nav");
+
   return (
     <div className="py-20">
       <div className="mx-auto max-w-[740px] px-[22px]">
@@ -13,16 +23,16 @@ export default function SitemapPage() {
           href="/"
           className="mb-6 inline-flex items-center gap-1 text-xs font-semibold text-[var(--color-ink-48)] transition-colors hover:text-[var(--color-ink)]"
         >
-          <i className="ph ph-caret-left" /> 返回首页
+          <i className="ph ph-caret-left" /> {t("backToHome")}
         </Link>
         <h1 className="mb-8 text-[clamp(32px,5vw,48px)] font-semibold leading-tight tracking-tight">
-          网站地图
+          {t("title")}
         </h1>
 
         <div className="space-y-10 text-sm">
           <div>
             <h2 className="mb-4 text-lg font-semibold text-[var(--color-ink)]">
-              主要页面
+              {t("mainPagesTitle")}
             </h2>
             <ul className="space-y-2">
               <li>
@@ -30,7 +40,7 @@ export default function SitemapPage() {
                   href="/"
                   className="flex items-center gap-2 text-[var(--color-primary-focus)] hover:underline"
                 >
-                  <i className="ph ph-house" /> 首页
+                  <i className="ph ph-house" /> {tNav("home")}
                 </Link>
               </li>
               <li>
@@ -38,7 +48,7 @@ export default function SitemapPage() {
                   href="/apps"
                   className="flex items-center gap-2 text-[var(--color-primary-focus)] hover:underline"
                 >
-                  <i className="ph ph-grid-four" /> 全部应用
+                  <i className="ph ph-grid-four" /> {tNav("apps")}
                 </Link>
               </li>
             </ul>
@@ -46,7 +56,7 @@ export default function SitemapPage() {
 
           <div>
             <h2 className="mb-4 text-lg font-semibold text-[var(--color-ink)]">
-              法律与政策
+              {t("legalPagesTitle")}
             </h2>
             <ul className="space-y-2">
               <li>
@@ -54,7 +64,7 @@ export default function SitemapPage() {
                   href="/privacy"
                   className="flex items-center gap-2 text-[var(--color-primary-focus)] hover:underline"
                 >
-                  <i className="ph ph-shield-check" /> 隐私政策
+                  <i className="ph ph-shield-check" /> {tLayout("privacy")}
                 </Link>
               </li>
               <li>
@@ -62,7 +72,7 @@ export default function SitemapPage() {
                   href="/terms"
                   className="flex items-center gap-2 text-[var(--color-primary-focus)] hover:underline"
                 >
-                  <i className="ph ph-file-text" /> 使用条款
+                  <i className="ph ph-file-text" /> {tLayout("terms")}
                 </Link>
               </li>
               <li>
@@ -70,7 +80,7 @@ export default function SitemapPage() {
                   href="/refunds"
                   className="flex items-center gap-2 text-[var(--color-primary-focus)] hover:underline"
                 >
-                  <i className="ph ph-credit-card" /> 退款政策
+                  <i className="ph ph-credit-card" /> {tLayout("refunds")}
                 </Link>
               </li>
               <li>
@@ -78,7 +88,7 @@ export default function SitemapPage() {
                   href="/legal"
                   className="flex items-center gap-2 text-[var(--color-primary-focus)] hover:underline"
                 >
-                  <i className="ph ph-scale" /> 法律声明
+                  <i className="ph ph-scale" /> {tLayout("legal")}
                 </Link>
               </li>
             </ul>
@@ -86,7 +96,7 @@ export default function SitemapPage() {
 
           <div>
             <h2 className="mb-4 text-lg font-semibold text-[var(--color-ink)]">
-              搜索引擎
+              {t("searchEnginesTitle")}
             </h2>
             <ul className="space-y-2">
               <li>
@@ -94,7 +104,7 @@ export default function SitemapPage() {
                   href="/sitemap.xml"
                   className="flex items-center gap-2 text-[var(--color-primary-focus)] hover:underline"
                 >
-                  <i className="ph ph-file-sitemap" /> XML Sitemap（搜索引擎用）
+                  <i className="ph ph-file-sitemap" /> {t("xmlSitemap")}
                 </a>
               </li>
               <li>
@@ -102,7 +112,7 @@ export default function SitemapPage() {
                   href="/robots.txt"
                   className="flex items-center gap-2 text-[var(--color-primary-focus)] hover:underline"
                 >
-                  <i className="ph ph-robot" /> robots.txt
+                  <i className="ph ph-robot" /> {t("robotsTxt")}
                 </a>
               </li>
             </ul>
