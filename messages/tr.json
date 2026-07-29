@@ -117,11 +117,11 @@
     "refreshFailed": "Yenileme başarısız",
     "tierLabel": "Abonelik seviyesi",
     "regionsStatLabel": "bölge karşılaştırıldı",
-    "tiersStatLabel": "seviye izlendi",
+    "tiersStatLabel": "izlenen seviye",
     "cachedLabel": "Önbelleğe alındı",
     "freshLabel": "Güncel",
     "lockedHintUnsigned": "Günlük {limit} ücretsiz uygulama görüntüleme için giriş yap",
-    "lockedHintExhausted": "Günlük {limit} ücretsiz hak tükendi · $1.99 tek seferlik ödeme ile sınırsız",
+    "lockedHintExhausted": "Bugünkü {limit} ücretsiz hakkınız tükendi · $1.99 tek seferlik ödeme ile sınırsız erişim",
     "loginCta": "Giriş yap",
     "buyCta": "$1.99 satın al",
     "tierRegionsCount": "{count} bölge",
@@ -130,8 +130,8 @@
     "colConverted": "Dönüştürüldü ({currency})",
     "lowest": "En düşük",
     "highest": "En yüksek",
-    "savedHint": "En düşük, en yüksek karşısında <bold>{amount}</bold> tasarruf ettirir!",
-    "disclaimer": "Fiyatlar her {hours} saatte bir güncellenir, cari döviz kurlarına göre dönüştürülür, yalnızca referans amaçlıdır."
+    "savedHint": "En düşük, en yüksek fiyata kıyasla <bold>{amount}</bold> tasarruf sağlar!",
+    "disclaimer": "Fiyatlar her {hours} saatte bir güncellenir, güncel döviz kurlarına göre dönüştürülür, yalnızca referans amaçlıdır."
   },
   "RelatedApps": {
     "title": "Şunlar da hoşunuza gidebilir",

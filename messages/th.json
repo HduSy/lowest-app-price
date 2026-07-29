@@ -121,20 +121,20 @@
     "cachedLabel": "แคช",
     "freshLabel": "ล่าสุด",
     "lockedHintUnsigned": "เข้าสู่ระบบเพื่อดูแอปฟรี {limit} รายการต่อวัน",
-    "lockedHintExhausted": "ใช้โควต้าฟรี {limit} ครั้งในวันนี้แล้ว · $1.99 ปลดล็อกถาวรไม่จำกัด",
+    "lockedHintExhausted": "โควต้าฟรี {limit} ครั้งของวันนี้หมดแล้ว · $1.99 ปลดล็อกถาวรไม่จำกัด",
     "loginCta": "เข้าสู่ระบบ",
     "buyCta": "ซื้อ $1.99",
     "tierRegionsCount": "{count} ภูมิภาค",
     "colRegion": "ภูมิภาค",
     "colLocalPrice": "ราคาท้องถิ่น",
-    "colConverted": "แปลงแล้ว ({currency})",
+    "colConverted": "คิดเป็น ({currency})",
     "lowest": "ต่ำสุด",
     "highest": "สูงสุด",
-    "savedHint": "ต่ำสุดประหยัด <bold>{amount}</bold> เทียบกับสูงสุด!",
-    "disclaimer": "ราคาอัปเดตทุก {hours} ชั่วโมง แปลงตามอัตราแลกเปลี่ยนปัจจุบัน เพื่ออ้างอิงเท่านั้น"
+    "savedHint": "ราคาต่ำสุดประหยัด <bold>{amount}</bold> เมื่อเทียบกับราคาสูงสุด!",
+    "disclaimer": "ราคาอัปเดตทุก {hours} ชั่วโมง แปลงตามอัตราแลกเปลี่ยนปัจจุบัน เพื่อการอ้างอิงเท่านั้น"
   },
   "RelatedApps": {
-    "title": "คุณอาจชอบสิ่งนี้",
+    "title": "แอปที่คุณอาจสนใจ",
     "loading": "กำลังโหลดคำแนะนำ..."
   },
   "AppsList": {
