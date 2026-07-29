@@ -163,7 +163,7 @@ export default async function HomePage({
       </section>
 
       {/* 定价方案 */}
-      <PricingSection loggedIn={!!currentUser} />
+      <PricingSection loggedIn={!!currentUser} paid={currentUser?.paid ?? false} />
 
       {/* 已收录的 App 滚动 */}
       <SupportedAppsSection country={country} />

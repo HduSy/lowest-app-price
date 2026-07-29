@@ -207,10 +207,10 @@ export function PriceTable({
     return (
       <div className="rounded-[var(--radius-lg)] border border-black/[0.08] p-12 text-center">
         <div className="flex items-center justify-center gap-2 text-sm font-semibold text-[var(--color-ink-48)]">
-          <span className="spinner" /> 正在抓取全球价格…
+          <span className="spinner" /> {t("initialLoadingTitle")}
         </div>
         <p className="mt-3 text-xs text-[var(--color-ink-48)]">
-          首次加载需抓取 35 个地区数据，约几秒
+          {t("initialLoadingHint")}
         </p>
       </div>
     );
@@ -222,9 +222,9 @@ export function PriceTable({
         <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-parchment)] text-[var(--color-ink-48)]">
           <i className="ph ph-tag text-xl" />
         </div>
-        <p className="font-semibold">暂无价格数据</p>
+        <p className="font-semibold">{t("emptyTitle")}</p>
         <p className="mt-2 text-sm text-[var(--color-ink-48)]">
-          可能是这款 App 没有内购或订阅档位可供比价。
+          {t("emptyDesc")}
         </p>
       </div>
     );

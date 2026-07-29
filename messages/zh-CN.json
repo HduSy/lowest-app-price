@@ -74,7 +74,8 @@
     "paidFeature2": "所有 App 的所有订阅档位与地区",
     "paidFeature3": "不再受每日额度限制",
     "buyButton": "$1.99 买断",
-    "loginToBuy": "登录后购买"
+    "loginToBuy": "登录后购买",
+    "owned": "已购买"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} 个地区 / {currency}",
@@ -131,11 +132,20 @@
     "lowest": "最低",
     "highest": "最高",
     "savedHint": "最低比最高省了 <bold>{amount}！</bold>",
-    "disclaimer": "价格每 {hours} 小时更新一次，按当前汇率换算，仅供参考。"
+    "disclaimer": "价格每 {hours} 小时更新一次，按当前汇率换算，仅供参考。",
+    "emptyTitle": "暂无价格数据",
+    "emptyDesc": "可能是这款 App 没有内购或订阅档位可供比价。",
+    "initialLoadingTitle": "正在抓取全球价格…",
+    "initialLoadingHint": "首次加载需抓取 35 个地区数据，约几秒"
   },
   "RelatedApps": {
     "title": "你可能也喜欢",
     "loading": "正在加载推荐…"
+  },
+  "ShareButton": {
+    "shareAriaLabel": "分享",
+    "copied": "已复制",
+    "copyLink": "复制链接"
   },
   "AppsList": {
     "loadingMore": "正在加载更多…",

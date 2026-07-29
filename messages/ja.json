@@ -74,7 +74,8 @@
     "paidFeature2": "すべての App のすべてのプランと地域",
     "paidFeature3": "毎日の枠制限なし",
     "buyButton": "$1.99 買い切り",
-    "loginToBuy": "ログインして購入"
+    "loginToBuy": "ログインして購入",
+    "owned": "購入済み"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} 地域 / {currency}",
@@ -131,11 +132,20 @@
     "lowest": "最低",
     "highest": "最高",
     "savedHint": "最低は最高より <bold>{amount}</bold> お得！",
-    "disclaimer": "価格は {hours} 時間ごとに更新され、現在の為替レートで換算されます。参考のみ。"
+    "disclaimer": "価格は {hours} 時間ごとに更新され、現在の為替レートで換算されます。参考のみ。",
+    "emptyTitle": "価格データなし",
+    "emptyDesc": "このアプリには比較対象のアプリ内課金やサブスクリプションプランがない可能性があります。",
+    "initialLoadingTitle": "全世界の価格を取得中…",
+    "initialLoadingHint": "初回読み込み時に 35 地域を取得するため、数秒かかります"
   },
   "RelatedApps": {
     "title": "こちらもおすすめ",
     "loading": "おすすめを読み込み中..."
+  },
+  "ShareButton": {
+    "shareAriaLabel": "共有",
+    "copied": "コピーしました",
+    "copyLink": "リンクをコピー"
   },
   "AppsList": {
     "loadingMore": "さらに読み込み中...",

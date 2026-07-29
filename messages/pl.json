@@ -74,7 +74,8 @@
     "paidFeature2": "Wszystkie poziomy subskrypcji i regiony dla każdej aplikacji",
     "paidFeature3": "Bez dziennych limitów",
     "buyButton": "Kup $1.99",
-    "loginToBuy": "Zaloguj się, aby kupić"
+    "loginToBuy": "Zaloguj się, aby kupić",
+    "owned": "Kupione"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} regionów / {currency}",
@@ -131,11 +132,20 @@
     "lowest": "Najniższa",
     "highest": "Najwyższa",
     "savedHint": "Najniższa oszczędza <bold>{amount}</bold> względem najwyższej!",
-    "disclaimer": "Ceny aktualizowane co {hours} godzin, przeliczane po bieżących kursach walut, wyłącznie orientacyjnie."
+    "disclaimer": "Ceny aktualizowane co {hours} godzin, przeliczane po bieżących kursach walut, wyłącznie orientacyjnie.",
+    "emptyTitle": "Brak danych o cenach",
+    "emptyDesc": "Ten app może nie mieć zakupów w aplikacji ani poziomów subskrypcji do porównania.",
+    "initialLoadingTitle": "Pobieranie światowych cen…",
+    "initialLoadingHint": "Pierwsze ładowanie pobiera 35 regionów, trwa kilka sekund"
   },
   "RelatedApps": {
     "title": "Może ci się spodobać również",
     "loading": "Ładowanie rekomendacji..."
+  },
+  "ShareButton": {
+    "shareAriaLabel": "Udostępnij",
+    "copied": "Skopiowano",
+    "copyLink": "Kopiuj link"
   },
   "AppsList": {
     "loadingMore": "Ładowanie...",

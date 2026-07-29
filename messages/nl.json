@@ -74,7 +74,8 @@
     "paidFeature2": "Alle abonnementsniveaus en regio's voor elke app",
     "paidFeature3": "Geen dagelijkse quotumlimieten",
     "buyButton": "Koop $1.99",
-    "loginToBuy": "Log in om te kopen"
+    "loginToBuy": "Log in om te kopen",
+    "owned": "Gekocht"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} regio's / {currency}",
@@ -131,11 +132,20 @@
     "lowest": "Laagste",
     "highest": "Hoogste",
     "savedHint": "Het laagste bespaart je <bold>{amount}</bold> vs het hoogste!",
-    "disclaimer": "Prijzen worden elke {hours} uur bijgewerkt, omgerekend naar actuele wisselkoersen, alleen ter referentie."
+    "disclaimer": "Prijzen worden elke {hours} uur bijgewerkt, omgerekend naar actuele wisselkoersen, alleen ter referentie.",
+    "emptyTitle": "Geen prijsgegevens",
+    "emptyDesc": "Deze app heeft mogelijk geen in-app aankopen of abonnementsniveaus om te vergelijken.",
+    "initialLoadingTitle": "Wereldwijde prijzen ophalen…",
+    "initialLoadingHint": "Eerste keer laden haalt 35 regio's op, duurt enkele seconden"
   },
   "RelatedApps": {
     "title": "Misschien vind je dit ook leuk",
     "loading": "Aanbevelingen laden..."
+  },
+  "ShareButton": {
+    "shareAriaLabel": "Delen",
+    "copied": "Gekopieerd",
+    "copyLink": "Link kopiëren"
   },
   "AppsList": {
     "loadingMore": "Meer laden...",

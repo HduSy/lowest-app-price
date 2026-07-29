@@ -74,7 +74,8 @@
     "paidFeature2": "Semua tingkat langganan dan wilayah untuk setiap app",
     "paidFeature3": "Tanpa batas kuota harian",
     "buyButton": "Beli $1.99",
-    "loginToBuy": "Masuk untuk membeli"
+    "loginToBuy": "Masuk untuk membeli",
+    "owned": "Dimiliki"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} wilayah / {currency}",
@@ -131,11 +132,20 @@
     "lowest": "Terendah",
     "highest": "Tertinggi",
     "savedHint": "Terendah hemat <bold>{amount}</bold> dibanding tertinggi!",
-    "disclaimer": "Harga diperbarui setiap {hours} jam, dikonversi ke nilai tukar saat ini, hanya untuk referensi."
+    "disclaimer": "Harga diperbarui setiap {hours} jam, dikonversi ke nilai tukar saat ini, hanya untuk referensi.",
+    "emptyTitle": "Tidak ada data harga",
+    "emptyDesc": "Aplikasi ini mungkin tidak memiliki pembelian dalam aplikasi atau tier langganan untuk dibandingkan.",
+    "initialLoadingTitle": "Mengambil harga global…",
+    "initialLoadingHint": "Muat awal mengambil 35 wilayah, butuh beberapa detik"
   },
   "RelatedApps": {
     "title": "Mungkin juga kamu suka",
     "loading": "Memuat rekomendasi..."
+  },
+  "ShareButton": {
+    "shareAriaLabel": "Bagikan",
+    "copied": "Tersalin",
+    "copyLink": "Salin tautan"
   },
   "AppsList": {
     "loadingMore": "Memuat lebih banyak...",

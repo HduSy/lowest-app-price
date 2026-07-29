@@ -74,7 +74,8 @@
     "paidFeature2": "Mọi gói đăng ký và khu vực cho mỗi ứng dụng",
     "paidFeature3": "Không giới hạn hạn mức hàng ngày",
     "buyButton": "Mua $1.99",
-    "loginToBuy": "Đăng nhập để mua"
+    "loginToBuy": "Đăng nhập để mua",
+    "owned": "Đã mua"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} khu vực / {currency}",
@@ -131,11 +132,20 @@
     "lowest": "Thấp nhất",
     "highest": "Cao nhất",
     "savedHint": "Thấp nhất tiết kiệm <bold>{amount}</bold> so với cao nhất!",
-    "disclaimer": "Giá cập nhật mỗi {hours} giờ, quy đổi theo tỷ giá hiện tại, chỉ mang tính tham khảo."
+    "disclaimer": "Giá cập nhật mỗi {hours} giờ, quy đổi theo tỷ giá hiện tại, chỉ mang tính tham khảo.",
+    "emptyTitle": "Không có dữ liệu giá",
+    "emptyDesc": "Ứng dụng này có thể không có mua hàng trong ứng dụng hoặc cấp đăng ký để so sánh.",
+    "initialLoadingTitle": "Đang lấy giá toàn cầu…",
+    "initialLoadingHint": "Lần đầu tải 35 khu vực, mất vài giây"
   },
   "RelatedApps": {
     "title": "Bạn có thể cũng thích",
     "loading": "Đang tải gợi ý..."
+  },
+  "ShareButton": {
+    "shareAriaLabel": "Chia sẻ",
+    "copied": "Đã sao chép",
+    "copyLink": "Sao chép liên kết"
   },
   "AppsList": {
     "loadingMore": "Đang tải thêm...",

@@ -8,9 +8,10 @@ import { LoginDialog } from "./LoginDialog";
 
 interface PricingSectionProps {
   loggedIn: boolean;
+  paid?: boolean;
 }
 
-export function PricingSection({ loggedIn }: PricingSectionProps) {
+export function PricingSection({ loggedIn, paid = false }: PricingSectionProps) {
   const t = useTranslations("Pricing");
   const [loginOpen, setLoginOpen] = useState(false);
   const [buying, setBuying] = useState(false);
@@ -123,11 +124,16 @@ export function PricingSection({ loggedIn }: PricingSectionProps) {
             <div className="mt-auto pt-6">
               <button
                 type="button"
-                onClick={handleBuy}
-                disabled={buying}
-                className="w-full rounded-full bg-[var(--color-primary-focus)] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-primary)] disabled:opacity-50"
+                onClick={paid ? undefined : handleBuy}
+                disabled={buying || paid}
+                className="w-full rounded-full bg-[var(--color-primary-focus)] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-primary)] disabled:cursor-default disabled:opacity-60"
               >
-                {buying ? (
+                {paid ? (
+                  <>
+                    <i className="ph ph-check-circle mr-1" />
+                    {t("owned")}
+                  </>
+                ) : buying ? (
                   <span className="spinner" />
                 ) : loggedIn ? (
                   t("buyButton")

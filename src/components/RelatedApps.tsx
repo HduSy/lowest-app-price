@@ -147,7 +147,7 @@ export async function RelatedAppsSkeleton() {
         {t("title")}
       </h2>
       <div className="rounded-[var(--radius-lg)] border border-black/[0.08] p-12 text-center">
-        <div className="flex items-center justify-center gap-2 text-sm text-[var(--color-ink-48)]">
+        <div className="flex items-center justify-center gap-2 text-sm font-semibold text-[var(--color-ink-48)]">
           <span className="spinner" /> {t("loading")}
         </div>
       </div>

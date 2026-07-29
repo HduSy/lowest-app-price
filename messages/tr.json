@@ -74,7 +74,8 @@
     "paidFeature2": "Her uygulama için tüm abonelik düzeyleri ve bölgeler",
     "paidFeature3": "Günlük kota limiti yok",
     "buyButton": "$1.99 satın al",
-    "loginToBuy": "Satın almak için giriş yapın"
+    "loginToBuy": "Satın almak için giriş yapın",
+    "owned": "Satın alındı"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} bölge / {currency}",
@@ -131,11 +132,20 @@
     "lowest": "En düşük",
     "highest": "En yüksek",
     "savedHint": "En düşük, en yüksek fiyata kıyasla <bold>{amount}</bold> tasarruf sağlar!",
-    "disclaimer": "Fiyatlar her {hours} saatte bir güncellenir, güncel döviz kurlarına göre dönüştürülür, yalnızca referans amaçlıdır."
+    "disclaimer": "Fiyatlar her {hours} saatte bir güncellenir, güncel döviz kurlarına göre dönüştürülür, yalnızca referans amaçlıdır.",
+    "emptyTitle": "Fiyat verisi yok",
+    "emptyDesc": "Bu uygulamada karşılaştırılacak uygulama içi satın alım veya abonelik seviyeleri olmayabilir.",
+    "initialLoadingTitle": "Küresel fiyatlar getiriliyor…",
+    "initialLoadingHint": "İlk yükleme 35 bölgeyi getirir, birkaç saniye sürer"
   },
   "RelatedApps": {
     "title": "Şunlar da hoşunuza gidebilir",
     "loading": "Öneriler yükleniyor..."
+  },
+  "ShareButton": {
+    "shareAriaLabel": "Paylaş",
+    "copied": "Kopyalandı",
+    "copyLink": "Bağlantıyı kopyala"
   },
   "AppsList": {
     "loadingMore": "Daha fazla yükleniyor...",

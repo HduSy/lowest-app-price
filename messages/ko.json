@@ -74,7 +74,8 @@
     "paidFeature2": "모든 App의 모든 구독 등급과 지역",
     "paidFeature3": "일일 할당량 제한 없음",
     "buyButton": "$1.99 구매",
-    "loginToBuy": "로그인 후 구매"
+    "loginToBuy": "로그인 후 구매",
+    "owned": "구매 완료"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count}개 지역 / {currency}",
@@ -131,11 +132,20 @@
     "lowest": "최저",
     "highest": "최고",
     "savedHint": "최저가는 최고가 대비 <bold>{amount}</bold> 절약!",
-    "disclaimer": "가격은 {hours}시간마다 업데이트되며 현재 환율로 환산됩니다. 참고용입니다."
+    "disclaimer": "가격은 {hours}시간마다 업데이트되며 현재 환율로 환산됩니다. 참고용입니다.",
+    "emptyTitle": "가격 데이터 없음",
+    "emptyDesc": "이 앱에는 비교할 인앱 구매나 구독 등급이 없을 수 있습니다.",
+    "initialLoadingTitle": "전 세계 가격을 불러오는 중…",
+    "initialLoadingHint": "첫 로딩 시 35개 지역을 불러오며, 몇 초 걸립니다"
   },
   "RelatedApps": {
     "title": "이것도 좋아할 수 있어요",
     "loading": "추천 불러오는 중..."
+  },
+  "ShareButton": {
+    "shareAriaLabel": "공유",
+    "copied": "복사됨",
+    "copyLink": "링크 복사"
   },
   "AppsList": {
     "loadingMore": "더 불러오는 중...",

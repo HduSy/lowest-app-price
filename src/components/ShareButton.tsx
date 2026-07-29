@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { useTranslations } from "next-intl";
 
 interface ShareButtonProps {
   /** 分享链接（默认当前页） */
@@ -15,6 +16,7 @@ interface ShareButtonProps {
  * - 桌面端/不支持原生 Share：弹出小面板（X / Facebook / LinkedIn / 复制链接）
  */
 export function ShareButton({ url, text }: ShareButtonProps) {
+  const t = useTranslations("ShareButton");
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -115,7 +117,7 @@ export function ShareButton({ url, text }: ShareButtonProps) {
         type="button"
         onClick={handleShare}
         className="flex items-center justify-center text-[var(--color-ink-48)] transition-colors hover:text-[var(--color-ink)]"
-        aria-label="分享"
+        aria-label={t("shareAriaLabel")}
         aria-haspopup="menu"
         aria-expanded={open}
       >
@@ -142,7 +144,7 @@ export function ShareButton({ url, text }: ShareButtonProps) {
           <div className="my-1 h-px bg-[var(--color-divider)]" />
           <button type="button" onClick={copyLink} className={btnCls} role="menuitem">
             <i className={`ph ${copied ? "ph-check text-[var(--color-green-strong)]" : "ph-link-simple-horizontal"} text-[15px]`} />
-            <span>{copied ? "已复制" : "复制链接"}</span>
+            <span>{copied ? t("copied") : t("copyLink")}</span>
           </button>
         </div>
       )}

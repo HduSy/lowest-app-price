@@ -74,7 +74,8 @@
     "paidFeature2": "All subscription tiers & regions for every App",
     "paidFeature3": "No daily quota limits",
     "buyButton": "Buy $1.99",
-    "loginToBuy": "Sign in to buy"
+    "loginToBuy": "Sign in to buy",
+    "owned": "Owned"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} regions / {currency}",
@@ -131,11 +132,20 @@
     "lowest": "Lowest",
     "highest": "Highest",
     "savedHint": "Lowest saves <bold>{amount}</bold> vs highest!",
-    "disclaimer": "Prices update every {hours} hours, converted at current FX rates, for reference only."
+    "disclaimer": "Prices update every {hours} hours, converted at current FX rates, for reference only.",
+    "emptyTitle": "No pricing data",
+    "emptyDesc": "This App may not have in-app purchases or subscription tiers to compare.",
+    "initialLoadingTitle": "Fetching global prices…",
+    "initialLoadingHint": "First load fetches 35 regions, takes a few seconds"
   },
   "RelatedApps": {
     "title": "You might also like",
     "loading": "Loading recommendations..."
+  },
+  "ShareButton": {
+    "shareAriaLabel": "Share",
+    "copied": "Copied",
+    "copyLink": "Copy link"
   },
   "AppsList": {
     "loadingMore": "Loading more...",
