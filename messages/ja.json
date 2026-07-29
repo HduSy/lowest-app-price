@@ -90,6 +90,7 @@
   },
   "AppsPage": {
     "title": "すべてのアプリ",
+    "backToAll": "すべてのアプリに戻る",
     "desc": "世界中の App Store 価格を検索・比較。",
     "totalCount": "{count} アプリ収録",
     "searchResults": "{count} 件見つかりました",

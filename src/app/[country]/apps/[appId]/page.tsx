@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Suspense } from "react";
 import { headers } from "next/headers";
+import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import { getDb, getApp, getPrices, isStale } from "@/lib/db";
 import { AppDetailClient } from "@/components/AppDetailClient";
@@ -103,13 +104,15 @@ export default async function AppDetailPage({
     detectedTimezone
   );
 
+  const t = await getTranslations("AppsPage");
+
   return (
     <main className="mx-auto max-w-[1100px] px-[22px] py-10">
       <Link
         href={`/${country}/apps`}
         className="mb-6 inline-flex items-center gap-1 text-sm text-[var(--color-primary-focus)] hover:underline"
       >
-        <i className="ph ph-arrow-left" /> 返回全部 App
+        <i className="ph ph-arrow-left" /> {t("backToAll")}
       </Link>
 
       {/* App 头部 + 价格表（客户端包裹：刷新后立即回显 app info） */}

@@ -90,6 +90,7 @@
   },
   "AppsPage": {
     "title": "Alle apps",
+    "backToAll": "Terug naar alle apps",
     "desc": "Zoek en vergelijk App Store-prijzen wereldwijd.",
     "totalCount": "{count} apps geïndexeerd",
     "searchResults": "{count} resultaten gevonden",

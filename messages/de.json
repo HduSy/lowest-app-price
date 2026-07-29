@@ -90,6 +90,7 @@
   },
   "AppsPage": {
     "title": "Alle Apps",
+    "backToAll": "Zurück zu allen Apps",
     "desc": "App Store-Preise weltweit suchen und vergleichen.",
     "totalCount": "{count} Apps erfasst",
     "searchResults": "{count} Ergebnisse gefunden",

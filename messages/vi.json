@@ -90,6 +90,7 @@
   },
   "AppsPage": {
     "title": "Tất cả ứng dụng",
+    "backToAll": "Về tất cả ứng dụng",
     "desc": "Tìm kiếm và so sánh giá App Store trên toàn thế giới.",
     "totalCount": "{count} ứng dụng đã lập chỉ mục",
     "searchResults": "{count} kết quả",

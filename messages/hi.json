@@ -90,6 +90,7 @@
   },
   "AppsPage": {
     "title": "सभी ऐप्स",
+    "backToAll": "सभी ऐप्स पर वापस जाएँ",
     "desc": "दुनिया भर की App Store कीमतें खोजें और तुलना करें।",
     "totalCount": "{count} ऐप्स अनुक्रमित",
     "searchResults": "{count} परिणाम मिले",

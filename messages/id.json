@@ -90,6 +90,7 @@
   },
   "AppsPage": {
     "title": "Semua app",
+    "backToAll": "Kembali ke semua aplikasi",
     "desc": "Cari dan bandingkan harga App Store di seluruh dunia.",
     "totalCount": "{count} app terindeks",
     "searchResults": "{count} hasil ditemukan",

@@ -90,6 +90,7 @@
   },
   "AppsPage": {
     "title": "全部 App",
+    "backToAll": "返回全部 App",
     "desc": "搜索并对比全球 App Store 价格。",
     "totalCount": "共 {count} 个已收录 App",
     "searchResults": "搜到 {count} 个结果",

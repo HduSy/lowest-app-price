@@ -90,6 +90,7 @@
   },
   "AppsPage": {
     "title": "جميع التطبيقات",
+    "backToAll": "العودة إلى جميع التطبيقات",
     "desc": "ابحث وقارن أسعار App Store حول العالم.",
     "totalCount": "{count} تطبيق مفهرس",
     "searchResults": "{count} نتائج",

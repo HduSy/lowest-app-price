@@ -90,6 +90,7 @@
   },
   "AppsPage": {
     "title": "Tüm uygulamalar",
+    "backToAll": "Tüm uygulamalara geri dön",
     "desc": "Dünya genelinde App Store fiyatlarını arayın ve karşılaştırın.",
     "totalCount": "{count} uygulama dizine eklendi",
     "searchResults": "{count} sonuç bulundu",

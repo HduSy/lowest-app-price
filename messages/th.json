@@ -90,6 +90,7 @@
   },
   "AppsPage": {
     "title": "แอปทั้งหมด",
+    "backToAll": "กลับไปยังแอปทั้งหมด",
     "desc": "ค้นหาและเปรียบเทียบราคา App Store ทั่วโลก",
     "totalCount": "{count} แอปในระบบ",
     "searchResults": "พบ {count} ผลลัพธ์",
