@@ -7,6 +7,7 @@ import type { Language } from "./languages";
 import { languageForCountry } from "./languages";
 import { currencyForCountry, REGION_MAP } from "./regions";
 import { detectGeo } from "./geo";
+import type { PricingVariant } from "./pricing-variant";
 
 // ============ 用户偏好持久化 ============
 // 只存用户「手动切换」的币种/语种（Picker 调用 setCurrency/setLanguage 时写入）。
@@ -57,12 +58,16 @@ interface AppState {
 
   /** 应用 IP 检测到的默认值（不持久化，每次访问跟随 IP） */
   applyGeoDefaults: (currency: string, language: Language) => void;
+
+  /** 定价 A/B 实验开关（SSR 注入，client 全局可取） */
+  pricingVariant: PricingVariant;
 }
 
-function createAppStore(defaultCurrency: string, defaultLanguage: Language) {
+function createAppStore(defaultCurrency: string, defaultLanguage: Language, pricingVariant: PricingVariant) {
   return create<AppState>((set) => ({
     currency: defaultCurrency,
     defaultCurrency,
+    pricingVariant,
     setCurrency: (c) => {
       set({ currency: c });
       writePrefs({ currency: c });
@@ -99,17 +104,19 @@ export function AppStoreProvider({
   defaultCurrency,
   defaultLanguage,
   geoSource,
+  pricingVariant,
   children,
 }: {
   defaultCurrency: string;
   defaultLanguage: Language;
   /** "cf" = Cloudflare 边缘 req.cf 已检测（信任服务端）；"fallback" = 需客户端补检 */
   geoSource: "cf" | "fallback";
+  pricingVariant: PricingVariant;
   children: React.ReactNode;
 }) {
   const store = useMemo(
-    () => createAppStore(defaultCurrency, defaultLanguage),
-    [defaultCurrency, defaultLanguage],
+    () => createAppStore(defaultCurrency, defaultLanguage, pricingVariant),
+    [defaultCurrency, defaultLanguage, pricingVariant],
   );
   const language = useStore(store, (s) => s.language);
   const router = useRouter();
@@ -197,6 +204,11 @@ export function useCurrency<T>(selector: (s: AppState) => T): T {
 
 export function useLanguage<T>(selector: (s: AppState) => T): T {
   return useStore(useStoreContext(), selector);
+}
+
+/** 取当前定价 A/B 实验开关（SSR 注入，client 全局可取） */
+export function usePricingVariant(): PricingVariant {
+  return useStore(useStoreContext(), (s) => s.pricingVariant);
 }
 
 export type { Language } from "./languages";

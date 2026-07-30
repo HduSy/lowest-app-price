@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import type { PriceRow } from "@/lib/types";
 import { aggregatePrices, computeFreeCount } from "@/lib/compare";
 import { formatCurrency } from "@/lib/currencies";
-import { useCurrency } from "@/lib/app-store";
+import { useCurrency, usePricingVariant } from "@/lib/app-store";
 import type { AppViewAuth } from "@/lib/entitlement";
 import { DAILY_VIEW_LIMIT } from "@/lib/entitlement";
 import { Flag } from "./Flag";
@@ -401,13 +401,14 @@ function LockedBanner({
   onLogin: () => void;
 }) {
   const t = useTranslations("PriceTable");
+  const variant = usePricingVariant();
   return (
     <div className="mb-4 rounded-[var(--radius-md)] border border-[var(--color-primary-focus)]/20 bg-[rgba(0,113,227,0.06)] px-4 py-3">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2 text-sm">
           <i className="ph ph-lock-key text-[var(--color-primary-focus)]" />
           {!auth.loggedIn ? (
-            <span>{t("lockedHintUnsigned", { limit: DAILY_VIEW_LIMIT })}</span>
+            <span>{variant === "B" ? t("lockedHintUnsignedB") : t("lockedHintUnsigned", { limit: DAILY_VIEW_LIMIT })}</span>
           ) : (
             <span>{t("lockedHintExhausted", { limit: DAILY_VIEW_LIMIT })}</span>
           )}

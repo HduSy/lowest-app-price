@@ -75,7 +75,22 @@
     "paidFeature3": "Sin límites de cuota diaria",
     "buyButton": "Comprar $1.99",
     "loginToBuy": "Inicia sesión para comprar",
-    "owned": "Comprado"
+    "owned": "Comprado",
+    "titleB": "Prueba gratis, inicia sesión para desbloquear todo",
+    "descB": "Consulta los 3 niveles más baratos sin registro, o inicia sesión para hacerte miembro y desbloquear todo (gratis durante la beta).",
+    "freeTierB": "Versión gratuita",
+    "freePriceB": "Gratis",
+    "freeNoteB": "Sin registro",
+    "freeFeature1B": "Los 3 niveles más baratos",
+    "freeFeature2B": "Todas las Apps navegables",
+    "freeFeature3B": "Sin límite diario",
+    "memberTier": "Miembro",
+    "memberNote": "Inicia sesión para desbloquear",
+    "memberFeature1": "Todos los niveles de suscripción desbloqueados",
+    "memberFeature2": "Las 40 regiones, vistas ilimitadas",
+    "memberFeature3": "Solo inicia sesión, gratis en beta",
+    "loginToUse": "Inicia sesión para usar",
+    "currentMember": "Miembro actual"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} regiones / {currency}",
@@ -139,7 +154,8 @@
     "initialLoadingTitle": "Obteniendo precios globales…",
     "initialLoadingHint": "La primera carga obtiene 40 regiones, tarda unos segundos",
     "refreshingBanner": "Actualizando precios globales…",
-    "converting": "Convirtiendo…"
+    "converting": "Convirtiendo…",
+    "lockedHintUnsignedB": "Inicia sesión como miembro para ver todos los niveles"
   },
   "RelatedApps": {
     "title": "También te puede gustar",

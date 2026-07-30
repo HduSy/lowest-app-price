@@ -75,7 +75,22 @@
     "paidFeature3": "Günlük kota limiti yok",
     "buyButton": "$1.99 satın al",
     "loginToBuy": "Satın almak için giriş yapın",
-    "owned": "Satın alındı"
+    "owned": "Satın alındı",
+    "titleB": "Ücretsiz dene, her şeyi açmak için giriş yap",
+    "descB": "Giriş yapmadan en ucuz 3 katmanı gör, veya üye olmak için giriş yap ve her şeyi aç (beta süresince ücretsiz).",
+    "freeTierB": "Ücretsiz sürüm",
+    "freePriceB": "Ücretsiz",
+    "freeNoteB": "Giriş gerekmez",
+    "freeFeature1B": "En ucuz 3 katman",
+    "freeFeature2B": "Tüm Apps gezilebilir",
+    "freeFeature3B": "Günlük limit yok",
+    "memberTier": "Üye",
+    "memberNote": "Açmak için giriş yap",
+    "memberFeature1": "Tüm abonelik katmanları açık",
+    "memberFeature2": "Tüm 40 bölge, sınırsız görüntüleme",
+    "memberFeature3": "Sadece giriş yap, beta'da ücretsiz",
+    "loginToUse": "Kullanmak için giriş yap",
+    "currentMember": "Mevcut üye"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} bölge / {currency}",
@@ -139,7 +154,8 @@
     "initialLoadingTitle": "Küresel fiyatlar getiriliyor…",
     "initialLoadingHint": "İlk yükleme 40 bölgeyi getirir, birkaç saniye sürer",
     "refreshingBanner": "Küresel fiyatlar yenileniyor…",
-    "converting": "Dönüştürülüyor…"
+    "converting": "Dönüştürülüyor…",
+    "lockedHintUnsignedB": "Tüm katmanları görmek için üye olarak giriş yap"
   },
   "RelatedApps": {
     "title": "Şunlar da hoşunuza gidebilir",

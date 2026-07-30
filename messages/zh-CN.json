@@ -15,6 +15,7 @@
     "footerDisclaimer": "不附属于 Apple Inc.。价格数据来自公开 App Store，按实时汇率换算，仅供参考——实际购买以 App Store 当时显示为准，并需遵守 Apple 服务条款与当地法律。",
     "footerCopyright": "Copyright © {year} LowestAppPrice 全区比价. 保留所有权利。",
     "footerLinks": "页脚链接",
+    "about": "关于我们",
     "privacy": "隐私政策",
     "terms": "使用条款",
     "refunds": "退款政策",
@@ -75,7 +76,22 @@
     "paidFeature3": "不再受每日额度限制",
     "buyButton": "$1.99 买断",
     "loginToBuy": "登录后购买",
-    "owned": "已购买"
+    "owned": "已购买",
+    "titleB": "免费试用，登录解锁全部",
+    "descB": "未登录可看最便宜 3 档，登录即成会员，解锁全部 App、全部地区、全部档位——内测期免费。",
+    "freeTierB": "免费版",
+    "freePriceB": "免费",
+    "freeNoteB": "无需登录",
+    "freeFeature1B": "查看最便宜 3 档",
+    "freeFeature2B": "全部 App 可浏览",
+    "freeFeature3B": "不限次数",
+    "memberTier": "会员",
+    "memberNote": "登录即可解锁",
+    "memberFeature1": "全部订阅档位解锁",
+    "memberFeature2": "全部 40 个地区，无限查看",
+    "memberFeature3": "只需登录，内测期免费",
+    "loginToUse": "登录即可使用",
+    "currentMember": "当前会员"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} 个地区 / {currency}",
@@ -139,7 +155,8 @@
     "initialLoadingTitle": "正在抓取全球价格…",
     "initialLoadingHint": "首次加载需抓取 40 个地区数据，约几秒",
     "refreshingBanner": "正在刷新全球价格…",
-    "converting": "换算中…"
+    "converting": "换算中…",
+    "lockedHintUnsignedB": "登录成为会员，查看全部档位"
   },
   "RelatedApps": {
     "title": "你可能也喜欢",
@@ -328,5 +345,35 @@
     "copyHint": "按钮无法点击？复制此链接到浏览器：",
     "ignoreHint": "如非本人操作，请忽略此邮件，无需任何操作。",
     "textBody": "点击下方链接登录 LowestAppPrice：\n\n{url}\n\n链接 15 分钟内有效。如非本人操作请忽略此邮件。"
+  },
+  "About": {
+    "metaTitle": "关于我们 - {siteName}",
+    "metaDescription": "了解 {siteName} 的背景、初衷、核心功能与使用方法——一个帮你找到 App Store 最便宜订阅地区的比价工具。",
+    "backToHome": "返回首页",
+    "title": "关于我们",
+    "subtitle": "帮你找到 App Store 里，最便宜的那一个订阅区。",
+    "backgroundTitle": "背景",
+    "backgroundBody": "同一个 App，在不同国家或地区的 App Store 上，订阅或内购价格常常相差数倍。美元、欧元、日元之间的汇率每天都在变，本地定价也各不相同——但绝大多数人不会为了一个订阅，去手动对比几十个地区的价格。{siteName} 正是为解决这个问题而生：把分散在 40 个 App Store 地区的价格，汇总到一张表里。",
+    "intentTitle": "初衷",
+    "intentBody": "我们相信「信息差」是消费体验里最容易被忽视的成本。当一个年付订阅在最便宜的地区只要几十块，在最贵的地区却要几百块时，知道差价本身就是一种价值。我们做这个工具，是想把定价透明化——让每个人在订阅前，都能一眼看到「我现在所在的区，是不是最划算的」。",
+    "featuresTitle": "我们提供什么",
+    "featuresIntro": "围绕「跨地区 App Store 比价」这一件事，把体验做到极致：",
+    "feature1Title": "覆盖 40 个地区的实时比价",
+    "feature1Body": "从美国、日本、土耳其、印度到巴西——一次查询，并发抓取 40 个 App Store 地区的订阅与内购价格，按你选的币种一键换算。",
+    "feature2Title": "订阅与内购都收录",
+    "feature2Body": "月度 / 年度订阅、一次性买断、家庭共享……App Store 详情页公开展示的内购档位，都会被拆解成可比的行项。",
+    "feature3Title": "从便宜到贵的清晰排名",
+    "feature3Body": "所有价格按实时汇率换算成同一币种后从低到高排列，最低、最高、你所在区一目了然，差额直接标出来。",
+    "feature4Title": "免登录也能用",
+    "feature4Body": "匿名就能看到部分结果；登录后每天免费查 3 次；如果经常用，$1.99 一次买断，永久无限查看。",
+    "howToUseTitle": "如何使用",
+    "howToUseIntro": "三步即可找到最便宜的订阅区：",
+    "step1Title": "粘贴 App Store 链接或 ID",
+    "step1Body": "在「全部应用」页的输入框，粘贴从 App Store 复制的链接，或者直接填 App 的数字 ID。",
+    "step2Title": "等待全球价格抓取",
+    "step2Body": "首次加载需要并发抓取 40 个地区，通常几秒。之后每 6 小时自动刷新一次，保证汇率与价格跟得上现实。",
+    "step3Title": "看排名、做决定",
+    "step3Body": "价格表按你选的币种从低到高排列，最低、最高、你所在区高亮标注，差额一眼可见。决定切到哪个区，由你自己判断。",
+    "howToUseNote": "提示：价格数据来自公开 App Store，按实时汇率换算，仅供参考。实际购买请以 App Store 当时显示为准，并遵守 Apple 服务条款与当地法律。"
   }
 }

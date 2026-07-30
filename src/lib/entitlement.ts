@@ -1,18 +1,25 @@
-// 权限分层 helper：付费状态 + 每日免费查看配额
-// 规则：
+// 权限分层 helper：付费状态 + 会员状态 + 每日免费查看配额
+// A 版（正式三档）：
 //   未登录 -> 看不到完整价格（PriceTable locked，只显示 top3）
 //   登录未付费 -> 每天 3 次免费查看完整价格（跨 App 共享，UTC 日切）
 //   $1.99 付费 -> 永久无限查看
+// B 版（内测两档）：
+//   未登录 -> top3 锁定（同 A 版 anonymous）
+//   登录 -> 会员，全量无限（member=true，不走配额）
+// variant 由 env PRICING_VARIANT 决定（src/lib/pricing-variant.ts），默认 A
 import { getDb } from "./db";
+import { getPricingVariant } from "./pricing-variant";
 
 export const DAILY_VIEW_LIMIT = 3;
 
 export interface Entitlement {
   loggedIn: boolean;
   paid: boolean;
+  /** B 版登录会员（登录即会员）；A 版恒 false */
+  member: boolean;
   dailyUsed: number;
   dailyLimit: number;
-  /** 是否可查看完整价格（已付费 或 当日配额未用完） */
+  /** 是否可查看完整价格（已付费 或 会员；A 版未付费由 authorizeAppView 在访问时扣配额判定） */
   canViewFull: boolean;
 }
 
@@ -21,37 +28,42 @@ export function todayUTC(): string {
   return new Date().toISOString().slice(0, 10);
 }
 
-/** 查用户权益：付费状态 + 今日已用次数 */
+/** 查用户权益：付费状态 + 会员状态 + 今日已用次数 */
 export async function getEntitlement(userId: string | null): Promise<Entitlement> {
+  const variant = await getPricingVariant();
   if (!userId) {
     return {
       loggedIn: false,
       paid: false,
+      member: false,
       dailyUsed: 0,
       dailyLimit: DAILY_VIEW_LIMIT,
       canViewFull: false,
     };
   }
   const db = await getDb();
-  // 付费状态：查 purchases 表是否有 paid 记录
+  // 付费状态：查 purchases 表是否有 paid 记录（A/B 版通用，B 版登录即会员但 purchases 仍记录历史买断）
   const paidRow = await db
     .prepare("SELECT 1 FROM purchases WHERE user_id = ?1 AND status = 'paid' LIMIT 1")
     .bind(userId)
     .first<{ "1": number }>();
   const paid = !!paidRow;
-  // 今日已用次数
+  // B 版：登录即会员
+  const member = variant === "B";
+  // 今日已用次数（仅 A 版未付费用户实际用到；B 版 member 不走配额但仍返回以便前端展示）
   const today = todayUTC();
   const viewRow = await db
     .prepare("SELECT count FROM daily_views WHERE user_id = ?1 AND view_date = ?2")
     .bind(userId, today)
     .first<{ count: number }>();
   const dailyUsed = viewRow?.count ?? 0;
-  const canViewFull = paid; // 只有付费用户可直接查看完整；未付费需点"消耗1次"解锁
-  return { loggedIn: true, paid, dailyUsed, dailyLimit: DAILY_VIEW_LIMIT, canViewFull };
+  // canViewFull：付费 或 会员 直接 true；A 版未付费靠 authorizeAppView 在访问时扣配额判定
+  const canViewFull = paid || member;
+  return { loggedIn: true, paid, member, dailyUsed, dailyLimit: DAILY_VIEW_LIMIT, canViewFull };
 }
 
 /**
- * 扣减一次当日配额（仅登录未付费用户需要）
+ * 扣减一次当日配额（仅 A 版登录未付费用户需要）
  * 用 INSERT ON CONFLICT DO UPDATE WHERE 做原子条件扣减
  * @returns success 是否扣减成功（配额未满），dailyUsed 扣减后次数
  */
@@ -85,6 +97,7 @@ export async function consumeDailyView(
 
 export type ViewAuthReason =
   | "paid"
+  | "member"
   | "unlocked_today"
   | "quota_consumed"
   | "quota_exhausted"
@@ -98,6 +111,7 @@ export interface AppViewAuth {
   dailyUsed: number;
   dailyLimit: number;
   paid: boolean;
+  member: boolean;
   loggedIn: boolean;
 }
 
@@ -135,18 +149,25 @@ export async function recordAppUnlock(
 
 /**
  * 鉴权：当前用户能否查看某 App 的全量价格
- * 自然访问即扣减，无需手动点"解锁"按钮：
+ * variant 由 env 决定，调用方无需传：
+ *
+ * A 版：
  * - 付费 -> 全量
  * - 未登录 -> 锁定（引导登录）
  * - 已登录未付费 + 今天已解锁此 App -> 全量（不重复扣费）
  * - 已登录未付费 + 今天未解锁 + 配额未满 -> 自动扣 1 次 + 记录解锁 + 返回全量
  * - 已登录未付费 + 今天未解锁 + 配额已满 -> 锁定，引导付费
+ *
+ * B 版：
+ * - 登录 -> 会员全量（reason=member）
+ * - 未登录 -> 锁定 top3（reason=anonymous，引导登录成会员）
  */
 export async function authorizeAppView(
   userId: string | null,
   appId: string
 ): Promise<AppViewAuth> {
   const ent = await getEntitlement(userId);
+  // 付费用户（A/B 版通用，历史买断优先）
   if (ent.paid) {
     return {
       canViewFull: true,
@@ -154,6 +175,19 @@ export async function authorizeAppView(
       dailyUsed: 0,
       dailyLimit: DAILY_VIEW_LIMIT,
       paid: true,
+      member: ent.member,
+      loggedIn: true,
+    };
+  }
+  // B 版：登录即会员
+  if (ent.member) {
+    return {
+      canViewFull: true,
+      reason: "member",
+      dailyUsed: 0,
+      dailyLimit: DAILY_VIEW_LIMIT,
+      paid: false,
+      member: true,
       loggedIn: true,
     };
   }
@@ -164,10 +198,11 @@ export async function authorizeAppView(
       dailyUsed: 0,
       dailyLimit: DAILY_VIEW_LIMIT,
       paid: false,
+      member: false,
       loggedIn: false,
     };
   }
-  // 已登录未付费：检查今天是否已解锁此 App
+  // A 版已登录未付费：检查今天是否已解锁此 App
   const today = todayUTC();
   const unlocked = await hasUnlockedApp(userId, appId, today);
   if (unlocked) {
@@ -177,6 +212,7 @@ export async function authorizeAppView(
       dailyUsed: ent.dailyUsed,
       dailyLimit: DAILY_VIEW_LIMIT,
       paid: false,
+      member: false,
       loggedIn: true,
     };
   }
@@ -192,6 +228,7 @@ export async function authorizeAppView(
         dailyUsed: result.dailyUsed,
         dailyLimit: DAILY_VIEW_LIMIT,
         paid: false,
+        member: false,
         loggedIn: true,
       };
     }
@@ -203,6 +240,7 @@ export async function authorizeAppView(
     dailyUsed: ent.dailyUsed,
     dailyLimit: DAILY_VIEW_LIMIT,
     paid: false,
+    member: false,
     loggedIn: true,
   };
 }

@@ -75,7 +75,22 @@
     "paidFeature3": "Bez dziennych limitów",
     "buyButton": "Kup $1.99",
     "loginToBuy": "Zaloguj się, aby kupić",
-    "owned": "Kupione"
+    "owned": "Kupione",
+    "titleB": "Wypróbuj za darmo, zaloguj się, by odblokować wszystko",
+    "descB": "Zobacz 3 najtańsze poziomy bez logowania, lub zaloguj się, by zostać członkiem i odblokować wszystko (darmowe w beta).",
+    "freeTierB": "Darmowa wersja",
+    "freePriceB": "Za darmo",
+    "freeNoteB": "Bez logowania",
+    "freeFeature1B": "3 najtańsze poziomy",
+    "freeFeature2B": "Wszystkie App do przeglądania",
+    "freeFeature3B": "Bez dziennego limitu",
+    "memberTier": "Członek",
+    "memberNote": "Zaloguj się, by odblokować",
+    "memberFeature1": "Wszystkie poziomy subskrypcji odblokowane",
+    "memberFeature2": "Wszystkie 40 regionów, nielimitowane podglądy",
+    "memberFeature3": "Wystarczy zalogować, darmowe w becie",
+    "loginToUse": "Zaloguj się, by używać",
+    "currentMember": "Obecny członek"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} regionów / {currency}",
@@ -139,7 +154,8 @@
     "initialLoadingTitle": "Pobieranie światowych cen…",
     "initialLoadingHint": "Pierwsze ładowanie pobiera 40 regionów, trwa kilka sekund",
     "refreshingBanner": "Odświeżanie światowych cen…",
-    "converting": "Przeliczanie…"
+    "converting": "Przeliczanie…",
+    "lockedHintUnsignedB": "Zaloguj się jako członek, by widzieć wszystkie poziomy"
   },
   "RelatedApps": {
     "title": "Może ci się spodobać również",

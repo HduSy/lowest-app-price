@@ -9,6 +9,8 @@ export interface CurrentUser {
   image: string | null;
   role: string;
   paid: boolean;
+  /** B 版登录会员（登录即会员）；A 版恒 false */
+  member: boolean;
 }
 
 export async function getCurrentUser(): Promise<CurrentUser | null> {
@@ -22,5 +24,6 @@ export async function getCurrentUser(): Promise<CurrentUser | null> {
     image: session.user.image ?? null,
     role: session.user.role ?? "user",
     paid: ent.paid,
+    member: ent.member,
   };
 }

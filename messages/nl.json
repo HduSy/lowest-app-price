@@ -75,7 +75,22 @@
     "paidFeature3": "Geen dagelijkse quotumlimieten",
     "buyButton": "Koop $1.99",
     "loginToBuy": "Log in om te kopen",
-    "owned": "Gekocht"
+    "owned": "Gekocht",
+    "titleB": "Gratis proberen, inloggen voor volledige toegang",
+    "descB": "Bekijk de 3 goedkoopste niveaus zonder login, of log in om lid te worden en alles te ontgrendelen (gratis tijdens de bèta).",
+    "freeTierB": "Gratis versie",
+    "freePriceB": "Gratis",
+    "freeNoteB": "Geen login nodig",
+    "freeFeature1B": "De 3 goedkoopste niveaus",
+    "freeFeature2B": "Alle Apps doorbladerbaar",
+    "freeFeature3B": "Geen dagelijks limiet",
+    "memberTier": "Lid",
+    "memberNote": "Log in om te ontgrendelen",
+    "memberFeature1": "Alle abonnementsniveaus ontgrendeld",
+    "memberFeature2": "Alle 40 regio's, onbeperkt bekijken",
+    "memberFeature3": "Gewoon inloggen, gratis in bèta",
+    "loginToUse": "Log in om te gebruiken",
+    "currentMember": "Huidig lid"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} regio's / {currency}",
@@ -139,7 +154,8 @@
     "initialLoadingTitle": "Wereldwijde prijzen ophalen…",
     "initialLoadingHint": "Eerste keer laden haalt 40 regio's op, duurt enkele seconden",
     "refreshingBanner": "Wereldwijde prijzen vernieuwen…",
-    "converting": "Conversie…"
+    "converting": "Conversie…",
+    "lockedHintUnsignedB": "Log in als lid om alle niveaus te zien"
   },
   "RelatedApps": {
     "title": "Misschien vind je dit ook leuk",

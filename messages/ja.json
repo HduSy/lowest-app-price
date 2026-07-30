@@ -75,7 +75,22 @@
     "paidFeature3": "毎日の枠制限なし",
     "buyButton": "$1.99 買い切り",
     "loginToBuy": "ログインして購入",
-    "owned": "購入済み"
+    "owned": "購入済み",
+    "titleB": "無料で試して、ログインで全て解放",
+    "descB": "ログインなしで最安の3ティアを表示、ログインすると会員になり全てのApp・全地域・全ティアを解放（ベータ期間は無料）。",
+    "freeTierB": "無料版",
+    "freePriceB": "無料",
+    "freeNoteB": "ログイン不要",
+    "freeFeature1B": "最安の3ティアを表示",
+    "freeFeature2B": "すべてのAppを閲覧",
+    "freeFeature3B": "回数制限なし",
+    "memberTier": "会員",
+    "memberNote": "ログインで解放",
+    "memberFeature1": "すべてのサブスクリプションティアを解放",
+    "memberFeature2": "全40地域、無制限閲覧",
+    "memberFeature3": "ログインするだけ、ベータ期間は無料",
+    "loginToUse": "ログインして利用",
+    "currentMember": "現在の会員"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} 地域 / {currency}",
@@ -139,7 +154,8 @@
     "initialLoadingTitle": "全世界の価格を取得中…",
     "initialLoadingHint": "初回読み込み時に 40 地域を取得するため、数秒かかります",
     "refreshingBanner": "世界の価格を更新中…",
-    "converting": "換算中…"
+    "converting": "換算中…",
+    "lockedHintUnsignedB": "会員としてログインして全ティアを表示"
   },
   "RelatedApps": {
     "title": "こちらもおすすめ",

@@ -75,7 +75,22 @@
     "paidFeature3": "Keine täglichen Kontingentlimits",
     "buyButton": "$1.99 kaufen",
     "loginToBuy": "Anmelden zum Kaufen",
-    "owned": "Gekauft"
+    "owned": "Gekauft",
+    "titleB": "Kostenlos testen, anmelden für Vollzugriff",
+    "descB": "Ohne Anmeldung die 3 günstigsten Tarife sehen, oder anmelden und Mitglied werden, um alles freizuschalten (während der Beta kostenlos).",
+    "freeTierB": "Gratis-Version",
+    "freePriceB": "Kostenlos",
+    "freeNoteB": "Keine Anmeldung nötig",
+    "freeFeature1B": "Die 3 günstigsten Tarife",
+    "freeFeature2B": "Alle Apps durchsuchen",
+    "freeFeature3B": "Kein Tageslimit",
+    "memberTier": "Mitglied",
+    "memberNote": "Anmelden zum Freischalten",
+    "memberFeature1": "Alle Abo-Tarife freigeschaltet",
+    "memberFeature2": "Alle 40 Regionen, unbegrenzt",
+    "memberFeature3": "Einfach anmelden, in der Beta kostenlos",
+    "loginToUse": "Anmelden zum Nutzen",
+    "currentMember": "Aktuelles Mitglied"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} Regionen / {currency}",
@@ -139,7 +154,8 @@
     "initialLoadingTitle": "Globale Preise werden abgerufen…",
     "initialLoadingHint": "Erster Abruf lädt 40 Regionen, dauert wenige Sekunden",
     "refreshingBanner": "Globale Preise werden aktualisiert…",
-    "converting": "Umrechnen…"
+    "converting": "Umrechnen…",
+    "lockedHintUnsignedB": "Als Mitglied anmelden, um alle Tarife zu sehen"
   },
   "RelatedApps": {
     "title": "Das könnte dir auch gefallen",

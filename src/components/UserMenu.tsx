@@ -14,6 +14,7 @@ interface UserMenuProps {
     image: string | null;
     email: string | null;
     paid: boolean;
+    member: boolean;
   };
 }
 
@@ -39,7 +40,8 @@ export function UserMenu({ user }: UserMenuProps) {
   }, [open]);
 
   const displayName = user.name || user.email || t("defaultName");
-  const badge = user.paid
+  const isMember = user.paid || user.member;
+  const badge = isMember
     ? { cls: "bg-[rgba(0,113,227,0.1)] text-[var(--color-primary-focus)]", icon: "ph-crown", label: t("proBadge") }
     : { cls: "bg-[var(--color-parchment)] text-[var(--color-ink-48)]", icon: "ph-gift", label: t("freeBadge") };
 
@@ -65,7 +67,7 @@ export function UserMenu({ user }: UserMenuProps) {
           <div className="flex items-center justify-between gap-3 px-3 py-2.5">
             <div className="min-w-0">
               <div className="flex items-center gap-2">
-                <div className={`truncate text-[14px] font-semibold ${user.paid ? "shimmer-text" : "text-[var(--color-ink)]"}`}>
+                <div className={`truncate text-[14px] font-semibold ${isMember ? "shimmer-text" : "text-[var(--color-ink)]"}`}>
                   {displayName}
                 </div>
                 <span className={`inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-medium ${badge.cls}`}>

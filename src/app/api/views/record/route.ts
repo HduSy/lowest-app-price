@@ -28,10 +28,10 @@ export async function POST(req: Request) {
       return error("Missing appId", 400);
     }
 
-    // 付费用户无需扣减
+    // 付费用户 / B 版会员无需扣减
     const ent = await getEntitlement(userId);
-    if (ent.paid) {
-      return json({ success: true, paid: true, dailyUsed: 0, dailyLimit: DAILY_VIEW_LIMIT });
+    if (ent.paid || ent.member) {
+      return json({ success: true, paid: ent.paid, dailyUsed: 0, dailyLimit: DAILY_VIEW_LIMIT });
     }
 
     // 幂等：今天已解锁过此 App，直接返回成功（不重复扣费）

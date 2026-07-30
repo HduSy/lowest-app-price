@@ -75,7 +75,22 @@
     "paidFeature3": "بلا حدود للحصة اليومية",
     "buyButton": "اشترِ بـ $1.99",
     "loginToBuy": "سجّل الدخول للشراء",
-    "owned": "مملوك"
+    "owned": "مملوك",
+    "titleB": "جرّب مجانًا، سجّل الدخول لفتح كل شيء",
+    "descB": "شاهد أرخص 3 مستويات دون تسجيل دخول، أو سجّل الدخول لتصبح عضوًا وتفتح كل شيء (مجاني خلال فترة التجربة).",
+    "freeTierB": "النسخة المجانية",
+    "freePriceB": "مجاني",
+    "freeNoteB": "بدون تسجيل دخول",
+    "freeFeature1B": "أرخص 3 مستويات",
+    "freeFeature2B": "كل التطبيقات قابلة للتصفح",
+    "freeFeature3B": "بلا حد يومي",
+    "memberTier": "عضو",
+    "memberNote": "سجّل الدخول للفتح",
+    "memberFeature1": "كل مستويات الاشتراك مفتوحة",
+    "memberFeature2": "كل 40 منطقة، مشاهدات غير محدودة",
+    "memberFeature3": "فقط سجّل الدخول، مجاني خلال التجربة",
+    "loginToUse": "سجّل الدخول للاستخدام",
+    "currentMember": "العضو الحالي"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} مناطق / {currency}",
@@ -139,7 +154,8 @@
     "initialLoadingTitle": "جارٍ جلب الأسعار العالمية…",
     "initialLoadingHint": "التحميل الأول يجلب 40 منطقة، يستغرق بضع ثوانٍ",
     "refreshingBanner": "جارٍ تحديث الأسعار العالمية…",
-    "converting": "جارٍ التحويل…"
+    "converting": "جارٍ التحويل…",
+    "lockedHintUnsignedB": "سجّل الدخول كعضو لرؤية كل المستويات"
   },
   "RelatedApps": {
     "title": "قد يعجبك أيضًا",

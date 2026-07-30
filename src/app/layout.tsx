@@ -8,6 +8,7 @@ import { AppStoreProvider } from "@/lib/app-store";
 import { LogoMark } from "@/components/Logo";
 import { auth } from "@/lib/auth";
 import { getEntitlement } from "@/lib/entitlement";
+import { getPricingVariant } from "@/lib/pricing-variant";
 import { currencyForCountry, REGION_MAP } from "@/lib/regions";
 import { languageForCountry, LANGUAGES, type Language } from "@/lib/languages";
 import "./globals.css";
@@ -79,9 +80,11 @@ export default async function RootLayout({
   const locale = await getLocale();
   const t = await getTranslations("Layout");
 
+  // 定价 A/B 实验开关（SSR 读 env，注入 AppStoreProvider 供 client 用）
+  const pricingVariant = await getPricingVariant();
   // 当前登录用户（Auth.js session，无则 null）
   // try/catch：auth() 在 AUTH_SECRET 缺失或 JWT 验证失败时可能抛错，不阻塞页面渲染
-  let user: { id: string; name: string | null; image: string | null; email: string | null; paid: boolean } | null = null;
+  let user: { id: string; name: string | null; image: string | null; email: string | null; paid: boolean; member: boolean } | null = null;
   try {
     const session = await auth();
     if (session?.user?.id) {
@@ -92,6 +95,7 @@ export default async function RootLayout({
         image: session.user.image ?? null,
         email: session.user.email ?? null,
         paid: ent.paid,
+        member: ent.member,
       };
     }
   } catch (e) {
@@ -105,7 +109,7 @@ export default async function RootLayout({
       </head>
       <body className="flex min-h-screen flex-col">
         <NextIntlClientProvider>
-          <AppStoreProvider defaultCurrency={defaultCurrency} defaultLanguage={defaultLanguage} geoSource={geoSource}>
+          <AppStoreProvider defaultCurrency={defaultCurrency} defaultLanguage={defaultLanguage} geoSource={geoSource} pricingVariant={pricingVariant}>
           <Nav user={user} />
           <main className="flex-1">{children}</main>
           <footer className="bg-[var(--color-parchment)] py-10">

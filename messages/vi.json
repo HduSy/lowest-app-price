@@ -75,7 +75,22 @@
     "paidFeature3": "Không giới hạn hạn mức hàng ngày",
     "buyButton": "Mua $1.99",
     "loginToBuy": "Đăng nhập để mua",
-    "owned": "Đã mua"
+    "owned": "Đã mua",
+    "titleB": "Dùng thử miễn phí, đăng nhập để mở khóa tất cả",
+    "descB": "Xem 3 mức rẻ nhất không cần đăng nhập, hoặc đăng nhập thành viên để mở khóa tất cả (miễn phí trong beta).",
+    "freeTierB": "Phiên bản miễn phí",
+    "freePriceB": "Miễn phí",
+    "freeNoteB": "Không cần đăng nhập",
+    "freeFeature1B": "3 mức rẻ nhất",
+    "freeFeature2B": "Tất cả App có thể duyệt",
+    "freeFeature3B": "Không giới hạn hàng ngày",
+    "memberTier": "Thành viên",
+    "memberNote": "Đăng nhập để mở khóa",
+    "memberFeature1": "Mở khóa tất cả mức đăng ký",
+    "memberFeature2": "Tất cả 40 khu vực, xem không giới hạn",
+    "memberFeature3": "Chỉ cần đăng nhập, miễn phí trong beta",
+    "loginToUse": "Đăng nhập để sử dụng",
+    "currentMember": "Thành viên hiện tại"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} khu vực / {currency}",
@@ -139,7 +154,8 @@
     "initialLoadingTitle": "Đang lấy giá toàn cầu…",
     "initialLoadingHint": "Lần đầu tải 40 khu vực, mất vài giây",
     "refreshingBanner": "Đang làm mới giá toàn cầu…",
-    "converting": "Đang quy đổi…"
+    "converting": "Đang quy đổi…",
+    "lockedHintUnsignedB": "Đăng nhập thành viên để xem tất cả mức"
   },
   "RelatedApps": {
     "title": "Bạn có thể cũng thích",

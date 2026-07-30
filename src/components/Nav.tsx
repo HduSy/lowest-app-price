@@ -31,6 +31,7 @@ export interface NavUser {
   image: string | null;
   email: string | null;
   paid: boolean;
+  member: boolean;
 }
 
 export function Nav({ user = null }: { user?: NavUser | null }) {
@@ -136,6 +137,7 @@ export function Nav({ user = null }: { user?: NavUser | null }) {
               image: user.image,
               email: user.email,
               paid: user.paid,
+              member: user.member,
             }}
           />
         ) : (

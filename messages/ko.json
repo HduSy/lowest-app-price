@@ -75,7 +75,22 @@
     "paidFeature3": "일일 할당량 제한 없음",
     "buyButton": "$1.99 구매",
     "loginToBuy": "로그인 후 구매",
-    "owned": "구매 완료"
+    "owned": "구매 완료",
+    "titleB": "무료로 체험, 로그인으로 전체 잠금 해제",
+    "descB": "로그인 없이 가장 저렴한 3개 등급을 보거나, 로그인하여 회원이 되어 모든 App·모든 지역·모든 등급을 잠금 해제하세요 (베타 기간 무료).",
+    "freeTierB": "무료 버전",
+    "freePriceB": "무료",
+    "freeNoteB": "로그인 불필요",
+    "freeFeature1B": "가장 저렴한 3개 등급 표시",
+    "freeFeature2B": "모든 App 탐색",
+    "freeFeature3B": "횟수 제한 없음",
+    "memberTier": "회원",
+    "memberNote": "로그인으로 잠금 해제",
+    "memberFeature1": "모든 구독 등급 잠금 해제",
+    "memberFeature2": "전체 40개 지역, 무제한 조회",
+    "memberFeature3": "로그인만 하면 됨, 베타 기간 무료",
+    "loginToUse": "로그인하여 사용",
+    "currentMember": "현재 회원"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count}개 지역 / {currency}",
@@ -139,7 +154,8 @@
     "initialLoadingTitle": "전 세계 가격을 불러오는 중…",
     "initialLoadingHint": "첫 로딩 시 40개 지역을 불러오며, 몇 초 걸립니다",
     "refreshingBanner": "전 세계 가격 새로고침 중…",
-    "converting": "환산 중…"
+    "converting": "환산 중…",
+    "lockedHintUnsignedB": "회원으로 로그인하여 모든 등급 보기"
   },
   "RelatedApps": {
     "title": "이것도 좋아할 수 있어요",

@@ -75,7 +75,22 @@
     "paidFeature3": "Aucune limite de quota quotidienne",
     "buyButton": "Acheter $1.99",
     "loginToBuy": "Connectez-vous pour acheter",
-    "owned": "Acheté"
+    "owned": "Acheté",
+    "titleB": "Essayez gratuitement, connectez-vous pour tout débloquer",
+    "descB": "Consultez les 3 niveaux les moins chers sans inscription, ou connectez-vous pour devenir membre et tout débloquer (gratuit pendant la bêta).",
+    "freeTierB": "Version gratuite",
+    "freePriceB": "Gratuit",
+    "freeNoteB": "Sans connexion",
+    "freeFeature1B": "Les 3 niveaux les moins chers",
+    "freeFeature2B": "Toutes les App accessibles",
+    "freeFeature3B": "Sans limite quotidienne",
+    "memberTier": "Membre",
+    "memberNote": "Connectez-vous pour débloquer",
+    "memberFeature1": "Tous les niveaux d'abonnement débloqués",
+    "memberFeature2": "Les 40 régions, vues illimitées",
+    "memberFeature3": "Connectez-vous, gratuit en bêta",
+    "loginToUse": "Connectez-vous pour utiliser",
+    "currentMember": "Membre actuel"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} régions / {currency}",
@@ -139,7 +154,8 @@
     "initialLoadingTitle": "Récupération des prix mondiaux…",
     "initialLoadingHint": "Le premier chargement récupère 40 régions, prend quelques secondes",
     "refreshingBanner": "Actualisation des prix mondiaux…",
-    "converting": "Conversion…"
+    "converting": "Conversion…",
+    "lockedHintUnsignedB": "Connectez-vous en tant que membre pour voir tous les niveaux"
   },
   "RelatedApps": {
     "title": "Vous pourriez aussi aimer",

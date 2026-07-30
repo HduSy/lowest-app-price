@@ -15,6 +15,7 @@
     "footerDisclaimer": "Not affiliated with Apple Inc. Pricing data is sourced from the public App Store and converted at real-time exchange rates for reference only. Actual purchases are subject to what's shown in the App Store at that time, and must comply with Apple's Terms of Service and local laws.",
     "footerCopyright": "Copyright © {year} LowestAppPrice Price Compare. All rights reserved.",
     "footerLinks": "Footer links",
+    "about": "About Us",
     "privacy": "Privacy Policy",
     "terms": "Terms of Use",
     "refunds": "Refund Policy",
@@ -75,7 +76,22 @@
     "paidFeature3": "No daily quota limits",
     "buyButton": "Buy $1.99",
     "loginToBuy": "Sign in to buy",
-    "owned": "Owned"
+    "owned": "Owned",
+    "titleB": "Free to try, sign in for full access",
+    "descB": "Browse the cheapest 3 tiers free, or sign in as a member to unlock everything - free during beta.",
+    "freeTierB": "Free version",
+    "freePriceB": "Free",
+    "freeNoteB": "No sign-in needed",
+    "freeFeature1B": "Top 3 cheapest tiers",
+    "freeFeature2B": "All Apps browsable",
+    "freeFeature3B": "No daily limit",
+    "memberTier": "Member",
+    "memberNote": "Sign in to unlock",
+    "memberFeature1": "All subscription tiers unlocked",
+    "memberFeature2": "All 40 regions, unlimited views",
+    "memberFeature3": "Just sign in, free during beta",
+    "loginToUse": "Sign in to use",
+    "currentMember": "Current member"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} regions / {currency}",
@@ -139,7 +155,8 @@
     "initialLoadingTitle": "Fetching global prices…",
     "initialLoadingHint": "First load fetches 40 regions, takes a few seconds",
     "refreshingBanner": "Refreshing global prices…",
-    "converting": "Converting…"
+    "converting": "Converting…",
+    "lockedHintUnsignedB": "Sign in as a member to view all tiers"
   },
   "RelatedApps": {
     "title": "You might also like",
@@ -328,5 +345,35 @@
     "copyHint": "Button not working? Copy this link into your browser:",
     "ignoreHint": "If you didn't request this, you can safely ignore this email.",
     "textBody": "Click the link below to sign in to LowestAppPrice:\n\n{url}\n\nThe link is valid for 15 minutes. If you didn't request this, please ignore this email."
+  },
+  "About": {
+    "metaTitle": "About Us - {siteName}",
+    "metaDescription": "Learn the background, intent, core features, and how-to of {siteName} - a tool that finds you the cheapest App Store region for any subscription.",
+    "backToHome": "Back to home",
+    "title": "About Us",
+    "subtitle": "Helping you find the single cheapest App Store region for any subscription.",
+    "backgroundTitle": "Background",
+    "backgroundBody": "The same app is often priced several times differently across App Store regions. Exchange rates between dollars, euros, and yen shift daily, and local pricing varies - yet almost no one manually compares dozens of regions before subscribing. {siteName} exists to fix exactly that: gather prices scattered across 40 App Store regions into one table.",
+    "intentTitle": "Why we built it",
+    "intentBody": "We believe an information gap is the most overlooked cost in the consumer experience. When a yearly subscription costs just a few dozen in the cheapest region but several hundred in the priciest, simply knowing the gap is itself valuable. We built this tool to make pricing transparent - so that before anyone subscribes, they can see at a glance whether the region they're in is actually the best deal.",
+    "featuresTitle": "What we offer",
+    "featuresIntro": "Focused on one thing - cross-region App Store price comparison - done to the hilt:",
+    "feature1Title": "Real-time compare across 40 regions",
+    "feature1Body": "From the US, Japan, and Turkey to India and Brazil - one query concurrently fetches subscription and IAP prices across 40 App Store regions, converted into the currency you choose.",
+    "feature2Title": "Subscriptions and IAPs both covered",
+    "feature2Body": "Monthly / yearly subscriptions, one-time purchases, Family Sharing - any in-app purchase tier shown publicly on the App Store detail page is broken down into comparable rows.",
+    "feature3Title": "A clear ranking, cheapest first",
+    "feature3Body": "All prices are converted at live FX rates into a single currency, then sorted lowest first. The cheapest, the priciest, and your own region are highlighted - the gap is right there.",
+    "feature4Title": "Works without sign-in",
+    "feature4Body": "Anonymous users see partial results; signed-in users get 3 free lookups per day; if you use it often, $1.99 once unlocks unlimited lifetime access.",
+    "howToUseTitle": "How to use",
+    "howToUseIntro": "Three steps to find the cheapest region:",
+    "step1Title": "Paste an App Store link or ID",
+    "step1Body": "In the input on the All Apps page, paste a link copied from the App Store, or just type the app's numeric ID.",
+    "step2Title": "Wait for the global fetch",
+    "step2Body": "The first load fetches 40 regions concurrently, usually a few seconds. After that it auto-refreshes every 6 hours, so FX rates and prices stay close to reality.",
+    "step3Title": "Read the ranking, decide",
+    "step3Body": "The price table is sorted lowest first in your chosen currency, with the cheapest, priciest, and your own region highlighted and the gap plain to see. Which region to switch to is your call.",
+    "howToUseNote": "Note: pricing data comes from the public App Store, converted at live exchange rates, for reference only. Actual purchases are subject to what's shown in the App Store at that time, and must comply with Apple's Terms of Service and local laws."
   }
 }

@@ -75,7 +75,22 @@
     "paidFeature3": "Tanpa batas kuota harian",
     "buyButton": "Beli $1.99",
     "loginToBuy": "Masuk untuk membeli",
-    "owned": "Dimiliki"
+    "owned": "Dimiliki",
+    "titleB": "Coba gratis, masuk untuk buka semua",
+    "descB": "Lihat 3 tingkat termurah tanpa login, atau masuk menjadi anggota untuk membuka semua (gratis selama beta).",
+    "freeTierB": "Versi gratis",
+    "freePriceB": "Gratis",
+    "freeNoteB": "Tanpa login",
+    "freeFeature1B": "3 tingkat termurah",
+    "freeFeature2B": "Semua App dapat dijelajah",
+    "freeFeature3B": "Tanpa batas harian",
+    "memberTier": "Anggota",
+    "memberNote": "Masuk untuk membuka",
+    "memberFeature1": "Semua tingkat langganan terbuka",
+    "memberFeature2": "Semua 40 wilayah, tampilan tanpa batas",
+    "memberFeature3": "Cukup masuk, gratis di beta",
+    "loginToUse": "Masuk untuk menggunakan",
+    "currentMember": "Anggota saat ini"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} wilayah / {currency}",
@@ -139,7 +154,8 @@
     "initialLoadingTitle": "Mengambil harga global…",
     "initialLoadingHint": "Muat awal mengambil 40 wilayah, butuh beberapa detik",
     "refreshingBanner": "Menyegarkan harga global…",
-    "converting": "Mengonversi…"
+    "converting": "Mengonversi…",
+    "lockedHintUnsignedB": "Masuk sebagai anggota untuk melihat semua tingkat"
   },
   "RelatedApps": {
     "title": "Mungkin juga kamu suka",
