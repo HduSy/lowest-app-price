@@ -420,6 +420,8 @@
     "metaTitle": "{app} - Prijsvergelijking, goedkoopste App Store-regio | LowestAppPrice",
     "metaDescription": "Zie abonnements- en in-app-aankoopprijzen van {app} uit {count} App Store-regio's, omgezet naar één valuta en van goedkoopste eerst.",
     "ogTitle": "{app} - prijsvergelijking over {count} regio's",
-    "ogDescription": "Abonnementsprijzen uit {count} regio's, van goedkoopste eerst - de laagste in één oogopslag."
+    "ogDescription": "Abonnementsprijzen uit {count} regio's, van goedkoopste eerst - de laagste in één oogopslag.",
+    "faqQ1": "In welke App Store-regio is {app} het goedkoopst?",
+    "cheapestAnswer": "De goedkoopste App Store-regio voor {app} is {region} bij {price}. Deze pagina vergelijkt abonnements- en in-app-aankoopprijzen van {app} uit {count} App Store-regio's, omgezet naar één valuta en van goedkoopste eerst."
   }
 }

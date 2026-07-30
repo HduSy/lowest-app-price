@@ -420,6 +420,8 @@
     "metaTitle": "{app} Fiyat Karşılaştırma - En ucuz App Store bölgesi | LowestAppPrice",
     "metaDescription": "{app} abonelik ve uygulama içi satın alma fiyatlarını {count} App Store bölgesinde görün, tek para birimine çevrilip en ucuzdan sıralı.",
     "ogTitle": "{app} - {count} bölge fiyat karşılaştırma",
-    "ogDescription": "{count} bölgenin abonelik fiyatları, en ucuzdan sıralı - en düşük bir bakışta."
+    "ogDescription": "{count} bölgenin abonelik fiyatları, en ucuzdan sıralı - en düşük bir bakışta.",
+    "faqQ1": "{app} hangi App Store bölgesinde en ucuz?",
+    "cheapestAnswer": "{app} için en ucuz App Store bölgesi {price} ile {region}. Bu sayfa, {app} abonelik ve uygulama içi satın alma fiyatlarını {count} App Store bölgesinde karşılaştırır, tek para birimine çevirip en ucuzdan sıralar."
   }
 }

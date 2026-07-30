@@ -13,6 +13,7 @@ import { authorizeAppView } from "@/lib/entitlement";
 import { filterPricesByAuth, extractIapMetadata, computeFreeCount, filterSubscriptionIaps } from "@/lib/compare";
 import { formatUtcInTimezone } from "@/lib/format-time";
 import { countryAlternates, countryUrl } from "@/lib/seo";
+import type { PriceRow } from "@/lib/types";
 
 const PRICE_TTL_HOURS = 6;
 
@@ -111,6 +112,55 @@ export default async function AppDetailPage({
   );
 
   const t = await getTranslations("AppsPage");
+  const tDetail = await getTranslations("AppDetail");
+  const tNav = await getTranslations("Nav");
+
+  // AI SEO：从 SSR 可见价格中取最便宜的一档（与页面可见内容一致，不泄露锁定档位）。
+  // prices 已按鉴权过滤（canViewFull=false 时只含最便宜 N 档），最便宜档必然在可见集内。
+  const cheapest = prices.reduce<PriceRow | null>(
+    (min, p) =>
+      p.amount_usd != null && (min === null || p.amount_usd < min.amount_usd!)
+        ? p
+        : min,
+    null
+  );
+
+  // JSON-LD：BreadcrumbList（站点结构）+ FAQPage（可被 AI 引擎直接抽取的 Q&A）。
+  // 仅当存在最便宜价格时才发 FAQ，避免空数据生成无意义结构化数据。
+  const appPath = `/apps/${appId}`;
+  const jsonLd: object[] = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: tNav("home"), item: countryUrl(country, "") },
+        { "@type": "ListItem", position: 2, name: tNav("apps"), item: countryUrl(country, "/apps") },
+        { "@type": "ListItem", position: 3, name: app.name, item: countryUrl(country, appPath) },
+      ],
+    },
+  ];
+  if (cheapest) {
+    const answerVars = {
+      app: app.name,
+      region: cheapest.region_name_en,
+      price: cheapest.price_raw,
+      count: REGIONS.length,
+    };
+    jsonLd.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: tDetail("faqQ1", { app: app.name }),
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: tDetail("cheapestAnswer", answerVars),
+          },
+        },
+      ],
+    });
+  }
 
   return (
     <main className="mx-auto max-w-[1100px] px-[22px] py-10">
@@ -136,10 +186,34 @@ export default async function AppDetailPage({
         isAdmin={currentUser?.role === "admin"}
       />
 
+      {/* AI SEO：可抽取的答案段落（与 FAQPage JSON-LD 文案一致），帮助 AI 引擎在
+          "哪个 App Store 区最便宜 for {app}" 类查询中引用本页。仅在有可见价格时渲染。 */}
+      {cheapest && (
+        <section className="mt-8 rounded-[var(--radius-md)] border border-black/[0.08] bg-[var(--color-parchment)] px-5 py-4 text-sm leading-relaxed text-[var(--color-ink-80)]">
+          <p>
+            {tDetail("cheapestAnswer", {
+              app: app.name,
+              region: cheapest.region_name_en,
+              price: cheapest.price_raw,
+              count: REGIONS.length,
+            })}
+          </p>
+        </section>
+      )}
+
       {/* 相关推荐 App：独立服务端组件流式加载，不阻塞主体渲染 */}
       <Suspense fallback={<RelatedAppsSkeleton />}>
         <RelatedApps appId={appId} country={country} />
       </Suspense>
+
+      {/* AI SEO：结构化数据（BreadcrumbList + FAQPage） */}
+      {jsonLd.map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
     </main>
   );
 }

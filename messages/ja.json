@@ -420,6 +420,8 @@
     "metaTitle": "{app} 価格比較 - 最安の App Store 地域 | LowestAppPrice",
     "metaDescription": "{app} のサブスク・アプリ内課金の価格を {count} 地域で確認、単一通貨に換算して最安値順に表示。",
     "ogTitle": "{app} の {count} 地域価格比較",
-    "ogDescription": "{count} 地域のサブスク価格を最安値順に表示 - 一目でわかります。"
+    "ogDescription": "{count} 地域のサブスク価格を最安値順に表示 - 一目でわかります。",
+    "faqQ1": "{app} はどの App Store 地域が最安ですか？",
+    "cheapestAnswer": "{app} の最安の App Store 地域は {region}（{price}）です。本ページでは {app} のサブスク・アプリ内課金の価格を {count} 地域で比較し、単一通貨に換算して最安値順に並べています。"
   }
 }

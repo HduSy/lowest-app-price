@@ -420,6 +420,8 @@
     "metaTitle": "{app} - Comparador de precios, región del App Store más barata | LowestAppPrice",
     "metaDescription": "Consulta los precios de suscripción y compra integrada de {app} en {count} regiones del App Store, convertidos a una sola moneda y del más barato al más caro.",
     "ogTitle": "{app} - comparador de precios en {count} regiones",
-    "ogDescription": "Precios de suscripción de {count} regiones, del más barato primero - el más bajo de un vistazo."
+    "ogDescription": "Precios de suscripción de {count} regiones, del más barato primero - el más bajo de un vistazo.",
+    "faqQ1": "¿En qué región del App Store {app} es más barato?",
+    "cheapestAnswer": "La región del App Store más barata para {app} es {region} a {price}. Esta página compara los precios de suscripción y compra integrada de {app} en {count} regiones del App Store, convertidos a una sola moneda y del más barato al más caro."
   }
 }

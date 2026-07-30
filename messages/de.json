@@ -420,6 +420,8 @@
     "metaTitle": "{app} Preisvergleich - Günstigste App Store-Region | LowestAppPrice",
     "metaDescription": "Sieh Abo- und In-App-Kauf-Preise von {app} aus {count} App Store-Regionen, in einer Währung umgerechnet und ab dem günstigsten sortiert.",
     "ogTitle": "{app} Preisvergleich über {count} Regionen",
-    "ogDescription": "Abo-Preise aus {count} Regionen, ab dem günstigsten sortiert - der niedrigste Preis auf einen Blick."
+    "ogDescription": "Abo-Preise aus {count} Regionen, ab dem günstigsten sortiert - der niedrigste Preis auf einen Blick.",
+    "faqQ1": "In welcher App Store-Region ist {app} am günstigsten?",
+    "cheapestAnswer": "Die günstigste App Store-Region für {app} ist {region} bei {price}. Diese Seite vergleicht Abo- und In-App-Kauf-Preise von {app} aus {count} App Store-Regionen, umgerechnet in eine Währung und ab dem günstigsten sortiert."
   }
 }

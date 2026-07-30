@@ -428,6 +428,8 @@
     "metaTitle": "{app} 全区比价 - 哪国最便宜 | LowestAppPrice",
     "metaDescription": "查看 {app} 在 {count} 个 App Store 地区的订阅与内购价格，按统一币种换算从低到高排名。",
     "ogTitle": "{app} 全区比价",
-    "ogDescription": "{count} 个地区的订阅价格从低到高排开，哪个区最便宜一目了然。"
+    "ogDescription": "{count} 个地区的订阅价格从低到高排开，哪个区最便宜一目了然。",
+    "faqQ1": "{app} 在哪个 App Store 区最便宜？",
+    "cheapestAnswer": "{app} 最便宜的 App Store 区是 {region}，价格 {price}。本页对比 {app} 在 {count} 个 App Store 地区的订阅与内购价格，按统一币种换算从低到高排名。"
   }
 }

@@ -420,6 +420,8 @@
     "metaTitle": "{app} - So sánh giá, khu vực App Store rẻ nhất | LowestAppPrice",
     "metaDescription": "Xem giá đăng ký và mua hàng trong ứng dụng của {app} tại {count} khu vực App Store, quy đổi sang một loại tiền và từ rẻ nhất.",
     "ogTitle": "{app} - so sánh giá tại {count} khu vực",
-    "ogDescription": "Giá đăng ký từ {count} khu vực, từ rẻ nhất - giá thấp nhất nhìn thấy ngay."
+    "ogDescription": "Giá đăng ký từ {count} khu vực, từ rẻ nhất - giá thấp nhất nhìn thấy ngay.",
+    "faqQ1": "{app} rẻ nhất ở khu vực App Store nào?",
+    "cheapestAnswer": "Khu vực App Store rẻ nhất cho {app} là {region} với giá {price}. Trang này so sánh giá đăng ký và mua hàng trong ứng dụng của {app} tại {count} khu vực App Store, quy đổi sang một loại tiền và từ rẻ nhất."
   }
 }

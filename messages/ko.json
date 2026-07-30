@@ -420,6 +420,8 @@
     "metaTitle": "{app} 가격 비교 - 가장 저렴한 App Store 지역 | LowestAppPrice",
     "metaDescription": "{app}의 구독 및 인앱 결제 가격을 {count}개 지역에서 확인, 단일 통화로 변환해 저렴한 순으로 정렬.",
     "ogTitle": "{app} {count}개 지역 가격 비교",
-    "ogDescription": "{count}개 지역의 구독 가격을 저렴한 순으로 - 최저가가 한눈에."
+    "ogDescription": "{count}개 지역의 구독 가격을 저렴한 순으로 - 최저가가 한눈에.",
+    "faqQ1": "{app}은(는) 어떤 App Store 지역이 가장 저렴한가요?",
+    "cheapestAnswer": "{app}의 가장 저렴한 App Store 지역은 {region}으로 {price}입니다. 이 페이지는 {app}의 구독 및 인앱 결제 가격을 {count}개 지역에서 비교해 단일 통화로 변환하고 저렴한 순으로 정렬합니다."
   }
 }
