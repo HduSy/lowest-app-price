@@ -483,14 +483,14 @@ export async function upsertUserByEmail(
 
 // ============ 购买记录（$1.99 买断） ============
 
-/** 插入购买记录（幂等：stripe_session_id 冲突时忽略） */
+/** 插入购买记录（幂等：paddle_transaction_id 冲突时忽略） */
 export async function insertPurchase(
   db: D1Database,
   input: {
     id: string;
     user_id: string;
-    stripe_session_id: string;
-    stripe_customer_id: string | null;
+    paddle_transaction_id: string;
+    paddle_customer_id: string | null;
     amount_cents: number;
     currency: string;
     status: string;
@@ -498,15 +498,15 @@ export async function insertPurchase(
 ): Promise<void> {
   await db
     .prepare(
-      `INSERT INTO purchases (id, user_id, stripe_session_id, stripe_customer_id, amount_cents, currency, status, purchased_at)
+      `INSERT INTO purchases (id, user_id, paddle_transaction_id, paddle_customer_id, amount_cents, currency, status, purchased_at)
        VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, datetime('now'))
-       ON CONFLICT(stripe_session_id) DO NOTHING`
+       ON CONFLICT(paddle_transaction_id) DO NOTHING`
     )
     .bind(
       input.id,
       input.user_id,
-      input.stripe_session_id,
-      input.stripe_customer_id,
+      input.paddle_transaction_id,
+      input.paddle_customer_id,
       input.amount_cents,
       input.currency,
       input.status

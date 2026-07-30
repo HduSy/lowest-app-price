@@ -178,12 +178,12 @@ export function PriceTable({
     [agg, activeIapKey]
   );
 
-  // 跳转 Stripe Checkout 购买 $1.99 买断
+  // 跳转 Paddle Checkout 购买 $1.99 买断
   const handleBuy = async () => {
     setUnlocking(true);
     setUnlockError(null);
     try {
-      const res = await fetch("/api/stripe/checkout", {
+      const res = await fetch("/api/paddle/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ callbackUrl: window.location.href }),

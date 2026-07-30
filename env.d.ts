@@ -15,10 +15,13 @@ declare global {
     AUTH_TWITTER_SECRET?: string;
     AUTH_GITHUB_ID?: string;
     AUTH_GITHUB_SECRET?: string;
-    // Stripe - $1.99 一次性买断
-    STRIPE_SECRET_KEY?: string;
-    STRIPE_WEBHOOK_SECRET?: string;
-    STRIPE_PRICE_ID?: string;
+    // Paddle - $1.99 一次性买断（MoR，代收税）
+    PADDLE_API_KEY?: string;
+    PADDLE_WEBHOOK_SECRET?: string;
+    PADDLE_PRICE_ID?: string;
+    // Email (Resend) - magic link 发件
+    RESEND_API_KEY?: string;
+    MAIL_FROM?: string;
     // Admin - 一次性回填/运维接口鉴权
     ADMIN_TOKEN?: string;
   }
