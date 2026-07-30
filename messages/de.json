@@ -11,16 +11,16 @@
     "currencyPicker": "Anzeigewährung"
   },
   "Layout": {
-    "siteName": "App Store Preisvergleich",
+    "siteName": "LowestAppPrice Preisvergleich",
     "footerDisclaimer": "Nicht mit Apple Inc. verbunden. Preisdaten stammen aus dem öffentlichen App Store und werden zu Echtzeit-Wechselkursen umgerechnet - nur als Referenz. Tatsächliche Käufe richten sich nach den zum Zeitpunkt im App Store angezeigten Preisen und müssen den Apple-Nutzungsbedingungen und lokalen Gesetzen entsprechen.",
-    "footerCopyright": "Copyright © {year} App Store Preisvergleich. Alle Rechte vorbehalten.",
+    "footerCopyright": "Copyright © {year} LowestAppPrice Preisvergleich. Alle Rechte vorbehalten.",
     "footerLinks": "Fußzeilen-Links",
     "privacy": "Datenschutz",
     "terms": "Nutzungsbedingungen",
     "refunds": "Rückerstattungsrichtlinie",
     "legal": "Impressum",
     "sitemap": "Sitemap",
-    "metadataDescription": "App Store-Link oder App-ID einfügen. Wir rufen Abo-Preise aus 35 Regionen in Echtzeit ab, rechnen in eine Währung um und sortieren sie ab dem günstigsten."
+    "metadataDescription": "App Store-Link oder App-ID einfügen. Wir rufen Abo-Preise aus 40 Regionen in Echtzeit ab, rechnen in eine Währung um und sortieren sie ab dem günstigsten."
   },
   "HomePage": {
     "heroTitle1": "Eine App, Region wechseln, ",
@@ -43,7 +43,7 @@
     "faqA4": "Die günstigste Region unterscheidet sich je nach App. Füge einen Link ein und wir rufen Abo-Preise aus {count} Regionen ab, rechnen in eine Währung um und sortieren sie - die günstigste fällt sofort ins Auge.",
     "faqQ5": "Wie prüfe ich App Store-Preise in verschiedenen Ländern?",
     "faqA5": "Füge auf der Apps-Seite einen App Store-Link oder eine App-ID in das Eingabefeld ein und drücke die Eingabetaste, um IAP- und Abo-Preise über {count} Regionen hinweg zu vergleichen.",
-    "siteName": "App Store Preisvergleich",
+    "siteName": "LowestAppPrice Preisvergleich",
     "metadataDescription": "App Store-Link oder App-ID einfügen. Wir rufen Abo-Preise aus {count} Regionen in Echtzeit ab, rechnen in eine Währung um und sortieren sie ab dem günstigsten.",
     "feature1": "Preisvergleich über {count} App Store-Regionen",
     "feature2": "Abo- und IAP-Preise zu Wechselkursen umgerechnet",
@@ -137,7 +137,7 @@
     "emptyTitle": "Keine Preisdaten",
     "emptyDesc": "Diese App hat möglicherweise keine In-App-Käufe oder Abonnement-Stufen zum Vergleichen.",
     "initialLoadingTitle": "Globale Preise werden abgerufen…",
-    "initialLoadingHint": "Erster Abruf lädt 35 Regionen, dauert wenige Sekunden",
+    "initialLoadingHint": "Erster Abruf lädt 40 Regionen, dauert wenige Sekunden",
     "refreshingBanner": "Globale Preise werden aktualisiert…",
     "converting": "Umrechnen…"
   },
@@ -154,7 +154,7 @@
     "loadingMore": "Mehr laden...",
     "allLoaded": "Alle {count} Apps geladen",
     "noLocalMatch": "Kein lokaler Treffer, {count} Ergebnisse aus dem Apple-Verzeichnis können hinzugefügt werden",
-    "addHint": "Klicke auf \"Hinzufügen\", um Daten von Apple abzurufen und 35-Regionen-Preis-Crawling auszulösen. Anmeldung erforderlich."
+    "addHint": "Klicke auf \"Hinzufügen\", um Daten von Apple abzurufen und 40-Regionen-Preis-Crawling auszulösen. Anmeldung erforderlich."
   },
   "UserMenu": {
     "proBadge": "Pro",

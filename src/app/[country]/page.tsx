@@ -41,7 +41,7 @@ export default async function HomePage({
   const t = await getTranslations("HomePage");
 
   // AI SEO: JSON-LD 结构化数据（WebApplication + FAQPage）
-  const host = h.get("host") || "appstore-lowest-price.alifeiliu.workers.dev";
+  const host = h.get("host") || "lowestappprice.com";
   const proto = h.get("x-forwarded-proto") || "https";
   const baseSiteUrl = `${proto}://${host}`;
   const regionCount = REGIONS.length;

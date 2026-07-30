@@ -11,16 +11,16 @@
     "currencyPicker": "展示币种"
   },
   "Layout": {
-    "siteName": "App Store 全区比价",
+    "siteName": "LowestAppPrice 全区比价",
     "footerDisclaimer": "不附属于 Apple Inc.。价格数据来自公开 App Store，按实时汇率换算，仅供参考——实际购买以 App Store 当时显示为准，并需遵守 Apple 服务条款与当地法律。",
-    "footerCopyright": "Copyright © {year} App Store 全区比价. 保留所有权利。",
+    "footerCopyright": "Copyright © {year} LowestAppPrice 全区比价. 保留所有权利。",
     "footerLinks": "页脚链接",
     "privacy": "隐私政策",
     "terms": "使用条款",
     "refunds": "退款政策",
     "legal": "法律声明",
     "sitemap": "网站地图",
-    "metadataDescription": "粘贴 App Store 链接或 App ID，实时抓取 35 个地区的订阅价格，按统一币种换算后从低到高排名。最便宜的区，一眼可见。"
+    "metadataDescription": "粘贴 App Store 链接或 App ID，实时抓取 40 个地区的订阅价格，按统一币种换算后从低到高排名。最便宜的区，一眼可见。"
   },
   "HomePage": {
     "heroTitle1": "同一个 App，换个地区订阅，",
@@ -43,7 +43,7 @@
     "faqA4": "每个 App 的最低价地区都不一样。粘贴链接后，本站会抓取 {count} 个地区的订阅价格，按统一币种换算后从低到高排名——最便宜的区，一眼可见。",
     "faqQ5": "怎么查 App Store 各国价格？",
     "faqA5": "在应用页输入框粘贴 App Store 链接或 App ID，回车即可查看该 App 在 {count} 个地区的内购与订阅价格对比。",
-    "siteName": "App Store 全区比价",
+    "siteName": "LowestAppPrice 全区比价",
     "metadataDescription": "粘贴 App Store 链接或 App ID，实时抓取 {count} 个地区的订阅价格，按统一币种换算后从低到高排名。最便宜的区，一眼可见。",
     "feature1": "{count} 个 App Store 地区价格对比",
     "feature2": "订阅与内购价格按汇率换算",
@@ -137,7 +137,7 @@
     "emptyTitle": "暂无价格数据",
     "emptyDesc": "可能是这款 App 没有内购或订阅档位可供比价。",
     "initialLoadingTitle": "正在抓取全球价格…",
-    "initialLoadingHint": "首次加载需抓取 35 个地区数据，约几秒",
+    "initialLoadingHint": "首次加载需抓取 40 个地区数据，约几秒",
     "refreshingBanner": "正在刷新全球价格…",
     "converting": "换算中…"
   },
@@ -154,7 +154,7 @@
     "loadingMore": "正在加载更多…",
     "allLoaded": "已加载全部 {count} 个 App",
     "noLocalMatch": "本地库暂无匹配，Apple 目录有 {count} 个结果可添加",
-    "addHint": "点击「添加」会从 Apple 拉取该 App 信息并触发 35 区价格抓取，需要登录。"
+    "addHint": "点击「添加」会从 Apple 拉取该 App 信息并触发 40 区价格抓取，需要登录。"
   },
   "UserMenu": {
     "proBadge": "会员版",

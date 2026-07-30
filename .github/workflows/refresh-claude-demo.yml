@@ -1,5 +1,5 @@
 # 定时刷新首页 Claude 演示区价格数据
-# 每 6 小时调一次 admin 端点，抓取 35+ 地区价格写入 D1
+# 每 6 小时调一次 admin 端点，抓取 40+ 地区价格写入 D1
 # ADMIN_TOKEN 存在 GitHub Secrets 里，不进代码
 name: Refresh Claude Demo
 

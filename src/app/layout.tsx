@@ -17,12 +17,12 @@ export async function generateMetadata(): Promise<Metadata> {
   const title = t("siteName");
   const description = t("metadataDescription");
   return {
-    metadataBase: new URL("https://appstore-lowest-price.alifeiliu.workers.dev"),
+    metadataBase: new URL("https://lowestappprice.com"),
     title,
     description,
     keywords: [
       "App Store 比价",
-      "App Store 全区比价",
+      "LowestAppPrice 全区比价",
       "App Store 不同地区价格",
       "App Store 哪个区最便宜",
       "App Store 订阅价格对比",

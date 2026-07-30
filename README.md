@@ -1,4 +1,4 @@
-# App Store 全区比价
+# LowestAppPrice 全区比价
 
 Next.js 15 + TypeScript + Tailwind CSS v4 + Cloudflare Pages（OpenNext）+ D1。
 

@@ -5,7 +5,7 @@ import { REGION_MAP } from "@/lib/regions";
 
 export const runtime = "nodejs";
 
-export const alt = "App Store 全区比价";
+export const alt = "LowestAppPrice 全区比价";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -254,7 +254,7 @@ export async function GET(
             {entries.length} regions · {currency}
           </div>
           <div style={{ fontSize: 18, fontWeight: 700, color: "#0071e3" }}>
-            App Store 全区比价
+            LowestAppPrice 全区比价
           </div>
         </div>
       </div>

@@ -22,5 +22,5 @@ enabled = true
 # GitHub Actions 定时调 /api/admin/refresh-claude-demo（每 6h），见
 #   .github/workflows/refresh-claude-demo.yml
 # 需在 GitHub repo Settings > Secrets 配置：
-#   SITE_URL   = https://appstore-lowest-price.alifeiliu.workers.dev
+#   SITE_URL   = https://lowestappprice.com
 #   ADMIN_TOKEN = (与 Cloudflare env.ADMIN_TOKEN 一致)

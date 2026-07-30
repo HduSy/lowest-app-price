@@ -11,16 +11,16 @@
     "currencyPicker": "표시 통화"
   },
   "Layout": {
-    "siteName": "App Store 가격 비교",
+    "siteName": "LowestAppPrice 가격 비교",
     "footerDisclaimer": "Apple Inc.와 제휴하지 않습니다. 가격 데이터는 공개 App Store에서 가져와 실시간 환율로 변환되며 참고용입니다. 실제 구매는 당시 App Store에 표시된 내용을 따르며 Apple 서비스 약관 및 현지 법률을 준수해야 합니다.",
-    "footerCopyright": "Copyright © {year} App Store 가격 비교. 모든 권리 보유.",
+    "footerCopyright": "Copyright © {year} LowestAppPrice 가격 비교. 모든 권리 보유.",
     "footerLinks": "푸터 링크",
     "privacy": "개인정보 처리방침",
     "terms": "이용약관",
     "refunds": "환불 정책",
     "legal": "법적 고지",
     "sitemap": "사이트맵",
-    "metadataDescription": "App Store 링크나 App ID를 붙여넣으세요. 35개 지역의 구독 가격을 실시간으로 가져와 단일 통화로 변환하고 가장 저렴한 순으로 정렬합니다."
+    "metadataDescription": "App Store 링크나 App ID를 붙여넣으세요. 40개 지역의 구독 가격을 실시간으로 가져와 단일 통화로 변환하고 가장 저렴한 순으로 정렬합니다."
   },
   "HomePage": {
     "heroTitle1": "하나의 앱, 지역을 바꾸면, ",
@@ -43,7 +43,7 @@
     "faqA4": "최저가 지역은 App마다 다릅니다. 링크를 붙여넣으면 {count}개 지역의 구독 가격을 가져와 단일 통화로 변환하고 정렬합니다 - 가장 저렴한 곳이 바로 눈에 띕니다.",
     "faqQ5": "App Store 국가별 가격은 어떻게 확인하나요?",
     "faqA5": "앱 페이지 입력란에 App Store 링크나 App ID를 붙여넣고 Enter를 누르면 {count}개 지역의 IAP 및 구독 가격을 비교할 수 있습니다.",
-    "siteName": "App Store 가격 비교",
+    "siteName": "LowestAppPrice 가격 비교",
     "metadataDescription": "App Store 링크나 App ID를 붙여넣으세요. {count}개 지역의 구독 가격을 실시간으로 가져와 단일 통화로 변환하고 가장 저렴한 순으로 정렬합니다.",
     "feature1": "{count}개 App Store 지역 가격 비교",
     "feature2": "구독 및 IAP 가격을 환율로 변환",
@@ -137,7 +137,7 @@
     "emptyTitle": "가격 데이터 없음",
     "emptyDesc": "이 앱에는 비교할 인앱 구매나 구독 등급이 없을 수 있습니다.",
     "initialLoadingTitle": "전 세계 가격을 불러오는 중…",
-    "initialLoadingHint": "첫 로딩 시 35개 지역을 불러오며, 몇 초 걸립니다",
+    "initialLoadingHint": "첫 로딩 시 40개 지역을 불러오며, 몇 초 걸립니다",
     "refreshingBanner": "전 세계 가격 새로고침 중…",
     "converting": "환산 중…"
   },
@@ -154,7 +154,7 @@
     "loadingMore": "더 불러오는 중...",
     "allLoaded": "모든 {count}개 앱 로드됨",
     "noLocalMatch": "로컬 일치 없음, Apple 디렉토리에서 {count}개 결과 추가 가능",
-    "addHint": "\"추가\"를 클릭하면 Apple에서 정보를 가져오고 35개 지역 가격 크롤링이 시작됩니다. 로그인 필요."
+    "addHint": "\"추가\"를 클릭하면 Apple에서 정보를 가져오고 40개 지역 가격 크롤링이 시작됩니다. 로그인 필요."
   },
   "UserMenu": {
     "proBadge": "Pro",

@@ -35,7 +35,7 @@ export async function GET(
 
     // force=1 去抖：即便客户端发 force=1，若距上次成功抓取不足 FORCE_DEBOUNCE_SECONDS，
     // 也跳过全区抓取（直接走缓存返回）。避免 SSR 给 needsRefresh=true 时客户端每次进页面
-    // 都触发 35 区重抓（尤其是免费 App 之前因 written=0 永不 markAppFetched 的历史遗留）。
+    // 都触发 40 区重抓（尤其是免费 App 之前因 written=0 永不 markAppFetched 的历史遗留）。
     const FORCE_DEBOUNCE_SECONDS = 60;
     let debouncedSkip = false;
     if (needFetch && app.last_fetched_at) {
@@ -57,7 +57,7 @@ export async function GET(
         undefined;
       const { attemptedRegions } = await refreshPrices(db, appId, country || undefined);
       // 只要爬虫成功拿到页面（attempted>0）就更新 last_fetched_at，
-      // 即便该 App 无 IAP（written=0）。否则免费 App 永远 stale，每次进页面都重抓 35 区。
+      // 即便该 App 无 IAP（written=0）。否则免费 App 永远 stale，每次进页面都重抓 40 区。
       if (attemptedRegions > 0) {
         await markAppFetched(db, appId);
       }

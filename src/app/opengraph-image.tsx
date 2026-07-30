@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "App Store 全区比价 - 哪国最便宜，一目了然";
+export const alt = "LowestAppPrice 全区比价 - 哪国最便宜，一目了然";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -62,10 +62,10 @@ export default async function OGImage() {
             letterSpacing: -1,
           }}
         >
-          App Store Price Compare
+          LowestAppPrice Price Compare
         </div>
         <div style={{ fontSize: 26, color: "#7a7a7a", marginTop: 14 }}>
-          Cheapest subscription region · 35 countries
+          Cheapest subscription region · 40 countries
         </div>
 
         {/* 装饰：各地区价格柱状图并排对比，最矮一根绿色 = 最便宜的区 */}

@@ -11,16 +11,16 @@
     "currencyPicker": "Tiền tệ hiển thị"
   },
   "Layout": {
-    "siteName": "So sánh giá App Store",
+    "siteName": "So sánh giá LowestAppPrice",
     "footerDisclaimer": "Không liên kết với Apple Inc. Dữ liệu giá được lấy từ App Store công khai và quy đổi theo tỷ giá hối đoái thời gian thực, chỉ mang tính tham khảo. Việc mua thực tế phụ thuộc vào những gì hiển thị trên App Store tại thời điểm đó và phải tuân thủ Điều khoản dịch vụ của Apple và pháp luật địa phương.",
-    "footerCopyright": "Copyright © {year} So sánh giá App Store. Bảo lưu mọi quyền.",
+    "footerCopyright": "Copyright © {year} So sánh giá LowestAppPrice. Bảo lưu mọi quyền.",
     "footerLinks": "Liên kết chân trang",
     "privacy": "Quyền riêng tư",
     "terms": "Điều khoản sử dụng",
     "refunds": "Chính sách hoàn tiền",
     "legal": "Thông báo pháp lý",
     "sitemap": "Sơ đồ trang",
-    "metadataDescription": "Dán liên kết App Store hoặc ID ứng dụng. Chúng tôi lấy giá đăng ký từ 35 khu vực theo thời gian thực, quy đổi sang một loại tiền tệ và sắp xếp từ rẻ nhất."
+    "metadataDescription": "Dán liên kết App Store hoặc ID ứng dụng. Chúng tôi lấy giá đăng ký từ 40 khu vực theo thời gian thực, quy đổi sang một loại tiền tệ và sắp xếp từ rẻ nhất."
   },
   "HomePage": {
     "heroTitle1": "Một ứng dụng, đổi khu vực, ",
@@ -43,7 +43,7 @@
     "faqA4": "Khu vực giá thấp nhất khác nhau tùy ứng dụng. Dán liên kết và chúng tôi sẽ lấy giá đăng ký từ {count} khu vực, quy đổi sang một loại tiền tệ và sắp xếp - rẻ nhất nổi bật ngay.",
     "faqQ5": "Làm thế nào để kiểm tra giá App Store ở các quốc gia khác nhau?",
     "faqA5": "Dán liên kết App Store hoặc ID ứng dụng vào ô nhập trên trang ứng dụng và nhấn Enter để so sánh giá IAP và đăng ký ở {count} khu vực.",
-    "siteName": "So sánh giá App Store",
+    "siteName": "So sánh giá LowestAppPrice",
     "metadataDescription": "Dán liên kết App Store hoặc ID ứng dụng. Chúng tôi lấy giá đăng ký từ {count} khu vực theo thời gian thực, quy đổi sang một loại tiền tệ và sắp xếp từ rẻ nhất.",
     "feature1": "So sánh giá tại {count} khu vực App Store",
     "feature2": "Giá đăng ký và IAP quy đổi theo tỷ giá hối đoái",
@@ -137,7 +137,7 @@
     "emptyTitle": "Không có dữ liệu giá",
     "emptyDesc": "Ứng dụng này có thể không có mua hàng trong ứng dụng hoặc cấp đăng ký để so sánh.",
     "initialLoadingTitle": "Đang lấy giá toàn cầu…",
-    "initialLoadingHint": "Lần đầu tải 35 khu vực, mất vài giây",
+    "initialLoadingHint": "Lần đầu tải 40 khu vực, mất vài giây",
     "refreshingBanner": "Đang làm mới giá toàn cầu…",
     "converting": "Đang quy đổi…"
   },
@@ -154,7 +154,7 @@
     "loadingMore": "Đang tải thêm...",
     "allLoaded": "Đã tải tất cả {count} ứng dụng",
     "noLocalMatch": "Không có kết quả nội bộ, {count} kết quả từ danh bạ Apple có thể thêm",
-    "addHint": "Nhấp \"Thêm\" để lấy từ Apple và bắt đầu thu thập giá 35 khu vực. Cần đăng nhập."
+    "addHint": "Nhấp \"Thêm\" để lấy từ Apple và bắt đầu thu thập giá 40 khu vực. Cần đăng nhập."
   },
   "UserMenu": {
     "proBadge": "Pro",

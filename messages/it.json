@@ -11,16 +11,16 @@
     "currencyPicker": "Valuta di visualizzazione"
   },
   "Layout": {
-    "siteName": "Comparatore prezzi App Store",
+    "siteName": "Comparatore prezzi LowestAppPrice",
     "footerDisclaimer": "Non affiliato ad Apple Inc. I dati sui prezzi provengono dall'App Store pubblico e sono convertiti ai tassi di cambio in tempo reale, solo come riferimento. Gli acquisti effettivi dipendono da quanto mostrato nell'App Store al momento e devono rispettare i Termini di servizio di Apple e le leggi locali.",
-    "footerCopyright": "Copyright © {year} Comparatore prezzi App Store. Tutti i diritti riservati.",
+    "footerCopyright": "Copyright © {year} Comparatore prezzi LowestAppPrice. Tutti i diritti riservati.",
     "footerLinks": "Link a piè di pagina",
     "privacy": "Privacy",
     "terms": "Termini di utilizzo",
     "refunds": "Politica di rimborso",
     "legal": "Note legali",
     "sitemap": "Mappa del sito",
-    "metadataDescription": "Incolla un link dell'App Store o un ID app. Recuperiamo i prezzi degli abbonamenti da 35 regioni in tempo reale, li convertiamo in una sola valuta e li ordiniamo dal più economico."
+    "metadataDescription": "Incolla un link dell'App Store o un ID app. Recuperiamo i prezzi degli abbonamenti da 40 regioni in tempo reale, li convertiamo in una sola valuta e li ordiniamo dal più economico."
   },
   "HomePage": {
     "heroTitle1": "Un'app, cambia regione, ",
@@ -43,7 +43,7 @@
     "faqA4": "La regione più economica differisce per ogni app. Incolla un link e recupereremo i prezzi degli abbonamenti da {count} regioni, li convertiremo in una sola valuta e li ordineremo - la più economica salta subito all'occhio.",
     "faqQ5": "Come verifico i prezzi dell'App Store in diversi paesi?",
     "faqA5": "Incolla un link dell'App Store o un ID app nel campo di input della pagina Apps e premi Invio per confrontare i prezzi di IAP e abbonamenti in {count} regioni.",
-    "siteName": "Comparatore prezzi App Store",
+    "siteName": "Comparatore prezzi LowestAppPrice",
     "metadataDescription": "Incolla un link dell'App Store o un ID app. Recuperiamo i prezzi degli abbonamenti da {count} regioni in tempo reale, li convertiamo in una sola valuta e li ordiniamo dal più economico.",
     "feature1": "Comparatore prezzi in {count} regioni dell'App Store",
     "feature2": "Prezzi di abbonamenti e IAP convertiti ai tassi di cambio",
@@ -137,7 +137,7 @@
     "emptyTitle": "Nessun dato prezzi",
     "emptyDesc": "Questa app potrebbe non avere acquisti in-app o livelli di abbonamento da confrontare.",
     "initialLoadingTitle": "Recupero dei prezzi globali…",
-    "initialLoadingHint": "Il primo caricamento recupera 35 regioni, richiede alcuni secondi",
+    "initialLoadingHint": "Il primo caricamento recupera 40 regioni, richiede alcuni secondi",
     "refreshingBanner": "Aggiornamento dei prezzi globali…",
     "converting": "Conversione…"
   },
@@ -154,7 +154,7 @@
     "loadingMore": "Caricamento...",
     "allLoaded": "Tutte le {count} app caricate",
     "noLocalMatch": "Nessuna corrispondenza locale, {count} risultati dalla directory Apple aggiungibili",
-    "addHint": "Clicca \"Aggiungi\" per recuperare da Apple e avviare la raccolta prezzi in 35 regioni. Accesso richiesto."
+    "addHint": "Clicca \"Aggiungi\" per recuperare da Apple e avviare la raccolta prezzi in 40 regioni. Accesso richiesto."
   },
   "UserMenu": {
     "proBadge": "Pro",

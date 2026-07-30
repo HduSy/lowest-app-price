@@ -11,16 +11,16 @@
     "currencyPicker": "Görüntüleme para birimi"
   },
   "Layout": {
-    "siteName": "App Store Fiyat Karşılaştırma",
+    "siteName": "LowestAppPrice Fiyat Karşılaştırma",
     "footerDisclaimer": "Apple Inc. ile bağlı değildir. Fiyat verileri herkese açık App Store'dan alınır ve gerçek zamanlı döviz kurlarıyla çevrilir, sadece referans amaçlıdır. Gerçek satın almalar o an App Store'da gösterilenlere bağlıdır ve Apple Hizmet Şartları ile yerel yasalara uymalıdır.",
-    "footerCopyright": "Copyright © {year} App Store Fiyat Karşılaştırma. Tüm hakları saklıdır.",
+    "footerCopyright": "Copyright © {year} LowestAppPrice Fiyat Karşılaştırma. Tüm hakları saklıdır.",
     "footerLinks": "Alt bilgi bağlantıları",
     "privacy": "Gizlilik",
     "terms": "Kullanım şartları",
     "refunds": "İade politikası",
     "legal": "Yasal bildirim",
     "sitemap": "Site haritası",
-    "metadataDescription": "App Store bağlantısı veya App ID'sini yapıştırın. 35 bölgedeki abonelik fiyatlarını gerçek zamanlı olarak getirir, tek bir para birimine çevirir ve en ucuzdan başlayarak sıralar."
+    "metadataDescription": "App Store bağlantısı veya App ID'sini yapıştırın. 40 bölgedeki abonelik fiyatlarını gerçek zamanlı olarak getirir, tek bir para birimine çevirir ve en ucuzdan başlayarak sıralar."
   },
   "HomePage": {
     "heroTitle1": "Tek uygulama, bölge değiştir, ",
@@ -43,7 +43,7 @@
     "faqA4": "En düşük fiyatlı bölge uygulamaya göre değişir. Bağlantı yapıştırın, {count} bölgedeki abonelik fiyatlarını getirelim, tek para birimine çevirelim ve sıralayalım - en ucuz hemen göze çarpar.",
     "faqQ5": "App Store fiyatlarını ülkeler arasında nasıl kontrol ederim?",
     "faqA5": "Uygulamalar sayfasındaki giriş alanına App Store bağlantısı veya App ID'sini yapıştırın ve {count} bölgedeki IAP ve abonelik fiyatlarını karşılaştırmak için Enter'a basın.",
-    "siteName": "App Store Fiyat Karşılaştırma",
+    "siteName": "LowestAppPrice Fiyat Karşılaştırma",
     "metadataDescription": "App Store bağlantısı veya App ID'sini yapıştırın. {count} bölgedeki abonelik fiyatlarını gerçek zamanlı olarak getirir, tek bir para birimine çevirir ve en ucuzdan başlayarak sıralar.",
     "feature1": "{count} App Store bölgesinde fiyat karşılaştırma",
     "feature2": "Abonelik ve IAP fiyatları döviz kuruyla çevrilir",
@@ -137,7 +137,7 @@
     "emptyTitle": "Fiyat verisi yok",
     "emptyDesc": "Bu uygulamada karşılaştırılacak uygulama içi satın alım veya abonelik seviyeleri olmayabilir.",
     "initialLoadingTitle": "Küresel fiyatlar getiriliyor…",
-    "initialLoadingHint": "İlk yükleme 35 bölgeyi getirir, birkaç saniye sürer",
+    "initialLoadingHint": "İlk yükleme 40 bölgeyi getirir, birkaç saniye sürer",
     "refreshingBanner": "Küresel fiyatlar yenileniyor…",
     "converting": "Dönüştürülüyor…"
   },
@@ -154,7 +154,7 @@
     "loadingMore": "Daha fazla yükleniyor...",
     "allLoaded": "Tüm {count} uygulama yüklendi",
     "noLocalMatch": "Yerel eşleşme yok, Apple dizininden {count} sonuç eklenebilir",
-    "addHint": "\"Ekle\"ye tıklayarak Apple'dan veri çekin ve 35 bölge fiyat taramasını başlatın. Giriş gerekli."
+    "addHint": "\"Ekle\"ye tıklayarak Apple'dan veri çekin ve 40 bölge fiyat taramasını başlatın. Giriş gerekli."
   },
   "UserMenu": {
     "proBadge": "Pro",

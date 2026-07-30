@@ -11,16 +11,16 @@
     "currencyPicker": "Moeda de exibição"
   },
   "Layout": {
-    "siteName": "Comparador de preços da App Store",
+    "siteName": "Comparador de preços da LowestAppPrice",
     "footerDisclaimer": "Não afiliado à Apple Inc. Os dados de preços são obtidos da App Store pública e convertidos em taxas de câmbio em tempo real, apenas para referência. Compras reais dependem do que é exibido na App Store no momento e devem cumprir os Termos de serviço da Apple e as leis locais.",
-    "footerCopyright": "Copyright © {year} Comparador de preços da App Store. Todos os direitos reservados.",
+    "footerCopyright": "Copyright © {year} Comparador de preços da LowestAppPrice. Todos os direitos reservados.",
     "footerLinks": "Links do rodapé",
     "privacy": "Privacidade",
     "terms": "Termos de uso",
     "refunds": "Política de reembolso",
     "legal": "Aviso legal",
     "sitemap": "Mapa do site",
-    "metadataDescription": "Cole um link da App Store ou ID de app. Buscamos preços de assinatura de 35 regiões em tempo real, convertemos para uma única moeda e ordenamos do mais barato ao mais caro."
+    "metadataDescription": "Cole um link da App Store ou ID de app. Buscamos preços de assinatura de 40 regiões em tempo real, convertemos para uma única moeda e ordenamos do mais barato ao mais caro."
   },
   "HomePage": {
     "heroTitle1": "Um app, troque de região, ",
@@ -43,7 +43,7 @@
     "faqA4": "A região com o preço mais baixo varia por app. Cole um link e buscaremos preços de assinatura de {count} regiões, converteremos para uma única moeda e ordenaremos - a mais barata se destaca imediatamente.",
     "faqQ5": "Como verifico preços da App Store em diferentes países?",
     "faqA5": "Cole um link da App Store ou ID de app no campo de entrada da página de apps e pressione Enter para comparar preços de IAP e assinatura em {count} regiões.",
-    "siteName": "Comparador de preços da App Store",
+    "siteName": "Comparador de preços da LowestAppPrice",
     "metadataDescription": "Cole um link da App Store ou ID de app. Buscamos preços de assinatura de {count} regiões em tempo real, convertemos para uma única moeda e ordenamos do mais barato ao mais caro.",
     "feature1": "Comparador de preços em {count} regiões da App Store",
     "feature2": "Preços de assinatura e IAP convertidos por taxas de câmbio",
@@ -137,7 +137,7 @@
     "emptyTitle": "Sem dados de preço",
     "emptyDesc": "Este app pode não ter compras integradas ou níveis de assinatura para comparar.",
     "initialLoadingTitle": "Buscando preços globais…",
-    "initialLoadingHint": "O primeiro carregamento busca 35 regiões, leva alguns segundos",
+    "initialLoadingHint": "O primeiro carregamento busca 40 regiões, leva alguns segundos",
     "refreshingBanner": "Atualizando preços globais…",
     "converting": "Convertendo…"
   },
@@ -154,7 +154,7 @@
     "loadingMore": "Carregando mais...",
     "allLoaded": "Todos os {count} apps carregados",
     "noLocalMatch": "Sem correspondência local, {count} resultados do diretório Apple podem ser adicionados",
-    "addHint": "Clique em \"Adicionar\" para buscar do Apple e iniciar rastreamento de preços em 35 regiões. Login necessário."
+    "addHint": "Clique em \"Adicionar\" para buscar do Apple e iniciar rastreamento de preços em 40 regiões. Login necessário."
   },
   "UserMenu": {
     "proBadge": "Pro",

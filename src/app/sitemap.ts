@@ -2,11 +2,11 @@ import type { MetadataRoute } from "next";
 import { headers } from "next/headers";
 import { REGIONS } from "@/lib/regions";
 
-// sitemap.xml：覆盖 35 个地区的首页 + 全部应用列表页
+// sitemap.xml：覆盖 40 个地区的首页 + 全部应用列表页
 // App 详情页（/<country>/apps/<appId>）通过 /<country>/apps 列表页被爬虫发现
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const h = await headers();
-  const host = h.get("host") || "appstore-lowest-price.alifeiliu.workers.dev";
+  const host = h.get("host") || "lowestappprice.com";
   const proto = h.get("x-forwarded-proto") || "https";
   const base = `${proto}://${host}`;
 
@@ -30,7 +30,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   }
 
-  // 35 个地区的首页 + 全部应用列表页
+  // 40 个地区的首页 + 全部应用列表页
   for (const r of REGIONS) {
     pages.push({
       url: `${base}/${r.code}`,

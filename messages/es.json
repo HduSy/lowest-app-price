@@ -11,16 +11,16 @@
     "currencyPicker": "Moneda de visualización"
   },
   "Layout": {
-    "siteName": "Comparador de precios App Store",
+    "siteName": "Comparador de precios LowestAppPrice",
     "footerDisclaimer": "No afiliado a Apple Inc. Los datos de precios provienen del App Store público y se convierten a tipos de cambio en tiempo real, solo como referencia. Las compras reales dependen de lo que se muestre en el App Store en ese momento y deben cumplir con los Términos de servicio de Apple y las leyes locales.",
-    "footerCopyright": "Copyright © {year} Comparador de precios App Store. Todos los derechos reservados.",
+    "footerCopyright": "Copyright © {year} Comparador de precios LowestAppPrice. Todos los derechos reservados.",
     "footerLinks": "Enlaces del pie de página",
     "privacy": "Privacidad",
     "terms": "Términos de uso",
     "refunds": "Política de reembolsos",
     "legal": "Aviso legal",
     "sitemap": "Mapa del sitio",
-    "metadataDescription": "Pega un enlace del App Store o un ID de app. Obtenemos los precios de suscripción de 35 regiones en tiempo real, los convertimos a una sola moneda y los ordenamos del más barato al más caro."
+    "metadataDescription": "Pega un enlace del App Store o un ID de app. Obtenemos los precios de suscripción de 40 regiones en tiempo real, los convertimos a una sola moneda y los ordenamos del más barato al más caro."
   },
   "HomePage": {
     "heroTitle1": "Una app, cambia de región, ",
@@ -43,7 +43,7 @@
     "faqA4": "La región con el precio más bajo varía según la app. Pega un enlace y obtendremos los precios de suscripción de {count} regiones, los convertiremos a una sola moneda y los ordenaremos - la más barata destaca de inmediato.",
     "faqQ5": "¿Cómo verifico los precios del App Store en diferentes países?",
     "faqA5": "Pega un enlace del App Store o un ID de app en el campo de entrada de la página de apps y pulsa Enter para comparar los precios de compras integradas y suscripciones en {count} regiones.",
-    "siteName": "Comparador de precios App Store",
+    "siteName": "Comparador de precios LowestAppPrice",
     "metadataDescription": "Pega un enlace del App Store o un ID de app. Obtenemos los precios de suscripción de {count} regiones en tiempo real, los convertimos a una sola moneda y los ordenamos del más barato al más caro.",
     "feature1": "Comparador de precios en {count} regiones del App Store",
     "feature2": "Precios de suscripción y compras integradas convertidos según el tipo de cambio",
@@ -137,7 +137,7 @@
     "emptyTitle": "Sin datos de precios",
     "emptyDesc": "Es posible que esta app no tenga compras integradas ni niveles de suscripción para comparar.",
     "initialLoadingTitle": "Obteniendo precios globales…",
-    "initialLoadingHint": "La primera carga obtiene 35 regiones, tarda unos segundos",
+    "initialLoadingHint": "La primera carga obtiene 40 regiones, tarda unos segundos",
     "refreshingBanner": "Actualizando precios globales…",
     "converting": "Convirtiendo…"
   },
@@ -154,7 +154,7 @@
     "loadingMore": "Cargando más...",
     "allLoaded": "Todas las {count} apps cargadas",
     "noLocalMatch": "Sin coincidencia local, {count} resultados del directorio de Apple pueden añadirse",
-    "addHint": "Haz clic en \"Añadir\" para obtener de Apple e iniciar el rastreo de precios en 35 regiones. Inicio de sesión requerido."
+    "addHint": "Haz clic en \"Añadir\" para obtener de Apple e iniciar el rastreo de precios en 40 regiones. Inicio de sesión requerido."
   },
   "UserMenu": {
     "proBadge": "Pro",

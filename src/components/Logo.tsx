@@ -7,7 +7,7 @@ export function LogoMark({ size = 24 }: { size?: number }) {
       height={size}
       viewBox="0 0 32 32"
       role="img"
-      aria-label="App Store 全区比价"
+      aria-label="LowestAppPrice 全区比价"
     >
       <defs>
         <linearGradient id="logo-bg" x1="0" y1="0" x2="1" y2="1">

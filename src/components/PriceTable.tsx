@@ -303,7 +303,7 @@ export function PriceTable({
           {activeIap && activeIap.lowest && (
             <ShareButton
               text={
-                `App Store 全区比价：${activeIap.name} 最低 ${activeIap.lowest.convertedDisplay}` +
+                `LowestAppPrice 全区比价：${activeIap.name} 最低 ${activeIap.lowest.convertedDisplay}` +
                 `（${activeIap.lowest.region.name_en}）`
               }
             />

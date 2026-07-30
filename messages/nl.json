@@ -11,16 +11,16 @@
     "currencyPicker": "Weergavemunteenheid"
   },
   "Layout": {
-    "siteName": "App Store Prijsvergelijker",
+    "siteName": "LowestAppPrice Prijsvergelijker",
     "footerDisclaimer": "Niet gelieerd aan Apple Inc. Prijsgegevens zijn afkomstig uit de openbare App Store en worden tegen real-time wisselkoersen omgerekend, alleen ter referentie. Werkelijke aankopen zijn afhankelijk van wat op dat moment in de App Store wordt getoond en moeten voldoen aan de servicevoorwaarden van Apple en lokale wetgeving.",
-    "footerCopyright": "Copyright © {year} App Store Prijsvergelijker. Alle rechten voorbehouden.",
+    "footerCopyright": "Copyright © {year} LowestAppPrice Prijsvergelijker. Alle rechten voorbehouden.",
     "footerLinks": "Footerlinks",
     "privacy": "Privacy",
     "terms": "Gebruiksvoorwaarden",
     "refunds": "Restitutiebeleid",
     "legal": "Juridische kennisgeving",
     "sitemap": "Sitemap",
-    "metadataDescription": "Plak een App Store-link of App-ID. We halen abonnementsprijzen uit 35 regio's in real-time, rekenen ze om naar één valuta en sorteren ze van goedkoopste eerst."
+    "metadataDescription": "Plak een App Store-link of App-ID. We halen abonnementsprijzen uit 40 regio's in real-time, rekenen ze om naar één valuta en sorteren ze van goedkoopste eerst."
   },
   "HomePage": {
     "heroTitle1": "Eén app, wissel van regio, ",
@@ -43,7 +43,7 @@
     "faqA4": "De regio met de laagste prijs verschilt per app. Plak een link en we halen abonnementsprijzen uit {count} regio's, rekenen ze om naar één valuta en sorteren ze - de goedkoopste valt direct op.",
     "faqQ5": "Hoe controleer ik App Store-prijzen in verschillende landen?",
     "faqA5": "Plak een App Store-link of App-ID in het invoerveld op de apps-pagina en druk op Enter om IAP- en abonnementsprijzen in {count} regio's te vergelijken.",
-    "siteName": "App Store Prijsvergelijker",
+    "siteName": "LowestAppPrice Prijsvergelijker",
     "metadataDescription": "Plak een App Store-link of App-ID. We halen abonnementsprijzen uit {count} regio's in real-time, rekenen ze om naar één valuta en sorteren ze van goedkoopste eerst.",
     "feature1": "Prijsvergelijking in {count} App Store-regio's",
     "feature2": "Abonnements- en IAP-prijzen omgerekend tegen wisselkoersen",
@@ -137,7 +137,7 @@
     "emptyTitle": "Geen prijsgegevens",
     "emptyDesc": "Deze app heeft mogelijk geen in-app aankopen of abonnementsniveaus om te vergelijken.",
     "initialLoadingTitle": "Wereldwijde prijzen ophalen…",
-    "initialLoadingHint": "Eerste keer laden haalt 35 regio's op, duurt enkele seconden",
+    "initialLoadingHint": "Eerste keer laden haalt 40 regio's op, duurt enkele seconden",
     "refreshingBanner": "Wereldwijde prijzen vernieuwen…",
     "converting": "Conversie…"
   },
@@ -154,7 +154,7 @@
     "loadingMore": "Meer laden...",
     "allLoaded": "Alle {count} apps geladen",
     "noLocalMatch": "Geen lokale match, {count} resultaten van Apple-directory kunnen worden toegevoegd",
-    "addHint": "Klik op \"Toevoegen\" om van Apple te fetchen en 35-regio prijscrawling te starten. Login vereist."
+    "addHint": "Klik op \"Toevoegen\" om van Apple te fetchen en 40-regio prijscrawling te starten. Login vereist."
   },
   "UserMenu": {
     "proBadge": "Pro",

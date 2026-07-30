@@ -11,16 +11,16 @@
     "currencyPicker": "表示通貨"
   },
   "Layout": {
-    "siteName": "App Store 価格比較",
+    "siteName": "LowestAppPrice 価格比較",
     "footerDisclaimer": "Apple Inc. とは提携していません。価格データは公開 App Store から取得し、リアルタイムの為替レートで換算した参考値です。実際の購入は App Store のその時点の表示に従い、Apple の利用規約と現地の法律を遵守する必要があります。",
-    "footerCopyright": "Copyright © {year} App Store 価格比較. All rights reserved.",
+    "footerCopyright": "Copyright © {year} LowestAppPrice 価格比較. All rights reserved.",
     "footerLinks": "フッターリンク",
     "privacy": "プライバシー",
     "terms": "利用規約",
     "refunds": "返金ポリシー",
     "legal": "法的通知",
     "sitemap": "サイトマップ",
-    "metadataDescription": "App Store リンクまたは App ID を貼り付けてください。35 地域のサブスクリプション価格をリアルタイムで取得し、単一通貨に換算して最安値順に並べます。"
+    "metadataDescription": "App Store リンクまたは App ID を貼り付けてください。40 地域のサブスクリプション価格をリアルタイムで取得し、単一通貨に換算して最安値順に並べます。"
   },
   "HomePage": {
     "heroTitle1": "ひとつの App、地域を変えて、",
@@ -43,7 +43,7 @@
     "faqA4": "最安値地域は App ごとに異なります。リンクを貼り付けると、{count} 地域のサブスクリプション価格を取得し、単一通貨に換算して最安値順に並べます - 一目でわかります。",
     "faqQ5": "App Store の各国価格を調べるには？",
     "faqA5": "アプリページの入力欄に App Store リンクまたは App ID を貼り付け、Enter を押すと {count} 地域の IAP とサブスクリプション価格を比較できます。",
-    "siteName": "App Store 価格比較",
+    "siteName": "LowestAppPrice 価格比較",
     "metadataDescription": "App Store リンクまたは App ID を貼り付けてください。{count} 地域のサブスクリプション価格をリアルタイムで取得し、単一通貨に換算して最安値順に並べます。",
     "feature1": "{count} の App Store 地域で価格比較",
     "feature2": "サブスクリプションと IAP 価格を為替レートで換算",
@@ -137,7 +137,7 @@
     "emptyTitle": "価格データなし",
     "emptyDesc": "このアプリには比較対象のアプリ内課金やサブスクリプションプランがない可能性があります。",
     "initialLoadingTitle": "全世界の価格を取得中…",
-    "initialLoadingHint": "初回読み込み時に 35 地域を取得するため、数秒かかります",
+    "initialLoadingHint": "初回読み込み時に 40 地域を取得するため、数秒かかります",
     "refreshingBanner": "世界の価格を更新中…",
     "converting": "換算中…"
   },
@@ -154,7 +154,7 @@
     "loadingMore": "さらに読み込み中...",
     "allLoaded": "全 {count} アプリを読み込みました",
     "noLocalMatch": "ローカルに一致なし、Apple ディレクトリに {count} 件追加可能",
-    "addHint": "「追加」をクリックすると Apple から情報を取得し、35 地域の価格取得を開始します。ログインが必要です。"
+    "addHint": "「追加」をクリックすると Apple から情報を取得し、40 地域の価格取得を開始します。ログインが必要です。"
   },
   "UserMenu": {
     "proBadge": "Pro",

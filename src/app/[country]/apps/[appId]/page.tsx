@@ -32,16 +32,16 @@ export async function generateMetadata({
     title: `${app.name} 全区比价 - 哪国最便宜`,
     description: `查看 ${app.name}${
       app.developer ? `（${app.developer}）` : ""
-    } 在 35 个 App Store 地区的订阅价格，按统一币种换算从低到高排名。`,
+    } 在 40 个 App Store 地区的订阅价格，按统一币种换算从低到高排名。`,
     openGraph: {
       title: `${app.name} 全区比价`,
-      description: `35 个地区的订阅价格从低到高排开，哪个区最便宜一目了然。`,
+      description: `40 个地区的订阅价格从低到高排开，哪个区最便宜一目了然。`,
       images: [{ url: ogImageUrl, width: 1200, height: 630, alt: `${app.name} 全区比价` }],
     },
     twitter: {
       card: "summary_large_image",
       title: `${app.name} 全区比价`,
-      description: `35 个地区的订阅价格从低到高排开，哪个区最便宜一目了然。`,
+      description: `40 个地区的订阅价格从低到高排开，哪个区最便宜一目了然。`,
       images: [ogImageUrl],
     },
   };
@@ -69,12 +69,12 @@ export default async function AppDetailPage({
 
   // App 必须已在库中（通过 /api/apps 显式添加）。未收录的 App 直接 404，
   // 避免相关推荐等入口点进未收录 App 时绕过登录与噪音过滤规则自动入库。
-  // 入库后 last_fetched_at 为 null -> isStale=true -> 客户端触发 35 区价格抓取
+  // 入库后 last_fetched_at 为 null -> isStale=true -> 客户端触发 40 区价格抓取
   const app = await getApp(db, appId);
   if (!app) notFound();
 
   // 不在 SSR 阻塞 refreshPrices：先返回现有数据渲染，客户端检测 stale 后异步刷新
-  // 避免新 App 首次进详情页白屏数秒（35 区抓取耗时）
+  // 避免新 App 首次进详情页白屏数秒（40 区抓取耗时）
   const needFetch = isStale(app.last_fetched_at, PRICE_TTL_HOURS);
 
   const [refreshedApp, rawPrices] = await Promise.all([

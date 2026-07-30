@@ -13,7 +13,7 @@ import { LoginDialog } from "./LoginDialog";
 import { UserMenu } from "./UserMenu";
 import { LogoMark } from "./Logo";
 
-// 可切换的币种列表（35 地区去重 + 排序）
+// 可切换的币种列表（40 地区去重 + 排序）
 const CURRENCY_OPTIONS = [...new Set(REGIONS.map((r) => r.currency))].sort();
 
 // 相对路径链接（会自动拼上当前 URL country 前缀，仅用于浏览区导航）

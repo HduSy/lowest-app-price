@@ -11,16 +11,16 @@
     "currencyPicker": "Mata uang tampilan"
   },
   "Layout": {
-    "siteName": "Pembanding Harga App Store",
+    "siteName": "Pembanding Harga LowestAppPrice",
     "footerDisclaimer": "Tidak berafiliasi dengan Apple Inc. Data harga bersumber dari App Store publik dan dikonversi pada nilai tukar real-time, hanya untuk referensi. Pembelian aktual bergantung pada yang ditampilkan di App Store saat itu dan harus mematuhi Ketentuan Layanan Apple serta hukum lokal.",
-    "footerCopyright": "Copyright © {year} Pembanding Harga App Store. Semua hak dilindungi.",
+    "footerCopyright": "Copyright © {year} Pembanding Harga LowestAppPrice. Semua hak dilindungi.",
     "footerLinks": "Tautan footer",
     "privacy": "Privasi",
     "terms": "Ketentuan penggunaan",
     "refunds": "Kebijakan pengembalian",
     "legal": "Pemberitahuan hukum",
     "sitemap": "Peta situs",
-    "metadataDescription": "Tempel tautan App Store atau App ID. Kami mengambil harga langganan dari 35 wilayah secara real-time, mengonversinya ke satu mata uang, dan mengurutkannya dari termurah."
+    "metadataDescription": "Tempel tautan App Store atau App ID. Kami mengambil harga langganan dari 40 wilayah secara real-time, mengonversinya ke satu mata uang, dan mengurutkannya dari termurah."
   },
   "HomePage": {
     "heroTitle1": "Satu app, ganti wilayah, ",
@@ -43,7 +43,7 @@
     "faqA4": "Wilayah dengan harga terendah berbeda per app. Tempel tautan dan kami akan mengambil harga langganan dari {count} wilayah, mengonversinya ke satu mata uang, dan mengurutkannya - yang termurah langsung menonjol.",
     "faqQ5": "Bagaimana cara memeriksa harga App Store di berbagai negara?",
     "faqA5": "Tempel tautan App Store atau App ID di kolom input halaman app dan tekan Enter untuk membandingkan harga IAP dan langganan di {count} wilayah.",
-    "siteName": "Pembanding Harga App Store",
+    "siteName": "Pembanding Harga LowestAppPrice",
     "metadataDescription": "Tempel tautan App Store atau App ID. Kami mengambil harga langganan dari {count} wilayah secara real-time, mengonversinya ke satu mata uang, dan mengurutkannya dari termurah.",
     "feature1": "Pembanding harga di {count} wilayah App Store",
     "feature2": "Harga langganan dan IAP dikonversi pada nilai tukar",
@@ -137,7 +137,7 @@
     "emptyTitle": "Tidak ada data harga",
     "emptyDesc": "Aplikasi ini mungkin tidak memiliki pembelian dalam aplikasi atau tier langganan untuk dibandingkan.",
     "initialLoadingTitle": "Mengambil harga global…",
-    "initialLoadingHint": "Muat awal mengambil 35 wilayah, butuh beberapa detik",
+    "initialLoadingHint": "Muat awal mengambil 40 wilayah, butuh beberapa detik",
     "refreshingBanner": "Menyegarkan harga global…",
     "converting": "Mengonversi…"
   },
@@ -154,7 +154,7 @@
     "loadingMore": "Memuat lebih banyak...",
     "allLoaded": "Semua {count} app dimuat",
     "noLocalMatch": "Tidak ada hasil lokal, {count} hasil dari direktori Apple dapat ditambahkan",
-    "addHint": "Klik \"Tambah\" untuk mengambil dari Apple dan memulai perayapan harga 35 wilayah. Login diperlukan."
+    "addHint": "Klik \"Tambah\" untuk mengambil dari Apple dan memulai perayapan harga 40 wilayah. Login diperlukan."
   },
   "UserMenu": {
     "proBadge": "Pro",

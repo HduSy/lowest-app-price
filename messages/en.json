@@ -11,16 +11,16 @@
     "currencyPicker": "Display currency"
   },
   "Layout": {
-    "siteName": "App Store Price Compare",
+    "siteName": "LowestAppPrice Price Compare",
     "footerDisclaimer": "Not affiliated with Apple Inc. Pricing data is sourced from the public App Store and converted at real-time exchange rates for reference only. Actual purchases are subject to what's shown in the App Store at that time, and must comply with Apple's Terms of Service and local laws.",
-    "footerCopyright": "Copyright © {year} App Store Price Compare. All rights reserved.",
+    "footerCopyright": "Copyright © {year} LowestAppPrice Price Compare. All rights reserved.",
     "footerLinks": "Footer links",
     "privacy": "Privacy Policy",
     "terms": "Terms of Use",
     "refunds": "Refund Policy",
     "legal": "Legal Notice",
     "sitemap": "Sitemap",
-    "metadataDescription": "Paste an App Store link or App ID. We fetch subscription prices across 35 regions in real time, convert to a single currency, and rank them lowest first."
+    "metadataDescription": "Paste an App Store link or App ID. We fetch subscription prices across 40 regions in real time, convert to a single currency, and rank them lowest first."
   },
   "HomePage": {
     "heroTitle1": "One App, switch regions, ",
@@ -43,7 +43,7 @@
     "faqA4": "The lowest-price region differs per App. Paste a link and we'll fetch subscription prices across {count} regions, convert to a single currency, and rank them — the cheapest stands out.",
     "faqQ5": "How do I check App Store prices across countries?",
     "faqA5": "Paste an App Store link or App ID into the input on the Apps page and hit enter to compare IAP and subscription prices across {count} regions.",
-    "siteName": "App Store Price Compare",
+    "siteName": "LowestAppPrice Price Compare",
     "metadataDescription": "Paste an App Store link or App ID. We fetch subscription prices across {count} regions in real time, convert to a single currency, and rank them lowest first.",
     "feature1": "Price compare across {count} App Store regions",
     "feature2": "Subscription & IAP prices converted at exchange rates",
@@ -137,7 +137,7 @@
     "emptyTitle": "No pricing data",
     "emptyDesc": "This App may not have in-app purchases or subscription tiers to compare.",
     "initialLoadingTitle": "Fetching global prices…",
-    "initialLoadingHint": "First load fetches 35 regions, takes a few seconds",
+    "initialLoadingHint": "First load fetches 40 regions, takes a few seconds",
     "refreshingBanner": "Refreshing global prices…",
     "converting": "Converting…"
   },
@@ -154,7 +154,7 @@
     "loadingMore": "Loading more...",
     "allLoaded": "All {count} apps loaded",
     "noLocalMatch": "No local match, {count} results from Apple directory can be added",
-    "addHint": "Click \"Add\" to fetch from Apple and trigger 35-region price crawling. Sign in required."
+    "addHint": "Click \"Add\" to fetch from Apple and trigger 40-region price crawling. Sign in required."
   },
   "UserMenu": {
     "proBadge": "Pro",

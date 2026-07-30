@@ -11,16 +11,16 @@
     "currencyPicker": "Wyświetlana waluta"
   },
   "Layout": {
-    "siteName": "Porównywarka cen App Store",
+    "siteName": "Porównywarka cen LowestAppPrice",
     "footerDisclaimer": "Niepowiązany z Apple Inc. Dane cenowe pochodzą z publicznego App Store i są przeliczane po kursach walut w czasie rzeczywistym, wyłącznie jako odniesienie. Rzeczywiste zakupy zależą od tego, co jest wyświetlane w App Store w danym momencie, i muszą być zgodne z Warunkami świadczenia usług Apple oraz lokalnymi przepisami.",
-    "footerCopyright": "Copyright © {year} Porównywarka cen App Store. Wszelkie prawa zastrzeżone.",
+    "footerCopyright": "Copyright © {year} Porównywarka cen LowestAppPrice. Wszelkie prawa zastrzeżone.",
     "footerLinks": "Linki w stopce",
     "privacy": "Prywatność",
     "terms": "Warunki użytkowania",
     "refunds": "Polityka zwrotów",
     "legal": "Informacje prawne",
     "sitemap": "Mapa strony",
-    "metadataDescription": "Wklej link do App Store lub identyfikator aplikacji. Pobieramy ceny subskrypcji z 35 regionów w czasie rzeczywistym, przeliczamy na jedną walutę i sortujemy od najtańszych."
+    "metadataDescription": "Wklej link do App Store lub identyfikator aplikacji. Pobieramy ceny subskrypcji z 40 regionów w czasie rzeczywistym, przeliczamy na jedną walutę i sortujemy od najtańszych."
   },
   "HomePage": {
     "heroTitle1": "Jedna aplikacja, zmień region, ",
@@ -43,7 +43,7 @@
     "faqA4": "Najtańszy region różni się w zależności od aplikacji. Wklej link, a my pobierzemy ceny subskrypcji z {count} regionów, przeliczymy na jedną walutę i posortujemy - najtańszy od razu rzuca się w oczy.",
     "faqQ5": "Jak sprawdzić ceny App Store w różnych krajach?",
     "faqA5": "Wklej link do App Store lub identyfikator aplikacji w polu wprowadzania na stronie aplikacji i naciśnij Enter, aby porównać ceny IAP i subskrypcji w {count} regionach.",
-    "siteName": "Porównywarka cen App Store",
+    "siteName": "Porównywarka cen LowestAppPrice",
     "metadataDescription": "Wklej link do App Store lub identyfikator aplikacji. Pobieramy ceny subskrypcji z {count} regionów w czasie rzeczywistym, przeliczamy na jedną walutę i sortujemy od najtańszych.",
     "feature1": "Porównanie cen w {count} regionach App Store",
     "feature2": "Ceny subskrypcji i IAP przeliczane po kursach walut",
@@ -137,7 +137,7 @@
     "emptyTitle": "Brak danych o cenach",
     "emptyDesc": "Ten app może nie mieć zakupów w aplikacji ani poziomów subskrypcji do porównania.",
     "initialLoadingTitle": "Pobieranie światowych cen…",
-    "initialLoadingHint": "Pierwsze ładowanie pobiera 35 regionów, trwa kilka sekund",
+    "initialLoadingHint": "Pierwsze ładowanie pobiera 40 regionów, trwa kilka sekund",
     "refreshingBanner": "Odświeżanie światowych cen…",
     "converting": "Przeliczanie…"
   },
@@ -154,7 +154,7 @@
     "loadingMore": "Ładowanie...",
     "allLoaded": "Wczytano wszystkie {count} aplikacje",
     "noLocalMatch": "Brak lokalnych wyników, {count} wyników z katalogu Apple można dodać",
-    "addHint": "Kliknij \"Dodaj\", aby pobrać z Apple i uruchomić zbieranie cen w 35 regionach. Wymagany login."
+    "addHint": "Kliknij \"Dodaj\", aby pobrać z Apple i uruchomić zbieranie cen w 40 regionach. Wymagany login."
   },
   "UserMenu": {
     "proBadge": "Pro",

@@ -1,10 +1,10 @@
-# App Store 全区比价
+# LowestAppPrice 全区比价
 
-> 粘贴 App Store 链接或 App ID，实时抓取 35 个地区的内购/订阅价格，按统一币种换算后从低到高排名。哪国最便宜，一目了然。
+> 粘贴 App Store 链接或 App ID，实时抓取 40 个地区的内购/订阅价格，按统一币种换算后从低到高排名。哪国最便宜，一目了然。
 
 ## What this tool does
 
-App Store 全区比价 is a free App Store cross-region price comparison tool. A user pastes an App Store link or App ID, and the tool fetches that app's in-app purchase and subscription prices across 35 App Store regions (US, Japan, Korea, Hong Kong, Taiwan, Singapore, UK, Germany, and more), converts them to a single currency using live exchange rates, and ranks them from lowest to highest.
+LowestAppPrice 全区比价 is a free App Store cross-region price comparison tool. A user pastes an App Store link or App ID, and the tool fetches that app's in-app purchase and subscription prices across 40 App Store regions (US, Japan, Korea, Hong Kong, Taiwan, Singapore, UK, Germany, and more), converts them to a single currency using live exchange rates, and ranks them from lowest to highest.
 
 This answers the question: "Which App Store region has the cheapest price for this app's subscription?"
 
@@ -18,13 +18,13 @@ This answers the question: "Which App Store region has the cheapest price for th
 ## Pricing
 
 - **Free**: 3 price views per day (login required). Quota shared across all apps, resets at UTC 00:00.
-- **Buyout**: $1.99 one-time payment. Permanent unlimited access to all apps, all subscription tiers, all 35 regions. No recurring fees.
+- **Buyout**: $1.99 one-time payment. Permanent unlimited access to all apps, all subscription tiers, all 40 regions. No recurring fees.
 
 Full machine-readable pricing: see `/pricing.md`
 
-## Supported regions (35)
+## Supported regions (40)
 
-United States, Canada, Brazil, Mexico, Japan, Korea, Hong Kong, Taiwan, Singapore, Australia, New Zealand, United Kingdom, Germany, France, Italy, Spain, Netherlands, Sweden, Switzerland, Austria, Belgium, Denmark, Finland, Ireland, Norway, Poland, Portugal, Turkey, United Arab Emirates, Saudi Arabia, South Africa, India, Indonesia, Thailand, Vietnam.
+United States, Canada, Brazil, Mexico, Argentina, Chile, Colombia, United Kingdom, Germany, France, Türkiye, Norway, Switzerland, Denmark, Israel, Spain, Italy, Netherlands, Poland, Russia, United Arab Emirates, Saudi Arabia, Nigeria, South Africa, Egypt, Japan, South Korea, China, Hong Kong, Taiwan, India, Indonesia, Thailand, Vietnam, Philippines, Malaysia, Singapore, Pakistan, Kazakhstan, Australia.
 
 ## Data source
 
