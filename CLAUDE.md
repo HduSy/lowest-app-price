@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-App Store 全区比价 - a bilingual (zh-CN / en) web tool where users paste an App Store link or App ID, and the backend concurrently scrapes 40 App Store regions' IAP/subscription prices, converts them to a single currency via live FX rates, and ranks them from cheapest to most expensive. Freemium model: anonymous users see locked results, logged-in unpaid users get 3 free unlocks/day, a $1.99 one-time Stripe payment unlocks unlimited access.
+LowestAppPrice 全区比价 - a bilingual (zh-CN / en) web tool where users paste an App Store link or App ID, and the backend concurrently scrapes 40 App Store regions' IAP/subscription prices, converts them to a single currency via live FX rates, and ranks them from cheapest to most expensive. Freemium model: anonymous users see locked results, logged-in unpaid users get 3 free unlocks/day, a $1.99 one-time Paddle payment unlocks unlimited access.
 
-**Stack**: Next.js 15.5 (App Router) + React 19 + TypeScript 5.7 (strict) + Tailwind v4 + Zustand 5 + Auth.js v5 + next-intl + Stripe, deployed to Cloudflare Workers/Pages via `@opennextjs/cloudflare`, backed by Cloudflare D1 (SQLite).
+**Stack**: Next.js 15.5 (App Router) + React 19 + TypeScript 5.7 (strict) + Tailwind v4 + Zustand 5 + Auth.js v5 + next-intl + Paddle, deployed to Cloudflare Workers/Pages via `@opennextjs/cloudflare`, backed by Cloudflare D1 (SQLite).
 
 ## Common Commands
 
@@ -114,7 +114,7 @@ All routes are Next.js Route Handlers under `/api/*`:
 - `GET /api/apps/:appId/prices?force=1` - lazily refreshes + enforces entitlement gating.
 - `GET /api/apps/search` - local DB + iTunes Search API fallback.
 - `GET /api/entitlement`, `POST /api/views/record`.
-- `POST /api/stripe/checkout`, `POST /api/stripe/webhook` (records `paid` purchase).
+- `POST /api/paddle/checkout`, `POST /api/paddle/webhook` (records `paid` purchase).
 - `GET /api/og/[appId]` - dynamic OG image.
 - `/api/admin/*` - require `ADMIN_TOKEN` env: `backfill-period`, `cleanup-no-developer`, `cleanup-unavailable`, `import-from-sitemap`.
 - `/api/auth/[...nextauth]` - Auth.js handlers.
@@ -131,7 +131,7 @@ All routes are Next.js Route Handlers under `/api/*`:
 - **Types**: shared interfaces live in `src/lib/types.ts` (`Region`, `App`, `PriceRow`, `IapEntry`, `RegionFetchResult`, `AggregatedIap`, `RegionRankItem`, `PricesResponse`, `ExternalSearchItem`, `SubscriptionPeriod`).
 - **Responses**: use `src/lib/api-response.ts` `json()` / `error()` helpers in route handlers.
 - **Icons**: Phosphor Icons loaded from unpkg in `src/app/layout.tsx`.
-- `env.d.ts` declares the global `CloudflareEnv` interface with `DB` binding + all secret keys (`AUTH_*` incl. `AUTH_GOOGLE_*` / `AUTH_TWITTER_*` / `AUTH_GITHUB_*` / `AUTH_SECRET`, `STRIPE_*`, `ADMIN_TOKEN`, `DEFAULT_CURRENCY`, `RESEND_API_KEY`, `MAIL_FROM`). Keep it in sync when adding bindings/secrets to `wrangler.toml` or `.dev.vars`.
+- `env.d.ts` declares the global `CloudflareEnv` interface with `DB` binding + all secret keys (`AUTH_*` incl. `AUTH_GOOGLE_*` / `AUTH_TWITTER_*` / `AUTH_GITHUB_*` / `AUTH_SECRET`, `PADDLE_*`, `ADMIN_TOKEN`, `DEFAULT_CURRENCY`, `RESEND_API_KEY`, `MAIL_FROM`). Keep it in sync when adding bindings/secrets to `wrangler.toml` or `.dev.vars`.
 
 ## Local Server Port
 
