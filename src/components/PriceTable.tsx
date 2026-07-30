@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import type { PriceRow } from "@/lib/types";
 import { aggregatePrices, computeFreeCount } from "@/lib/compare";
@@ -9,9 +10,18 @@ import { useCurrency, usePricingVariant } from "@/lib/app-store";
 import type { AppViewAuth } from "@/lib/entitlement";
 import { DAILY_VIEW_LIMIT } from "@/lib/entitlement";
 import { Flag } from "./Flag";
-import { LoginDialog } from "./LoginDialog";
-import { PricingDialog } from "./PricingDialog";
 import { ShareButton } from "./ShareButton";
+
+// 弹窗仅在点击解锁/购买时才需要：懒加载，避免 next-auth/react + checkout 逻辑
+// 进入详情页的初始包（详情页首屏只需价格表，弹窗是交互副作用）。
+const LoginDialog = dynamic(
+  () => import("./LoginDialog").then((m) => m.LoginDialog),
+  { ssr: false }
+);
+const PricingDialog = dynamic(
+  () => import("./PricingDialog").then((m) => m.PricingDialog),
+  { ssr: false }
+);
 
 // admin refresh 端点返回结构（保持与 /api/admin/refresh-prices 一致）
 type RefreshResponse = {

@@ -197,7 +197,7 @@
     "memberBadgeB": "Üye"
   },
   "LoginDialog": {
-    "title": "Tüm fiyatları görmek için giriş yapın",
+    "title": "Tek tıkla giriş yap, tüm abonelik seviyelerinin kilidini aç",
     "desc": "Günlük 3 ücretsiz · veya $1.99 ömür boyu",
     "google": "Google ile devam et",
     "or": "veya",
@@ -209,7 +209,10 @@
     "checkEmail": "15 dakika içinde e-postanızı kontrol edin ve giriş yapmak için butona tıklayın.",
     "changeEmail": "Farklı e-posta",
     "ariaLabel": "Giriş",
-    "descB": "Üye olarak giriş yapın — tamamen ücretsiz"
+    "descB": "Üye olarak giriş yapın — tamamen ücretsiz",
+    "titleAdd": "Uygulama eklemek için giriş yap",
+    "descAdd": "Uygulama ekleme yalnızca üyelere özeldir · 1,99 $ tek seferlik ödeme",
+    "descAddB": "Üye olmak için giriş yap ve herhangi bir uygulamayı ücretsiz ekle"
   },
   "Currencies": {
     "USD": "ABD Doları",

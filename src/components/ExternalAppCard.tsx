@@ -6,12 +6,21 @@
 // 会员/付费可点添加；未登录点击弹 LoginDialog，A 版已登录未付费弹 PricingDialog
 // 若 isIndexed（理论上兜底场景下不会发生），按钮变「查看」直接跳详情页
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import type { ExternalSearchItem } from "@/lib/types";
-import { LoginDialog } from "./LoginDialog";
-import { PricingDialog } from "./PricingDialog";
+
+// 弹窗仅在点击"添加"且需要登录/付费引导时才需要：懒加载。
+const LoginDialog = dynamic(
+  () => import("./LoginDialog").then((m) => m.LoginDialog),
+  { ssr: false }
+);
+const PricingDialog = dynamic(
+  () => import("./PricingDialog").then((m) => m.PricingDialog),
+  { ssr: false }
+);
 
 type Status = "idle" | "adding" | "error";
 
@@ -191,7 +200,7 @@ export function ExternalAppCard({
         </button>
       </div>
       {loginOpen && (
-        <LoginDialog open={loginOpen} onClose={() => setLoginOpen(false)} />
+        <LoginDialog open={loginOpen} onClose={() => setLoginOpen(false)} purpose="add" />
       )}
       <PricingDialog
         open={pricingOpen}

@@ -3,9 +3,15 @@
 // 首页定价区：A 版两档（免费/$1.99），B 版两档（免费版/会员）
 // client 组件：A 版需调 checkout API + 开 LoginDialog；B 版只开 LoginDialog（登录即会员）
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
-import { LoginDialog } from "./LoginDialog";
 import { usePricingVariant } from "@/lib/app-store";
+
+// 弹窗仅在点击时才需要：懒加载，减小首屏 JS。
+const LoginDialog = dynamic(
+  () => import("./LoginDialog").then((m) => m.LoginDialog),
+  { ssr: false }
+);
 
 interface PricingSectionProps {
   loggedIn: boolean;

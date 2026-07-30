@@ -14,11 +14,18 @@ import { GoogleIcon } from "./BrandIcons";
 interface LoginDialogProps {
   open: boolean;
   onClose: () => void;
+  /**
+   * 弹窗语境：
+   * - "view"（默认）查看价格场景：标题"一键登录，解锁全部订阅档位"
+   * - "add" 添加 App 场景：标题"登录后，添加 App"，文案强调添加是会员功能
+   */
+  purpose?: "view" | "add";
 }
 
-export function LoginDialog({ open, onClose }: LoginDialogProps) {
+export function LoginDialog({ open, onClose, purpose = "view" }: LoginDialogProps) {
   const t = useTranslations("LoginDialog");
   const variant = usePricingVariant();
+  const isAdd = purpose === "add";
   // Esc 关闭 + 锁定背景滚动
   useEffect(() => {
     if (!open) return;
@@ -53,12 +60,14 @@ export function LoginDialog({ open, onClose }: LoginDialogProps) {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="text-center">
-          <i className="ph ph-lock-key text-[28px] text-[var(--color-primary-focus)]" />
+          <i className={`ph ${isAdd ? "ph-plus-circle" : "ph-lock-key"} text-[28px] text-[var(--color-primary-focus)]`} />
           <h2 className="mt-2 text-[20px] font-semibold leading-tight">
-            {t("title")}
+            {isAdd ? t("titleAdd") : t("title")}
           </h2>
           <p className="mt-1.5 text-[13px] text-[var(--color-ink-48)]">
-            {variant === "B" ? t("descB") : t("desc")}
+            {variant === "B"
+              ? (isAdd ? t("descAddB") : t("descB"))
+              : (isAdd ? t("descAdd") : t("desc"))}
           </p>
         </div>
 

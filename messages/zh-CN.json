@@ -199,7 +199,7 @@
     "memberBadgeB": "会员"
   },
   "LoginDialog": {
-    "title": "登录后，看到完整价格",
+    "title": "一键登录，解锁全部订阅档位",
     "desc": "每天 3 次免费 · 或 $1.99 永久买断",
     "google": "使用 Google 登录",
     "or": "或",
@@ -211,7 +211,10 @@
     "checkEmail": "请在 15 分钟内查收邮件并点击其中的按钮登录。",
     "changeEmail": "换个邮箱",
     "ariaLabel": "登录",
-    "descB": "登录即成会员，全部免费"
+    "descB": "登录即成会员，全部免费",
+    "titleAdd": "登录后，添加 App",
+    "descAdd": "添加 App 为会员专属 · $1.99 永久买断",
+    "descAddB": "登录即成会员，可免费添加任意 App"
   },
   "Currencies": {
     "USD": "美元",

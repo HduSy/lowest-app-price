@@ -1,12 +1,21 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import type { AppSortKey } from "@/lib/db";
 import { parseAppInput } from "@/lib/parse-input";
-import { LoginDialog } from "@/components/LoginDialog";
-import { PricingDialog } from "@/components/PricingDialog";
+
+// 弹窗仅在点击"添加"且需要登录/付费引导时才需要：懒加载，减小列表页初始 JS。
+const LoginDialog = dynamic(
+  () => import("@/components/LoginDialog").then((m) => m.LoginDialog),
+  { ssr: false }
+);
+const PricingDialog = dynamic(
+  () => import("@/components/PricingDialog").then((m) => m.PricingDialog),
+  { ssr: false }
+);
 
 export function AppsToolbar({
   country,
@@ -244,7 +253,7 @@ export function AppsToolbar({
         </div>
       )}
 
-      <LoginDialog open={loginOpen} onClose={() => setLoginOpen(false)} />
+      <LoginDialog open={loginOpen} onClose={() => setLoginOpen(false)} purpose="add" />
       <PricingDialog
         open={pricingOpen}
         onClose={() => setPricingOpen(false)}

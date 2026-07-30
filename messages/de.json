@@ -197,7 +197,7 @@
     "memberBadgeB": "Mitglied"
   },
   "LoginDialog": {
-    "title": "Anmelden für vollständige Preise",
+    "title": "Mit einem Klick anmelden, alle Abonnement-Stufen freischalten",
     "desc": "Täglich 3 kostenlos · oder $1.99 dauerhaft",
     "google": "Mit Google fortfahren",
     "or": "oder",
@@ -209,7 +209,10 @@
     "checkEmail": "Prüfe deine E-Mail innerhalb von 15 Minuten und klicke auf den Button zum Anmelden.",
     "changeEmail": "Andere E-Mail verwenden",
     "ariaLabel": "Anmelden",
-    "descB": "Als Mitglied anmelden — komplett kostenlos"
+    "descB": "Als Mitglied anmelden — komplett kostenlos",
+    "titleAdd": "Anmelden, um Apps hinzuzufügen",
+    "descAdd": "Apps hinzufügen ist nur für Mitglieder · 1,99 $ einmalig",
+    "descAddB": "Melde dich an, um Mitglied zu werden und beliebig viele Apps kostenlos hinzuzufügen"
   },
   "Currencies": {
     "USD": "US-Dollar",

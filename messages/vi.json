@@ -197,7 +197,7 @@
     "memberBadgeB": "Thành viên"
   },
   "LoginDialog": {
-    "title": "Đăng nhập để xem giá đầy đủ",
+    "title": "Đăng nhập một chạm, mở khóa tất cả các cấp đăng ký",
     "desc": "3 miễn phí mỗi ngày · hoặc $1.99 trọn đời",
     "google": "Tiếp tục với Google",
     "or": "hoặc",
@@ -209,7 +209,10 @@
     "checkEmail": "Kiểm tra email trong 15 phút và nhấp nút để đăng nhập.",
     "changeEmail": "Email khác",
     "ariaLabel": "Đăng nhập",
-    "descB": "Đăng nhập với tư cách thành viên — hoàn toàn miễn phí"
+    "descB": "Đăng nhập với tư cách thành viên — hoàn toàn miễn phí",
+    "titleAdd": "Đăng nhập để thêm ứng dụng",
+    "descAdd": "Thêm ứng dụng dành riêng cho thành viên · 1,99 USD thanh toán một lần",
+    "descAddB": "Đăng nhập để trở thành thành viên và thêm bất kỳ ứng dụng nào miễn phí"
   },
   "Currencies": {
     "USD": "Đô la Mỹ",

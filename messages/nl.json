@@ -197,7 +197,7 @@
     "memberBadgeB": "Lid"
   },
   "LoginDialog": {
-    "title": "Log in voor volledige prijzen",
+    "title": "Log in met één klik en ontgrendel alle abonnementsniveaus",
     "desc": "3 gratis per dag · of $1.99 levenslang",
     "google": "Doorgaan met Google",
     "or": "of",
@@ -209,7 +209,10 @@
     "checkEmail": "Controleer je e-mail binnen 15 minuten en klik op de knop om in te loggen.",
     "changeEmail": "Ander e-mailadres",
     "ariaLabel": "Inloggen",
-    "descB": "Log in als lid — volledig gratis"
+    "descB": "Log in als lid — volledig gratis",
+    "titleAdd": "Log in om apps toe te voegen",
+    "descAdd": "Apps toevoegen is alleen voor leden · $1,99 eenmalig",
+    "descAddB": "Log in om lid te worden en voeg elke app gratis toe"
   },
   "Currencies": {
     "USD": "Amerikaanse dollar",

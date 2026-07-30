@@ -197,7 +197,7 @@
     "memberBadgeB": "Miembro"
   },
   "LoginDialog": {
-    "title": "Inicia sesión para ver precios completos",
+    "title": "Inicia sesión con un clic para desbloquear todos los niveles de suscripción",
     "desc": "3 gratis diarios · o $1.99 de por vida",
     "google": "Continuar con Google",
     "or": "o",
@@ -209,7 +209,10 @@
     "checkEmail": "Revisa tu correo en 15 minutos y haz clic en el botón para iniciar sesión.",
     "changeEmail": "Otro correo",
     "ariaLabel": "Iniciar sesión",
-    "descB": "Inicia sesión como miembro — totalmente gratis"
+    "descB": "Inicia sesión como miembro — totalmente gratis",
+    "titleAdd": "Inicia sesión para añadir apps",
+    "descAdd": "Añadir apps es exclusivo para miembros · 1,99 $ pago único",
+    "descAddB": "Inicia sesión para ser miembro y añadir cualquier app gratis"
   },
   "Currencies": {
     "USD": "Dólar estadounidense",

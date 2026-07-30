@@ -197,7 +197,7 @@
     "memberBadgeB": "Membre"
   },
   "LoginDialog": {
-    "title": "Connectez-vous pour voir tous les prix",
+    "title": "Connexion en un clic pour débloquer tous les niveaux d'abonnement",
     "desc": "3 gratuits par jour · ou $1.99 à vie",
     "google": "Continuer avec Google",
     "or": "ou",
@@ -209,7 +209,10 @@
     "checkEmail": "Vérifiez votre e-mail dans les 15 minutes et cliquez sur le bouton pour vous connecter.",
     "changeEmail": "Autre e-mail",
     "ariaLabel": "Connexion",
-    "descB": "Connectez-vous en tant que membre — entièrement gratuit"
+    "descB": "Connectez-vous en tant que membre — entièrement gratuit",
+    "titleAdd": "Connectez-vous pour ajouter des apps",
+    "descAdd": "L'ajout d'apps est réservé aux membres · 1,99 $ achat unique",
+    "descAddB": "Connectez-vous pour devenir membre et ajouter gratuitement n'importe quelle app"
   },
   "Currencies": {
     "USD": "Dollar américain",

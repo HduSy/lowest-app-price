@@ -199,7 +199,7 @@
     "memberBadgeB": "Member"
   },
   "LoginDialog": {
-    "title": "Sign in to see full prices",
+    "title": "One-click sign in to unlock all subscription tiers",
     "desc": "3 free daily · or $1.99 lifetime unlock",
     "google": "Continue with Google",
     "or": "or",
@@ -211,7 +211,10 @@
     "checkEmail": "Check your email within 15 minutes and click the button to sign in.",
     "changeEmail": "Use a different email",
     "ariaLabel": "Login",
-    "descB": "Sign in as a member — completely free"
+    "descB": "Sign in as a member — completely free",
+    "titleAdd": "Sign in to add apps",
+    "descAdd": "Adding apps is members-only · $1.99 one-time purchase",
+    "descAddB": "Sign in to become a member — add any app for free"
   },
   "Currencies": {
     "USD": "US Dollar",

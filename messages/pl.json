@@ -197,7 +197,7 @@
     "memberBadgeB": "Członek"
   },
   "LoginDialog": {
-    "title": "Zaloguj się, aby zobaczyć pełne ceny",
+    "title": "Zaloguj się jednym kliknięciem, odblokuj wszystkie poziomy subskrypcji",
     "desc": "3 darmowe dziennie · lub $1.99 dożywotnio",
     "google": "Kontynuuj z Google",
     "or": "lub",
@@ -209,7 +209,10 @@
     "checkEmail": "Sprawdź e-mail w ciągu 15 minut i kliknij przycisk, aby się zalogować.",
     "changeEmail": "Inny e-mail",
     "ariaLabel": "Logowanie",
-    "descB": "Zaloguj się jako członek — całkowicie bezpłatnie"
+    "descB": "Zaloguj się jako członek — całkowicie bezpłatnie",
+    "titleAdd": "Zaloguj się, aby dodawać aplikacje",
+    "descAdd": "Dodawanie aplikacji tylko dla członków · 1,99 $ jednorazowo",
+    "descAddB": "Zaloguj się, aby zostać członkiem i dodawać dowolne aplikacje za darmo"
   },
   "Currencies": {
     "USD": "Dolar amerykański",

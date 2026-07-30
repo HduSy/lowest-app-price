@@ -197,7 +197,7 @@
     "memberBadgeB": "Anggota"
   },
   "LoginDialog": {
-    "title": "Masuk untuk melihat harga lengkap",
+    "title": "Masuk sekali klik untuk membuka semua tier langganan",
     "desc": "3 gratis harian · atau $1.99 seumur hidup",
     "google": "Lanjut dengan Google",
     "or": "atau",
@@ -209,7 +209,10 @@
     "checkEmail": "Periksa email dalam 15 menit dan klik tombol untuk masuk.",
     "changeEmail": "Email lain",
     "ariaLabel": "Login",
-    "descB": "Masuk sebagai anggota — sepenuhnya gratis"
+    "descB": "Masuk sebagai anggota — sepenuhnya gratis",
+    "titleAdd": "Masuk untuk menambahkan app",
+    "descAdd": "Menambahkan app khusus anggota · $1,99 sekali bayar",
+    "descAddB": "Masuk untuk menjadi anggota dan tambahkan app apa pun secara gratis"
   },
   "Currencies": {
     "USD": "Dolar AS",

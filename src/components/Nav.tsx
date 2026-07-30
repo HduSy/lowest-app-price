@@ -5,11 +5,18 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { REGIONS, REGION_MAP } from "@/lib/regions";
+import dynamic from "next/dynamic";
 import { Picker } from "./Picker";
 import { useCurrency, useLanguage } from "@/lib/app-store";
 import { LANGUAGES, languageOption } from "@/lib/languages";
 import type { Language } from "@/lib/languages";
-import { LoginDialog } from "./LoginDialog";
+
+// 登录弹窗仅在用户点击"登录"时才需要：懒加载，避免 next-auth/react + createPortal
+// 的 chunk 进入每个页面的初始包（首页 / 列表 / 详情都不需要它首次渲染）。
+const LoginDialog = dynamic(
+  () => import("./LoginDialog").then((m) => m.LoginDialog),
+  { ssr: false }
+);
 import { UserMenu } from "./UserMenu";
 import { LogoMark } from "./Logo";
 
