@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getTranslations, getLocale } from "next-intl/server";
+import { getPricingVariant } from "@/lib/pricing-variant";
+import { staticAlternates } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Privacy");
@@ -8,6 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: t("metaTitle", { siteName: tLayout("siteName") }),
     description: t("metaDescription"),
+    alternates: staticAlternates("/privacy"),
   };
 }
 
@@ -17,6 +20,7 @@ export default async function PrivacyPage() {
   const locale = await getLocale();
   const date = new Date().toLocaleDateString(locale);
   const siteName = tLayout("siteName");
+  const variant = await getPricingVariant();
   const bold = (chunks: React.ReactNode) => <strong>{chunks}</strong>;
 
   return (
@@ -42,7 +46,7 @@ export default async function PrivacyPage() {
           </h2>
           <ul className="ml-5 list-disc space-y-2">
             <li>{t.rich("collectAccount", { bold })}</li>
-            <li>{t.rich("collectUsage", { bold })}</li>
+            <li>{t.rich(variant === "B" ? "collectUsageB" : "collectUsage", { bold })}</li>
             <li>{t.rich("collectTech", { bold })}</li>
           </ul>
 

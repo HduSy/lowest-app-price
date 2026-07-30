@@ -20,7 +20,8 @@
     "refunds": "Politique de remboursement",
     "legal": "Mentions légales",
     "sitemap": "Plan du site",
-    "metadataDescription": "Collez un lien App Store ou un identifiant d'app. Nous récupérons les prix d'abonnement de 40 régions en temps réel, les convertissons en une seule devise et les classons du moins cher au plus cher."
+    "metadataDescription": "Collez un lien App Store ou un identifiant d'app. Nous récupérons les prix d'abonnement de 40 régions en temps réel, les convertissons en une seule devise et les classons du moins cher au plus cher.",
+    "about": "À propos"
   },
   "HomePage": {
     "heroTitle1": "Une app, changez de région, ",
@@ -48,7 +49,9 @@
     "feature1": "Comparateur de prix sur {count} régions de l'App Store",
     "feature2": "Prix d'abonnement et d'IAP convertis aux taux de change",
     "feature3": "Triés du moins cher au plus cher - région la moins chère d'un coup d'œil",
-    "feature4": "3 recherches gratuites par jour, ou débloqué à vie pour $1.99"
+    "feature4": "3 recherches gratuites par jour, ou débloqué à vie pour $1.99",
+    "feature4B": "Connectez-vous en tant que membre, tout gratuit",
+    "metaTitle": "Comparateur de prix App Store - Région la moins chère pour les abonnements | LowestAppPrice"
   },
   "SupportedApps": {
     "title": "{count} apps répertoriées",
@@ -77,20 +80,21 @@
     "loginToBuy": "Connectez-vous pour acheter",
     "owned": "Acheté",
     "titleB": "Essayez gratuitement, connectez-vous pour tout débloquer",
-    "descB": "Consultez les 3 niveaux les moins chers sans inscription, ou connectez-vous pour devenir membre et tout débloquer (gratuit pendant la bêta).",
-    "freeTierB": "Version gratuite",
-    "freePriceB": "Gratuit",
+    "descB": "Consultez les 3 paliers les moins chers sans compte, ou connectez-vous pour devenir membre et tout débloquer - entièrement gratuit.",
+    "freeTierB": "FREE",
+    "freePriceB": "Invité",
     "freeNoteB": "Sans connexion",
-    "freeFeature1B": "Les 3 niveaux les moins chers",
+    "freeFeature1B": "Les 3 niveaux d'abonnement les moins chers",
     "freeFeature2B": "Toutes les App accessibles",
-    "freeFeature3B": "Sans limite quotidienne",
-    "memberTier": "Membre",
+    "memberTier": "PRO",
+    "memberPriceB": "Membre",
     "memberNote": "Connectez-vous pour débloquer",
-    "memberFeature1": "Tous les niveaux d'abonnement débloqués",
+    "memberFeature1": "Débloquer tous les niveaux d'abonnement",
     "memberFeature2": "Les 40 régions, vues illimitées",
-    "memberFeature3": "Connectez-vous, gratuit en bêta",
+    "memberFeature3": "Ajouter des apps personnalisées",
     "loginToUse": "Connectez-vous pour utiliser",
-    "currentMember": "Membre actuel"
+    "currentMember": "Membre actuel",
+    "signedIn": "Connecté"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} régions / {currency}",
@@ -110,7 +114,9 @@
     "totalCount": "{count} apps répertoriées",
     "searchResults": "{count} résultats trouvés",
     "noMatch": "Aucune app pour \"{q}\". Collez un lien App Store ou un ID pour ajouter.",
-    "empty": "La bibliothèque est vide. Collez un lien App Store ou un ID pour ajouter la première."
+    "empty": "La bibliothèque est vide. Collez un lien App Store ou un ID pour ajouter la première.",
+    "metaTitle": "Toutes les apps - Comparateur de prix App Store | LowestAppPrice",
+    "metaDescription": "Parcourez et comparez les prix d'abonnement App Store de {count} régions, du moins cher au plus cher. Recherche par nom ou collez un lien App Store."
   },
   "AppsToolbar": {
     "searchPlaceholder": "Rechercher par nom, ou coller un lien App Store / ID",
@@ -155,7 +161,9 @@
     "initialLoadingHint": "Le premier chargement récupère 40 régions, prend quelques secondes",
     "refreshingBanner": "Actualisation des prix mondiaux…",
     "converting": "Conversion…",
-    "lockedHintUnsignedB": "Connectez-vous en tant que membre pour voir tous les niveaux"
+    "lockedHintUnsignedB": "Connectez-vous en tant que membre pour voir tous les niveaux",
+    "lockedHintExhaustedB": "Connectez-vous pour voir tous les paliers",
+    "buyCtaB": "Connectez-vous pour débloquer"
   },
   "RelatedApps": {
     "title": "Vous pourriez aussi aimer",
@@ -165,6 +173,14 @@
     "shareAriaLabel": "Partager",
     "copied": "Copié",
     "copyLink": "Copier le lien"
+  },
+  "ShareBar": {
+    "title": "Utile ? Partagez !",
+    "subtitle": "Partagez LowestAppPrice avec vos amis et trouvez ensemble la région App Store la moins chère",
+    "shareText": "LowestAppPrice - Comparez les prix de l'App Store dans toutes les régions et trouvez la moins chère",
+    "copyLink": "Copier le lien",
+    "copied": "Copié",
+    "ariaLabel": "Partager sur les réseaux sociaux"
   },
   "AppsList": {
     "loadingMore": "Chargement...",
@@ -177,7 +193,8 @@
     "freeBadge": "Gratuit",
     "defaultName": "Utilisateur",
     "menuAriaLabel": "Menu du compte",
-    "signOutCta": "Se déconnecter"
+    "signOutCta": "Se déconnecter",
+    "memberBadgeB": "Membre"
   },
   "LoginDialog": {
     "title": "Connectez-vous pour voir tous les prix",
@@ -191,7 +208,8 @@
     "linkSent": "Lien envoyé à",
     "checkEmail": "Vérifiez votre e-mail dans les 15 minutes et cliquez sur le bouton pour vous connecter.",
     "changeEmail": "Autre e-mail",
-    "ariaLabel": "Connexion"
+    "ariaLabel": "Connexion",
+    "descB": "Connectez-vous en tant que membre — entièrement gratuit"
   },
   "Currencies": {
     "USD": "Dollar américain",
@@ -255,7 +273,8 @@
     "securityTitle": "Sécurité des données",
     "securityBody": "Nous prenons des mesures techniques et organisationnelles raisonnables pour protéger vos données, notamment la transmission chiffrée, le contrôle d'accès et des audits de sécurité réguliers. Cependant, notez-le : aucune méthode de transmission internet ne peut être garantie à 100% sûre.",
     "contactTitle": "Nous contacter",
-    "contactBody": "Pour toute question relative à la confidentialité, contactez-nous via GitHub Issues."
+    "contactBody": "Pour toute question relative à la confidentialité, contactez-nous via GitHub Issues.",
+    "collectUsageB": "<bold>Journaux d'utilisation</bold> : nous enregistrons la liste des apps que vous avez recherchées et vos nombres de vues, pour la comptabilisation de l'usage et l'optimisation du service."
   },
   "Terms": {
     "metaTitle": "Conditions d'Utilisation - {siteName}",
@@ -282,7 +301,10 @@
     "ipTitle": "Propriété intellectuelle",
     "ipBody": "'App Store' et les marques associées appartiennent à Apple Inc. Le Service fait référence à ces noms à des fins descriptives et indicatives uniquement et ne revendique aucun droit.",
     "changesTitle": "Modifications de ces termes",
-    "changesBody": "Nous pouvons mettre à jour ces termes de temps en temps. Les modifications importantes seront publiées sur cette page - l'utilisation continue du Service vaut acceptation des termes mis à jour."
+    "changesBody": "Nous pouvons mettre à jour ces termes de temps en temps. Les modifications importantes seront publiées sur cette page - l'utilisation continue du Service vaut acceptation des termes mis à jour.",
+    "accountTitleB": "Compte et adhésion",
+    "accountBodyB": "Le Service est entièrement gratuit — <link>connectez-vous pour devenir membre</link> et consultez tous les prix des niveaux d'abonnement sans payer.",
+    "accountBindingB": "<bold>L'adhésion est liée à la méthode de connexion.</bold> Le Service prend en charge la connexion Google et le lien magique par e-mail. Les différentes méthodes de connexion sont traitées comme des comptes distincts — l'adhésion est liée à la méthode utilisée et n'est pas partagée entre les comptes. Par exemple, une adhésion obtenue via Google ne peut être utilisée lors d'une connexion par lien magique. Mémorisez votre méthode de connexion."
   },
   "Refunds": {
     "metaTitle": "Politique de Remboursement - {siteName}",
@@ -304,7 +326,15 @@
     "exceptions1": "Paiement réussi mais l'adhésion n'a pas été déverrouillée en raison d'une défaillance du système",
     "exceptions2": "La même commande a été facturée deux fois",
     "noticeTitle": "Veuillez noter",
-    "noticeBody": "Cette politique de remboursement s'applique uniquement à la fonction de déverrouillage payant du Service et n'est pas liée aux achats d'applications que vous effectuez sur l'Apple App Store. Pour les remboursements de l'App Store, suivez le processus de remboursement officiel d'Apple."
+    "noticeBody": "Cette politique de remboursement s'applique uniquement à la fonction de déverrouillage payant du Service et n'est pas liée aux achats d'applications que vous effectuez sur l'Apple App Store. Pour les remboursements de l'App Store, suivez le processus de remboursement officiel d'Apple.",
+    "metaDescriptionB": "Détails de remboursement pour {siteName} (entièrement gratuit).",
+    "introB": "{siteName} est <bold>entièrement gratuit, sans aucune fonctionnalité payante</bold>. Connectez-vous pour devenir membre et tout utiliser ; rien ne vous sera facturé, donc aucun remboursement ne s'applique.",
+    "paidContentTitleB": "À propos du paiement",
+    "paidContentBodyB": "Le Service n'offre aucune fonctionnalité payante et n'intègre aucun processeur de paiement. Si des fonctionnalités payantes sont introduites à l'avenir, elles seront annoncées sur cette page.",
+    "rulesTitleB": "Si des fonctionnalités payantes sont introduites ultérieurement",
+    "rulesBodyB": "Une fois des fonctionnalités payantes introduites à l'avenir, les règles de remboursement applicables seront listées ici. À ce jour, aucun contenu payant ne s'applique.",
+    "noticeTitleB": "À noter",
+    "noticeBodyB": "Cet avis ne s'applique qu'au Service lui-même et n'a aucun lien avec les achats d'apps sur l'Apple App Store. Pour les remboursements de l'App Store, suivez le processus officiel d'Apple."
   },
   "Legal": {
     "metaTitle": "Mention Légale - {siteName}",
@@ -344,5 +374,52 @@
     "copyHint": "Le bouton ne fonctionne pas ? Copiez ce lien dans votre navigateur :",
     "ignoreHint": "Si vous n'avez pas demandé cette connexion, vous pouvez ignorer cet e-mail.",
     "textBody": "Cliquez sur le lien ci-dessous pour vous connecter à LowestAppPrice :\n\n{url}\n\nLe lien est valable 15 minutes. Si vous n'êtes pas à l'origine de cette demande, ignorez cet e-mail."
+  },
+  "About": {
+    "metaTitle": "À propos - {siteName}",
+    "metaDescription": "Découvrez le contexte, l'intention, les fonctionnalités principales et l'usage de {siteName} - un outil qui vous trouve la région App Store la moins chère pour chaque abonnement.",
+    "backToHome": "Retour à l'accueil",
+    "title": "À propos",
+    "subtitle": "Nous vous aidons à trouver l'unique région App Store la moins chère pour chaque abonnement.",
+    "backgroundTitle": "Contexte",
+    "backgroundBody": "Une même application a souvent des prix très différents d'une région App Store à l'autre. Les taux de change entre dollar, euro et yen bougent chaque jour et les prix locaux varient, mais presque personne ne compare manuellement des dizaines de régions avant de s'abonner. {siteName} existe précisément pour cela : réunir dans un seul tableau les prix dispersés sur 40 régions.",
+    "intentTitle": "Pourquoi nous l'avons construit",
+    "intentBody": "Nous croyons que l'asymétrie d'information est le coût le plus négligé de l'expérience consommateur. Quand un abonnement annuel ne coûte que quelques dizaines dans la région la moins chère mais plusieurs centaines dans la plus chère, connaître l'écart est déjà une valeur. Nous avons construit cet outil pour rendre les prix transparents : que chacun puisse voir, avant de s'abonner, si sa région est vraiment la meilleure affaire.",
+    "featuresTitle": "Ce que nous offrons",
+    "featuresIntro": "Concentrés sur une seule chose - la comparaison de prix App Store entre régions - poussée à fond :",
+    "feature1Title": "Comparaison en temps réel sur 40 régions",
+    "feature1Body": "Des États-Unis, du Japon et de la Turquie à l'Inde et au Brésil : une seule requête récupère en parallèle les prix d'abonnements et d'achats intégrés sur 40 régions, convertis dans la devise de votre choix.",
+    "feature2Title": "Abonnements et achats intégrés couverts",
+    "feature2Body": "Abonnements mensuels / annuels, achats uniques, Partage familial : tout niveau d'achat intégré affiché publiquement sur la page de détail de l'App Store est décomposé en lignes comparables.",
+    "feature3Title": "Un classement clair, du moins cher au plus cher",
+    "feature3Body": "Tous les prix sont convertis aux taux en direct vers une seule devise, puis triés du moins cher. Le moins cher, le plus cher et votre propre région sont mis en évidence - l'écart est là.",
+    "feature4Title": "Fonctionne sans connexion",
+    "feature4Body": "Les utilisateurs anonymes voient des résultats partiels ; les utilisateurs connectés obtiennent 3 consultations gratuites par jour ; en cas d'usage fréquent, 1,99 $ une fois débloque un accès à vie illimité.",
+    "howToUseTitle": "Mode d'emploi",
+    "howToUseIntro": "Trois étapes pour trouver la région la moins chère :",
+    "step1Title": "Rechercher par nom, coller un lien ou saisir un ID",
+    "step1Body": "Dans le champ de la page Toutes les apps, tapez simplement un nom d'app (bascule vers le répertoire Apple si absent de la bibliothèque locale) ; ou collez un lien App Store / saisissez un ID numérique et cliquez « Ajouter à la bibliothèque ».",
+    "step2Title": "Attendez la récupération mondiale",
+    "step2Body": "Le premier chargement récupère 40 régions en parallèle, généralement en quelques secondes. Ensuite, une actualisation automatique toutes les 6 heures garde taux de change et prix proches de la réalité.",
+    "step3Title": "Lisez le classement, décidez",
+    "step3Body": "Le tableau des prix est trié du moins cher dans la devise choisie, avec le moins cher, le plus cher et votre région mis en évidence et l'écart évident. Choisir la région vous revient.",
+    "howToUseNote": "Remarque : les données de prix proviennent de l'App Store public, converties aux taux en direct, à titre indicatif uniquement. Les achats réels dépendent de ce qui est affiché dans l'App Store au moment concerné et doivent respecter les Conditions d'utilisation d'Apple et les lois locales.",
+    "feature4BodyB": "Les utilisateurs anonymes voient des résultats partiels ; connectez-vous en tant que membre pour débloquer toutes les apps, régions et niveaux gratuitement — entièrement gratuit."
+  },
+  "PricingDialog": {
+    "ariaLabel": "Améliorer l'adhésion",
+    "title": "Déblocage à vie $1.99",
+    "subtitle": "Payez une fois — toutes les apps, tous les paliers, toutes les régions, illimité pour toujours",
+    "feature1": "Accès illimité à vie",
+    "feature2": "Tous les paliers d'abonnement et régions pour chaque app",
+    "feature3": "Aucune limite de quota quotidienne",
+    "buyCta": "Acheter $1.99",
+    "later": "Peut-être plus tard"
+  },
+  "AppDetail": {
+    "metaTitle": "{app} - Comparateur de prix, région App Store la moins chère | LowestAppPrice",
+    "metaDescription": "Voyez les prix d'abonnement et d'achat intégré de {app} dans {count} régions App Store, convertis en une seule devise et classés du moins cher au plus cher.",
+    "ogTitle": "{app} - comparateur de prix sur {count} régions",
+    "ogDescription": "Prix d'abonnement de {count} régions, du moins cher au plus cher - le plus bas d'un seul coup d'œil."
   }
 }

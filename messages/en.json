@@ -49,7 +49,9 @@
     "feature1": "Price compare across {count} App Store regions",
     "feature2": "Subscription & IAP prices converted at exchange rates",
     "feature3": "Sorted lowest first - cheapest region at a glance",
-    "feature4": "3 free lookups daily, or $1.99 lifetime unlock"
+    "feature4": "3 free lookups daily, or $1.99 lifetime unlock",
+    "feature4B": "Sign in as a member, all free",
+    "metaTitle": "App Store Price Compare - Cheapest Region for Subscriptions | LowestAppPrice"
   },
   "SupportedApps": {
     "title": "{count} Apps indexed",
@@ -78,20 +80,21 @@
     "loginToBuy": "Sign in to buy",
     "owned": "Owned",
     "titleB": "Free to try, sign in for full access",
-    "descB": "Browse the cheapest 3 tiers free, or sign in as a member to unlock everything - free during beta.",
-    "freeTierB": "Free version",
-    "freePriceB": "Free",
+    "descB": "Browse the cheapest 3 tiers free, or sign in as a member to unlock everything - completely free.",
+    "freeTierB": "FREE",
+    "freePriceB": "Guest",
     "freeNoteB": "No sign-in needed",
-    "freeFeature1B": "Top 3 cheapest tiers",
+    "freeFeature1B": "Top 3 cheapest subscription tiers",
     "freeFeature2B": "All Apps browsable",
-    "freeFeature3B": "No daily limit",
-    "memberTier": "Member",
+    "memberTier": "PRO",
+    "memberPriceB": "Member",
     "memberNote": "Sign in to unlock",
-    "memberFeature1": "All subscription tiers unlocked",
+    "memberFeature1": "Unlock all subscription tiers",
     "memberFeature2": "All 40 regions, unlimited views",
-    "memberFeature3": "Just sign in, free during beta",
+    "memberFeature3": "Add custom Apps",
     "loginToUse": "Sign in to use",
-    "currentMember": "Current member"
+    "currentMember": "Current member",
+    "signedIn": "Signed in"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} regions / {currency}",
@@ -111,7 +114,9 @@
     "totalCount": "{count} apps indexed",
     "searchResults": "{count} results found",
     "noMatch": "No apps matching \"{q}\". Try pasting an App Store link or ID to add.",
-    "empty": "Library is empty. Paste an App Store link or ID to add the first one."
+    "empty": "Library is empty. Paste an App Store link or ID to add the first one.",
+    "metaTitle": "All Apps - App Store Price Compare | LowestAppPrice",
+    "metaDescription": "Browse and compare App Store subscription prices across {count} regions, ranked cheapest first. Search by name or paste an App Store link."
   },
   "AppsToolbar": {
     "searchPlaceholder": "Search by name, or paste App Store link / ID to add",
@@ -119,7 +124,8 @@
     "adding": "Adding...",
     "clearSearch": "Clear search",
     "loginRequired": "Please sign in to add apps",
-    "viewOnAppStore": "View on App Store"
+    "viewOnAppStore": "View on App Store",
+    "searchPlaceholderB": "Search by name, or paste App Store link / ID (members can add)"
   },
   "AppsSort": {
     "sortBy": "Sort",
@@ -156,7 +162,9 @@
     "initialLoadingHint": "First load fetches 40 regions, takes a few seconds",
     "refreshingBanner": "Refreshing global prices…",
     "converting": "Converting…",
-    "lockedHintUnsignedB": "Sign in as a member to view all tiers"
+    "lockedHintUnsignedB": "Sign in as a member to view all tiers",
+    "lockedHintExhaustedB": "Sign in to view all tiers",
+    "buyCtaB": "Sign in to unlock"
   },
   "RelatedApps": {
     "title": "You might also like",
@@ -167,18 +175,28 @@
     "copied": "Copied",
     "copyLink": "Copy link"
   },
+  "ShareBar": {
+    "title": "Found this useful? Share it",
+    "subtitle": "Share LowestAppPrice with friends and find the cheapest App Store region together",
+    "shareText": "LowestAppPrice - Compare App Store prices across all regions to find the cheapest",
+    "copyLink": "Copy link",
+    "copied": "Copied",
+    "ariaLabel": "Share to social channels"
+  },
   "AppsList": {
     "loadingMore": "Loading more...",
     "allLoaded": "All {count} apps loaded",
     "noLocalMatch": "No local match, {count} results from Apple directory can be added",
-    "addHint": "Click \"Add\" to fetch from Apple and trigger 40-region price crawling. Sign in required."
+    "addHint": "Click \"Add\" to fetch from Apple and trigger 40-region price crawling. Sign in required.",
+    "addHintB": "Click \"Add\" to fetch from Apple and trigger 40-region price crawling. Members only (sign in to become a member)."
   },
   "UserMenu": {
     "proBadge": "Pro",
     "freeBadge": "Free",
     "defaultName": "User",
     "menuAriaLabel": "Account menu",
-    "signOutCta": "Sign out"
+    "signOutCta": "Sign out",
+    "memberBadgeB": "Member"
   },
   "LoginDialog": {
     "title": "Sign in to see full prices",
@@ -192,7 +210,8 @@
     "linkSent": "Login link sent to",
     "checkEmail": "Check your email within 15 minutes and click the button to sign in.",
     "changeEmail": "Use a different email",
-    "ariaLabel": "Login"
+    "ariaLabel": "Login",
+    "descB": "Sign in as a member — completely free"
   },
   "Currencies": {
     "USD": "US Dollar",
@@ -256,7 +275,8 @@
     "securityTitle": "Data security",
     "securityBody": "We take reasonable technical and organizational measures to protect your data, including encrypted transmission, access controls, and regular security audits. However, please note: no internet transmission method can be guaranteed 100% secure.",
     "contactTitle": "Contact us",
-    "contactBody": "For any privacy-related questions, contact us via GitHub Issues."
+    "contactBody": "For any privacy-related questions, contact us via GitHub Issues.",
+    "collectUsageB": "<bold>Usage logs</bold>: We record the list of Apps you have looked up and your view counts, used for usage accounting and service optimization."
   },
   "Terms": {
     "metaTitle": "Terms of Use - {siteName}",
@@ -283,7 +303,10 @@
     "ipTitle": "Intellectual property",
     "ipBody": "'App Store' and related trademarks belong to Apple Inc. The Service references these names for descriptive, indicative purposes only and claims no rights to them.",
     "changesTitle": "Changes to these terms",
-    "changesBody": "We may update these terms from time to time. Material changes will be posted on this page - continued use of the Service constitutes acceptance of the updated terms."
+    "changesBody": "We may update these terms from time to time. Material changes will be posted on this page - continued use of the Service constitutes acceptance of the updated terms.",
+    "accountTitleB": "Account & membership",
+    "accountBodyB": "The Service is completely free — <link>sign in to become a member</link> and view all subscription tier prices at no cost.",
+    "accountBindingB": "<bold>Membership is tied to the login method.</bold> The Service supports Google sign-in and email magic link sign-in. Different login methods are treated as separate accounts - membership is tied to the login method used and is not shared across accounts. For example, membership obtained by signing in with a Google account cannot be used when signed in via email magic link. Please remember your login method."
   },
   "Refunds": {
     "metaTitle": "Refund Policy - {siteName}",
@@ -305,7 +328,15 @@
     "exceptions1": "Payment succeeded but membership was not unlocked due to a system fault",
     "exceptions2": "The same order was charged twice",
     "noticeTitle": "Please note",
-    "noticeBody": "This refund policy applies only to the Service's paid unlock feature and is unrelated to any app purchases you make on the Apple App Store. For App Store refunds, follow Apple's official refund process."
+    "noticeBody": "This refund policy applies only to the Service's paid unlock feature and is unrelated to any app purchases you make on the Apple App Store. For App Store refunds, follow Apple's official refund process.",
+    "metaDescriptionB": "Refund details for {siteName} (completely free).",
+    "introB": "{siteName} is <bold>completely free, with no paid features at all</bold>. Sign in to become a member and use everything; you will not be charged, so no refunds apply.",
+    "paidContentTitleB": "About payment",
+    "paidContentBodyB": "The Service offers no paid features and integrates no payment processor. If paid features are introduced in the future, they will be announced on this page.",
+    "rulesTitleB": "If paid features are introduced later",
+    "rulesBodyB": "Once paid features are introduced in the future, the applicable refund rules will be listed here. At present, no paid content applies.",
+    "noticeTitleB": "Please note",
+    "noticeBodyB": "This notice applies only to the Service itself and is unrelated to any app purchases you make on the Apple App Store. For App Store refunds, follow Apple's official refund process."
   },
   "Legal": {
     "metaTitle": "Legal Notice - {siteName}",
@@ -368,12 +399,35 @@
     "feature4Body": "Anonymous users see partial results; signed-in users get 3 free lookups per day; if you use it often, $1.99 once unlocks unlimited lifetime access.",
     "howToUseTitle": "How to use",
     "howToUseIntro": "Three steps to find the cheapest region:",
-    "step1Title": "Paste an App Store link or ID",
-    "step1Body": "In the input on the All Apps page, paste a link copied from the App Store, or just type the app's numeric ID.",
+    "step1Title": "Search by name, paste a link, or enter an ID",
+    "step1Body": "In the input on the All Apps page, just type an app name to search (falls back to Apple's directory if not in the library); or paste an App Store link or enter a numeric ID and hit \"Add to library\".",
     "step2Title": "Wait for the global fetch",
     "step2Body": "The first load fetches 40 regions concurrently, usually a few seconds. After that it auto-refreshes every 6 hours, so FX rates and prices stay close to reality.",
     "step3Title": "Read the ranking, decide",
     "step3Body": "The price table is sorted lowest first in your chosen currency, with the cheapest, priciest, and your own region highlighted and the gap plain to see. Which region to switch to is your call.",
-    "howToUseNote": "Note: pricing data comes from the public App Store, converted at live exchange rates, for reference only. Actual purchases are subject to what's shown in the App Store at that time, and must comply with Apple's Terms of Service and local laws."
+    "howToUseNote": "Note: pricing data comes from the public App Store, converted at live exchange rates, for reference only. Actual purchases are subject to what's shown in the App Store at that time, and must comply with Apple's Terms of Service and local laws.",
+    "feature4BodyB": "Anonymous users see partial results; sign in as a member to unlock every App, region, and tier for free — completely free."
+  },
+  "PricingDialog": {
+    "ariaLabel": "Upgrade membership",
+    "title": "$1.99 lifetime unlock",
+    "subtitle": "Pay once — all Apps, all tiers, all regions, unlimited forever",
+    "feature1": "Unlimited lifetime access",
+    "feature2": "All subscription tiers & regions for every App",
+    "feature3": "No daily quota limits",
+    "buyCta": "Buy $1.99",
+    "later": "Maybe later"
+  },
+  "ExternalAppCard": {
+    "add": "Add",
+    "adding": "Adding",
+    "indexed": "Indexed",
+    "developerUnknown": "Unknown developer"
+  },
+  "AppDetail": {
+    "metaTitle": "{app} Price Compare - Cheapest App Store Region | LowestAppPrice",
+    "metaDescription": "See {app}'s subscription and in-app purchase prices across {count} App Store regions, converted to one currency and ranked from cheapest to most expensive.",
+    "ogTitle": "{app} price compare across {count} regions",
+    "ogDescription": "{count} regions' subscription prices ranked lowest first - see the cheapest at a glance."
   }
 }

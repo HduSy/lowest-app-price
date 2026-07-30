@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getTranslations, getLocale } from "next-intl/server";
+import { getPricingVariant } from "@/lib/pricing-variant";
+import { staticAlternates } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Terms");
@@ -8,6 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: t("metaTitle", { siteName: tLayout("siteName") }),
     description: t("metaDescription", { siteName: tLayout("siteName") }),
+    alternates: staticAlternates("/terms"),
   };
 }
 
@@ -17,6 +20,7 @@ export default async function TermsPage() {
   const locale = await getLocale();
   const date = new Date().toLocaleDateString(locale);
   const siteName = tLayout("siteName");
+  const variant = await getPricingVariant();
 
   return (
     <div className="py-20">
@@ -52,19 +56,27 @@ export default async function TermsPage() {
           </ul>
 
           <h2 className="mt-8 text-xl font-semibold text-[var(--color-ink)]">
-            {t("accountTitle")}
+            {variant === "B" ? t("accountTitleB") : t("accountTitle")}
           </h2>
           <p>
-            {t.rich("accountBody", {
-              link: (chunks) => (
-                <Link href="/refunds" className="text-[var(--color-primary-focus)] hover:underline">
-                  {chunks}
-                </Link>
-              ),
-            })}
+            {variant === "B"
+              ? t.rich("accountBodyB", {
+                  link: (chunks) => (
+                    <Link href="/#pricing" className="text-[var(--color-primary-focus)] hover:underline">
+                      {chunks}
+                    </Link>
+                  ),
+                })
+              : t.rich("accountBody", {
+                  link: (chunks) => (
+                    <Link href="/refunds" className="text-[var(--color-primary-focus)] hover:underline">
+                      {chunks}
+                    </Link>
+                  ),
+                })}
           </p>
           <p>
-            {t.rich("accountBinding", {
+            {t.rich(variant === "B" ? "accountBindingB" : "accountBinding", {
               bold: (chunks) => (
                 <strong className="text-[var(--color-ink)]">{chunks}</strong>
               ),

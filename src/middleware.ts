@@ -27,6 +27,8 @@ const EXEMPT_PREFIXES = [
   "/terms",
   "/refunds",
   "/legal",
+  // 关于我们页面（位于 app 根目录，不带 country 前缀）
+  "/about",
 ];
 
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 30; // 30 天
@@ -69,12 +71,15 @@ export function middleware(req: NextRequest) {
   const firstSeg = segments[0];
   const firstIsCountry = firstSeg && VALID_CODES.has(firstSeg);
 
-  // 4. 非 country 前缀：重定向到 /<detectedCountry>/...
+  // 4. 非 country 前缀：永久重定向到 /<detectedCountry>/...
+  //    用 301（而非 307）：这是一条稳定的规范化路由，Google 会把根路径的链接权重
+  //    传递到目标国家页。geo 维度由 cookie 兜底，不影响爬虫判定。
+  //    注：301 对 GET 语义等价于 308，且兼容性更好（部分旧爬虫不认 308）。
   if (!firstIsCountry) {
     const rest = segments.length ? "/" + segments.join("/") : "";
     const url = req.nextUrl.clone();
     url.pathname = `/${detectedCountry}${rest}`;
-    const res = NextResponse.redirect(url, 307);
+    const res = NextResponse.redirect(url, 301);
     res.cookies.set("detected_country", detectedCountry, {
       maxAge: COOKIE_MAX_AGE,
       path: "/",
@@ -84,10 +89,15 @@ export function middleware(req: NextRequest) {
   }
 
   // 5. 已是 /<country>/...：放行
-  //    注入 x-detected-country / x-detected-timezone 请求头供 SSR 读取（IP 真实国家，与 URL 段无关）
+  //    注入两类请求头供 SSR 读取：
+  //    - x-detected-country：IP 真实国家（事实，用于 hero "你在 X" / 默认币种等个性化）
+  //    - x-url-country：URL 国家段（页面归属，用于决定默认渲染语种，SEO 关键）
+  //    两者分离：用户可手动切到别的区看价，但页面语种跟随 URL 而非 IP，
+  //    让 Googlebot 在 /de/ 上见到德语、/jp/ 上见到日语，避免 40 个国家页同质化为英文。
   //    持久化到 cookie：下次请求由 middleware 读取，作为客户端补检结果的回传通道
   const requestHeaders = new Headers(req.headers);
   requestHeaders.set("x-detected-country", detectedCountry);
+  requestHeaders.set("x-url-country", firstSeg);
   requestHeaders.set("x-geo-source", geoSource);
   if (detectedTimezone) {
     requestHeaders.set("x-detected-timezone", detectedTimezone);

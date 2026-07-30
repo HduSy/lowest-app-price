@@ -49,7 +49,9 @@
     "feature1": "{count} 个 App Store 地区价格对比",
     "feature2": "订阅与内购价格按汇率换算",
     "feature3": "从低到高排名，最便宜的区一眼可见",
-    "feature4": "每天免费 3 次，或 $1.99 永久买断"
+    "feature4": "每天免费 3 次，或 $1.99 永久买断",
+    "feature4B": "登录即会员，全部免费看",
+    "metaTitle": "App Store 全区比价 - 订阅哪国最便宜 | LowestAppPrice"
   },
   "SupportedApps": {
     "title": "已收录 {count} 个 App",
@@ -78,20 +80,21 @@
     "loginToBuy": "登录后购买",
     "owned": "已购买",
     "titleB": "免费试用，登录解锁全部",
-    "descB": "未登录可看最便宜 3 档，登录即成会员，解锁全部 App、全部地区、全部档位——内测期免费。",
-    "freeTierB": "免费版",
-    "freePriceB": "免费",
+    "descB": "未登录可看最便宜 3 档，登录即成会员，解锁全部 App、全部地区、全部档位——完全免费。",
+    "freeTierB": "FREE",
+    "freePriceB": "游客",
     "freeNoteB": "无需登录",
-    "freeFeature1B": "查看最便宜 3 档",
+    "freeFeature1B": "查看最便宜 3 档订阅",
     "freeFeature2B": "全部 App 可浏览",
-    "freeFeature3B": "不限次数",
-    "memberTier": "会员",
+    "memberTier": "PRO",
+    "memberPriceB": "会员",
     "memberNote": "登录即可解锁",
-    "memberFeature1": "全部订阅档位解锁",
+    "memberFeature1": "解锁全部订阅档位",
     "memberFeature2": "全部 40 个地区，无限查看",
-    "memberFeature3": "只需登录，内测期免费",
+    "memberFeature3": "自定义添加 App",
     "loginToUse": "登录即可使用",
-    "currentMember": "当前会员"
+    "currentMember": "当前会员",
+    "signedIn": "已登录"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} 个地区 / {currency}",
@@ -111,7 +114,9 @@
     "totalCount": "共 {count} 个已收录 App",
     "searchResults": "搜到 {count} 个结果",
     "noMatch": "没找到匹配 \"{q}\" 的 App。可以试试粘贴 App Store 链接或 ID 添加。",
-    "empty": "库里还空着。粘贴一个 App Store 链接或 ID 添加第一个。"
+    "empty": "库里还空着。粘贴一个 App Store 链接或 ID 添加第一个。",
+    "metaTitle": "全部应用 - App Store 全区比价 | LowestAppPrice",
+    "metaDescription": "浏览并对比 {count} 个 App Store 地区的订阅价格，从低到高排名。支持按名称搜索或粘贴 App Store 链接。"
   },
   "AppsToolbar": {
     "searchPlaceholder": "搜索名称，或粘贴 App Store 链接 / ID 添加",
@@ -119,7 +124,8 @@
     "adding": "添加中",
     "clearSearch": "清除搜索",
     "loginRequired": "请先登录后再添加 App",
-    "viewOnAppStore": "前往 App Store 查看"
+    "viewOnAppStore": "前往 App Store 查看",
+    "searchPlaceholderB": "搜索名称，或粘贴 App Store 链接 / ID（会员可添加）"
   },
   "AppsSort": {
     "sortBy": "排序",
@@ -156,7 +162,9 @@
     "initialLoadingHint": "首次加载需抓取 40 个地区数据，约几秒",
     "refreshingBanner": "正在刷新全球价格…",
     "converting": "换算中…",
-    "lockedHintUnsignedB": "登录成为会员，查看全部档位"
+    "lockedHintUnsignedB": "登录成为会员，查看全部档位",
+    "lockedHintExhaustedB": "登录后即可查看全部档位",
+    "buyCtaB": "登录解锁"
   },
   "RelatedApps": {
     "title": "你可能也喜欢",
@@ -167,18 +175,28 @@
     "copied": "已复制",
     "copyLink": "复制链接"
   },
+  "ShareBar": {
+    "title": "觉得有用？分享给朋友",
+    "subtitle": "把 LowestAppPrice 分享给朋友，一起查最低价",
+    "shareText": "LowestAppPrice - App Store 全区比价，查哪个区订阅最便宜",
+    "copyLink": "复制链接",
+    "copied": "已复制",
+    "ariaLabel": "分享到社交渠道"
+  },
   "AppsList": {
     "loadingMore": "正在加载更多…",
     "allLoaded": "已加载全部 {count} 个 App",
     "noLocalMatch": "本地库暂无匹配，Apple 目录有 {count} 个结果可添加",
-    "addHint": "点击「添加」会从 Apple 拉取该 App 信息并触发 40 区价格抓取，需要登录。"
+    "addHint": "点击「添加」会从 Apple 拉取该 App 信息并触发 40 区价格抓取，需要登录。",
+    "addHintB": "点击「添加」会从 Apple 拉取该 App 信息并触发 40 区价格抓取，需要会员（登录即会员）。"
   },
   "UserMenu": {
     "proBadge": "会员版",
     "freeBadge": "免费版",
     "defaultName": "用户",
     "menuAriaLabel": "账户菜单",
-    "signOutCta": "退出登录"
+    "signOutCta": "退出登录",
+    "memberBadgeB": "会员"
   },
   "LoginDialog": {
     "title": "登录后，看到完整价格",
@@ -192,7 +210,8 @@
     "linkSent": "登录链接已发送至",
     "checkEmail": "请在 15 分钟内查收邮件并点击其中的按钮登录。",
     "changeEmail": "换个邮箱",
-    "ariaLabel": "登录"
+    "ariaLabel": "登录",
+    "descB": "登录即成会员，全部免费"
   },
   "Currencies": {
     "USD": "美元",
@@ -256,7 +275,8 @@
     "securityTitle": "数据安全",
     "securityBody": "我们采取合理的技术与组织措施保护您的数据，包括加密传输、访问控制、定期安全审计。但请注意：没有任何互联网传输方式可以保证 100% 安全。",
     "contactTitle": "联系我们",
-    "contactBody": "如有任何隐私相关问题，请通过 GitHub Issues 联系我们。"
+    "contactBody": "如有任何隐私相关问题，请通过 GitHub Issues 联系我们。",
+    "collectUsageB": "<bold>使用日志</bold>：记录您查询过的 App 列表与查看次数，用于用量统计和服务优化。"
   },
   "Terms": {
     "metaTitle": "使用条款 - {siteName}",
@@ -283,7 +303,10 @@
     "ipTitle": "知识产权",
     "ipBody": "「App Store」及相关商标归 Apple Inc. 所有。本服务仅在描述性、指示性用途下引用这些名称，不主张任何权利。",
     "changesTitle": "条款变更",
-    "changesBody": "我们可能不时更新本条款。重大变更会在本页面公示--继续使用本服务即视为接受更新后的条款。"
+    "changesBody": "我们可能不时更新本条款。重大变更会在本页面公示--继续使用本服务即视为接受更新后的条款。",
+    "accountTitleB": "账户与会员",
+    "accountBodyB": "本服务完全免费，<link>登录即成会员</link>，无需付费即可查看全部订阅档位价格。",
+    "accountBindingB": "<bold>会员权益与登录方式绑定。</bold>本服务支持 Google 登录与邮箱验证码（Magic Link）登录。不同登录方式视为独立账号，会员权益与登录时使用的方式绑定，不跨账号共享。例如：使用 Google 账号登录获得的会员权益，无法在邮箱验证码登录下使用。请妥善记住您的登录方式。"
   },
   "Refunds": {
     "metaTitle": "退款政策 - {siteName}",
@@ -305,7 +328,15 @@
     "exceptions1": "因系统故障导致付费成功但会员权益未解锁",
     "exceptions2": "同一订单被重复扣款",
     "noticeTitle": "注意事项",
-    "noticeBody": "本退款政策仅适用于本服务的付费解锁功能，与您在 Apple App Store 上的任何应用购买无关。App Store 的退款请遵循 Apple 官方退款流程。"
+    "noticeBody": "本退款政策仅适用于本服务的付费解锁功能，与您在 Apple App Store 上的任何应用购买无关。App Store 的退款请遵循 Apple 官方退款流程。",
+    "metaDescriptionB": "关于 {siteName} 的退款说明（完全免费）。",
+    "introB": "{siteName} <bold>完全免费，无任何付费环节</bold>。登录即成会员，可使用全部功能；您不会被收取任何费用，因此不涉及退款。",
+    "paidContentTitleB": "关于付费",
+    "paidContentBodyB": "本服务不提供任何付费项目，也不接入任何支付渠道。未来若引入付费功能，将在本页面同步更新。",
+    "rulesTitleB": "未来若引入付费",
+    "rulesBodyB": "一旦本服务在未来引入付费功能，相关退款规则将在此明确列出。目前没有任何付费内容适用。",
+    "noticeTitleB": "注意事项",
+    "noticeBodyB": "本说明仅适用于本服务自身，与您在 Apple App Store 上的任何应用购买无关。App Store 的退款请遵循 Apple 官方退款流程。"
   },
   "Legal": {
     "metaTitle": "法律声明 - {siteName}",
@@ -368,12 +399,35 @@
     "feature4Body": "匿名就能看到部分结果；登录后每天免费查 3 次；如果经常用，$1.99 一次买断，永久无限查看。",
     "howToUseTitle": "如何使用",
     "howToUseIntro": "三步即可找到最便宜的订阅区：",
-    "step1Title": "粘贴 App Store 链接或 ID",
-    "step1Body": "在「全部应用」页的输入框，粘贴从 App Store 复制的链接，或者直接填 App 的数字 ID。",
+    "step1Title": "搜 App 名、粘贴链接，或填 ID",
+    "step1Body": "在「全部应用」页的输入框，直接输入 App 名称搜索（本地库没有时自动从 Apple 目录兜底）；也可以粘贴 App Store 链接或填数字 ID，点「添加到库」入库。",
     "step2Title": "等待全球价格抓取",
     "step2Body": "首次加载需要并发抓取 40 个地区，通常几秒。之后每 6 小时自动刷新一次，保证汇率与价格跟得上现实。",
     "step3Title": "看排名、做决定",
     "step3Body": "价格表按你选的币种从低到高排列，最低、最高、你所在区高亮标注，差额一眼可见。决定切到哪个区，由你自己判断。",
-    "howToUseNote": "提示：价格数据来自公开 App Store，按实时汇率换算，仅供参考。实际购买请以 App Store 当时显示为准，并遵守 Apple 服务条款与当地法律。"
+    "howToUseNote": "提示：价格数据来自公开 App Store，按实时汇率换算，仅供参考。实际购买请以 App Store 当时显示为准，并遵守 Apple 服务条款与当地法律。",
+    "feature4BodyB": "匿名就能看到部分结果；登录即成会员，全部 App、全部地区、全部档位永久免费看——完全免费。"
+  },
+  "PricingDialog": {
+    "ariaLabel": "升级会员",
+    "title": "$1.99 永久买断",
+    "subtitle": "一次付费，所有 App、所有档位、所有地区，永久无限看",
+    "feature1": "永久无限查看",
+    "feature2": "所有 App 的所有订阅档位与地区",
+    "feature3": "不再受每日额度限制",
+    "buyCta": "$1.99 立即买断",
+    "later": "稍后再说"
+  },
+  "ExternalAppCard": {
+    "add": "添加",
+    "adding": "添加中",
+    "indexed": "已收录",
+    "developerUnknown": "未知开发者"
+  },
+  "AppDetail": {
+    "metaTitle": "{app} 全区比价 - 哪国最便宜 | LowestAppPrice",
+    "metaDescription": "查看 {app} 在 {count} 个 App Store 地区的订阅与内购价格，按统一币种换算从低到高排名。",
+    "ogTitle": "{app} 全区比价",
+    "ogDescription": "{count} 个地区的订阅价格从低到高排开，哪个区最便宜一目了然。"
   }
 }

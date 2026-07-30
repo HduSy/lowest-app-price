@@ -2,7 +2,7 @@
 // 从 App Store HTML 解析 "You Might Also Like" / "More by this developer" 等 shelf 里的 app 链接，
 // 用 iTunes Lookup 批量补全元信息后渲染卡片。
 // - 已收录：渲染为站内跳转卡片（RelatedAppCard，纯服务端 Link）
-// - 未收录：渲染为 ExternalAppCard，展示「添加」按钮；未登录点击会弹 LoginDialog
+// - 未收录：渲染为 ExternalAppCard，展示「添加」按钮；会员/付费可点，否则锁定态点击弹窗
 //
 // 注意：iTunes Lookup API (itunes.apple.com) 在 Cloudflare Workers 上被 Apple 按出口 IP 段 403 拦截，
 // 但 apps.apple.com 详情页 HTML 可以正常抓取。所以这里并发抓每个推荐 App 的 HTML 解析 meta，
@@ -11,6 +11,7 @@ import { fetchHtml, parseAppStoreHtml } from "@/lib/crawler";
 import { getDb, getExistingAppIds } from "@/lib/db";
 import { ExternalAppCard } from "./ExternalAppCard";
 import { getTranslations } from "next-intl/server";
+import { getCurrentUser } from "@/lib/session";
 import Link from "next/link";
 
 const MAX_RELATED = 10;
@@ -63,6 +64,11 @@ export async function RelatedApps({
   appId: string;
   country: string;
 }) {
+  // 添加 App 是会员专属：SSR 算出 canAddApp 传给 ExternalAppCard
+  const currentUser = await getCurrentUser();
+  const loggedIn = !!currentUser;
+  const canAddApp = loggedIn && (currentUser!.paid || currentUser!.member);
+
   // 抓取当前 App 在 App Store 的详情页 HTML，解析出相关推荐 app id 列表
   let relatedIds: string[] = [];
   try {
@@ -122,6 +128,8 @@ export async function RelatedApps({
             <ExternalAppCard
               key={x.appId}
               country={country}
+              canAddApp={canAddApp}
+              loggedIn={loggedIn}
               item={{
                 appId: x.appId,
                 name: x.meta.name,

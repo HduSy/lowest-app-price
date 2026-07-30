@@ -24,7 +24,7 @@ declare global {
     MAIL_FROM?: string;
     // Admin - 一次性回填/运维接口鉴权
     ADMIN_TOKEN?: string;
-    // Pricing A/B 实验开关（A=正式三档，B=内测登录即会员），默认 A
+    // Pricing A/B 实验开关（A=付费三档，B=登录即会员免费），默认 A
     PRICING_VARIANT?: "A" | "B";
   }
 }

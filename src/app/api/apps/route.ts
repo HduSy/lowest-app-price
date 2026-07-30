@@ -3,6 +3,7 @@ import { getDb, listApps, insertApp, getApp, type AppSortKey } from "@/lib/db";
 import { parseAppInput } from "@/lib/parse-input";
 import { fetchAppMeta } from "@/lib/itunes";
 import { auth } from "@/lib/auth";
+import { getEntitlement } from "@/lib/entitlement";
 
 const VALID_SORTS = new Set<AppSortKey>(["recent", "rating_count", "rating", "name"]);
 
@@ -34,12 +35,17 @@ export async function GET(req: Request) {
 
 // POST /api/apps  { input: "appid 或链接" }
 // 解析 -> 查重 -> iTunes Lookup 拿基本信息 -> 入库
-// 鉴权：必须登录（防止匿名批量提交触发外部抓取 DoS）
+// 鉴权：必须登录 + 会员或付费（B 版=登录即会员；A 版=付费用户）
 export async function POST(req: Request) {
   try {
     const session = await auth();
     if (!session?.user?.id) {
       return error("Unauthorized", 401);
+    }
+    // 会员门控：仅 member（B 版登录即会员）或 paid（A 版买断）可添加
+    const ent = await getEntitlement(session.user.id);
+    if (!ent.member && !ent.paid) {
+      return error("Member only", 403);
     }
     const body = (await req.json().catch(() => ({}))) as { input?: string };
     const parsed = parseAppInput(body.input || "");

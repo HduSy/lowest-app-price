@@ -20,7 +20,8 @@
     "refunds": "환불 정책",
     "legal": "법적 고지",
     "sitemap": "사이트맵",
-    "metadataDescription": "App Store 링크나 App ID를 붙여넣으세요. 40개 지역의 구독 가격을 실시간으로 가져와 단일 통화로 변환하고 가장 저렴한 순으로 정렬합니다."
+    "metadataDescription": "App Store 링크나 App ID를 붙여넣으세요. 40개 지역의 구독 가격을 실시간으로 가져와 단일 통화로 변환하고 가장 저렴한 순으로 정렬합니다.",
+    "about": "회사 소개"
   },
   "HomePage": {
     "heroTitle1": "하나의 앱, 지역을 바꾸면, ",
@@ -48,7 +49,9 @@
     "feature1": "{count}개 App Store 지역 가격 비교",
     "feature2": "구독 및 IAP 가격을 환율로 변환",
     "feature3": "저렴한 순으로 정렬 - 최저가 지역이 한눈에",
-    "feature4": "매일 3회 무료 또는 $1.99 영구 해제"
+    "feature4": "매일 3회 무료 또는 $1.99 영구 해제",
+    "feature4B": "멤버로 로그인, 모두 무료",
+    "metaTitle": "App Store 가격 비교 - 구독이 가장 저렴한 지역 | LowestAppPrice"
   },
   "SupportedApps": {
     "title": "{count}개 App 수록",
@@ -77,20 +80,21 @@
     "loginToBuy": "로그인 후 구매",
     "owned": "구매 완료",
     "titleB": "무료로 체험, 로그인으로 전체 잠금 해제",
-    "descB": "로그인 없이 가장 저렴한 3개 등급을 보거나, 로그인하여 회원이 되어 모든 App·모든 지역·모든 등급을 잠금 해제하세요 (베타 기간 무료).",
-    "freeTierB": "무료 버전",
-    "freePriceB": "무료",
+    "descB": "로그인 없이 가장 저렴한 3개 등급을 보거나, 로그인하여 회원이 되어 모든 App·모든 지역·모든 등급을 잠금 해제하세요 - 완전 무료.",
+    "freeTierB": "FREE",
+    "freePriceB": "게스트",
     "freeNoteB": "로그인 불필요",
-    "freeFeature1B": "가장 저렴한 3개 등급 표시",
+    "freeFeature1B": "가장 저렴한 3개 구독 등급 표시",
     "freeFeature2B": "모든 App 탐색",
-    "freeFeature3B": "횟수 제한 없음",
-    "memberTier": "회원",
+    "memberTier": "PRO",
+    "memberPriceB": "회원",
     "memberNote": "로그인으로 잠금 해제",
     "memberFeature1": "모든 구독 등급 잠금 해제",
     "memberFeature2": "전체 40개 지역, 무제한 조회",
-    "memberFeature3": "로그인만 하면 됨, 베타 기간 무료",
+    "memberFeature3": "커스텀 앱 추가",
     "loginToUse": "로그인하여 사용",
-    "currentMember": "현재 회원"
+    "currentMember": "현재 회원",
+    "signedIn": "로그인됨"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count}개 지역 / {currency}",
@@ -110,7 +114,9 @@
     "totalCount": "{count}개 앱 수록",
     "searchResults": "{count}개 결과 찾음",
     "noMatch": "\"{q}\"와 일치하는 앱이 없습니다. App Store 링크나 ID를 붙여넣어 추가해보세요.",
-    "empty": "라이브러리가 비어 있습니다. App Store 링크나 ID를 붙여넣어 첫 앱을 추가하세요."
+    "empty": "라이브러리가 비어 있습니다. App Store 링크나 ID를 붙여넣어 첫 앱을 추가하세요.",
+    "metaTitle": "전체 앱 - App Store 가격 비교 | LowestAppPrice",
+    "metaDescription": "{count}개 지역의 App Store 구독 가격을 탐색하고 비교, 저렴한 순으로 정렬. 이름 검색 또는 App Store 링크 붙여넣기."
   },
   "AppsToolbar": {
     "searchPlaceholder": "이름 검색, 또는 App Store 링크 / ID 붙여넣기",
@@ -155,7 +161,9 @@
     "initialLoadingHint": "첫 로딩 시 40개 지역을 불러오며, 몇 초 걸립니다",
     "refreshingBanner": "전 세계 가격 새로고침 중…",
     "converting": "환산 중…",
-    "lockedHintUnsignedB": "회원으로 로그인하여 모든 등급 보기"
+    "lockedHintUnsignedB": "회원으로 로그인하여 모든 등급 보기",
+    "lockedHintExhaustedB": "모든 플랜을 보려면 로그인",
+    "buyCtaB": "로그인하여 잠금 해제"
   },
   "RelatedApps": {
     "title": "이것도 좋아할 수 있어요",
@@ -165,6 +173,14 @@
     "shareAriaLabel": "공유",
     "copied": "복사됨",
     "copyLink": "링크 복사"
+  },
+  "ShareBar": {
+    "title": "도움이 되셨나요? 공유하세요",
+    "subtitle": "LowestAppPrice를 친구들에게 공유하고 가장 저렴한 App Store 지역을 함께 찾아보세요",
+    "shareText": "LowestAppPrice - 모든 지역의 App Store 가격을 비교하고 가장 저렴한 곳을 찾아보세요",
+    "copyLink": "링크 복사",
+    "copied": "복사됨",
+    "ariaLabel": "소셜에 공유"
   },
   "AppsList": {
     "loadingMore": "더 불러오는 중...",
@@ -177,7 +193,8 @@
     "freeBadge": "무료",
     "defaultName": "사용자",
     "menuAriaLabel": "계정 메뉴",
-    "signOutCta": "로그아웃"
+    "signOutCta": "로그아웃",
+    "memberBadgeB": "멤버"
   },
   "LoginDialog": {
     "title": "로그인하여 전체 가격 확인",
@@ -191,7 +208,8 @@
     "linkSent": "로그인 링크 전송됨:",
     "checkEmail": "15분 이내에 이메일을 확인하고 버튼을 클릭하여 로그인하세요.",
     "changeEmail": "다른 이메일 사용",
-    "ariaLabel": "로그인"
+    "ariaLabel": "로그인",
+    "descB": "멤버로 로그인하세요 — 완전 무료"
   },
   "Currencies": {
     "USD": "미국 달러",
@@ -255,7 +273,8 @@
     "securityTitle": "데이터 보안",
     "securityBody": "암호화 전송, 접근 제어, 정기 보안 감사 등 합리적인 기술적·조직적 조치로 데이터를 보호합니다. 단, 인터넷 전송 방식이 100% 안전하다고 보장할 수는 없습니다.",
     "contactTitle": "문의하기",
-    "contactBody": "개인정보 관련 문의는 GitHub Issues로 연락해 주세요."
+    "contactBody": "개인정보 관련 문의는 GitHub Issues로 연락해 주세요.",
+    "collectUsageB": "<bold>사용 로그</bold>: 검색하신 앱 목록과 조회 수를 기록합니다. 사용량 산정 및 서비스 최적화에 사용됩니다."
   },
   "Terms": {
     "metaTitle": "이용약관 - {siteName}",
@@ -282,7 +301,10 @@
     "ipTitle": "지식재산권",
     "ipBody": "'App Store' 및 관련 상표는 Apple Inc.에 귀속됩니다. 본 서비스는 이러한 명칭을 서술적·지시적 목적으로만 인용하며 어떠한 권리도 주장하지 않습니다.",
     "changesTitle": "약관 변경",
-    "changesBody": "본 약관은 수시로 업데이트될 수 있습니다. 중대한 변경은 이 페이지에 게시되며--본 서비스를 계속 이용하면 업데이트된 약관에 동의한 것으로 간주됩니다."
+    "changesBody": "본 약관은 수시로 업데이트될 수 있습니다. 중대한 변경은 이 페이지에 게시되며--본 서비스를 계속 이용하면 업데이트된 약관에 동의한 것으로 간주됩니다.",
+    "accountTitleB": "계정 및 멤버십",
+    "accountBodyB": "이 서비스는 완전 무료입니다 — <link>로그인하여 멤버가 되면</link> 결제 없이 모든 구독 플랜 가격을 무료로 볼 수 있습니다.",
+    "accountBindingB": "<bold>멤버십은 로그인 방식에 연결됩니다.</bold> 서비스는 Google 로그인과 이메일 매직 링크 로그인을 지원합니다. 서로 다른 로그인 방식은 별도의 계정으로 취급되며 — 멤버십은 사용된 로그인 방식에 연결되고 계정 간 공유되지 않습니다. 예를 들어, Google 계정으로 로그인하여 얻은 멤버십은 매직 링크 로그인에서 사용할 수 없습니다. 본인의 로그인 방식을 기억하세요."
   },
   "Refunds": {
     "metaTitle": "환불 정책 - {siteName}",
@@ -304,7 +326,15 @@
     "exceptions1": "시스템 장애로 결제는 성공했으나 회원 권익이 해제되지 않은 경우",
     "exceptions2": "동일 주문이 중복 결제된 경우",
     "noticeTitle": "주의 사항",
-    "noticeBody": "본 환불 정책은 본 서비스의 유료 해제 기능에만 적용되며, Apple App Store에서의 앱 구매와는 무관합니다. App Store 환불은 Apple 공식 환불 절차를 따르세요."
+    "noticeBody": "본 환불 정책은 본 서비스의 유료 해제 기능에만 적용되며, Apple App Store에서의 앱 구매와는 무관합니다. App Store 환불은 Apple 공식 환불 절차를 따르세요.",
+    "metaDescriptionB": "{siteName} 환불 안내(완전 무료).",
+    "introB": "{siteName}은(는) <bold>유료 기능 없이 완전 무료입니다</bold>. 로그인하여 멤버가 되어 모두 이용하세요. 어떠한 요금도 청구되지 않으므로 환불은 적용되지 않습니다.",
+    "paidContentTitleB": "결제에 대하여",
+    "paidContentBodyB": "이 서비스는 유료 기능을 제공하지 않으며 결제 처리업체를 연동하지 않습니다. 향후 유료 기능이 도입되면 이 페이지에 안내됩니다.",
+    "rulesTitleB": "향후 유료 기능이 도입되는 경우",
+    "rulesBodyB": "향후 유료 기능이 도입되면 해당 환불 규정이 여기에 명시됩니다. 현재 적용되는 유료 콘텐츠는 없습니다.",
+    "noticeTitleB": "참고 사항",
+    "noticeBodyB": "이 공지는 서비스 자체에만 적용되며, Apple App Store에서의 앱 구매와는 관련이 없습니다. App Store 환불은 Apple의 공식 환불 절차를 따르세요."
   },
   "Legal": {
     "metaTitle": "법적 고지 - {siteName}",
@@ -344,5 +374,52 @@
     "copyHint": "버튼이 작동하지 않나요? 이 링크를 브라우저에 복사하세요:",
     "ignoreHint": "본인이 요청하지 않은 경우 이 이메일을 무시하셔도 됩니다.",
     "textBody": "아래 링크를 클릭하여 LowestAppPrice에 로그인하세요:\n\n{url}\n\n링크는 15분 동안 유효합니다. 본인이 요청하지 않은 경우 이 이메일을 무시하세요."
+  },
+  "About": {
+    "metaTitle": "회사 소개 - {siteName}",
+    "metaDescription": "{siteName} 의 배경, 의도, 핵심 기능, 사용법을 알아보세요 - 모든 구독에 대해 가장 저렴한 App Store 지역을 찾아주는 도구입니다.",
+    "backToHome": "홈으로",
+    "title": "회사 소개",
+    "subtitle": "모든 구독에서 가장 저렴한 단 하나의 App Store 지역을 찾도록 돕습니다.",
+    "backgroundTitle": "배경",
+    "backgroundBody": "같은 앱도 App Store 지역마다 가격이 몇 배씩 다른 경우가 흔합니다. 달러·유로·엔 환율은 매일 변하고 현지 가격도 제각각이지만, 구독 전에 수십 개 지역을 수동으로 비교할 사람은 거의 없습니다. {siteName} 은 정확히 그 문제를 풀기 위해 존재합니다: 40 개 App Store 지역에 흩어진 가격을 한 표로 모으는 것.",
+    "intentTitle": "왜 만들었나",
+    "intentBody": "우리는 정보 비대칭이 소비 경험에서 가장 간과되는 비용이라고 믿습니다. 가장 저렴한 지역에서는 수십이면 되는 연간 구독이 가장 비싼 곳에서는 수백이 될 때, 그 격차를 아는 것 자체가 가치입니다. 이 도구는 가격을 투명하게 만들려고 만들었습니다 - 누구나 구독 전에 자기 지역이 정말 최선인지 한눈에 보게요.",
+    "featuresTitle": "제공하는 것",
+    "featuresIntro": "지역 간 App Store 가격 비교, 단 한 가지에 집중해 끝까지:",
+    "feature1Title": "40 개 지역 실시간 비교",
+    "feature1Body": "미국·일본·터키에서 인도·브라질까지 - 단 한 번의 조회로 40 개 App Store 지역의 구독 및 인앱 결제 가격을 병렬로 가져와 선택한 통화로 변환합니다.",
+    "feature2Title": "구독과 인앱 결제 모두",
+    "feature2Body": "월간 / 연간 구독, 일회성 구매, 가족 공유 - App Store 상세 페이지에 공개된 모든 인앱 결제 등급이 비교 가능한 행으로 분해됩니다.",
+    "feature3Title": "명확한 순위, 저렴한 순",
+    "feature3Body": "모든 가격을 실시간 환율로 단일 통화에 변환한 뒤 낮은 순으로 정렬합니다. 최저·최고·본인 지역이 강조되고, 격차가 바로 보입니다.",
+    "feature4Title": "로그인 없이도 작동",
+    "feature4Body": "익명 사용자는 일부 결과를 보고, 로그인 사용자는 매일 3 회 무료 조회, 자주 쓴다면 1.99 달러 한 번으로 평생 무제한 접근이 열립니다.",
+    "howToUseTitle": "사용 방법",
+    "howToUseIntro": "가장 저렴한 지역을 찾는 세 단계:",
+    "step1Title": "이름으로 검색, 링크 붙여넣기 또는 ID 입력",
+    "step1Body": "모든 앱 페이지의 입력 칸에 앱 이름을 입력해 검색하세요 (로컬 라이브러리에 없으면 Apple 디렉터리로 대체); 또는 App Store 링크를 붙여넣거나 숫자 ID 를 입력하고 «라이브러리에 추가» 를 누르세요.",
+    "step2Title": "전역 가져오기 대기",
+    "step2Body": "첫 로드는 40 개 지역을 병렬로 가져와 보통 수 초 걸립니다. 이후 6 시간마다 자동 새로고침되어 환율과 가격이 현실에 가깝게 유지됩니다.",
+    "step3Title": "순위 읽고 결정",
+    "step3Body": "가격 표는 선택한 통화 기준 낮은 순이며 최저·최고·본인 지역이 강조되고 격차가 분명합니다. 어느 지역으로 옮길지는 당신의 선택입니다.",
+    "howToUseNote": "참고: 가격 데이터는 공개 App Store 에서 오며 실시간 환율로 변환되어 참고용입니다. 실제 구매는 그 시점 App Store 표시에 따르며 Apple 서비스 약관과 현지 법률을 준수해야 합니다.",
+    "feature4BodyB": "익명 사용자는 일부 결과만 볼 수 있습니다. 멤버로 로그인하면 모든 앱, 지역, 플랜을 무료로 잠금 해제할 수 있습니다 — 완전 무료입니다."
+  },
+  "PricingDialog": {
+    "ariaLabel": "멤버십 업그레이드",
+    "title": "$1.99 평생 잠금 해제",
+    "subtitle": "한 번 결제로 — 모든 앱, 모든 플랜, 모든 지역을 영구적으로 무제한 이용",
+    "feature1": "평생 무제한 접근",
+    "feature2": "모든 앱의 구독 플랜 및 지역",
+    "feature3": "일일 할당량 제한 없음",
+    "buyCta": "$1.99 구매",
+    "later": "나중에"
+  },
+  "AppDetail": {
+    "metaTitle": "{app} 가격 비교 - 가장 저렴한 App Store 지역 | LowestAppPrice",
+    "metaDescription": "{app}의 구독 및 인앱 결제 가격을 {count}개 지역에서 확인, 단일 통화로 변환해 저렴한 순으로 정렬.",
+    "ogTitle": "{app} {count}개 지역 가격 비교",
+    "ogDescription": "{count}개 지역의 구독 가격을 저렴한 순으로 - 최저가가 한눈에."
   }
 }

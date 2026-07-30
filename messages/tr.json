@@ -20,7 +20,8 @@
     "refunds": "İade politikası",
     "legal": "Yasal bildirim",
     "sitemap": "Site haritası",
-    "metadataDescription": "App Store bağlantısı veya App ID'sini yapıştırın. 40 bölgedeki abonelik fiyatlarını gerçek zamanlı olarak getirir, tek bir para birimine çevirir ve en ucuzdan başlayarak sıralar."
+    "metadataDescription": "App Store bağlantısı veya App ID'sini yapıştırın. 40 bölgedeki abonelik fiyatlarını gerçek zamanlı olarak getirir, tek bir para birimine çevirir ve en ucuzdan başlayarak sıralar.",
+    "about": "Hakkımızda"
   },
   "HomePage": {
     "heroTitle1": "Tek uygulama, bölge değiştir, ",
@@ -48,7 +49,9 @@
     "feature1": "{count} App Store bölgesinde fiyat karşılaştırma",
     "feature2": "Abonelik ve IAP fiyatları döviz kuruyla çevrilir",
     "feature3": "En ucuzdan sıralı - en ucuz bölge bir bakışta",
-    "feature4": "Günlük 3 ücretsiz sorgu veya $1.99 ömür boyu erişim"
+    "feature4": "Günlük 3 ücretsiz sorgu veya $1.99 ömür boyu erişim",
+    "feature4B": "Üye olarak giriş yapın, hepsi ücretsiz",
+    "metaTitle": "App Store Fiyat Karşılaştırma - Abonelik için en ucuz bölge | LowestAppPrice"
   },
   "SupportedApps": {
     "title": "{count} uygulama dizine eklendi",
@@ -77,20 +80,21 @@
     "loginToBuy": "Satın almak için giriş yapın",
     "owned": "Satın alındı",
     "titleB": "Ücretsiz dene, her şeyi açmak için giriş yap",
-    "descB": "Giriş yapmadan en ucuz 3 katmanı gör, veya üye olmak için giriş yap ve her şeyi aç (beta süresince ücretsiz).",
-    "freeTierB": "Ücretsiz sürüm",
-    "freePriceB": "Ücretsiz",
+    "descB": "Giriş yapmadan en ucuz 3 seviyeyi görün ya da üye olmak için giriş yapın ve her şeyin kilidini açın - tamamen ücretsiz.",
+    "freeTierB": "FREE",
+    "freePriceB": "Misafir",
     "freeNoteB": "Giriş gerekmez",
-    "freeFeature1B": "En ucuz 3 katman",
+    "freeFeature1B": "En ucuz 3 abonelik katmanı",
     "freeFeature2B": "Tüm Apps gezilebilir",
-    "freeFeature3B": "Günlük limit yok",
-    "memberTier": "Üye",
+    "memberTier": "PRO",
+    "memberPriceB": "Üye",
     "memberNote": "Açmak için giriş yap",
-    "memberFeature1": "Tüm abonelik katmanları açık",
+    "memberFeature1": "Tüm abonelik katmanlarını aç",
     "memberFeature2": "Tüm 40 bölge, sınırsız görüntüleme",
-    "memberFeature3": "Sadece giriş yap, beta'da ücretsiz",
+    "memberFeature3": "Özel uygulama ekle",
     "loginToUse": "Kullanmak için giriş yap",
-    "currentMember": "Mevcut üye"
+    "currentMember": "Mevcut üye",
+    "signedIn": "Giriş yapıldı"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} bölge / {currency}",
@@ -110,7 +114,9 @@
     "totalCount": "{count} uygulama dizine eklendi",
     "searchResults": "{count} sonuç bulundu",
     "noMatch": "\"{q}\" ile eşleşen uygulama yok. Eklemek için App Store bağlantısı veya ID yapıştırın.",
-    "empty": "Kitaplık boş. İlk uygulamayı eklemek için App Store bağlantısı veya ID yapıştırın."
+    "empty": "Kitaplık boş. İlk uygulamayı eklemek için App Store bağlantısı veya ID yapıştırın.",
+    "metaTitle": "Tüm uygulamalar - App Store Fiyat Karşılaştırma | LowestAppPrice",
+    "metaDescription": "{count} bölgedeki App Store abonelik fiyatlarına göz atın ve karşılaştırın, en ucuzdan sıralı. İsimle arayın veya App Store bağlantısı yapıştırın."
   },
   "AppsToolbar": {
     "searchPlaceholder": "İsme göre ara, veya App Store bağlantısı / ID yapıştır",
@@ -155,7 +161,9 @@
     "initialLoadingHint": "İlk yükleme 40 bölgeyi getirir, birkaç saniye sürer",
     "refreshingBanner": "Küresel fiyatlar yenileniyor…",
     "converting": "Dönüştürülüyor…",
-    "lockedHintUnsignedB": "Tüm katmanları görmek için üye olarak giriş yap"
+    "lockedHintUnsignedB": "Tüm katmanları görmek için üye olarak giriş yap",
+    "lockedHintExhaustedB": "Tüm katmanları görmek için giriş yapın",
+    "buyCtaB": "Açmak için giriş yapın"
   },
   "RelatedApps": {
     "title": "Şunlar da hoşunuza gidebilir",
@@ -165,6 +173,14 @@
     "shareAriaLabel": "Paylaş",
     "copied": "Kopyalandı",
     "copyLink": "Bağlantıyı kopyala"
+  },
+  "ShareBar": {
+    "title": "İşinize yaradı mı? Paylaşın",
+    "subtitle": "LowestAppPrice'ı arkadaşlarınızla paylaşın ve en ucuz App Store bölgesini birlikte bulun",
+    "shareText": "LowestAppPrice - Tüm bölgelerdeki App Store fiyatlarını karşılaştırın ve en ucuzunu bulun",
+    "copyLink": "Bağlantıyı kopyala",
+    "copied": "Kopyalandı",
+    "ariaLabel": "Sosyal medyada paylaş"
   },
   "AppsList": {
     "loadingMore": "Daha fazla yükleniyor...",
@@ -177,7 +193,8 @@
     "freeBadge": "Ücretsiz",
     "defaultName": "Kullanıcı",
     "menuAriaLabel": "Hesap menüsü",
-    "signOutCta": "Çıkış yap"
+    "signOutCta": "Çıkış yap",
+    "memberBadgeB": "Üye"
   },
   "LoginDialog": {
     "title": "Tüm fiyatları görmek için giriş yapın",
@@ -191,7 +208,8 @@
     "linkSent": "Giriş linki gönderildi:",
     "checkEmail": "15 dakika içinde e-postanızı kontrol edin ve giriş yapmak için butona tıklayın.",
     "changeEmail": "Farklı e-posta",
-    "ariaLabel": "Giriş"
+    "ariaLabel": "Giriş",
+    "descB": "Üye olarak giriş yapın — tamamen ücretsiz"
   },
   "Currencies": {
     "USD": "ABD Doları",
@@ -255,7 +273,8 @@
     "securityTitle": "Veri güvenliği",
     "securityBody": "Verilerinizi korumak için makul teknik ve organizasyonel önlemler alırız; bunlar şifreli iletim, erişim kontrolü ve düzenli güvenlik denetimlerini içerir. Ancak unutmayın: hiçbir internet iletim yöntemi %100 güvenli garanti edilemez.",
     "contactTitle": "Bize ulaşın",
-    "contactBody": "Gizlilikle ilgili herhangi bir sorunuz için GitHub Issues üzerinden bizimle iletişime geçin."
+    "contactBody": "Gizlilikle ilgili herhangi bir sorunuz için GitHub Issues üzerinden bizimle iletişime geçin.",
+    "collectUsageB": "<bold>Kullanım günlükleri</bold>: Aradığınız uygulamaların listesini ve görüntüleme sayılarınızı kaydederiz; kullanım muhasebesi ve hizmet optimizasyonu için kullanılır."
   },
   "Terms": {
     "metaTitle": "Kullanım Şartları - {siteName}",
@@ -282,7 +301,10 @@
     "ipTitle": "Fikri mülkiyet",
     "ipBody": "'App Store' ve ilgili ticari markalar Apple Inc.'e aittir. Hizmet bu adlara yalnızca açıklayıcı, gösterim amaçlarıyla atıfta bulunur ve onlar üzerinde hiçbir hak iddia etmez.",
     "changesTitle": "Bu şartlardaki değişiklikler",
-    "changesBody": "Bu şartları zaman zaman güncelleyebiliriz. Önemli değişiklikler bu sayfada yayınlanacaktır - Hizmeti kullanmaya devam etmeniz, güncellenmiş şartları kabul ettiğiniz anlamına gelir."
+    "changesBody": "Bu şartları zaman zaman güncelleyebiliriz. Önemli değişiklikler bu sayfada yayınlanacaktır - Hizmeti kullanmaya devam etmeniz, güncellenmiş şartları kabul ettiğiniz anlamına gelir.",
+    "accountTitleB": "Hesap ve üyelik",
+    "accountBodyB": "Hizmet tamamen ücretsizdir — <link>üye olmak için giriş yapın</link> ve tüm abonelik katmanı fiyatlarını ödemesiz olarak ücretsiz görüntüleyin.",
+    "accountBindingB": "<bold>Üyelik, giriş yöntemine bağlıdır.</bold> Hizmet Google girişi ve e-posta sihirli bağlantı girişini destekler. Farklı giriş yöntemleri ayrı hesaplar olarak kabul edilir — üyelik, kullanılan giriş yöntemine bağlıdır ve hesaplar arasında paylaşılmaz. Örneğin, Google ile giriş yaparak elde edilen üyelik, sihirli bağlantı ile giriş yaparken kullanılamaz. Lütfen giriş yönteminizi unutmayın."
   },
   "Refunds": {
     "metaTitle": "İade Politikası - {siteName}",
@@ -304,7 +326,15 @@
     "exceptions1": "Ödeme başarılı ancak sistem arızası nedeniyle üyelik açılmadı",
     "exceptions2": "Aynı sipariş iki kez tahsil edildi",
     "noticeTitle": "Lütfen unutmayın",
-    "noticeBody": "Bu iade politikası yalnızca Hizmetin ücretli kilidi açma özelliği için geçerlidir ve Apple App Store'da yaptığınız herhangi bir uygulama satın almasıyla ilgili değildir. App Store iadeleri için Apple'ın resmi iade sürecini izleyin."
+    "noticeBody": "Bu iade politikası yalnızca Hizmetin ücretli kilidi açma özelliği için geçerlidir ve Apple App Store'da yaptığınız herhangi bir uygulama satın almasıyla ilgili değildir. App Store iadeleri için Apple'ın resmi iade sürecini izleyin.",
+    "metaDescriptionB": "{siteName} için iade ayrıntıları (tamamen ücretsiz).",
+    "introB": "{siteName} <bold>tamamen ücretsiz, ücretli hiçbir özelliği yok</bold>. Üye olmak ve her şeyi kullanmak için giriş yapın; sizden ücret alınmaz, bu yüzden iade uygulanmaz.",
+    "paidContentTitleB": "Ödeme hakkında",
+    "paidContentBodyB": "Hizmet ücretli özellik sunmaz ve hiçbir ödeme işleyicisi entegre etmez. Gelecekte ücretli özellikler tanıtılırsa, bu sayfada duyurulur.",
+    "rulesTitleB": "Gelecekte ücretli özellikler tanıtılırsa",
+    "rulesBodyB": "Gelecekte ücretli özellikler tanıtıldığında, geçerli iade kuralları burada listelenir. Şu anda geçerli ücretli içerik yoktur.",
+    "noticeTitleB": "Lütfen dikkat",
+    "noticeBodyB": "Bu bildirim yalnızca Hizmetin kendisi için geçerlidir ve Apple App Store'da yaptığınız herhangi bir uygulama satın almayla ilgili değildir. App Store iadeleri için Apple'ın resmi iade sürecini izleyin."
   },
   "Legal": {
     "metaTitle": "Yasal Bildirim - {siteName}",
@@ -344,5 +374,52 @@
     "copyHint": "Düğme çalışmıyor mu? Bu bağlantıyı tarayıcınıza kopyalayın:",
     "ignoreHint": "Talep etmediyseniz bu e-postayı yok sayabilirsiniz.",
     "textBody": "LowestAppPrice'a giriş yapmak için aşağıdaki bağlantıya tıklayın:\n\n{url}\n\nBağlantı 15 dakika geçerlidir. Talep etmediyseniz bu e-postayı yok sayın."
+  },
+  "About": {
+    "metaTitle": "Hakkımızda - {siteName}",
+    "metaDescription": "{siteName} uygulamasının arka planını, amacını, temel özelliklerini ve kullanımını öğrenin - her abonelik için en ucuz App Store bölgesini bulan bir araç.",
+    "backToHome": "Ana sayfaya dön",
+    "title": "Hakkımızda",
+    "subtitle": "Her abonelik için en ucuz tek App Store bölgesini bulmanıza yardım ediyoruz.",
+    "backgroundTitle": "Arka plan",
+    "backgroundBody": "Aynı uygulama App Store bölgeleri arasında çoğu zaman katbekat farklı fiyatlanır. Dolar, euro ve yen arasındaki kurlar her gün değişir ve yerel fiyatlar farklıdır - ama neredeyse kimse abone olmadan önce düzinelerce bölgeyi elle karşılaştırmaz. {siteName} tam bunun için var: 40 bölgeye yayılmış fiyatları tek bir tabloda toplamak.",
+    "intentTitle": "Neden bunu yaptık",
+    "intentBody": "Bilgi uçurumunun tüketici deneyimindeki en göz ardı edilen maliyet olduğuna inanıyoruz. Yıllık bir abonelik en ucuz bölgede sadece birkaç düzine, en pahalıda ise birkaç yüz olduğunda, sadece farkı bilmek bile değerlidir. Bu aracı fiyatları şeffaf kılmak için yaptık - böylece herkes abone olmadan önce kendi bölgesinin gerçekten en iyi anlaşma olup olmadığını bir bakışta görebilir.",
+    "featuresTitle": "Sunduklarımız",
+    "featuresIntro": "Tek bir şeye odaklandık - bölgeler arası App Store fiyat karşılaştırması - ve bunu sonuna kadar:",
+    "feature1Title": "40 bölgede gerçek zamanlı karşılaştırma",
+    "feature1Body": "ABD, Japonya ve Türkiye'den Hindistan ve Brezilya'ya - tek sorgu, 40 App Store bölgesinin abonelik ve uygulama içi satın alma fiyatlarını paralel olarak çeker ve seçtiğiniz para birimine çevirir.",
+    "feature2Title": "Hem abonelikler hem uygulama içi satın almalar",
+    "feature2Body": "Aylık / yıllık abonelikler, tek seferlik satın almalar, Aile Paylaşımı - App Store detay sayfasında herkese açık gösterilen her uygulama içi satın alma düzeyi karşılaştırılabilir satırlara ayrılır.",
+    "feature3Title": "Net sıralama, en ucuz önce",
+    "feature3Body": "Tüm fiyatlar canlı kurlarla tek para birimine çevrilir ve sonra en düşükten sıralanır. En ucuz, en pahalı ve kendi bölgeniz vurgulanır - fark hemen orada.",
+    "feature4Title": "Giriş yapmadan çalışır",
+    "feature4Body": "Anonim kullanıcılar kısmi sonuçlar görür; giriş yapanlar günde 3 ücretsiz arama elde eder; sık kullanıyorsanız 1.99 $ bir kez sınırsız ömür boyu erişimi açar.",
+    "howToUseTitle": "Nasıl kullanılır",
+    "howToUseIntro": "En ucuz bölgeyi bulmak için üç adım:",
+    "step1Title": "İsme göre ara, bağlantı yapıştır veya ID gir",
+    "step1Body": "Tüm Uygulamalar sayfasındaki giriş alanına bir uygulama adı yazarak ara (yerel kitaplıkta yoksa Apple dizinine düşer); ya da bir App Store bağlantısı yapıştır / sayısal bir ID gir ve «Kitaplığa ekle»ye bas.",
+    "step2Title": "Global getirmeyi bekleyin",
+    "step2Body": "İlk yükleme 40 bölgeyi paralel getirir, genelde birkaç saniye. Sonrasında her 6 saatte bir otomatik yenilenir, böylece kurlar ve fiyatlar gerçeğe yakın kalır.",
+    "step3Title": "Sıralamayı okuyun, karar verin",
+    "step3Body": "Fiyat tablosu seçtiğiniz para biriminde en düşükten sıralanır; en ucuz, en pahalı ve bölgeniz vurgulanır ve fark barizdir. Hangi bölgeye geçeceğiniz size kalmış.",
+    "howToUseNote": "Not: Fiyat verileri herkese açık App Store'dan gelir, canlı kurlarla çevrilir, yalnızca referans içindir. Gerçek satın almalar o an App Store'da gösterilene bağlıdır ve Apple Hizmet Şartları ile yerel yasalara uymalıdır.",
+    "feature4BodyB": "Anonim kullanıcılar kısmi sonuçlar görür; her uygulamayı, bölgeyi ve katmanı ücretsiz olarak açmak için üye olarak giriş yapın — tamamen ücretsiz."
+  },
+  "PricingDialog": {
+    "ariaLabel": "Üyeliği yükselt",
+    "title": "$1.99 ömür boyu kilit açma",
+    "subtitle": "Bir kez ödeyin — tüm uygulamalar, tüm katmanlar, tüm bölgeler, sonsuza dek sınırsız",
+    "feature1": "Ömür boyu sınırsız erişim",
+    "feature2": "Her uygulama için tüm abonelik katmanları ve bölgeler",
+    "feature3": "Günlük kota sınırı yok",
+    "buyCta": "$1.99 satın al",
+    "later": "Belki daha sonra"
+  },
+  "AppDetail": {
+    "metaTitle": "{app} Fiyat Karşılaştırma - En ucuz App Store bölgesi | LowestAppPrice",
+    "metaDescription": "{app} abonelik ve uygulama içi satın alma fiyatlarını {count} App Store bölgesinde görün, tek para birimine çevrilip en ucuzdan sıralı.",
+    "ogTitle": "{app} - {count} bölge fiyat karşılaştırma",
+    "ogDescription": "{count} bölgenin abonelik fiyatları, en ucuzdan sıralı - en düşük bir bakışta."
   }
 }

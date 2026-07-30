@@ -7,6 +7,7 @@ import { useState, useRef, useEffect } from "react";
 import { signOut } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import { Avatar } from "./Avatar";
+import { usePricingVariant } from "@/lib/app-store";
 
 interface UserMenuProps {
   user: {
@@ -20,6 +21,7 @@ interface UserMenuProps {
 
 export function UserMenu({ user }: UserMenuProps) {
   const t = useTranslations("UserMenu");
+  const variant = usePricingVariant();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -41,8 +43,10 @@ export function UserMenu({ user }: UserMenuProps) {
 
   const displayName = user.name || user.email || t("defaultName");
   const isMember = user.paid || user.member;
+  // B 版（登录即会员）用 memberBadgeB 语义更准（en "Member" 而非 "Pro"）
+  const memberLabel = variant === "B" ? t("memberBadgeB") : t("proBadge");
   const badge = isMember
-    ? { cls: "bg-[rgba(0,113,227,0.1)] text-[var(--color-primary-focus)]", icon: "ph-crown", label: t("proBadge") }
+    ? { cls: "bg-[rgba(0,113,227,0.1)] text-[var(--color-primary-focus)]", icon: "ph-crown", label: memberLabel }
     : { cls: "bg-[var(--color-parchment)] text-[var(--color-ink-48)]", icon: "ph-gift", label: t("freeBadge") };
 
   return (

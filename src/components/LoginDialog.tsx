@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { signIn } from "next-auth/react";
 import { useTranslations } from "next-intl";
-import { useLanguage } from "@/lib/app-store";
+import { useLanguage, usePricingVariant } from "@/lib/app-store";
 import { GoogleIcon } from "./BrandIcons";
 
 interface LoginDialogProps {
@@ -18,6 +18,7 @@ interface LoginDialogProps {
 
 export function LoginDialog({ open, onClose }: LoginDialogProps) {
   const t = useTranslations("LoginDialog");
+  const variant = usePricingVariant();
   // Esc 关闭 + 锁定背景滚动
   useEffect(() => {
     if (!open) return;
@@ -57,7 +58,7 @@ export function LoginDialog({ open, onClose }: LoginDialogProps) {
             {t("title")}
           </h2>
           <p className="mt-1.5 text-[13px] text-[var(--color-ink-48)]">
-            {t("desc")}
+            {variant === "B" ? t("descB") : t("desc")}
           </p>
         </div>
 

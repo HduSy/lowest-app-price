@@ -67,33 +67,31 @@ export function PricingSection({ loggedIn, paid = false }: PricingSectionProps) 
                     {t("freeTierB")}
                   </span>
                 </div>
-                <div className="mt-3 text-[32px] font-semibold leading-none">
-                  {t("freePriceB")}
+                <div className="mt-3 flex items-baseline gap-2">
+                  <span className="text-[32px] font-semibold leading-none">{t("freePriceB")}</span>
+                  <span className="text-xs text-[var(--color-ink-48)]">{t("freeNoteB")}</span>
                 </div>
-                <p className="mt-1 text-xs text-[var(--color-ink-48)]">{t("freeNoteB")}</p>
                 <ul className="mt-5 space-y-2.5 text-sm text-[var(--color-ink-80)]">
-                  <li className="flex items-center gap-2">
-                    <i className="ph ph-check-circle text-[16px] text-[var(--color-green)]" />
-                    {t("freeFeature1B")}
-                  </li>
                   <li className="flex items-center gap-2">
                     <i className="ph ph-check-circle text-[16px] text-[var(--color-green)]" />
                     {t("freeFeature2B")}
                   </li>
                   <li className="flex items-center gap-2">
                     <i className="ph ph-check-circle text-[16px] text-[var(--color-green)]" />
-                    {t("freeFeature3B")}
+                    {t("freeFeature1B")}
                   </li>
                 </ul>
                 <div className="mt-auto pt-6">
-                  <button
-                    type="button"
-                    onClick={handleMemberCta}
-                    disabled={loggedIn}
-                    className="w-full rounded-full border border-black/[0.1] bg-white px-4 py-2.5 text-sm font-semibold transition-colors hover:bg-[var(--color-parchment)] disabled:cursor-default disabled:opacity-60"
-                  >
-                    {loggedIn ? t("currentMember") : t("loginToUse")}
-                  </button>
+                  {/* B 版免费档：游客即处此档，按钮仅标识当前方案，不弹登录；已登录则不渲染 */}
+                  {!loggedIn && (
+                    <button
+                      type="button"
+                      disabled
+                      className="w-full cursor-default rounded-full border border-black/[0.1] bg-white px-4 py-2.5 text-sm font-semibold opacity-60"
+                    >
+                      {t("currentPlan")}
+                    </button>
+                  )}
                 </div>
               </div>
 
@@ -109,13 +107,10 @@ export function PricingSection({ loggedIn, paid = false }: PricingSectionProps) 
                     {t("memberTier")}
                   </span>
                 </div>
-                <div className="mt-3 flex items-baseline gap-1">
-                  <span className="text-[32px] font-semibold leading-none">{t("freePriceB")}</span>
-                  <span className="text-sm text-[var(--color-ink-48)]">{t("memberNote")}</span>
+                <div className="mt-3 flex items-baseline gap-2">
+                  <span className="text-[32px] font-semibold leading-none">{t("memberPriceB")}</span>
+                  <span className="text-xs text-[var(--color-ink-48)]">{t("memberNote")}</span>
                 </div>
-                <p className="mt-1 text-xs text-[var(--color-ink-48)]">
-                  {t("memberFeature3")}
-                </p>
                 <ul className="mt-5 space-y-2.5 text-sm text-[var(--color-ink-80)]">
                   <li className="flex items-center gap-2">
                     <i className="ph ph-check-circle text-[16px] text-[var(--color-green)]" />

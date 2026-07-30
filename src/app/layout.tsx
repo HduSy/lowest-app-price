@@ -11,6 +11,9 @@ import { getEntitlement } from "@/lib/entitlement";
 import { getPricingVariant } from "@/lib/pricing-variant";
 import { currencyForCountry, REGION_MAP } from "@/lib/regions";
 import { languageForCountry, LANGUAGES, type Language } from "@/lib/languages";
+import "@phosphor-icons/web/regular";
+import "@phosphor-icons/web/bold";
+import "@phosphor-icons/web/fill";
 import "./globals.css";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -21,17 +24,6 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL("https://lowestappprice.com"),
     title,
     description,
-    keywords: [
-      "App Store 比价",
-      "LowestAppPrice 全区比价",
-      "App Store 不同地区价格",
-      "App Store 哪个区最便宜",
-      "App Store 订阅价格对比",
-      "App Store 内购价格",
-      "App Store 换区",
-      "App Store price comparison",
-      "cheapest App Store region",
-    ],
     openGraph: {
       type: "website",
       title,
@@ -104,9 +96,6 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <head>
-        <script src="https://unpkg.com/@phosphor-icons/web@2.1.1" />
-      </head>
       <body className="flex min-h-screen flex-col">
         <NextIntlClientProvider>
           <AppStoreProvider defaultCurrency={defaultCurrency} defaultLanguage={defaultLanguage} geoSource={geoSource} pricingVariant={pricingVariant}>
@@ -129,6 +118,10 @@ export default async function RootLayout({
                   className="mt-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-[var(--color-ink-48)]"
                   aria-label={t("footerLinks")}
                 >
+                  <Link href="/about" className="transition-colors hover:text-[var(--color-ink)]">
+                    {t("about")}
+                  </Link>
+                  <span className="text-black/15">|</span>
                   <Link href="/privacy" className="transition-colors hover:text-[var(--color-ink)]">
                     {t("privacy")}
                   </Link>

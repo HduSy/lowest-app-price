@@ -20,7 +20,8 @@
     "refunds": "Chính sách hoàn tiền",
     "legal": "Thông báo pháp lý",
     "sitemap": "Sơ đồ trang",
-    "metadataDescription": "Dán liên kết App Store hoặc ID ứng dụng. Chúng tôi lấy giá đăng ký từ 40 khu vực theo thời gian thực, quy đổi sang một loại tiền tệ và sắp xếp từ rẻ nhất."
+    "metadataDescription": "Dán liên kết App Store hoặc ID ứng dụng. Chúng tôi lấy giá đăng ký từ 40 khu vực theo thời gian thực, quy đổi sang một loại tiền tệ và sắp xếp từ rẻ nhất.",
+    "about": "Về chúng tôi"
   },
   "HomePage": {
     "heroTitle1": "Một ứng dụng, đổi khu vực, ",
@@ -48,7 +49,9 @@
     "feature1": "So sánh giá tại {count} khu vực App Store",
     "feature2": "Giá đăng ký và IAP quy đổi theo tỷ giá hối đoái",
     "feature3": "Sắp xếp từ rẻ nhất - khu vực rẻ nhất nhìn thấy ngay",
-    "feature4": "3 lượt tra cứu miễn phí mỗi ngày hoặc mở khóa trọn đời $1.99"
+    "feature4": "3 lượt tra cứu miễn phí mỗi ngày hoặc mở khóa trọn đời $1.99",
+    "feature4B": "Đăng nhập với tư cách thành viên, tất cả miễn phí",
+    "metaTitle": "So sánh giá App Store - Khu vực rẻ nhất cho đăng ký | LowestAppPrice"
   },
   "SupportedApps": {
     "title": "{count} ứng dụng đã lập chỉ mục",
@@ -77,20 +80,21 @@
     "loginToBuy": "Đăng nhập để mua",
     "owned": "Đã mua",
     "titleB": "Dùng thử miễn phí, đăng nhập để mở khóa tất cả",
-    "descB": "Xem 3 mức rẻ nhất không cần đăng nhập, hoặc đăng nhập thành viên để mở khóa tất cả (miễn phí trong beta).",
-    "freeTierB": "Phiên bản miễn phí",
-    "freePriceB": "Miễn phí",
+    "descB": "Xem 3 mức rẻ nhất không cần đăng nhập, hoặc đăng nhập để trở thành thành viên và mở khóa tất cả - hoàn toàn miễn phí.",
+    "freeTierB": "FREE",
+    "freePriceB": "Khách",
     "freeNoteB": "Không cần đăng nhập",
-    "freeFeature1B": "3 mức rẻ nhất",
+    "freeFeature1B": "3 mức đăng ký rẻ nhất",
     "freeFeature2B": "Tất cả App có thể duyệt",
-    "freeFeature3B": "Không giới hạn hàng ngày",
-    "memberTier": "Thành viên",
+    "memberTier": "PRO",
+    "memberPriceB": "Thành viên",
     "memberNote": "Đăng nhập để mở khóa",
     "memberFeature1": "Mở khóa tất cả mức đăng ký",
     "memberFeature2": "Tất cả 40 khu vực, xem không giới hạn",
-    "memberFeature3": "Chỉ cần đăng nhập, miễn phí trong beta",
+    "memberFeature3": "Thêm ứng dụng tùy chọn",
     "loginToUse": "Đăng nhập để sử dụng",
-    "currentMember": "Thành viên hiện tại"
+    "currentMember": "Thành viên hiện tại",
+    "signedIn": "Đã đăng nhập"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} khu vực / {currency}",
@@ -110,7 +114,9 @@
     "totalCount": "{count} ứng dụng đã lập chỉ mục",
     "searchResults": "{count} kết quả",
     "noMatch": "Không có ứng dụng cho \"{q}\". Dán liên kết hoặc ID App Store để thêm.",
-    "empty": "Thư viện trống. Dán liên kết hoặc ID App Store để thêm ứng dụng đầu tiên."
+    "empty": "Thư viện trống. Dán liên kết hoặc ID App Store để thêm ứng dụng đầu tiên.",
+    "metaTitle": "Tất cả ứng dụng - So sánh giá App Store | LowestAppPrice",
+    "metaDescription": "Duyệt và so sánh giá đăng ký App Store tại {count} khu vực, từ rẻ nhất. Tìm theo tên hoặc dán liên kết App Store."
   },
   "AppsToolbar": {
     "searchPlaceholder": "Tìm theo tên, hoặc dán liên kết / ID App Store",
@@ -155,7 +161,9 @@
     "initialLoadingHint": "Lần đầu tải 40 khu vực, mất vài giây",
     "refreshingBanner": "Đang làm mới giá toàn cầu…",
     "converting": "Đang quy đổi…",
-    "lockedHintUnsignedB": "Đăng nhập thành viên để xem tất cả mức"
+    "lockedHintUnsignedB": "Đăng nhập thành viên để xem tất cả mức",
+    "lockedHintExhaustedB": "Đăng nhập để xem tất cả các mức",
+    "buyCtaB": "Đăng nhập để mở khóa"
   },
   "RelatedApps": {
     "title": "Bạn có thể cũng thích",
@@ -165,6 +173,14 @@
     "shareAriaLabel": "Chia sẻ",
     "copied": "Đã sao chép",
     "copyLink": "Sao chép liên kết"
+  },
+  "ShareBar": {
+    "title": "Hữu ích? Chia sẻ ngay!",
+    "subtitle": "Chia sẻ LowestAppPrice với bạn bè và cùng tìm vùng App Store rẻ nhất",
+    "shareText": "LowestAppPrice - So sánh giá App Store ở tất cả các vùng và tìm nơi rẻ nhất",
+    "copyLink": "Sao chép liên kết",
+    "copied": "Đã sao chép",
+    "ariaLabel": "Chia sẻ lên mạng xã hội"
   },
   "AppsList": {
     "loadingMore": "Đang tải thêm...",
@@ -177,7 +193,8 @@
     "freeBadge": "Miễn phí",
     "defaultName": "Người dùng",
     "menuAriaLabel": "Menu tài khoản",
-    "signOutCta": "Đăng xuất"
+    "signOutCta": "Đăng xuất",
+    "memberBadgeB": "Thành viên"
   },
   "LoginDialog": {
     "title": "Đăng nhập để xem giá đầy đủ",
@@ -191,7 +208,8 @@
     "linkSent": "Liên kết đã gửi đến",
     "checkEmail": "Kiểm tra email trong 15 phút và nhấp nút để đăng nhập.",
     "changeEmail": "Email khác",
-    "ariaLabel": "Đăng nhập"
+    "ariaLabel": "Đăng nhập",
+    "descB": "Đăng nhập với tư cách thành viên — hoàn toàn miễn phí"
   },
   "Currencies": {
     "USD": "Đô la Mỹ",
@@ -255,7 +273,8 @@
     "securityTitle": "Bảo mật dữ liệu",
     "securityBody": "Chúng tôi áp dụng các biện pháp kỹ thuật và tổ chức hợp lý để bảo vệ dữ liệu, bao gồm truyền mã hóa, kiểm soát truy cập, kiểm toán bảo mật định kỳ. Tuy nhiên, xin lưu ý: không có phương thức truyền internet nào đảm bảo 100% an toàn.",
     "contactTitle": "Liên hệ",
-    "contactBody": "Mọi câu hỏi liên quan quyền riêng tư, vui lòng liên hệ qua GitHub Issues."
+    "contactBody": "Mọi câu hỏi liên quan quyền riêng tư, vui lòng liên hệ qua GitHub Issues.",
+    "collectUsageB": "<bold>Nhật ký sử dụng</bold>: Chúng tôi ghi lại danh sách các ứng dụng bạn đã tìm và số lượt xem của bạn, dùng để hạch toán mức sử dụng và tối ưu hóa dịch vụ."
   },
   "Terms": {
     "metaTitle": "Điều khoản sử dụng - {siteName}",
@@ -282,7 +301,10 @@
     "ipTitle": "Sở hữu trí tuệ",
     "ipBody": "'App Store' và các nhãn hiệu liên quan thuộc về Apple Inc. Dịch vụ chỉ dẫn các tên này cho mục đích mô tả, chỉ định và không tuyên bố bất kỳ quyền nào.",
     "changesTitle": "Thay đổi điều khoản",
-    "changesBody": "Chúng tôi có thể cập nhật điều khoản này theo thời gian. Các thay đổi quan trọng sẽ được đăng trên trang này--việc tiếp tục sử dụng Dịch vụ đồng nghĩa chấp nhận điều khoản đã cập nhật."
+    "changesBody": "Chúng tôi có thể cập nhật điều khoản này theo thời gian. Các thay đổi quan trọng sẽ được đăng trên trang này--việc tiếp tục sử dụng Dịch vụ đồng nghĩa chấp nhận điều khoản đã cập nhật.",
+    "accountTitleB": "Tài khoản và thành viên",
+    "accountBodyB": "Dịch vụ hoàn toàn miễn phí — <link>đăng nhập để trở thành thành viên</link> và xem giá của mọi mức đăng ký miễn phí, không cần thanh toán.",
+    "accountBindingB": "<bold>Thành viên được gắn với phương thức đăng nhập.</bold> Dịch vụ hỗ trợ đăng nhập bằng Google và liên kết ma thuật email. Các phương thức đăng nhập khác nhau được coi là các tài khoản riêng biệt — tư cách thành viên gắn với phương thức đăng nhập đã dùng và không được chia sẻ giữa các tài khoản. Ví dụ: thành viên có được khi đăng nhập bằng Google không thể dùng khi đăng nhập bằng liên kết ma thuật. Vui lòng nhớ phương thức đăng nhập của bạn."
   },
   "Refunds": {
     "metaTitle": "Chính sách hoàn tiền - {siteName}",
@@ -304,7 +326,15 @@
     "exceptions1": "Thanh toán thành công nhưng quyền thành viên không mở khóa do lỗi hệ thống",
     "exceptions2": "Cùng một đơn hàng bị tính phí hai lần",
     "noticeTitle": "Lưu ý",
-    "noticeBody": "Chính sách hoàn tiền này chỉ áp dụng cho tính năng mở khóa trả phí của Dịch vụ, không liên quan đến bất kỳ mua ứng dụng nào trên Apple App Store. Hoàn tiền App Store vui lòng làm theo quy trình hoàn tiền chính thức của Apple."
+    "noticeBody": "Chính sách hoàn tiền này chỉ áp dụng cho tính năng mở khóa trả phí của Dịch vụ, không liên quan đến bất kỳ mua ứng dụng nào trên Apple App Store. Hoàn tiền App Store vui lòng làm theo quy trình hoàn tiền chính thức của Apple.",
+    "metaDescriptionB": "Chi tiết hoàn tiền cho {siteName} (hoàn toàn miễn phí).",
+    "introB": "{siteName} <bold>hoàn toàn miễn phí, không có tính năng trả phí nào</bold>. Đăng nhập để trở thành thành viên và sử dụng mọi thứ; bạn sẽ không bị tính phí, nên việc hoàn tiền không áp dụng.",
+    "paidContentTitleB": "Về thanh toán",
+    "paidContentBodyB": "Dịch vụ không cung cấp tính năng trả phí và không tích hợp trình xử lý thanh toán nào. Nếu các tính năng trả phí được giới thiệu trong tương lai, chúng sẽ được thông báo trên trang này.",
+    "rulesTitleB": "Nếu các tính năng trả phí được giới thiệu sau này",
+    "rulesBodyB": "Khi các tính năng trả phí được giới thiệu trong tương lai, các quy tắc hoàn tiền áp dụng sẽ được liệt kê tại đây. Hiện tại, không có nội dung trả phí nào áp dụng.",
+    "noticeTitleB": "Lưu ý",
+    "noticeBodyB": "Thông báo này chỉ áp dụng cho chính Dịch vụ và không liên quan đến bất kỳ mua ứng dụng nào bạn thực hiện trên Apple App Store. Để hoàn tiền trên App Store, hãy làm theo quy trình hoàn tiền chính thức của Apple."
   },
   "Legal": {
     "metaTitle": "Thông báo pháp lý - {siteName}",
@@ -344,5 +374,52 @@
     "copyHint": "Nút không hoạt động? Sao chép liên kết này vào trình duyệt:",
     "ignoreHint": "Nếu bạn không yêu cầu, bạn có thể bỏ qua email này.",
     "textBody": "Nhấp vào liên kết bên dưới để đăng nhập vào LowestAppPrice:\n\n{url}\n\nLiên kết có hiệu lực trong 15 phút. Nếu bạn không yêu cầu, hãy bỏ qua email này."
+  },
+  "About": {
+    "metaTitle": "Về chúng tôi - {siteName}",
+    "metaDescription": "Tìm hiểu bối cảnh, ý định, tính năng cốt lõi và cách dùng {siteName} - công cụ tìm vùng App Store rẻ nhất cho bất kỳ gói đăng ký nào.",
+    "backToHome": "Về trang chủ",
+    "title": "Về chúng tôi",
+    "subtitle": "Chúng tôi giúp bạn tìm vùng App Store rẻ nhất cho bất kỳ gói đăng ký nào.",
+    "backgroundTitle": "Bối cảnh",
+    "backgroundBody": "Cùng một ứng dụng thường được định giá khác nhau nhiều lần giữa các vùng App Store. Tỷ giá giữa dollar, euro và yen thay đổi mỗi ngày, giá địa phương cũng khác nhau - nhưng hầu như không ai so sánh thủ công hàng chục vùng trước khi đăng ký. {siteName} ra đời chính xác cho việc đó: tập hợp giá rải rác tại 40 vùng vào một bảng.",
+    "intentTitle": "Vì sao chúng tôi xây dựng",
+    "intentBody": "Chúng tôi tin rằng khoảng thông tin là chi phí bị bỏ qua nhiều nhất trong trải nghiệm người tiêu dùng. Khi một gói năm ở vùng rẻ nhất chỉ vài chục nhưng ở vùng đắt nhất lên đến vài trăm, chỉ cần biết khoảng cách đó đã là giá trị. Chúng tôi xây dựng công cụ này để làm giá cả minh bạch - để bất kỳ ai, trước khi đăng ký, đều thấy ngay vùng của mình có thực sự là thỏa thuận tốt nhất không.",
+    "featuresTitle": "Chúng tôi cung cấp gì",
+    "featuresIntro": "Tập trung vào một việc - so sánh giá App Store giữa các vùng - và làm đến cùng:",
+    "feature1Title": "So sánh thời gian thực trên 40 vùng",
+    "feature1Body": "Từ Mỹ, Nhật, Thổ Nhĩ Kỳ đến Ấn Độ và Brazil - một truy vấn lấy song song giá đăng ký và mua trong ứng dụng từ 40 vùng App Store, quy đổi sang loại tiền bạn chọn.",
+    "feature2Title": "Đăng ký và mua trong ứng dụng",
+    "feature2Body": "Đăng ký tháng / năm, mua một lần, chia sẻ gia đình - bất kỳ hạng mục mua trong ứng dụng nào hiển thị công khai trên trang chi tiết App Store đều được tách thành các hàng có thể so sánh.",
+    "feature3Title": "Bảng xếp hạng rõ ràng, rẻ trước",
+    "feature3Body": "Tất cả giá được quy đổi theo tỷ giá trực tiếp sang một loại tiền, rồi xếp từ thấp nhất. Rẻ nhất, đắt nhất và vùng của bạn được tô đậm - khoảng cách hiển hiện ngay.",
+    "feature4Title": "Dùng được không cần đăng nhập",
+    "feature4Body": "Người dùng ẩn danh thấy kết quả một phần; người đã đăng ký có 3 lượt tra cứu miễn phí mỗi ngày; nếu dùng thường xuyên, 1,99 $ một lần mở khóa truy cập trọn đời không giới hạn.",
+    "howToUseTitle": "Cách sử dụng",
+    "howToUseIntro": "Ba bước để tìm vùng rẻ nhất:",
+    "step1Title": "Tìm theo tên, dán liên kết hoặc nhập ID",
+    "step1Body": "Trong ô nhập trang Tất cả ứng dụng, chỉ cần gõ tên ứng dụng để tìm (dự phòng vào thư mục Apple nếu không có trong thư viện cục bộ); hoặc dán liên kết App Store / nhập ID dạng số rồi bấm «Thêm vào thư viện».",
+    "step2Title": "Chờ lấy dữ liệu toàn cầu",
+    "step2Body": "Lần tải đầu tiên lấy song song 40 vùng, thường vài giây. Sau đó tự động làm mới mỗi 6 giờ, giữ tỷ giá và giá sát với thực tế.",
+    "step3Title": "Đọc xếp hạng và quyết định",
+    "step3Body": "Bảng giá được xếp từ thấp nhất theo loại tiền bạn chọn, với rẻ nhất, đắt nhất và vùng của bạn được tô đậm, khoảng cách rõ ràng. Chuyển sang vùng nào là quyết định của bạn.",
+    "howToUseNote": "Lưu ý: dữ liệu giá đến từ App Store công khai, quy đổi theo tỷ giá trực tiếp, chỉ mang tính tham khảo. Việc mua thực tế phụ thuộc nội dung App Store hiển thị tại thời điểm đó và phải tuân Điều khoản Dịch vụ của Apple cùng luật pháp địa phương.",
+    "feature4BodyB": "Người dùng ẩn danh thấy kết quả một phần; đăng nhập với tư cách thành viên để mở khóa mọi ứng dụng, khu vực và mức miễn phí — hoàn toàn miễn phí."
+  },
+  "PricingDialog": {
+    "ariaLabel": "Nâng cấp thành viên",
+    "title": "Mở khóa trọn đời $1.99",
+    "subtitle": "Trả một lần — tất cả ứng dụng, tất cả mức, tất cả khu vực, không giới hạn mãi mãi",
+    "feature1": "Quyền truy cập không giới hạn trọn đời",
+    "feature2": "Tất cả mức đăng ký và khu vực cho mỗi ứng dụng",
+    "feature3": "Không giới hạn hạn ngạch hàng ngày",
+    "buyCta": "Mua $1.99",
+    "later": "Có thể để sau"
+  },
+  "AppDetail": {
+    "metaTitle": "{app} - So sánh giá, khu vực App Store rẻ nhất | LowestAppPrice",
+    "metaDescription": "Xem giá đăng ký và mua hàng trong ứng dụng của {app} tại {count} khu vực App Store, quy đổi sang một loại tiền và từ rẻ nhất.",
+    "ogTitle": "{app} - so sánh giá tại {count} khu vực",
+    "ogDescription": "Giá đăng ký từ {count} khu vực, từ rẻ nhất - giá thấp nhất nhìn thấy ngay."
   }
 }

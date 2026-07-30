@@ -20,7 +20,8 @@
     "refunds": "返金ポリシー",
     "legal": "法的通知",
     "sitemap": "サイトマップ",
-    "metadataDescription": "App Store リンクまたは App ID を貼り付けてください。40 地域のサブスクリプション価格をリアルタイムで取得し、単一通貨に換算して最安値順に並べます。"
+    "metadataDescription": "App Store リンクまたは App ID を貼り付けてください。40 地域のサブスクリプション価格をリアルタイムで取得し、単一通貨に換算して最安値順に並べます。",
+    "about": "私たちについて"
   },
   "HomePage": {
     "heroTitle1": "ひとつの App、地域を変えて、",
@@ -48,7 +49,9 @@
     "feature1": "{count} の App Store 地域で価格比較",
     "feature2": "サブスクリプションと IAP 価格を為替レートで換算",
     "feature3": "最安値順に並べて表示 - 一目でわかります",
-    "feature4": "毎日 3 回無料、または $1.99 で永久解放"
+    "feature4": "毎日 3 回無料、または $1.99 で永久解放",
+    "feature4B": "メンバーとしてログイン、すべて無料",
+    "metaTitle": "App Store 価格比較 - サブスクが最安の地域 | LowestAppPrice"
   },
   "SupportedApps": {
     "title": "{count} App 収録",
@@ -77,20 +80,21 @@
     "loginToBuy": "ログインして購入",
     "owned": "購入済み",
     "titleB": "無料で試して、ログインで全て解放",
-    "descB": "ログインなしで最安の3ティアを表示、ログインすると会員になり全てのApp・全地域・全ティアを解放（ベータ期間は無料）。",
-    "freeTierB": "無料版",
-    "freePriceB": "無料",
+    "descB": "ログインなしで最安の3ティアを表示、ログインすると会員になり全てのApp・全地域・全ティアを解放 - 完全無料。",
+    "freeTierB": "FREE",
+    "freePriceB": "ゲスト",
     "freeNoteB": "ログイン不要",
-    "freeFeature1B": "最安の3ティアを表示",
+    "freeFeature1B": "最安の3つのサブスクリプションティアを表示",
     "freeFeature2B": "すべてのAppを閲覧",
-    "freeFeature3B": "回数制限なし",
-    "memberTier": "会員",
+    "memberTier": "PRO",
+    "memberPriceB": "会員",
     "memberNote": "ログインで解放",
-    "memberFeature1": "すべてのサブスクリプションティアを解放",
+    "memberFeature1": "すべてのサブスクリプションティアを解除",
     "memberFeature2": "全40地域、無制限閲覧",
-    "memberFeature3": "ログインするだけ、ベータ期間は無料",
+    "memberFeature3": "カスタム App を追加",
     "loginToUse": "ログインして利用",
-    "currentMember": "現在の会員"
+    "currentMember": "現在の会員",
+    "signedIn": "ログイン済み"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} 地域 / {currency}",
@@ -110,7 +114,9 @@
     "totalCount": "{count} アプリ収録",
     "searchResults": "{count} 件見つかりました",
     "noMatch": "\"{q}\" に一致するアプリはありません。App Store リンクまたは ID を貼り付けて追加してください。",
-    "empty": "ライブラリは空です。App Store リンクまたは ID を貼り付けて最初のアプリを追加してください。"
+    "empty": "ライブラリは空です。App Store リンクまたは ID を貼り付けて最初のアプリを追加してください。",
+    "metaTitle": "全アプリ - App Store 価格比較 | LowestAppPrice",
+    "metaDescription": "{count} 地域の App Store サブスク価格を閲覧・比較、最安値順に表示。名前で検索するか App Store リンクを貼り付け。"
   },
   "AppsToolbar": {
     "searchPlaceholder": "名前で検索、または App Store リンク / ID を貼り付け",
@@ -155,7 +161,9 @@
     "initialLoadingHint": "初回読み込み時に 40 地域を取得するため、数秒かかります",
     "refreshingBanner": "世界の価格を更新中…",
     "converting": "換算中…",
-    "lockedHintUnsignedB": "会員としてログインして全ティアを表示"
+    "lockedHintUnsignedB": "会員としてログインして全ティアを表示",
+    "lockedHintExhaustedB": "すべてのプランを見るにはログイン",
+    "buyCtaB": "ログインしてアンロック"
   },
   "RelatedApps": {
     "title": "こちらもおすすめ",
@@ -165,6 +173,14 @@
     "shareAriaLabel": "共有",
     "copied": "コピーしました",
     "copyLink": "リンクをコピー"
+  },
+  "ShareBar": {
+    "title": "お役に立ちましたか？シェアしよう",
+    "subtitle": "LowestAppPrice を友達にシェアして、一緒に一番安い App Store リージョンを見つけよう",
+    "shareText": "LowestAppPrice - すべてのリージョンの App Store 価格を比較して最安値を見つけよう",
+    "copyLink": "リンクをコピー",
+    "copied": "コピーしました",
+    "ariaLabel": "ソーシャルでシェア"
   },
   "AppsList": {
     "loadingMore": "さらに読み込み中...",
@@ -177,7 +193,8 @@
     "freeBadge": "無料",
     "defaultName": "ユーザー",
     "menuAriaLabel": "アカウントメニュー",
-    "signOutCta": "ログアウト"
+    "signOutCta": "ログアウト",
+    "memberBadgeB": "メンバー"
   },
   "LoginDialog": {
     "title": "ログインして全価格を表示",
@@ -191,7 +208,8 @@
     "linkSent": "ログインリンクを送信しました:",
     "checkEmail": "15分以内にメールを確認し、ボタンをクリックしてログインしてください。",
     "changeEmail": "別のメールアドレス",
-    "ariaLabel": "ログイン"
+    "ariaLabel": "ログイン",
+    "descB": "メンバーとしてログイン — 完全無料"
   },
   "Currencies": {
     "USD": "米ドル",
@@ -255,7 +273,8 @@
     "securityTitle": "データセキュリティ",
     "securityBody": "暗号化通信、アクセス制御、定期セキュリティ監査など、合理的な技術的・組織的措置を講じてデータを保護します。ただし、インターネットの通信手段が 100% 安全であることを保証するものはありません。",
     "contactTitle": "お問い合わせ",
-    "contactBody": "プライバシーに関するご質問は、GitHub Issues からお問い合わせください。"
+    "contactBody": "プライバシーに関するご質問は、GitHub Issues からお問い合わせください。",
+    "collectUsageB": "<bold>利用ログ</bold>：検索されたアプリの一覧と閲覧回数を記録します。利用量の集計とサービスの最適化に使用します。"
   },
   "Terms": {
     "metaTitle": "利用規約 - {siteName}",
@@ -282,7 +301,10 @@
     "ipTitle": "知的財産",
     "ipBody": "「App Store」および関連商標は Apple Inc. に帰属します。本サービスはこれらの名称を記述的・指示的目的でのみ引用し、いかなる権利も主張しません。",
     "changesTitle": "規約の変更",
-    "changesBody": "本規約は随時更新される場合があります。重要な変更は本ページに掲示し--本サービスの継続利用により更新後の規約に同意したものとみなされます。"
+    "changesBody": "本規約は随時更新される場合があります。重要な変更は本ページに掲示し--本サービスの継続利用により更新後の規約に同意したものとみなされます。",
+    "accountTitleB": "アカウントとメンバーシップ",
+    "accountBodyB": "本サービスは完全無料です — <link>ログインしてメンバーになり</link>、すべてのサブスクリプションプランの価格を無料でご確認いただけます。",
+    "accountBindingB": "<bold>メンバーシップはログイン方法に紐付きます。</bold> 本サービスは Google ログインとメールマジックリンクログインに対応しています。異なるログイン方法は別々のアカウントとして扱われ — メンバーシップは使用したログイン方法に紐付き、アカウント間で共有されません。例えば Google アカウントでログインして取得したメンバーシップは、マジックリンクログインでは使用できません。ログイン方法を必ず記憶してください。"
   },
   "Refunds": {
     "metaTitle": "返金ポリシー - {siteName}",
@@ -304,7 +326,15 @@
     "exceptions1": "システム障害により決済成功したが会員権益が解除されなかった",
     "exceptions2": "同じ注文が重複して決済された",
     "noticeTitle": "注意事項",
-    "noticeBody": "本返金ポリシーは本サービスの有料解除機能にのみ適用され、Apple App Store でのアプリ購入とは一切関係ありません。App Store の返金は Apple の公式返金フローに従ってください。"
+    "noticeBody": "本返金ポリシーは本サービスの有料解除機能にのみ適用され、Apple App Store でのアプリ購入とは一切関係ありません。App Store の返金は Apple の公式返金フローに従ってください。",
+    "metaDescriptionB": "{siteName} の返金について（完全無料）。",
+    "introB": "{siteName} は<bold>完全無料で、有料機能は一切ありません</bold>。ログインしてメンバーになればすべて利用できます。料金は請求されないため、返金は発生しません。",
+    "paidContentTitleB": "お支払いについて",
+    "paidContentBodyB": "本サービスは有料機能を提供せず、決済代行とも連携しません。将来 有料機能を導入する場合は、このページでお知らせします。",
+    "rulesTitleB": "将来 有料機能を導入する場合",
+    "rulesBodyB": "将来 有料機能が導入された時点で、該当する返金ルールをここに記載します。現時点では該当する有料コンテンツはありません。",
+    "noticeTitleB": "ご注意",
+    "noticeBodyB": "本注意事項は本サービス自身にのみ適用され、Apple App Store でのアプリ購入とは関係ありません。App Store の返金については、Apple の公式返金プロセスに従ってください。"
   },
   "Legal": {
     "metaTitle": "法律表示 - {siteName}",
@@ -344,5 +374,52 @@
     "copyHint": "ボタンがクリックできない場合は、このリンクをブラウザにコピーしてください：",
     "ignoreHint": "心当たりがない場合は、このメールを無視してください。操作は不要です。",
     "textBody": "以下のリンクをクリックして LowestAppPrice にログインしてください：\n\n{url}\n\nリンクの有効期限は 15 分です。心当たりがない場合は、このメールを無視してください。"
+  },
+  "About": {
+    "metaTitle": "私たちについて - {siteName}",
+    "metaDescription": "{siteName} の背景、目的、主要機能、使い方を紹介します - あらゆるサブスクで最も安い App Store 地域を見つけるツールです。",
+    "backToHome": "ホームに戻る",
+    "title": "私たちについて",
+    "subtitle": "どんなサブスクでも、最も安い App Store 地域を一つ見つけるお手伝いをします。",
+    "backgroundTitle": "背景",
+    "backgroundBody": "同じアプリでも、App Store の地域ごとに価格は何倍も違うことがよくあります。ドル・ユーロ・円の為替は毎日動き、現地価格もまちまち - それでも、サブスク前に何十もの地域を手作業で比べる人はほとんどいません。{siteName} はまさにそれを解決するためにあります: 40 の App Store 地域に散った価格を一枚の表にまとめること。",
+    "intentTitle": "なぜ作ったか",
+    "intentBody": "情報差は、消費体験において最も見落とされがちなコストだと私たちは考えます。最安地域では数十で済む年額サブスクが、最高地域では数百になる場合、その差を知ること自体が価値です。このツールを作ったのは、価格を透明にするため - 誰もがサブスク前に、自分の地域が本当に一番お得かをひと目で確認できるようにするためです。",
+    "featuresTitle": "提供すること",
+    "featuresIntro": "地域間の App Store 価格比較、これ一点に集中して極める:",
+    "feature1Title": "40 地域のリアルタイム比較",
+    "feature1Body": "米国、日本、トルコからインド、ブラジルまで - 一回のクエリで 40 の App Store 地域のサブスクとアプリ内課金の価格を並行取得し、選んだ通貨に換算します。",
+    "feature2Title": "サブスクもアプリ内課金も",
+    "feature2Body": "月額 / 年額サブスク、買い切り、ファミリー共有 - App Store 詳細ページで公開されているアプリ内課金は、比較可能な行に分解されます。",
+    "feature3Title": "明確なランキング、安い順",
+    "feature3Body": "すべての価格をリアルタイムの為替で一通貨に換算し、安い順に並べます。最安・最高・あなたの地域がハイライトされ、差額がそこにあります。",
+    "feature4Title": "ログイン不要でも使える",
+    "feature4Body": "匿名ユーザーは一部の結果を見られ、ログインすれば 1 日 3 回無料、よく使うなら 1.99 ドル一回で永久無制限アクセスが解放されます。",
+    "howToUseTitle": "使い方",
+    "howToUseIntro": "最安地域を見つける 3 ステップ:",
+    "step1Title": "名前で検索、リンク貼り付け、または ID 入力",
+    "step1Body": "「すべてのアプリ」ページの入力欄で、アプリ名を入力して検索（ローカルライブラリにない場合は Apple のディレクトリにフォールバック）；または App Store のリンクを貼るか数字 ID を入力して「ライブラリに追加」を押します。",
+    "step2Title": "全球取得を待つ",
+    "step2Body": "初回ロードは 40 地域を並行取得するため、通常数秒です。以降は 6 時間ごとに自動更新され、為替と価格が現実に追従します。",
+    "step3Title": "ランキングを読み、決める",
+    "step3Body": "価格表は選んだ通貨で安い順に並び、最安・最高・あなたの地域がハイライトされ、差額が一目で分かります。どの地域へ切り替えるかはあなた次第です。",
+    "howToUseNote": "注: 価格データは公開 App Store 由来で、リアルタイムの為替で換算しており、あくまで参考です。実際の購入はその時点の App Store 表示に従い、Apple の利用規約と現地法律を遵守してください。",
+    "feature4BodyB": "匿名ユーザーは一部の結果のみ閲覧できます。メンバーとしてログインすると、すべてのアプリ・地域・プランを無料でアンロックできます — 完全無料です。"
+  },
+  "PricingDialog": {
+    "ariaLabel": "メンバーシップをアップグレード",
+    "title": "$1.99 永久アンロック",
+    "subtitle": "一度の支払いで — すべてのアプリ、すべてのプラン、すべての地域を永久に無制限で",
+    "feature1": "永久・無制限アクセス",
+    "feature2": "すべてのアプリの全サブスクリプションプランと地域",
+    "feature3": "日次枠制限なし",
+    "buyCta": "$1.99 を購入",
+    "later": "後で"
+  },
+  "AppDetail": {
+    "metaTitle": "{app} 価格比較 - 最安の App Store 地域 | LowestAppPrice",
+    "metaDescription": "{app} のサブスク・アプリ内課金の価格を {count} 地域で確認、単一通貨に換算して最安値順に表示。",
+    "ogTitle": "{app} の {count} 地域価格比較",
+    "ogDescription": "{count} 地域のサブスク価格を最安値順に表示 - 一目でわかります。"
   }
 }

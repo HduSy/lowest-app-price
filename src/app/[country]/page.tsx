@@ -1,16 +1,48 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { headers } from "next/headers";
+import type { Metadata } from "next";
 import { REGIONS, REGION_MAP, currencyForCountry } from "@/lib/regions";
 import { Flag } from "@/components/Flag";
 import { PricingSection } from "@/components/PricingSection";
 import { ClaudeDemoSection } from "@/components/ClaudeDemoSection";
 import { SupportedAppsSection } from "@/components/SupportedAppsSection";
+import { ShareBar } from "@/components/ShareBar";
 import { getCurrentUser } from "@/lib/session";
 import { getTranslations } from "next-intl/server";
 import { getDb, getApp, getPrices, isStale } from "@/lib/db";
 import { getRates, type Rates } from "@/lib/exchange";
+import { getPricingVariant } from "@/lib/pricing-variant";
+import { countryAlternates, countryUrl, SITE_ORIGIN } from "@/lib/seo";
 import { refreshPrices } from "./apps/[appId]/refresh";
+
+// 首页 metadata：keyword-rich 标题 + 自指 canonical + 全 40 国 hreflang + x-default
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ country: string }>;
+}): Promise<Metadata> {
+  const { country } = await params;
+  const t = await getTranslations("HomePage");
+  const pathAfterCountry = "";
+  return {
+    title: t("metaTitle"),
+    description: t("metadataDescription", { count: REGIONS.length }),
+    alternates: countryAlternates(country, pathAfterCountry),
+    openGraph: {
+      type: "website",
+      title: t("metaTitle"),
+      description: t("metadataDescription", { count: REGIONS.length }),
+      siteName: t("siteName"),
+      url: countryUrl(country, pathAfterCountry),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("metaTitle"),
+      description: t("metadataDescription", { count: REGIONS.length }),
+    },
+  };
+}
 
 export default async function HomePage({
   params,
@@ -39,11 +71,11 @@ export default async function HomePage({
   // 当前登录状态（定价区 CTA 用）
   const currentUser = await getCurrentUser();
   const t = await getTranslations("HomePage");
+  // 定价 A/B 实验开关（影响 feature4 文案 + JSON-LD 结构化数据）
+  const variant = await getPricingVariant();
 
-  // AI SEO: JSON-LD 结构化数据（WebApplication + FAQPage）
-  const host = h.get("host") || "lowestappprice.com";
-  const proto = h.get("x-forwarded-proto") || "https";
-  const baseSiteUrl = `${proto}://${host}`;
+  // AI SEO: JSON-LD 结构化数据（WebApplication + FAQPage + WebSite + Organization）
+  // WebApplication.url 指向当前页 canonical（而非根域名），避免 40 国首页都声明同一个根 URL 实体。
   const regionCount = REGIONS.length;
   const faqEntries = [
     { q: t("faqQ1"), a: t("faqA1", { count: regionCount }) },
@@ -57,22 +89,23 @@ export default async function HomePage({
       "@context": "https://schema.org",
       "@type": "WebApplication",
       name: t("siteName"),
-      url: baseSiteUrl,
+      url: countryUrl(country, ""),
       description: t("metadataDescription", { count: regionCount }),
       applicationCategory: "UtilityApplication",
       operatingSystem: "Web",
       offers: {
         "@type": "AggregateOffer",
         lowPrice: "0",
-        highPrice: "1.99",
+        // B 版无付费商品，highPrice 留 0、offerCount 只计 1 个（免费方案）
+        highPrice: variant === "B" ? "0" : "1.99",
         priceCurrency: "USD",
-        offerCount: "2",
+        offerCount: variant === "B" ? "1" : "2",
       },
       featureList: [
         t("feature1", { count: regionCount }),
         t("feature2"),
         t("feature3"),
-        t("feature4"),
+        variant === "B" ? t("feature4B") : t("feature4"),
       ],
     },
     {
@@ -84,6 +117,29 @@ export default async function HomePage({
         acceptedAnswer: { "@type": "Answer", text: f.a },
       })),
     },
+    // WebSite + SearchAction：让 Google/AI 搜索引擎识别站内搜索入口
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: t("siteName"),
+      url: SITE_ORIGIN,
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${countryUrl(country, "/apps")}?q={search_term_string}`,
+        },
+        "query-input": "required name=search_term_string",
+      },
+    },
+    // Organization：品牌实体信号，logo 指向站点 icon
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: t("siteName"),
+      url: SITE_ORIGIN,
+      logo: `${SITE_ORIGIN}/icon.svg`,
+    },
   ];
 
   return (
@@ -93,11 +149,11 @@ export default async function HomePage({
         {/* Hero */}
         <header className="px-[22px] py-8">
           <div className="mx-auto max-w-[980px] text-center">
-          <h1 className="mb-4 text-[clamp(34px,6vw,56px)] font-semibold leading-[1.07] tracking-tight whitespace-nowrap">
+          <h1 className="mb-4 text-[clamp(34px,6vw,56px)] font-semibold leading-[1.07] tracking-tight">
             {t("heroTitle1")}
             <span className="text-[var(--color-primary-focus)]">{t("heroTitle2")}</span>
           </h1>
-          <p className="mx-auto mb-6 text-[clamp(19px,2.2vw,24px)] font-normal leading-[1.65] text-[var(--color-ink-80)] whitespace-nowrap">
+          <p className="mx-auto mb-6 text-[clamp(19px,2.2vw,24px)] font-normal leading-[1.65] text-[var(--color-ink-80)]">
             {t("heroSubtitle", { count: REGIONS.length })}
           </p>
           <div className="mx-auto mb-8 inline-flex items-center gap-2 rounded-full border border-black/[0.08] bg-white px-3 py-1.5 text-xs">
@@ -192,6 +248,9 @@ export default async function HomePage({
           </div>
         </div>
       </section>
+
+      {/* 分享本产品首页到各社交渠道 */}
+      <ShareBar />
 
       {/* AI SEO: 结构化数据（WebApplication + FAQPage） */}
       {jsonLd.map((schema, i) => (

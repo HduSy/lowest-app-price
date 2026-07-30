@@ -7,41 +7,47 @@ import type { Metadata } from "next";
 import { getDb, getApp, getPrices, isStale } from "@/lib/db";
 import { AppDetailClient } from "@/components/AppDetailClient";
 import { RelatedApps, RelatedAppsSkeleton } from "@/components/RelatedApps";
-import { REGION_MAP } from "@/lib/regions";
+import { REGION_MAP, REGIONS } from "@/lib/regions";
 import { getCurrentUser } from "@/lib/session";
 import { authorizeAppView } from "@/lib/entitlement";
 import { filterPricesByAuth, extractIapMetadata, computeFreeCount, filterSubscriptionIaps } from "@/lib/compare";
 import { formatUtcInTimezone } from "@/lib/format-time";
+import { countryAlternates, countryUrl } from "@/lib/seo";
 
 const PRICE_TTL_HOURS = 6;
 
-// 动态 metadata：title/description/og:image 都按 app 定制
-// og:image 指向 /api/og/[appId]，社交平台爬虫读 meta 时会触发 OG 图生成
+// 动态 metadata：title/description/og:image 都按 app 定制，全 18 语种 i18n 化
+// - title/description 用 AppDetail namespace（ICU 占位符 {app}/{count}）
+// - canonical 自指当前 /<country>/apps/<appId>，hreflang 覆盖全 40 国 + x-default
+// - og:image 指向 /api/og/[appId]，社交平台爬虫读 meta 时会触发 OG 图生成
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ country: string; appId: string }>;
 }): Promise<Metadata> {
-  const { appId } = await params;
+  const { country, appId } = await params;
+  const t = await getTranslations("AppDetail");
   const db = await getDb();
   const app = await getApp(db, appId);
   if (!app) return {};
 
   const ogImageUrl = `/api/og/${appId}`;
+  const pathAfterCountry = `/apps/${appId}`;
+  const count = REGIONS.length;
   return {
-    title: `${app.name} 全区比价 - 哪国最便宜`,
-    description: `查看 ${app.name}${
-      app.developer ? `（${app.developer}）` : ""
-    } 在 40 个 App Store 地区的订阅价格，按统一币种换算从低到高排名。`,
+    title: t("metaTitle", { app: app.name }),
+    description: t("metaDescription", { app: app.name, count }),
+    alternates: countryAlternates(country, pathAfterCountry),
     openGraph: {
-      title: `${app.name} 全区比价`,
-      description: `40 个地区的订阅价格从低到高排开，哪个区最便宜一目了然。`,
-      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: `${app.name} 全区比价` }],
+      title: t("ogTitle", { app: app.name, count }),
+      description: t("ogDescription", { count }),
+      url: countryUrl(country, pathAfterCountry),
+      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: t("ogTitle", { app: app.name, count }) }],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${app.name} 全区比价`,
-      description: `40 个地区的订阅价格从低到高排开，哪个区最便宜一目了然。`,
+      title: t("ogTitle", { app: app.name, count }),
+      description: t("ogDescription", { count }),
       images: [ogImageUrl],
     },
   };

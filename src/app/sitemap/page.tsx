@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { staticAlternates } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Sitemap");
@@ -8,6 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: t("metaTitle", { siteName: tLayout("siteName") }),
     description: t("metaDescription", { siteName: tLayout("siteName") }),
+    alternates: staticAlternates("/sitemap"),
   };
 }
 
@@ -49,6 +51,14 @@ export default async function SitemapPage() {
                   className="flex items-center gap-2 text-[var(--color-primary-focus)] hover:underline"
                 >
                   <i className="ph ph-grid-four" /> {tNav("apps")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  className="flex items-center gap-2 text-[var(--color-primary-focus)] hover:underline"
+                >
+                  <i className="ph ph-info" /> {tLayout("about")}
                 </Link>
               </li>
             </ul>

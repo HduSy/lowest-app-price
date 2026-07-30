@@ -1,14 +1,44 @@
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
 import { getDb, listApps, getExistingAppIds, type AppSortKey } from "@/lib/db";
 import { searchAppStore } from "@/lib/itunes";
 import { AppsListClient } from "./AppsListClient";
 import { AppsToolbar } from "./AppsToolbar";
 import { AppsSortPicker } from "./AppsSortPicker";
-import { REGION_MAP } from "@/lib/regions";
+import { REGION_MAP, REGIONS } from "@/lib/regions";
+import { getCurrentUser } from "@/lib/session";
+import { countryAlternates, countryUrl } from "@/lib/seo";
 import type { ExternalSearchItem } from "@/lib/types";
 
 const VALID_SORTS = new Set<AppSortKey>(["recent", "rating_count", "rating", "name"]);
+
+// 应用列表页 metadata：每国自指 canonical + 全 40 国 hreflang + x-default
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ country: string }>;
+}): Promise<Metadata> {
+  const { country } = await params;
+  const t = await getTranslations("AppsPage");
+  const pathAfterCountry = "/apps";
+  return {
+    title: t("metaTitle"),
+    description: t("metaDescription", { count: REGIONS.length }),
+    alternates: countryAlternates(country, pathAfterCountry),
+    openGraph: {
+      type: "website",
+      title: t("metaTitle"),
+      description: t("metaDescription", { count: REGIONS.length }),
+      url: countryUrl(country, pathAfterCountry),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("metaTitle"),
+      description: t("metaDescription", { count: REGIONS.length }),
+    },
+  };
+}
 
 export default async function AppsPage({
   params,
@@ -50,12 +80,17 @@ export default async function AppsPage({
         }));
       }
     } catch {
-      // iTunes 兜底失败：静默，前端按"完全无结果"渲染
+      // iTunes 兜底失败：静默，前端按“完全无结果”渲染
     }
   }
 
   const hasAnyContent = initial.items.length > 0 || initialExternal.length > 0;
   const t = await getTranslations("AppsPage");
+
+  // 添加 App 是会员专属功能：SSR 算出 canAddApp，避免客户端闪烁
+  const currentUser = await getCurrentUser();
+  const loggedIn = !!currentUser;
+  const canAddApp = loggedIn && (currentUser!.paid || currentUser!.member);
 
   return (
     <main className="mx-auto min-h-[calc(100vh-52px)] max-w-[1200px] px-[22px] py-12">
@@ -66,7 +101,13 @@ export default async function AppsPage({
         </p>
       </div>
 
-      <AppsToolbar country={country} initialQ={q} initialSort={sort} />
+      <AppsToolbar
+        country={country}
+        initialQ={q}
+        initialSort={sort}
+        canAddApp={canAddApp}
+        loggedIn={loggedIn}
+      />
 
       <section>
         {hasAnyContent ? (
@@ -87,6 +128,8 @@ export default async function AppsPage({
               query={q}
               sort={sort}
               country={country}
+              canAddApp={canAddApp}
+              loggedIn={loggedIn}
             />
           </>
         ) : (

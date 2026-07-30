@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getTranslations, getLocale } from "next-intl/server";
+import { staticAlternates } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Legal");
@@ -8,6 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: t("metaTitle", { siteName: tLayout("siteName") }),
     description: t("metaDescription", { siteName: tLayout("siteName") }),
+    alternates: staticAlternates("/legal"),
   };
 }
 

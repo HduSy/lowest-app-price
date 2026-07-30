@@ -16,6 +16,7 @@
     "db:local": "wrangler d1 execute appstore-price --local --file=migrations/0001_init.sql && wrangler d1 execute appstore-price --local --file=migrations/0002_seed_regions.sql"
   },
   "dependencies": {
+    "@phosphor-icons/web": "^2.1.1",
     "next": "^15.5.0",
     "next-auth": "^5.0.0-beta.32",
     "next-intl": "^4.13.4",

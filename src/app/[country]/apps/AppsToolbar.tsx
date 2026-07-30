@@ -5,15 +5,23 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import type { AppSortKey } from "@/lib/db";
 import { parseAppInput } from "@/lib/parse-input";
+import { LoginDialog } from "@/components/LoginDialog";
+import { PricingDialog } from "@/components/PricingDialog";
 
 export function AppsToolbar({
   country,
   initialQ,
   initialSort,
+  canAddApp,
+  loggedIn,
 }: {
   country: string;
   initialQ: string;
   initialSort: AppSortKey;
+  /** 是否有添加 App 权限（登录 && (会员 || 付费)）；false 时按钮显示为锁定态 */
+  canAddApp: boolean;
+  /** 是否已登录（决定锁定态点击弹登录框还是付费框） */
+  loggedIn: boolean;
 }) {
   const router = useRouter();
   const t = useTranslations("AppsToolbar");
@@ -21,6 +29,10 @@ export function AppsToolbar({
   const [adding, setAdding] = useState(false);
   const [addError, setAddError] = useState<string | null>(null);
   const [addAppStoreUrl, setAddAppStoreUrl] = useState<string | null>(null);
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [pricingOpen, setPricingOpen] = useState(false);
+  const [unlocking, setUnlocking] = useState(false);
+  const [unlockError, setUnlockError] = useState<string | null>(null);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   // IME 组词标记：true 时 onChange 不触发 URL 更新，等 compositionend 才发
   const composingRef = useRef(false);
@@ -91,7 +103,17 @@ export function AppsToolbar({
         app?: { app_id: string };
       };
       if (!resp.ok) {
-        if (resp.status === 401) throw new Error(t("loginRequired"));
+        // 兜底：session 过期(401)弹登录，权限变化(403)弹付费
+        if (resp.status === 401) {
+          setAdding(false);
+          setLoginOpen(true);
+          return;
+        }
+        if (resp.status === 403) {
+          setAdding(false);
+          setPricingOpen(true);
+          return;
+        }
         // no_pricing 等带 appStoreUrl 的拒绝：保留链接供用户跳转
         if (data.appStoreUrl) setAddAppStoreUrl(data.appStoreUrl);
         throw new Error(data.error || `HTTP ${resp.status}`);
@@ -102,6 +124,39 @@ export function AppsToolbar({
     } catch (e) {
       setAdding(false);
       setAddError(e instanceof Error ? e.message : String(e));
+    }
+  }
+
+  // 点击“添加到库”：有权限走添加；未登录弹登录框；A 版已登录未付费弹付费框
+  function handleAddClick() {
+    if (canAddApp) {
+      void handleDirectAdd();
+      return;
+    }
+    if (!loggedIn) {
+      setLoginOpen(true);
+      return;
+    }
+    setPricingOpen(true);
+  }
+
+  // 跳转 Paddle Checkout 购买 $1.99 买断
+  async function handleBuy() {
+    setUnlocking(true);
+    setUnlockError(null);
+    try {
+      const res = await fetch("/api/paddle/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ callbackUrl: window.location.href }),
+      });
+      if (!res.ok) throw new Error("Failed to create checkout session");
+      const { url } = (await res.json()) as { url?: string };
+      if (url) window.location.href = url;
+    } catch (e) {
+      setUnlockError(e instanceof Error ? e.message : "Purchase failed");
+    } finally {
+      setUnlocking(false);
     }
   }
 
@@ -121,7 +176,7 @@ export function AppsToolbar({
               onCompositionEnd((e.target as HTMLInputElement).value);
             }}
             onKeyDown={(e) => {
-              if (e.key === "Enter" && parsedInput && !adding) handleDirectAdd();
+              if (e.key === "Enter" && parsedInput && !adding) handleAddClick();
             }}
             placeholder={t("searchPlaceholder")}
             autoCorrect="off"
@@ -140,21 +195,29 @@ export function AppsToolbar({
           )}
         </div>
 
-        {/* 粘贴了 App ID/链接时显示"添加到库"按钮 */}
+        {/* 粘贴了 App ID/链接时显示“添加到库”按钮：会员/付费可点，否则锁定态点击弹窗 */}
         {parsedInput && (
           <button
             type="button"
-            onClick={handleDirectAdd}
+            onClick={handleAddClick}
             disabled={adding}
-            className="flex shrink-0 items-center gap-1.5 rounded-[var(--radius-md)] bg-[var(--color-primary-focus)] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-primary)] disabled:opacity-50"
+            className={
+              canAddApp
+                ? "flex shrink-0 items-center gap-1.5 rounded-[var(--radius-md)] bg-[var(--color-primary-focus)] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-primary)] disabled:opacity-50"
+                : "flex shrink-0 items-center gap-1.5 rounded-[var(--radius-md)] bg-[var(--color-parchment)] px-4 py-2.5 text-sm font-semibold text-[var(--color-ink-48)] transition-colors hover:bg-[rgba(0,113,227,0.06)] hover:text-[var(--color-primary-focus)] disabled:opacity-50"
+            }
           >
             {adding ? (
               <>
                 <span className="spinner" /> {t("adding")}
               </>
-            ) : (
+            ) : canAddApp ? (
               <>
                 <i className="ph ph-plus text-base" /> {t("addToLibrary")}
+              </>
+            ) : (
+              <>
+                <i className="ph ph-lock-key text-base" /> {t("addToLibrary")}
               </>
             )}
           </button>
@@ -180,6 +243,15 @@ export function AppsToolbar({
           )}
         </div>
       )}
+
+      <LoginDialog open={loginOpen} onClose={() => setLoginOpen(false)} />
+      <PricingDialog
+        open={pricingOpen}
+        onClose={() => setPricingOpen(false)}
+        onBuy={handleBuy}
+        buying={unlocking}
+        error={unlockError}
+      />
     </div>
   );
 }

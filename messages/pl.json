@@ -20,7 +20,8 @@
     "refunds": "Polityka zwrotów",
     "legal": "Informacje prawne",
     "sitemap": "Mapa strony",
-    "metadataDescription": "Wklej link do App Store lub identyfikator aplikacji. Pobieramy ceny subskrypcji z 40 regionów w czasie rzeczywistym, przeliczamy na jedną walutę i sortujemy od najtańszych."
+    "metadataDescription": "Wklej link do App Store lub identyfikator aplikacji. Pobieramy ceny subskrypcji z 40 regionów w czasie rzeczywistym, przeliczamy na jedną walutę i sortujemy od najtańszych.",
+    "about": "O nas"
   },
   "HomePage": {
     "heroTitle1": "Jedna aplikacja, zmień region, ",
@@ -48,7 +49,9 @@
     "feature1": "Porównanie cen w {count} regionach App Store",
     "feature2": "Ceny subskrypcji i IAP przeliczane po kursach walut",
     "feature3": "Posortowane od najtańszych - najtańszy region na pierwszy rzut oka",
-    "feature4": "3 darmowe wyszukiwania dziennie lub odblokowanie dożywotnie za $1.99"
+    "feature4": "3 darmowe wyszukiwania dziennie lub odblokowanie dożywotnie za $1.99",
+    "feature4B": "Zaloguj się jako członek, wszystko bezpłatnie",
+    "metaTitle": "Porównanie cen App Store - Najtańszy region dla subskrypcji | LowestAppPrice"
   },
   "SupportedApps": {
     "title": "{count} aplikacji zindeksowanych",
@@ -77,20 +80,21 @@
     "loginToBuy": "Zaloguj się, aby kupić",
     "owned": "Kupione",
     "titleB": "Wypróbuj za darmo, zaloguj się, by odblokować wszystko",
-    "descB": "Zobacz 3 najtańsze poziomy bez logowania, lub zaloguj się, by zostać członkiem i odblokować wszystko (darmowe w beta).",
-    "freeTierB": "Darmowa wersja",
-    "freePriceB": "Za darmo",
+    "descB": "Zobacz 3 najtańsze poziomy bez logowania, albo zaloguj się, by zostać członkiem i odblokować wszystko - w pełni darmowe.",
+    "freeTierB": "FREE",
+    "freePriceB": "Gość",
     "freeNoteB": "Bez logowania",
-    "freeFeature1B": "3 najtańsze poziomy",
+    "freeFeature1B": "3 najtańsze poziomy subskrypcji",
     "freeFeature2B": "Wszystkie App do przeglądania",
-    "freeFeature3B": "Bez dziennego limitu",
-    "memberTier": "Członek",
+    "memberTier": "PRO",
+    "memberPriceB": "Członek",
     "memberNote": "Zaloguj się, by odblokować",
-    "memberFeature1": "Wszystkie poziomy subskrypcji odblokowane",
+    "memberFeature1": "Odblokuj wszystkie poziomy subskrypcji",
     "memberFeature2": "Wszystkie 40 regionów, nielimitowane podglądy",
-    "memberFeature3": "Wystarczy zalogować, darmowe w becie",
+    "memberFeature3": "Dodawaj własne aplikacje",
     "loginToUse": "Zaloguj się, by używać",
-    "currentMember": "Obecny członek"
+    "currentMember": "Obecny członek",
+    "signedIn": "Zalogowano"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} regionów / {currency}",
@@ -110,7 +114,9 @@
     "totalCount": "{count} aplikacji zindeksowanych",
     "searchResults": "{count} wyników",
     "noMatch": "Brak aplikacji dla \"{q}\". Wklej link lub ID App Store, aby dodać.",
-    "empty": "Biblioteka pusta. Wklej link lub ID App Store, aby dodać pierwszą."
+    "empty": "Biblioteka pusta. Wklej link lub ID App Store, aby dodać pierwszą.",
+    "metaTitle": "Wszystkie aplikacje - Porównanie cen App Store | LowestAppPrice",
+    "metaDescription": "Przeglądaj i porównuj ceny subskrypcji App Store w {count} regionach, od najtańszych. Szukaj po nazwie lub wklej link do App Store."
   },
   "AppsToolbar": {
     "searchPlaceholder": "Szukaj po nazwie, lub wklej link / ID App Store",
@@ -155,7 +161,9 @@
     "initialLoadingHint": "Pierwsze ładowanie pobiera 40 regionów, trwa kilka sekund",
     "refreshingBanner": "Odświeżanie światowych cen…",
     "converting": "Przeliczanie…",
-    "lockedHintUnsignedB": "Zaloguj się jako członek, by widzieć wszystkie poziomy"
+    "lockedHintUnsignedB": "Zaloguj się jako członek, by widzieć wszystkie poziomy",
+    "lockedHintExhaustedB": "Zaloguj się, aby zobaczyć wszystkie poziomy",
+    "buyCtaB": "Zaloguj się, aby odblokować"
   },
   "RelatedApps": {
     "title": "Może ci się spodobać również",
@@ -165,6 +173,14 @@
     "shareAriaLabel": "Udostępnij",
     "copied": "Skopiowano",
     "copyLink": "Kopiuj link"
+  },
+  "ShareBar": {
+    "title": "Pomocne? Udostępnij!",
+    "subtitle": "Udostępnij LowestAppPrice znajomym i znajdźcie razem najtańszy region App Store",
+    "shareText": "LowestAppPrice - Porównaj ceny App Store we wszystkich regionach i znajdź najtańszy",
+    "copyLink": "Kopiuj link",
+    "copied": "Skopiowano",
+    "ariaLabel": "Udostępnij w mediach społecznościowych"
   },
   "AppsList": {
     "loadingMore": "Ładowanie...",
@@ -177,7 +193,8 @@
     "freeBadge": "Darmowe",
     "defaultName": "Użytkownik",
     "menuAriaLabel": "Menu konta",
-    "signOutCta": "Wyloguj się"
+    "signOutCta": "Wyloguj się",
+    "memberBadgeB": "Członek"
   },
   "LoginDialog": {
     "title": "Zaloguj się, aby zobaczyć pełne ceny",
@@ -191,7 +208,8 @@
     "linkSent": "Link wysłany do",
     "checkEmail": "Sprawdź e-mail w ciągu 15 minut i kliknij przycisk, aby się zalogować.",
     "changeEmail": "Inny e-mail",
-    "ariaLabel": "Logowanie"
+    "ariaLabel": "Logowanie",
+    "descB": "Zaloguj się jako członek — całkowicie bezpłatnie"
   },
   "Currencies": {
     "USD": "Dolar amerykański",
@@ -255,7 +273,8 @@
     "securityTitle": "Bezpieczeństwo danych",
     "securityBody": "Stosujemy uzasadnione środki techniczne i organizacyjne w celu ochrony Twoich danych, w tym szyfrowaną transmisję, kontrolę dostępu i regularne audyty bezpieczeństwa. Należy jednak pamiętać: żadna metoda transmisji internetowej nie może być zagwarantowana jako w 100% bezpieczna.",
     "contactTitle": "Kontakt",
-    "contactBody": "W sprawach związanych z prywatnością skontaktuj się z nami przez GitHub Issues."
+    "contactBody": "W sprawach związanych z prywatnością skontaktuj się z nami przez GitHub Issues.",
+    "collectUsageB": "<bold>Dzienniki użytkowania</bold>: Rejestrujemy listę wyszukiwanych przez Ciebie aplikacji i liczbę wyświetleń, służy to do rozliczania użytkowania i optymalizacji usługi."
   },
   "Terms": {
     "metaTitle": "Warunki Korzystania - {siteName}",
@@ -282,7 +301,10 @@
     "ipTitle": "Własność intelektualna",
     "ipBody": "'App Store' i powiązane znaki towarowe należą do Apple Inc. Usługa powołuje się na te nazwy wyłącznie w celach opisowych i wskazujących i nie rości sobie żadnych praw do nich.",
     "changesTitle": "Zmiany w tych warunkach",
-    "changesBody": "Możemy od czasu do czasu aktualizować te warunki. Istotne zmiany zostaną opublikowane na tej stronie - dalsze korzystanie z Usługi oznacza akceptację zaktualizowanych warunków."
+    "changesBody": "Możemy od czasu do czasu aktualizować te warunki. Istotne zmiany zostaną opublikowane na tej stronie - dalsze korzystanie z Usługi oznacza akceptację zaktualizowanych warunków.",
+    "accountTitleB": "Konto i członkostwo",
+    "accountBodyB": "Usługa jest całkowicie bezpłatna — <link>zaloguj się, aby zostać członkiem</link> i przeglądać wszystkie ceny poziomów subskrypcji za darmo, bez płatności.",
+    "accountBindingB": "<bold>Członkostwo jest powiązane z metodą logowania.</bold> Usługa obsługuje logowanie przez Google oraz magiczny link e-mail. Różne metody logowania są traktowane jako osobne konta — członkostwo jest powiązane z używaną metodą logowania i nie jest współdzielone między kontami. Na przykład członkostwo uzyskane przez Google nie może być używane przy logowaniu magic link. Zapamiętaj swoją metodę logowania."
   },
   "Refunds": {
     "metaTitle": "Polityka Zwrotów - {siteName}",
@@ -304,7 +326,15 @@
     "exceptions1": "Płatność zakończona powodzeniem, ale członkostwo nie zostało odblokowane z powodu usterki systemu",
     "exceptions2": "To samo zamówienie zostało obciążone dwa razy",
     "noticeTitle": "Uwaga",
-    "noticeBody": "Niniejsza polityka zwrotów ma zastosowanie wyłącznie do funkcji płatnego odblokowania Usługi i nie dotyczy żadnych zakupów aplikacji dokonywanych w Apple App Store. W sprawie zwrotów w App Store postępuj zgodnie z oficjalnym procesem zwrotów Apple."
+    "noticeBody": "Niniejsza polityka zwrotów ma zastosowanie wyłącznie do funkcji płatnego odblokowania Usługi i nie dotyczy żadnych zakupów aplikacji dokonywanych w Apple App Store. W sprawie zwrotów w App Store postępuj zgodnie z oficjalnym procesem zwrotów Apple.",
+    "metaDescriptionB": "Szczegóły zwrotów dla {siteName} (całkowicie bezpłatna).",
+    "introB": "{siteName} jest <bold>całkowicie bezpłatna, bez żadnych płatnych funkcji</bold>. Zaloguj się, aby zostać członkiem i korzystać ze wszystkiego; nie zostaną pobrane żadne opłaty, więc zwroty nie mają zastosowania.",
+    "paidContentTitleB": "O płatności",
+    "paidContentBodyB": "Usługa nie oferuje płatnych funkcji i nie integruje żadnego procesora płatności. Jeśli w przyszłości zostaną wprowadzone płatne funkcje, zostaną ogłoszone na tej stronie.",
+    "rulesTitleB": "Jeśli w przyszłości wprowadzone zostaną płatne funkcje",
+    "rulesBodyB": "Po wprowadzeniu w przyszłości płatnych funkcji, odpowiednie zasady zwrotów zostaną tu wymienione. Obecnie nie ma zastosowania żadna płatna zawartość.",
+    "noticeTitleB": "Uwaga",
+    "noticeBodyB": "To powiadomienie dotyczy wyłącznie samej Usługi i nie ma związku z zakupami aplikacji w Apple App Store. W sprawie zwrotów w App Store postępuj zgodnie z oficjalnym procesem zwrotów Apple."
   },
   "Legal": {
     "metaTitle": "Informacja Prawna - {siteName}",
@@ -344,5 +374,52 @@
     "copyHint": "Przycisk nie działa? Skopiuj ten link do przeglądarki:",
     "ignoreHint": "Jeśli to nie Ty prosiłeś o logowanie, zignoruj ten e-mail.",
     "textBody": "Kliknij link poniżej, aby zalogować się w LowestAppPrice:\n\n{url}\n\nLink jest ważny przez 15 minut. Jeśli to nie Ty prosiłeś, zignoruj ten e-mail."
+  },
+  "About": {
+    "metaTitle": "O nas - {siteName}",
+    "metaDescription": "Poznaj tło, intencję, główne funkcje i sposób użycia {siteName} - narzędzia, które znajduje najtańszy region App Store dla każdej subskrypcji.",
+    "backToHome": "Wróć na stronę główną",
+    "title": "O nas",
+    "subtitle": "Pomagamy znaleźć ten jeden najtańszy region App Store dla każdej subskrypcji.",
+    "backgroundTitle": "Tło",
+    "backgroundBody": "Ta sama aplikacja bywa wyceniana wielokrotnie różnie między regionami App Store. Kursy między dolarem, euro i jenem zmieniają się codziennie, a ceny lokalne różnią się - jednak prawie nikt nie porównuje ręcznie dziesiątek regionów przed subskrypcją. {siteName} istnieje właśnie po to: zebrać ceny rozsiane po 40 regionach w jedną tabelę.",
+    "intentTitle": "Dlaczego to zbudowaliśmy",
+    "intentBody": "Wierzymy, że luka informacyjna to najbardziej pomijany koszt w doświadczeniu konsumenta. Gdy roczna subskrypcja kosztuje w najtańszym regionie ledwie kilkadziesiąt, a w najdroższym kilkaset, sama znajomość różnicy ma wartość. Stworzyliśmy to narzędzie, by uczynić ceny przejrzystymi - by każdy przed subskrypcją mógł rzucić okiem i zobaczyć, czy jego region to rzeczywiście najlepsza oferta.",
+    "featuresTitle": "Co oferujemy",
+    "featuresIntro": "Skupieni na jednej rzeczy - porównaniu cen App Store między regionami - doprowadzonej do końca:",
+    "feature1Title": "Porównanie w czasie rzeczywistym w 40 regionach",
+    "feature1Body": "Od USA, Japonii i Turcji po Indie i Brazylię - jedno zapytanie równolegle pobiera ceny subskrypcji i zakupów w aplikacji z 40 regionów App Store, przeliczone na wybraną walutę.",
+    "feature2Title": "Subskrypcje i zakupy w aplikacji",
+    "feature2Body": "Subskrypcje miesięczne / roczne, zakupy jednorazowe, Sharing z rodziną - każdy poziom zakupu w aplikacji pokazany publicznie na stronie szczegółów App Store zostaje rozbity na porównywalne wiersze.",
+    "feature3Title": "Jasny ranking, najtańsze najpierw",
+    "feature3Body": "Wszystkie ceny są przeliczane po kursach na żywo na jedną walutę, a potem układane od najniższej. Najtańszy, najdroższy i Twój region są wyróżnione - różnica jest na oczach.",
+    "feature4Title": "Działa bez logowania",
+    "feature4Body": "Anonimowi użytkownicy widzą częściowe wyniki; zalogowani otrzymują 3 darmowe wyszukiwania dziennie; przy częstym używaniu jednorazowe 1,99 USD odblokowuje dożywotni nieograniczony dostęp.",
+    "howToUseTitle": "Jak używać",
+    "howToUseIntro": "Trzy kroki do znalezienia najtańszego regionu:",
+    "step1Title": "Szukaj po nazwie, wklej link lub podaj ID",
+    "step1Body": "W polu strony Wszystkie aplikacje wpisz nazwę aplikacji, aby wyszukać (fallback do katalogu Apple, gdy nie ma w lokalnej bibliotece); albo wklej link App Store / podaj numeryczne ID i naciśnij «Dodaj do biblioteki».",
+    "step2Title": "Poczekaj na globalne pobranie",
+    "step2Body": "Pierwsze ładowanie pobiera równolegle 40 regionów, zazwyczaj kilka sekund. Potem odświeża się automatycznie co 6 godzin, więc kursy i ceny są bliskie rzeczywistości.",
+    "step3Title": "Przeczytaj ranking, zdecyduj",
+    "step3Body": "Tabela cen jest uporządkowana od najniższej w wybranej walucie, z najtańszym, najdroższym i Twoim regionem wyróżnionymi, a różnica jest ewidentna. Na który region się przestawić - to Twój wybór.",
+    "howToUseNote": "Uwaga: dane cenowe pochodzą z publicznego App Store, przeliczane po kursach na żywo, wyłącznie jako odniesienie. Rzeczywiste zakupy są zależne od tego, co w danym momencie pokazuje App Store, i muszą zgodzać się z Warunkami Usług Apple oraz lokalnym prawem.",
+    "feature4BodyB": "Anonimowi użytkownicy widzą częściowe wyniki; zaloguj się jako członek, aby odblokować wszystkie aplikacje, regiony i poziomy za darmo — całkowicie bezpłatnie."
+  },
+  "PricingDialog": {
+    "ariaLabel": "Ulepsz członkostwo",
+    "title": "Dożywotnie odblokowanie $1.99",
+    "subtitle": "Zapłać raz — wszystkie aplikacje, wszystkie poziomy, wszystkie regiony, na zawsze bez limitu",
+    "feature1": "Dożywotni nieograniczony dostęp",
+    "feature2": "Wszystkie poziomy subskrypcji i regiony dla każdej aplikacji",
+    "feature3": "Bez dziennych limitów przydziału",
+    "buyCta": "Kup $1.99",
+    "later": "Może później"
+  },
+  "AppDetail": {
+    "metaTitle": "{app} - Porównanie cen, najtańszy region App Store | LowestAppPrice",
+    "metaDescription": "Zobacz ceny subskrypcji i zakupów w aplikacji {app} w {count} regionach App Store, przeliczone na jedną walutę i od najtańszych.",
+    "ogTitle": "{app} - porównanie cen w {count} regionach",
+    "ogDescription": "Ceny subskrypcji z {count} regionów, od najtańszych - najniższa na pierwszy rzut oka."
   }
 }

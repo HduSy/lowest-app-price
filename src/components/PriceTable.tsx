@@ -410,7 +410,7 @@ function LockedBanner({
           {!auth.loggedIn ? (
             <span>{variant === "B" ? t("lockedHintUnsignedB") : t("lockedHintUnsigned", { limit: DAILY_VIEW_LIMIT })}</span>
           ) : (
-            <span>{t("lockedHintExhausted", { limit: DAILY_VIEW_LIMIT })}</span>
+            <span>{variant === "B" ? t("lockedHintExhaustedB") : t("lockedHintExhausted", { limit: DAILY_VIEW_LIMIT })}</span>
           )}
         </div>
         <div className="flex items-center gap-2">
@@ -425,11 +425,11 @@ function LockedBanner({
           ) : (
             <button
               type="button"
-              onClick={onBuy}
+              onClick={variant === "B" ? onLogin : onBuy}
               disabled={unlocking}
               className="rounded-full bg-[var(--color-primary-focus)] px-4 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-[var(--color-primary)] disabled:opacity-50"
             >
-              {unlocking ? <span className="spinner" /> : t("buyCta")}
+              {unlocking ? <span className="spinner" /> : variant === "B" ? t("buyCtaB") : t("buyCta")}
             </button>
           )}
         </div>

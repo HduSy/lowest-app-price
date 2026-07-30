@@ -147,6 +147,27 @@ export async function getApp(db: D1Database, appId: string): Promise<App | null>
   return r ? mapApp(r) : null;
 }
 
+/**
+ * 列出已抓取过价格的 app（用于 sitemap.xml 收录详情页）。
+ * 只收录 last_fetched_at 非空的 app（保证详情页有价格数据，不是空壳）。
+ * 按 rating_count 倒序：热门 app 排前，优先被爬虫发现与索引。
+ */
+export async function listSitemapApps(
+  db: D1Database
+): Promise<{ appId: string; lastFetchedAt: string | null }[]> {
+  const r = await db
+    .prepare(
+      `SELECT app_id, last_fetched_at FROM apps
+       WHERE last_fetched_at IS NOT NULL
+       ORDER BY rating_count DESC, submitted_at DESC`
+    )
+    .all<{ app_id: string; last_fetched_at: string | null }>();
+  return r.results.map((row) => ({
+    appId: row.app_id,
+    lastFetchedAt: row.last_fetched_at,
+  }));
+}
+
 /** 批量检查哪些 appId 已在库中（用于 App Store 搜索结果标记"已收录"） */
 export async function getExistingAppIds(
   db: D1Database,

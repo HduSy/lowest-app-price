@@ -3,7 +3,7 @@
 //   未登录 -> 看不到完整价格（PriceTable locked，只显示 top3）
 //   登录未付费 -> 每天 3 次免费查看完整价格（跨 App 共享，UTC 日切）
 //   $1.99 付费 -> 永久无限查看
-// B 版（内测两档）：
+// B 版（免费两档）：
 //   未登录 -> top3 锁定（同 A 版 anonymous）
 //   登录 -> 会员，全量无限（member=true，不走配额）
 // variant 由 env PRICING_VARIANT 决定（src/lib/pricing-variant.ts），默认 A

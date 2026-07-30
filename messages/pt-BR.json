@@ -20,7 +20,8 @@
     "refunds": "Política de reembolso",
     "legal": "Aviso legal",
     "sitemap": "Mapa do site",
-    "metadataDescription": "Cole um link da App Store ou ID de app. Buscamos preços de assinatura de 40 regiões em tempo real, convertemos para uma única moeda e ordenamos do mais barato ao mais caro."
+    "metadataDescription": "Cole um link da App Store ou ID de app. Buscamos preços de assinatura de 40 regiões em tempo real, convertemos para uma única moeda e ordenamos do mais barato ao mais caro.",
+    "about": "Sobre nós"
   },
   "HomePage": {
     "heroTitle1": "Um app, troque de região, ",
@@ -48,7 +49,9 @@
     "feature1": "Comparador de preços em {count} regiões da App Store",
     "feature2": "Preços de assinatura e IAP convertidos por taxas de câmbio",
     "feature3": "Ordenados do mais barato primeiro - região mais barata à primeira vista",
-    "feature4": "3 consultas gratuitas diárias ou desbloqueio vitalício por $1.99"
+    "feature4": "3 consultas gratuitas diárias ou desbloqueio vitalício por $1.99",
+    "feature4B": "Entre como membro, tudo grátis",
+    "metaTitle": "Comparador de preços da App Store - Região mais barata para assinaturas | LowestAppPrice"
   },
   "SupportedApps": {
     "title": "{count} apps indexados",
@@ -77,20 +80,21 @@
     "loginToBuy": "Entre para comprar",
     "owned": "Comprado",
     "titleB": "Experimente grátis, entre para desbloquear tudo",
-    "descB": "Veja os 3 níveis mais baratos sem login, ou entre para se tornar membro e desbloquear tudo (grátis durante o beta).",
-    "freeTierB": "Versão gratuita",
-    "freePriceB": "Grátis",
+    "descB": "Veja os 3 níveis mais baratos sem login, ou entre para se tornar membro e desbloquear tudo - totalmente grátis.",
+    "freeTierB": "FREE",
+    "freePriceB": "Convidado",
     "freeNoteB": "Sem login",
-    "freeFeature1B": "Os 3 níveis mais baratos",
+    "freeFeature1B": "Os 3 níveis de assinatura mais baratos",
     "freeFeature2B": "Todos os Apps navegáveis",
-    "freeFeature3B": "Sem limite diário",
-    "memberTier": "Membro",
+    "memberTier": "PRO",
+    "memberPriceB": "Membro",
     "memberNote": "Entre para desbloquear",
-    "memberFeature1": "Todos os níveis de assinatura desbloqueados",
+    "memberFeature1": "Desbloqueie todos os níveis de assinatura",
     "memberFeature2": "Todas as 40 regiões, visualizações ilimitadas",
-    "memberFeature3": "Basta entrar, grátis no beta",
+    "memberFeature3": "Adicionar apps personalizados",
     "loginToUse": "Entre para usar",
-    "currentMember": "Membro atual"
+    "currentMember": "Membro atual",
+    "signedIn": "Conectado"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} regiões / {currency}",
@@ -110,7 +114,9 @@
     "totalCount": "{count} apps indexados",
     "searchResults": "{count} resultados encontrados",
     "noMatch": "Nenhum app para \"{q}\". Cole um link ou ID da App Store para adicionar.",
-    "empty": "Biblioteca vazia. Cole um link ou ID da App Store para adicionar o primeiro."
+    "empty": "Biblioteca vazia. Cole um link ou ID da App Store para adicionar o primeiro.",
+    "metaTitle": "Todos os apps - Comparador de preços da App Store | LowestAppPrice",
+    "metaDescription": "Navegue e compare preços de assinatura da App Store em {count} regiões, do mais barato ao mais caro. Pesquise por nome ou cole um link da App Store."
   },
   "AppsToolbar": {
     "searchPlaceholder": "Pesquisar por nome, ou colar link / ID da App Store",
@@ -155,7 +161,9 @@
     "initialLoadingHint": "O primeiro carregamento busca 40 regiões, leva alguns segundos",
     "refreshingBanner": "Atualizando preços globais…",
     "converting": "Convertendo…",
-    "lockedHintUnsignedB": "Entre como membro para ver todos os níveis"
+    "lockedHintUnsignedB": "Entre como membro para ver todos os níveis",
+    "lockedHintExhaustedB": "Entre para ver todos os níveis",
+    "buyCtaB": "Entre para desbloquear"
   },
   "RelatedApps": {
     "title": "Você também pode gostar",
@@ -165,6 +173,14 @@
     "shareAriaLabel": "Compartilhar",
     "copied": "Copiado",
     "copyLink": "Copiar link"
+  },
+  "ShareBar": {
+    "title": "Útil? Compartilhe!",
+    "subtitle": "Compartilhe o LowestAppPrice com amigos e encontrem juntos a região da App Store mais barata",
+    "shareText": "LowestAppPrice - Compare preços da App Store em todas as regiões e encontre a mais barata",
+    "copyLink": "Copiar link",
+    "copied": "Copiado",
+    "ariaLabel": "Compartilhar nas redes sociais"
   },
   "AppsList": {
     "loadingMore": "Carregando mais...",
@@ -177,7 +193,8 @@
     "freeBadge": "Grátis",
     "defaultName": "Usuário",
     "menuAriaLabel": "Menu da conta",
-    "signOutCta": "Sair"
+    "signOutCta": "Sair",
+    "memberBadgeB": "Membro"
   },
   "LoginDialog": {
     "title": "Entre para ver preços completos",
@@ -191,7 +208,8 @@
     "linkSent": "Link de login enviado para",
     "checkEmail": "Verifique seu e-mail em 15 minutos e clique no botão para entrar.",
     "changeEmail": "Outro e-mail",
-    "ariaLabel": "Login"
+    "ariaLabel": "Login",
+    "descB": "Entre como membro — totalmente grátis"
   },
   "Currencies": {
     "USD": "Dólar americano",
@@ -255,7 +273,8 @@
     "securityTitle": "Segurança dos dados",
     "securityBody": "Tomamos medidas técnicas e organizacionais razoáveis para proteger seus dados, incluindo transmissão criptografada, controles de acesso e auditorias de segurança regulares. No entanto, observe: nenhum método de transmissão pela internet pode ser garantido como 100% seguro.",
     "contactTitle": "Entre em contato",
-    "contactBody": "Para quaisquer perguntas relacionadas à privacidade, entre em contato via GitHub Issues."
+    "contactBody": "Para quaisquer perguntas relacionadas à privacidade, entre em contato via GitHub Issues.",
+    "collectUsageB": "<bold>Registros de uso</bold>: registramos a lista de apps que você pesquisou e suas contagens de visualização, usados para contabilizar o uso e otimizar o serviço."
   },
   "Terms": {
     "metaTitle": "Termos de Uso - {siteName}",
@@ -282,7 +301,10 @@
     "ipTitle": "Propriedade intelectual",
     "ipBody": "'App Store' e marcas registradas relacionadas pertencem à Apple Inc. O Serviço faz referência a esses nomes apenas para fins descritivos e indicativos e não reivindica nenhum direito sobre eles.",
     "changesTitle": "Alterações nestes termos",
-    "changesBody": "Podemos atualizar estes termos de tempos em tempos. Alterações materiais serão publicadas nesta página - o uso continuado do Serviço constitui aceitação dos termos atualizados."
+    "changesBody": "Podemos atualizar estes termos de tempos em tempos. Alterações materiais serão publicadas nesta página - o uso continuado do Serviço constitui aceitação dos termos atualizados.",
+    "accountTitleB": "Conta e associação",
+    "accountBodyB": "O Serviço é totalmente grátis — <link>entre para se tornar membro</link> e ver todos os preços dos níveis de assinatura sem pagamento.",
+    "accountBindingB": "<bold>A associação está vinculada ao método de login.</bold> O Serviço suporta login do Google e login por magic link de e-mail. Métodos diferentes são tratados como contas separadas — a associação fica vinculada ao método usado e não é compartilhada entre contas. Por exemplo, a associação obtida com login do Google não pode ser usada ao entrar por magic link. Lembre-se do seu método de login."
   },
   "Refunds": {
     "metaTitle": "Política de Reembolso - {siteName}",
@@ -304,7 +326,15 @@
     "exceptions1": "Pagamento bem-sucedido, mas a assinatura não foi desbloqueada devido a uma falha do sistema",
     "exceptions2": "O mesmo pedido foi cobrado duas vezes",
     "noticeTitle": "Atenção",
-    "noticeBody": "Esta política de reembolso se aplica apenas ao recurso de desbloqueio pago do Serviço e não está relacionada a compras de aplicativos que você faça na Apple App Store. Para reembolsos da App Store, siga o processo de reembolso oficial da Apple."
+    "noticeBody": "Esta política de reembolso se aplica apenas ao recurso de desbloqueio pago do Serviço e não está relacionada a compras de aplicativos que você faça na Apple App Store. Para reembolsos da App Store, siga o processo de reembolso oficial da Apple.",
+    "metaDescriptionB": "Detalhes de reembolso do {siteName} (totalmente grátis).",
+    "introB": "O {siteName} é <bold>totalmente grátis, sem nenhum recurso pago</bold>. Entre para se tornar membro e usar tudo; você não será cobrado, então nenhum reembolso se aplica.",
+    "paidContentTitleB": "Sobre o pagamento",
+    "paidContentBodyB": "O Serviço não oferece recursos pagos e não integra nenhum processador de pagamentos. Se recursos pagos forem introduzidos no futuro, serão anunciados nesta página.",
+    "rulesTitleB": "Se recursos pagos forem introduzidos no futuro",
+    "rulesBodyB": "Assim que recursos pagos forem introduzidos no futuro, as regras de reembolso aplicáveis serão listadas aqui. No momento, nenhum conteúdo pago se aplica.",
+    "noticeTitleB": "Atenção",
+    "noticeBodyB": "Este aviso se aplica apenas ao Serviço em si e não tem relação com compras de apps que você faça na Apple App Store. Para reembolsos da App Store, siga o processo oficial de reembolso da Apple."
   },
   "Legal": {
     "metaTitle": "Aviso Legal - {siteName}",
@@ -344,5 +374,52 @@
     "copyHint": "Botão não funciona? Copie este link para o navegador:",
     "ignoreHint": "Se você não solicitou isso, pode ignorar este e-mail.",
     "textBody": "Clique no link abaixo para entrar no LowestAppPrice:\n\n{url}\n\nO link é válido por 15 minutos. Se você não solicitou isso, ignore este e-mail."
+  },
+  "About": {
+    "metaTitle": "Sobre nós - {siteName}",
+    "metaDescription": "Conheça o histórico, a intenção, os principais recursos e o uso do {siteName} - uma ferramenta que encontra a região mais barata da App Store para qualquer assinatura.",
+    "backToHome": "Voltar ao início",
+    "title": "Sobre nós",
+    "subtitle": "Ajudamos você a encontrar a única região mais barata da App Store para qualquer assinatura.",
+    "backgroundTitle": "Histórico",
+    "backgroundBody": "O mesmo app costuma ter preços muito diferentes entre regiões da App Store. Câmbios entre dólar, euro e iene mudam todo dia e os preços locais variam, mas quase ninguém compara dezenas de regiões manualmente antes de assinar. O {siteName} existe exatamente para isso: reunir em uma única tabela os preços espalhados por 40 regiões.",
+    "intentTitle": "Por que construímos",
+    "intentBody": "Acreditamos que a assimetria de informação é o custo mais negligenciado na experiência do consumidor. Quando uma assinatura anual custa apenas algumas dezenas na região mais barata mas várias centenas na mais cara, só de conhecer a diferença já há valor. Construímos esta ferramenta para tornar os preços transparentes - para que qualquer um, antes de assinar, veja num relance se sua região é realmente o melhor negócio.",
+    "featuresTitle": "O que oferecemos",
+    "featuresIntro": "Focados em uma coisa só - comparação de preços da App Store entre regiões - levada ao máximo:",
+    "feature1Title": "Comparação em tempo real em 40 regiões",
+    "feature1Body": "Dos EUA, Japão e Turquia à Índia e ao Brasil - uma única consulta busca em paralelo preços de assinaturas e compras em app de 40 regiões, convertidos para a moeda que você escolher.",
+    "feature2Title": "Assinaturas e compras em app",
+    "feature2Body": "Assinaturas mensais / anuais, compras únicas, Compartilhamento Familiar - qualquer nível de compra em app mostrado publicamente na página de detalhe da App Store é quebrado em linhas comparáveis.",
+    "feature3Title": "Ranking claro, do mais barato primeiro",
+    "feature3Body": "Todos os preços são convertidos em câmbio ao vivo para uma única moeda e depois ordenados do mais baixo. O mais barato, o mais caro e sua própria região ficam destacados - a diferença está ali.",
+    "feature4Title": "Funciona sem login",
+    "feature4Body": "Usuários anônimos veem resultados parciais; usuários logados ganham 3 buscas gratuitas por dia; se usar muito, US$ 1,99 uma vez desbloqueia acesso ilimitado vitalício.",
+    "howToUseTitle": "Como usar",
+    "howToUseIntro": "Três passos para encontrar a região mais barata:",
+    "step1Title": "Busque por nome, cole um link ou informe um ID",
+    "step1Body": "No campo da página Todos os Apps, digite um nome de app para buscar (recorre ao diretório da Apple se não estiver na biblioteca local); ou cole um link da App Store / informe um ID numérico e clique «Adicionar à biblioteca».",
+    "step2Title": "Aguarde a busca global",
+    "step2Body": "O primeiro carregamento busca 40 regiões em paralelo, normalmente poucos segundos. Depois atualiza automaticamente a cada 6 horas, mantendo câmbio e preços próximos da realidade.",
+    "step3Title": "Leia o ranking e decida",
+    "step3Body": "A tabela de preços fica ordenada do mais baixo na moeda escolhida, com o mais barato, o mais caro e a sua região destacados e a diferença evidente. Para qual região mudar é sua escolha.",
+    "howToUseNote": "Observação: os dados de preço vêm da App Store pública, convertidos em câmbio ao vivo, apenas como referência. Compras reais estão sujeitas ao que a App Store mostrar no momento e devem cumprir os Termos de Serviço da Apple e as leis locais.",
+    "feature4BodyB": "Usuários anônimos veem resultados parciais; entre como membro para desbloquear todos os apps, regiões e níveis de graça — totalmente grátis."
+  },
+  "PricingDialog": {
+    "ariaLabel": "Melhorar associação",
+    "title": "Desbloqueio vitalício $1.99",
+    "subtitle": "Pague uma vez — todos os apps, todos os níveis, todas as regiões, ilimitado para sempre",
+    "feature1": "Acesso vitalício ilimitado",
+    "feature2": "Todos os níveis de assinatura e regiões para cada app",
+    "feature3": "Sem limite de cota diária",
+    "buyCta": "Comprar $1.99",
+    "later": "Talvez depois"
+  },
+  "AppDetail": {
+    "metaTitle": "{app} - Comparador de preços, região da App Store mais barata | LowestAppPrice",
+    "metaDescription": "Veja os preços de assinatura e compra integrada de {app} em {count} regiões da App Store, convertidos para uma única moeda e do mais barato ao mais caro.",
+    "ogTitle": "{app} - comparação de preços em {count} regiões",
+    "ogDescription": "Preços de assinatura de {count} regiões, do mais barato primeiro - o mais baixo à primeira vista."
   }
 }

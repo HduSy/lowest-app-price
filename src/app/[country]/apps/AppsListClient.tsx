@@ -15,6 +15,10 @@ interface Props {
   query: string;
   sort: AppSortKey;
   country: string;
+  /** 是否有添加 App 权限（透传给 ExternalAppCard） */
+  canAddApp: boolean;
+  /** 是否已登录（透传给 ExternalAppCard） */
+  loggedIn: boolean;
 }
 
 export function AppsListClient({
@@ -25,6 +29,8 @@ export function AppsListClient({
   query,
   sort,
   country,
+  canAddApp,
+  loggedIn,
 }: Props) {
   const [items, setItems] = useState(initialItems);
   const [hasMore, setHasMore] = useState(initialHasMore);
@@ -179,6 +185,8 @@ export function AppsListClient({
                 key={item.appId}
                 item={item}
                 country={country}
+                canAddApp={canAddApp}
+                loggedIn={loggedIn}
               />
             ))}
           </div>

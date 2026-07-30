@@ -20,7 +20,8 @@
     "refunds": "Restitutiebeleid",
     "legal": "Juridische kennisgeving",
     "sitemap": "Sitemap",
-    "metadataDescription": "Plak een App Store-link of App-ID. We halen abonnementsprijzen uit 40 regio's in real-time, rekenen ze om naar één valuta en sorteren ze van goedkoopste eerst."
+    "metadataDescription": "Plak een App Store-link of App-ID. We halen abonnementsprijzen uit 40 regio's in real-time, rekenen ze om naar één valuta en sorteren ze van goedkoopste eerst.",
+    "about": "Over ons"
   },
   "HomePage": {
     "heroTitle1": "Eén app, wissel van regio, ",
@@ -48,7 +49,9 @@
     "feature1": "Prijsvergelijking in {count} App Store-regio's",
     "feature2": "Abonnements- en IAP-prijzen omgerekend tegen wisselkoersen",
     "feature3": "Gesorteerd van goedkoopste eerst - goedkoopste regio in één oogopslag",
-    "feature4": "3 gratis opzoekacties per dag of $1.99 levenslang ontgrendelen"
+    "feature4": "3 gratis opzoekacties per dag of $1.99 levenslang ontgrendelen",
+    "feature4B": "Log in als lid, alles gratis",
+    "metaTitle": "App Store prijzen vergelijken - Goedkoopste regio voor abonnementen | LowestAppPrice"
   },
   "SupportedApps": {
     "title": "{count} apps geïndexeerd",
@@ -77,20 +80,21 @@
     "loginToBuy": "Log in om te kopen",
     "owned": "Gekocht",
     "titleB": "Gratis proberen, inloggen voor volledige toegang",
-    "descB": "Bekijk de 3 goedkoopste niveaus zonder login, of log in om lid te worden en alles te ontgrendelen (gratis tijdens de bèta).",
-    "freeTierB": "Gratis versie",
-    "freePriceB": "Gratis",
+    "descB": "Zie de 3 goedkoopste tiers zonder aanmelding, of meld je aan om lid te worden en alles te ontgrendelen - volledig gratis.",
+    "freeTierB": "FREE",
+    "freePriceB": "Gast",
     "freeNoteB": "Geen login nodig",
-    "freeFeature1B": "De 3 goedkoopste niveaus",
+    "freeFeature1B": "De 3 goedkoopste abonnementsniveaus",
     "freeFeature2B": "Alle Apps doorbladerbaar",
-    "freeFeature3B": "Geen dagelijks limiet",
-    "memberTier": "Lid",
+    "memberTier": "PRO",
+    "memberPriceB": "Lid",
     "memberNote": "Log in om te ontgrendelen",
-    "memberFeature1": "Alle abonnementsniveaus ontgrendeld",
+    "memberFeature1": "Ontgrendel alle abonnementsniveaus",
     "memberFeature2": "Alle 40 regio's, onbeperkt bekijken",
-    "memberFeature3": "Gewoon inloggen, gratis in bèta",
+    "memberFeature3": "Aangepaste apps toevoegen",
     "loginToUse": "Log in om te gebruiken",
-    "currentMember": "Huidig lid"
+    "currentMember": "Huidig lid",
+    "signedIn": "Aangemeld"
   },
   "ClaudeDemo": {
     "tierMeta": "{tierName} · {count} regio's / {currency}",
@@ -110,7 +114,9 @@
     "totalCount": "{count} apps geïndexeerd",
     "searchResults": "{count} resultaten gevonden",
     "noMatch": "Geen apps voor \"{q}\". Plak een App Store-link of ID om toe te voegen.",
-    "empty": "Bibliotheek is leeg. Plak een App Store-link of ID om de eerste toe te voegen."
+    "empty": "Bibliotheek is leeg. Plak een App Store-link of ID om de eerste toe te voegen.",
+    "metaTitle": "Alle apps - App Store prijzen vergelijken | LowestAppPrice",
+    "metaDescription": "Blader door en vergelijk App Store-abonnementsprijzen uit {count} regio's, van goedkoopste eerst. Zoek op naam of plak een App Store-link."
   },
   "AppsToolbar": {
     "searchPlaceholder": "Zoek op naam, of plak App Store-link / ID",
@@ -155,7 +161,9 @@
     "initialLoadingHint": "Eerste keer laden haalt 40 regio's op, duurt enkele seconden",
     "refreshingBanner": "Wereldwijde prijzen vernieuwen…",
     "converting": "Conversie…",
-    "lockedHintUnsignedB": "Log in als lid om alle niveaus te zien"
+    "lockedHintUnsignedB": "Log in als lid om alle niveaus te zien",
+    "lockedHintExhaustedB": "Log in om alle lagen te zien",
+    "buyCtaB": "Log in om te ontgrendelen"
   },
   "RelatedApps": {
     "title": "Misschien vind je dit ook leuk",
@@ -165,6 +173,14 @@
     "shareAriaLabel": "Delen",
     "copied": "Gekopieerd",
     "copyLink": "Link kopiëren"
+  },
+  "ShareBar": {
+    "title": "Handig? Deel het!",
+    "subtitle": "Deel LowestAppPrice met vrienden en vind samen de goedkoopste App Store-regio",
+    "shareText": "LowestAppPrice - Vergelijk App Store-prijzen in alle regio's en vind de goedkoopste",
+    "copyLink": "Link kopiëren",
+    "copied": "Gekopieerd",
+    "ariaLabel": "Delen op sociale media"
   },
   "AppsList": {
     "loadingMore": "Meer laden...",
@@ -177,7 +193,8 @@
     "freeBadge": "Gratis",
     "defaultName": "Gebruiker",
     "menuAriaLabel": "Accountmenu",
-    "signOutCta": "Uitloggen"
+    "signOutCta": "Uitloggen",
+    "memberBadgeB": "Lid"
   },
   "LoginDialog": {
     "title": "Log in voor volledige prijzen",
@@ -191,7 +208,8 @@
     "linkSent": "Link verzonden naar",
     "checkEmail": "Controleer je e-mail binnen 15 minuten en klik op de knop om in te loggen.",
     "changeEmail": "Ander e-mailadres",
-    "ariaLabel": "Inloggen"
+    "ariaLabel": "Inloggen",
+    "descB": "Log in als lid — volledig gratis"
   },
   "Currencies": {
     "USD": "Amerikaanse dollar",
@@ -255,7 +273,8 @@
     "securityTitle": "Gegevensbeveiliging",
     "securityBody": "Wij nemen redelijke technische en organisatorische maatregelen om uw gegevens te beschermen, waaronder versleutelde transmissie, toegangscontrole en regelmatige beveiligingsaudits. Let echter op: geen enkele internettransmissiemethode kan 100% veilig worden gegarandeerd.",
     "contactTitle": "Contact",
-    "contactBody": "Neem voor privacygerelateerde vragen contact met ons op via GitHub Issues."
+    "contactBody": "Neem voor privacygerelateerde vragen contact met ons op via GitHub Issues.",
+    "collectUsageB": "<bold>Gebruikslogboeken</bold>: we leggen de lijst met apps die u heeft opgezocht en uw weergavetellingen vast, voor gebruiksinzicht en serviceoptimalisatie."
   },
   "Terms": {
     "metaTitle": "Gebruiksvoorwaarden - {siteName}",
@@ -282,7 +301,10 @@
     "ipTitle": "Intellectueel eigendom",
     "ipBody": "'App Store' en gerelateerde handelsmerken behoren toe aan Apple Inc. De Dienst verwijst naar deze namen alleen voor beschrijvende, indicatieve doeleinden en claimt geen rechten daarop.",
     "changesTitle": "Wijzigingen in deze voorwaarden",
-    "changesBody": "Wij kunnen deze voorwaarden van tijd tot tijd bijwerken. Belangrijke wijzigingen worden op deze pagina gepubliceerd - voortgezet gebruik van de Dienst geldt als aanvaarding van de bijgewerkte voorwaarden."
+    "changesBody": "Wij kunnen deze voorwaarden van tijd tot tijd bijwerken. Belangrijke wijzigingen worden op deze pagina gepubliceerd - voortgezet gebruik van de Dienst geldt als aanvaarding van de bijgewerkte voorwaarden.",
+    "accountTitleB": "Account en lidmaatschap",
+    "accountBodyB": "De Dienst is volledig gratis — <link>log in om lid te worden</link> en bekijk alle abonnementslaagprijzen gratis, zonder betaling.",
+    "accountBindingB": "<bold>Het lidmaatschap is gekoppeld aan de inlogmethode.</bold> De Dienst ondersteunt Google-inloggen en inloggen via e-mail magic link. Verschillende inlogmethoden worden als afzonderlijke accounts beschouwd — het lidmaatschap is gekoppeld aan de gebruikte inlogmethode en wordt niet tussen accounts gedeeld. Een lidmaatschap via Google kan bijvoorbeeld niet worden gebruikt bij magic-link-inlog. Onthoud uw inlogmethode."
   },
   "Refunds": {
     "metaTitle": "Terugbetalingsbeleid - {siteName}",
@@ -304,7 +326,15 @@
     "exceptions1": "Betaling geslaagd maar lidmaatschap niet ontgrendeld als gevolg van een systeemfout",
     "exceptions2": "Dezelfde bestelling is tweemaal afgeschreven",
     "noticeTitle": "Let op",
-    "noticeBody": "Dit terugbetalingsbeleid is alleen van toepassing op de betaalde ontgrendelingsfunctie van de Dienst en is niet gerelateerd aan app-aankopen die u doet in de Apple App Store. Voor App Store-terugbetalingen volgt u het officiële terugbetalingsproces van Apple."
+    "noticeBody": "Dit terugbetalingsbeleid is alleen van toepassing op de betaalde ontgrendelingsfunctie van de Dienst en is niet gerelateerd aan app-aankopen die u doet in de Apple App Store. Voor App Store-terugbetalingen volgt u het officiële terugbetalingsproces van Apple.",
+    "metaDescriptionB": "Terugbetalingdetails voor {siteName} (volledig gratis).",
+    "introB": "{siteName} is <bold>volledig gratis, zonder betaalde functies</bold>. Log in om lid te worden en alles te gebruiken; er worden geen kosten in rekening gebracht, dus er is geen terugbetaling van toepassing.",
+    "paidContentTitleB": "Over betaling",
+    "paidContentBodyB": "De Dienst biedt geen betaalde functies en koppelt geen betalingsverwerker. Als er in de toekomst betaalde functies worden geïntroduceerd, worden ze op deze pagina aangekondigd.",
+    "rulesTitleB": "Als er later betaalde functies komen",
+    "rulesBodyB": "Zodra er in de toekomst betaalde functies worden geïntroduceerd, worden de toepasselijke terugbetalingsregels hier vermeld. Momenteel is er geen betaalde inhoud van toepassing.",
+    "noticeTitleB": "Let op",
+    "noticeBodyB": "Deze kennisgeving geldt alleen voor de Dienst zelf en heeft geen betrekking op app-aankopen in de Apple App Store. Voor App Store-terugbetalingen volgt u het officiële terugbetalingsproces van Apple."
   },
   "Legal": {
     "metaTitle": "Juridische Kennisgeving - {siteName}",
@@ -344,5 +374,52 @@
     "copyHint": "Knop werkt niet? Kopieer deze link naar je browser:",
     "ignoreHint": "Als je dit niet hebt aangevraagd, kun je deze e-mail negeren.",
     "textBody": "Klik op de link hieronder om in te loggen bij LowestAppPrice:\n\n{url}\n\nDe link is 15 minuten geldig. Als je dit niet hebt aangevraagd, negeer deze e-mail dan."
+  },
+  "About": {
+    "metaTitle": "Over ons - {siteName}",
+    "metaDescription": "Leer de achtergrond, bedoeling, kernfuncties en het gebruik van {siteName} kennen - een tool die de goedkoopste App Store-regio voor elk abonnement vindt.",
+    "backToHome": "Terug naar home",
+    "title": "Over ons",
+    "subtitle": "We helpen je de enkele goedkoopste App Store-regio te vinden voor elk abonnement.",
+    "backgroundTitle": "Achtergrond",
+    "backgroundBody": "Dezelfde app is vaak zeer verschillend geprijsd tussen App Store-regio's. Wisselkoersen tussen dollar, euro en yen veranderen dagelijks en lokale prijzen variëren, maar bijna niemand vergelijkt handmatig tientallen regio's vóór een abonnement. {siteName} bestaat precies hiervoor: prijzen verspreid over 40 regio's samenbrengen in één tabel.",
+    "intentTitle": "Waarom we het bouwden",
+    "intentBody": "We geloven dat een informatieachterstand de meest over het hoofd geziene kostenpost in de consumentenervaring is. Als een jaarabonnement in de goedkoopste regio enkele tientallen kost maar in de duurste enkele honderden, dan is het kennen van het verschil op zich al waardevol. We bouwden deze tool om prijzen transparant te maken - zodat iedereen vóór een abonnement in één oogopslag ziet of de eigen regio echt de beste deal is.",
+    "featuresTitle": "Wat we bieden",
+    "featuresIntro": "Gefocust op één ding - App Store-prijsvergelijking tussen regio's - en dat tot het uiterste:",
+    "feature1Title": "Realtime vergelijken over 40 regio's",
+    "feature1Body": "Van de VS, Japan en Turkije tot India en Brazilië - één query haalt parallel abonnements- en in-app-aankoopprijzen uit 40 App Store-regio's, omgerekend naar de valuta die je kiest.",
+    "feature2Title": "Zowel abonnementen als in-app-aankopen",
+    "feature2Body": "Maandelijkse / jaarlijkse abonnementen, eenmalige aankopen, Delen met gezin - elke in-app-aankoop die openlijk op de App Store-detailpagina staat wordt uitgesplitst in vergelijkbare rijen.",
+    "feature3Title": "Duidelijke rankschikking, goedkoopste eerst",
+    "feature3Body": "Alle prijzen worden tegen live koersen omgezet naar één valuta en vervolgens van laag naar hoog gesorteerd. Goedkoopste, duurste en je eigen regio worden gemarkeerd - het verschil staat er direct.",
+    "feature4Title": "Werkt zonder aanmelden",
+    "feature4Body": "Anonieme gebruikers zien gedeeltelijke resultaten; aangemelde gebruikers krijgen 3 gratis opzoekingen per dag; bij veel gebruik ontsluit $1,99 eenmaal onbeperkte levenslange toegang.",
+    "howToUseTitle": "Hoe te gebruiken",
+    "howToUseIntro": "Drie stappen naar de goedkoopste regio:",
+    "step1Title": "Zoek op naam, plak een link of voer een ID in",
+    "step1Body": "Typ in het invoerveld van de pagina Alle apps een app-naam om te zoeken (valt terug op de Apple-map als deze niet lokaal aanwezig is); of plak een App Store-link of voer een numeriek ID in en klik \"Aan bibliotheek toevoegen\".",
+    "step2Title": "Wacht de globale ophaal af",
+    "step2Body": "De eerste lading haalt 40 regio's parallel op, meestal enkele seconden. Daarna wordt elke 6 uur automatisch ververst, zodat koersen en prijzen dicht bij de werkelijkheid blijven.",
+    "step3Title": "Lees de rankschikking, beslis",
+    "step3Body": "De prijstabel is van laag naar hoog gesorteerd in je gekozen valuta, met de goedkoopste, duurste en je eigen regio gemarkeerd en het verschil overduidelijk. Naar welke regio je overstapt, is jouw keuze.",
+    "howToUseNote": "Let op: prijsgegevens komen uit de openbare App Store, omgerekend tegen live koersen, uitsluitend als referentie. Werkelijke aankopen zijn onderhavig aan wat de App Store op dat moment toont en moeten voldoen aan de servicevoorwaarden van Apple en de lokale wetgeving.",
+    "feature4BodyB": "Anonieme gebruikers zien gedeeltelijke resultaten; log in als lid om elke app, regio en laag gratis te ontgrendelen — volledig gratis."
+  },
+  "PricingDialog": {
+    "ariaLabel": "Lidmaatschap upgraden",
+    "title": "$1.99 levenslang ontgrendelen",
+    "subtitle": "Betaal één keer — alle apps, alle lagen, alle regio's, voor altijd onbeperkt",
+    "feature1": "Onbeperkte levenslange toegang",
+    "feature2": "Alle abonnementslagen en regio's voor elke app",
+    "feature3": "Geen dagelijkse quotumlimiet",
+    "buyCta": "$1.99 kopen",
+    "later": "Misschien later"
+  },
+  "AppDetail": {
+    "metaTitle": "{app} - Prijsvergelijking, goedkoopste App Store-regio | LowestAppPrice",
+    "metaDescription": "Zie abonnements- en in-app-aankoopprijzen van {app} uit {count} App Store-regio's, omgezet naar één valuta en van goedkoopste eerst.",
+    "ogTitle": "{app} - prijsvergelijking over {count} regio's",
+    "ogDescription": "Abonnementsprijzen uit {count} regio's, van goedkoopste eerst - de laagste in één oogopslag."
   }
 }
