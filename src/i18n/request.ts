@@ -14,7 +14,7 @@ export const defaultLocale: Locale = "en";
  * 在 edge runtime / Cloudflare Workers 上跑：只读 headers + import messages，
  * 不用 fs / path，跟 OpenNext 完全兼容。
  */
-async function resolveLocale(): Promise<Locale> {
+export async function resolveLocale(): Promise<Locale> {
   // 1. 用户手动切换的语种（client 端 setLanguage 时写入此 cookie）
   const h = await headers();
   const cookieHeader = h.get("cookie") || "";
@@ -35,10 +35,15 @@ async function resolveLocale(): Promise<Locale> {
   return defaultLocale;
 }
 
+/** 加载指定 locale 的 messages（供 API route 等非组件上下文复用） */
+export async function loadMessages(locale: Locale) {
+  return (await import(`../../messages/${locale}.json`)).default;
+}
+
 export default getRequestConfig(async () => {
   const locale = await resolveLocale();
   return {
     locale,
-    messages: (await import(`../../messages/${locale}.json`)).default,
+    messages: await loadMessages(locale),
   };
 });

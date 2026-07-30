@@ -320,5 +320,13 @@
     "searchEnginesTitle": "検索エンジン",
     "xmlSitemap": "XML Sitemap（検索エンジン用）",
     "robotsTxt": "robots.txt"
+  },
+  "MagicLinkEmail": {
+    "subject": "LowestAppPrice にログイン",
+    "bodyHint": "下のボタンをクリックしてログインしてください。リンクの有効期限は 15 分です。",
+    "buttonText": "ログイン",
+    "copyHint": "ボタンがクリックできない場合は、このリンクをブラウザにコピーしてください：",
+    "ignoreHint": "心当たりがない場合は、このメールを無視してください。操作は不要です。",
+    "textBody": "以下のリンクをクリックして LowestAppPrice にログインしてください：\n\n{url}\n\nリンクの有効期限は 15 分です。心当たりがない場合は、このメールを無視してください。"
   }
 }

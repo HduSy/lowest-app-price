@@ -320,5 +320,13 @@
     "searchEnginesTitle": "Máy tìm kiếm",
     "xmlSitemap": "XML Sitemap (dành cho máy tìm kiếm)",
     "robotsTxt": "robots.txt"
+  },
+  "MagicLinkEmail": {
+    "subject": "Đăng nhập vào LowestAppPrice",
+    "bodyHint": "Nhấp vào nút bên dưới để đăng nhập. Liên kết có hiệu lực trong 15 phút.",
+    "buttonText": "Đăng nhập",
+    "copyHint": "Nút không hoạt động? Sao chép liên kết này vào trình duyệt:",
+    "ignoreHint": "Nếu bạn không yêu cầu, bạn có thể bỏ qua email này.",
+    "textBody": "Nhấp vào liên kết bên dưới để đăng nhập vào LowestAppPrice:\n\n{url}\n\nLiên kết có hiệu lực trong 15 phút. Nếu bạn không yêu cầu, hãy bỏ qua email này."
   }
 }

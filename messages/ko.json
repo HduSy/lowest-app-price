@@ -320,5 +320,13 @@
     "searchEnginesTitle": "검색 엔진",
     "xmlSitemap": "XML Sitemap(검색엔진용)",
     "robotsTxt": "robots.txt"
+  },
+  "MagicLinkEmail": {
+    "subject": "LowestAppPrice 로그인",
+    "bodyHint": "아래 버튼을 클릭하여 로그인하세요. 링크는 15분 동안 유효합니다.",
+    "buttonText": "로그인",
+    "copyHint": "버튼이 작동하지 않나요? 이 링크를 브라우저에 복사하세요:",
+    "ignoreHint": "본인이 요청하지 않은 경우 이 이메일을 무시하셔도 됩니다.",
+    "textBody": "아래 링크를 클릭하여 LowestAppPrice에 로그인하세요:\n\n{url}\n\n링크는 15분 동안 유효합니다. 본인이 요청하지 않은 경우 이 이메일을 무시하세요."
   }
 }

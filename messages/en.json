@@ -320,5 +320,13 @@
     "searchEnginesTitle": "Search engines",
     "xmlSitemap": "XML Sitemap (for search engines)",
     "robotsTxt": "robots.txt"
+  },
+  "MagicLinkEmail": {
+    "subject": "Log in to LowestAppPrice",
+    "bodyHint": "Click the button below to sign in. The link is valid for 15 minutes.",
+    "buttonText": "Sign in",
+    "copyHint": "Button not working? Copy this link into your browser:",
+    "ignoreHint": "If you didn't request this, you can safely ignore this email.",
+    "textBody": "Click the link below to sign in to LowestAppPrice:\n\n{url}\n\nThe link is valid for 15 minutes. If you didn't request this, please ignore this email."
   }
 }

@@ -320,5 +320,13 @@
     "searchEnginesTitle": "Mesin pencari",
     "xmlSitemap": "XML Sitemap (untuk mesin pencari)",
     "robotsTxt": "robots.txt"
+  },
+  "MagicLinkEmail": {
+    "subject": "Masuk ke LowestAppPrice",
+    "bodyHint": "Klik tombol di bawah untuk masuk. Tautan berlaku selama 15 menit.",
+    "buttonText": "Masuk",
+    "copyHint": "Tombol tidak berfungsi? Salin tautan ini ke peramban Anda:",
+    "ignoreHint": "Jika Anda tidak meminta ini, Anda dapat mengabaikan email ini.",
+    "textBody": "Klik tautan di bawah untuk masuk ke LowestAppPrice:\n\n{url}\n\nTautan berlaku selama 15 menit. Jika Anda tidak meminta ini, abaikan email ini."
   }
 }

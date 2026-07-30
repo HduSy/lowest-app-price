@@ -320,5 +320,13 @@
     "searchEnginesTitle": "Motori di ricerca",
     "xmlSitemap": "XML Sitemap (per motori di ricerca)",
     "robotsTxt": "robots.txt"
+  },
+  "MagicLinkEmail": {
+    "subject": "Accedi a LowestAppPrice",
+    "bodyHint": "Clicca sul pulsante qui sotto per accedere. Il link è valido per 15 minuti.",
+    "buttonText": "Accedi",
+    "copyHint": "Il pulsante non funziona? Copia questo link nel browser:",
+    "ignoreHint": "Se non hai richiesto tu l'accesso, puoi ignorare questa email.",
+    "textBody": "Clicca sul link qui sotto per accedere a LowestAppPrice:\n\n{url}\n\nIl link è valido per 15 minuti. Se non hai richiesto tu l'accesso, ignora questa email."
   }
 }

@@ -1,5 +1,5 @@
-// POST /api/auth/magic/request  { email }
-// 生成 magic link token 入库 + 发邮件
+// POST /api/auth/magic/request  { email, locale? }
+// 生成 magic link token 入库 + 发邮件（邮件文案按 locale 翻译）
 // 安全要点：
 //   - 无论邮箱是否存在 / 邮件是否真发出，始终返回 200 OK（防邮箱枚举）
 //   - 60 秒内同邮箱不允许重复请求（限流）
@@ -8,6 +8,12 @@ import { json, error } from "@/lib/api-response";
 import { getDb, createMagicLinkToken, recentMagicLinkForEmail } from "@/lib/db";
 import { generateRawToken, hashToken } from "@/lib/magic-token";
 import { sendMagicLinkEmail } from "@/lib/email";
+import {
+  resolveLocale,
+  loadMessages,
+  locales,
+  type Locale,
+} from "@/i18n/request";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const RATE_LIMIT_SECONDS = 60;
@@ -15,9 +21,14 @@ const TTL_MINUTES = 15;
 
 export async function POST(req: Request) {
   let email = "";
+  let bodyLocale: string | undefined;
   try {
-    const body = (await req.json().catch(() => ({}))) as { email?: string };
+    const body = (await req.json().catch(() => ({}))) as {
+      email?: string;
+      locale?: string;
+    };
     email = (body.email || "").trim().toLowerCase();
+    bodyLocale = body.locale;
   } catch {
     return error("Invalid request", 400);
   }
@@ -49,10 +60,22 @@ export async function POST(req: Request) {
     const origin = new URL(req.url).origin;
     const magicLinkUrl = `${origin}/api/auth/magic/verify?token=${rawToken}`;
 
+    // 解析 locale：前端显式传（最可靠，= 用户当前页面语种）> cookie > x-detected-country > defaultLocale
+    // magic/request 属 /api，middleware 豁免不注入 x-detected-country，
+    // 故没传 locale 且没 cookie 时兜底 en；前端传 locale 保证与页面语种一致
+    let locale: Locale;
+    if (bodyLocale && (locales as readonly string[]).includes(bodyLocale)) {
+      locale = bodyLocale as Locale;
+    } else {
+      locale = await resolveLocale();
+    }
+    const messages = await loadMessages(locale);
+    const t = messages.MagicLinkEmail;
+
     // 异步发邮件（失败不阻塞响应，调用方对外始终 200）
     // 注意：CF Workers 没有 background task 概念，await 等真发完
     // Resend 通常 < 500ms，可接受
-    await sendMagicLinkEmail(email, magicLinkUrl);
+    await sendMagicLinkEmail(email, magicLinkUrl, locale, t);
   } catch (e) {
     console.error("[magic/request] failed:", e);
     // 仍返回 OK，防邮箱枚举 + 不暴露内部错误

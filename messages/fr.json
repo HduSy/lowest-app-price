@@ -320,5 +320,13 @@
     "searchEnginesTitle": "Moteurs de recherche",
     "xmlSitemap": "XML Sitemap (pour les moteurs de recherche)",
     "robotsTxt": "robots.txt"
+  },
+  "MagicLinkEmail": {
+    "subject": "Se connecter à LowestAppPrice",
+    "bodyHint": "Cliquez sur le bouton ci-dessous pour vous connecter. Le lien est valable 15 minutes.",
+    "buttonText": "Se connecter",
+    "copyHint": "Le bouton ne fonctionne pas ? Copiez ce lien dans votre navigateur :",
+    "ignoreHint": "Si vous n'avez pas demandé cette connexion, vous pouvez ignorer cet e-mail.",
+    "textBody": "Cliquez sur le lien ci-dessous pour vous connecter à LowestAppPrice :\n\n{url}\n\nLe lien est valable 15 minutes. Si vous n'êtes pas à l'origine de cette demande, ignorez cet e-mail."
   }
 }

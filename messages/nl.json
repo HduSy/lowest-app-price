@@ -320,5 +320,13 @@
     "searchEnginesTitle": "Zoekmachines",
     "xmlSitemap": "XML Sitemap (voor zoekmachines)",
     "robotsTxt": "robots.txt"
+  },
+  "MagicLinkEmail": {
+    "subject": "Inloggen bij LowestAppPrice",
+    "bodyHint": "Klik op de knop hieronder om in te loggen. De link is 15 minuten geldig.",
+    "buttonText": "Inloggen",
+    "copyHint": "Knop werkt niet? Kopieer deze link naar je browser:",
+    "ignoreHint": "Als je dit niet hebt aangevraagd, kun je deze e-mail negeren.",
+    "textBody": "Klik op de link hieronder om in te loggen bij LowestAppPrice:\n\n{url}\n\nDe link is 15 minuten geldig. Als je dit niet hebt aangevraagd, negeer deze e-mail dan."
   }
 }

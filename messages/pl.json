@@ -320,5 +320,13 @@
     "searchEnginesTitle": "Wyszukiwarki",
     "xmlSitemap": "XML Sitemap (dla wyszukiwarek)",
     "robotsTxt": "robots.txt"
+  },
+  "MagicLinkEmail": {
+    "subject": "Zaloguj się w LowestAppPrice",
+    "bodyHint": "Kliknij przycisk poniżej, aby się zalogować. Link jest ważny przez 15 minut.",
+    "buttonText": "Zaloguj się",
+    "copyHint": "Przycisk nie działa? Skopiuj ten link do przeglądarki:",
+    "ignoreHint": "Jeśli to nie Ty prosiłeś o logowanie, zignoruj ten e-mail.",
+    "textBody": "Kliknij link poniżej, aby zalogować się w LowestAppPrice:\n\n{url}\n\nLink jest ważny przez 15 minut. Jeśli to nie Ty prosiłeś, zignoruj ten e-mail."
   }
 }

@@ -320,5 +320,13 @@
     "searchEnginesTitle": "Motores de búsqueda",
     "xmlSitemap": "XML Sitemap (para motores de búsqueda)",
     "robotsTxt": "robots.txt"
+  },
+  "MagicLinkEmail": {
+    "subject": "Iniciar sesión en LowestAppPrice",
+    "bodyHint": "Haz clic en el botón de abajo para iniciar sesión. El enlace es válido durante 15 minutos.",
+    "buttonText": "Iniciar sesión",
+    "copyHint": "¿El botón no funciona? Copia este enlace en tu navegador:",
+    "ignoreHint": "Si no solicitaste esto, puedes ignorar este correo.",
+    "textBody": "Haz clic en el enlace de abajo para iniciar sesión en LowestAppPrice:\n\n{url}\n\nEl enlace es válido durante 15 minutos. Si no solicitaste esto, ignora este correo."
   }
 }

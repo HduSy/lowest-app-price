@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { signIn } from "next-auth/react";
 import { useTranslations } from "next-intl";
+import { useLanguage } from "@/lib/app-store";
 import { GoogleIcon } from "./BrandIcons";
 
 interface LoginDialogProps {
@@ -115,6 +116,7 @@ export function LoginDialog({ open, onClose }: LoginDialogProps) {
 /** 邮箱 Magic Link 表单：输入邮箱 → POST /api/auth/magic/request → 显示"已发送"提示 */
 function MagicLinkForm() {
   const t = useTranslations("LoginDialog");
+  const language = useLanguage((s) => s.language);
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -130,7 +132,7 @@ function MagicLinkForm() {
       const resp = await fetch("/api/auth/magic/request", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: trimmed }),
+        body: JSON.stringify({ email: trimmed, locale: language }),
       });
       // 后端无论邮箱是否存在都返回 200（防枚举），所以这里无 4xx 分支
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);

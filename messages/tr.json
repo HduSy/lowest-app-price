@@ -320,5 +320,13 @@
     "searchEnginesTitle": "Arama motorları",
     "xmlSitemap": "XML Sitemap (arama motorları için)",
     "robotsTxt": "robots.txt"
+  },
+  "MagicLinkEmail": {
+    "subject": "LowestAppPrice'a giriş yap",
+    "bodyHint": "Giriş yapmak için aşağıdaki düğmeye tıklayın. Bağlantı 15 dakika geçerlidir.",
+    "buttonText": "Giriş yap",
+    "copyHint": "Düğme çalışmıyor mu? Bu bağlantıyı tarayıcınıza kopyalayın:",
+    "ignoreHint": "Talep etmediyseniz bu e-postayı yok sayabilirsiniz.",
+    "textBody": "LowestAppPrice'a giriş yapmak için aşağıdaki bağlantıya tıklayın:\n\n{url}\n\nBağlantı 15 dakika geçerlidir. Talep etmediyseniz bu e-postayı yok sayın."
   }
 }

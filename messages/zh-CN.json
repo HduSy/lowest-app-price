@@ -320,5 +320,13 @@
     "searchEnginesTitle": "搜索引擎",
     "xmlSitemap": "XML Sitemap（搜索引擎用）",
     "robotsTxt": "robots.txt"
+  },
+  "MagicLinkEmail": {
+    "subject": "登录 LowestAppPrice",
+    "bodyHint": "点击下方按钮即可登录，链接 15 分钟内有效。",
+    "buttonText": "点击登录",
+    "copyHint": "按钮无法点击？复制此链接到浏览器：",
+    "ignoreHint": "如非本人操作，请忽略此邮件，无需任何操作。",
+    "textBody": "点击下方链接登录 LowestAppPrice：\n\n{url}\n\n链接 15 分钟内有效。如非本人操作请忽略此邮件。"
   }
 }

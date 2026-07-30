@@ -320,5 +320,13 @@
     "searchEnginesTitle": "Suchmaschinen",
     "xmlSitemap": "XML-Sitemap (für Suchmaschinen)",
     "robotsTxt": "robots.txt"
+  },
+  "MagicLinkEmail": {
+    "subject": "Bei LowestAppPrice anmelden",
+    "bodyHint": "Klicken Sie auf die Schaltfläche unten, um sich anzumelden. Der Link ist 15 Minuten gültig.",
+    "buttonText": "Anmelden",
+    "copyHint": "Schaltfläche funktioniert nicht? Kopieren Sie diesen Link in Ihren Browser:",
+    "ignoreHint": "Wenn Sie dies nicht angefordert haben, können Sie diese E-Mail ignorieren.",
+    "textBody": "Klicken Sie auf den Link unten, um sich bei LowestAppPrice anzumelden:\n\n{url}\n\nDer Link ist 15 Minuten gültig. Wenn Sie dies nicht angefordert haben, ignorieren Sie diese E-Mail bitte."
   }
 }
