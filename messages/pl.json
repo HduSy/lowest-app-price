@@ -163,7 +163,11 @@
     "converting": "Przeliczanie…",
     "lockedHintUnsignedB": "Zaloguj się jako członek, by widzieć wszystkie poziomy",
     "lockedHintExhaustedB": "Zaloguj się, aby zobaczyć wszystkie poziomy",
-    "buyCtaB": "Zaloguj się, aby odblokować"
+    "buyCtaB": "Zaloguj się, aby odblokować",
+    "appPurchaseTier": "Pobranie aplikacji",
+    "shareText": "LowestAppPrice porównanie cen: {name} najniższa {price} ({region})",
+    "prevTier": "Poprzedni",
+    "nextTier": "Następny"
   },
   "RelatedApps": {
     "title": "Może ci się spodobać również",
@@ -186,7 +190,7 @@
     "loadingMore": "Ładowanie...",
     "allLoaded": "Wczytano wszystkie {count} aplikacje",
     "noLocalMatch": "Brak lokalnych wyników, {count} wyników z katalogu Apple można dodać",
-    "addHint": "Kliknij \"Dodaj\", aby pobrać z Apple i uruchomić zbieranie cen w 40 regionach. Wymagany login."
+    "addHint": "Kliknięcie «Dodaj» pobiera informacje o aplikacji z Apple i uruchamia przeszukiwanie cen w 40 regionach. Tylko dla płacących członków."
   },
   "UserMenu": {
     "proBadge": "Pro",
@@ -425,6 +429,7 @@
     "ogTitle": "{app} - porównanie cen w {count} regionach",
     "ogDescription": "Ceny subskrypcji z {count} regionów, od najtańszych - najniższa na pierwszy rzut oka.",
     "faqQ1": "W którym regionie App Store {app} jest najtańszy?",
-    "cheapestAnswer": "Najtańszy region App Store dla {app} to {region} w cenie {price}. Ta strona porównuje ceny subskrypcji i zakupów w aplikacji {app} w {count} regionach App Store, przeliczone na jedną walutę i od najtańszych."
+    "cheapestAnswer": "Najtańszy region App Store dla {app} to {region} w cenie {price}. Ta strona porównuje ceny subskrypcji i zakupów w aplikacji {app} w {count} regionach App Store, przeliczone na jedną walutę i od najtańszych.",
+    "viewOnAppStore": "Zobacz w App Store {country}"
   }
 }

@@ -13,9 +13,9 @@
     "preview": "npm run generate-og && opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy": "npm run generate-og && opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "cf-typegen": "wrangler types --env cloudflare",
-    "db:init": "wrangler d1 execute appstore-price --remote --file=migrations/0001_init.sql",
-    "db:seed": "wrangler d1 execute appstore-price --remote --file=migrations/0002_seed_regions.sql",
-    "db:local": "wrangler d1 execute appstore-price --local --file=migrations/0001_init.sql && wrangler d1 execute appstore-price --local --file=migrations/0002_seed_regions.sql"
+    "db:init": "wrangler d1 execute lowest-app-price --remote --file=migrations/0001_init.sql",
+    "db:seed": "wrangler d1 execute lowest-app-price --remote --file=migrations/0002_seed_regions.sql",
+    "db:local": "wrangler d1 execute lowest-app-price --local --file=migrations/0001_init.sql && wrangler d1 execute lowest-app-price --local --file=migrations/0002_seed_regions.sql"
   },
   "dependencies": {
     "@phosphor-icons/web": "^2.1.1",

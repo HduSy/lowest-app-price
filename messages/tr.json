@@ -163,7 +163,11 @@
     "converting": "Dönüştürülüyor…",
     "lockedHintUnsignedB": "Tüm katmanları görmek için üye olarak giriş yap",
     "lockedHintExhaustedB": "Tüm katmanları görmek için giriş yapın",
-    "buyCtaB": "Açmak için giriş yapın"
+    "buyCtaB": "Açmak için giriş yapın",
+    "appPurchaseTier": "Uygulama indirme",
+    "shareText": "LowestAppPrice fiyat karşılaştırma: {name} en düşük {price} ({region})",
+    "prevTier": "Önceki",
+    "nextTier": "Sonraki"
   },
   "RelatedApps": {
     "title": "Şunlar da hoşunuza gidebilir",
@@ -186,7 +190,7 @@
     "loadingMore": "Daha fazla yükleniyor...",
     "allLoaded": "Tüm {count} uygulama yüklendi",
     "noLocalMatch": "Yerel eşleşme yok, Apple dizininden {count} sonuç eklenebilir",
-    "addHint": "\"Ekle\"ye tıklayarak Apple'dan veri çekin ve 40 bölge fiyat taramasını başlatın. Giriş gerekli."
+    "addHint": "«Ekle»ye tıklamak uygulama bilgilerini Apple'dan çeker ve 40 bölge için fiyat taraması başlatır. Yalnızca ücretli üyeler için."
   },
   "UserMenu": {
     "proBadge": "Pro",
@@ -425,6 +429,7 @@
     "ogTitle": "{app} - {count} bölge fiyat karşılaştırma",
     "ogDescription": "{count} bölgenin abonelik fiyatları, en ucuzdan sıralı - en düşük bir bakışta.",
     "faqQ1": "{app} hangi App Store bölgesinde en ucuz?",
-    "cheapestAnswer": "{app} için en ucuz App Store bölgesi {price} ile {region}. Bu sayfa, {app} abonelik ve uygulama içi satın alma fiyatlarını {count} App Store bölgesinde karşılaştırır, tek para birimine çevirip en ucuzdan sıralar."
+    "cheapestAnswer": "{app} için en ucuz App Store bölgesi {price} ile {region}. Bu sayfa, {app} abonelik ve uygulama içi satın alma fiyatlarını {count} App Store bölgesinde karşılaştırır, tek para birimine çevirip en ucuzdan sıralar.",
+    "viewOnAppStore": "{country} App Store'da görüntüle"
   }
 }

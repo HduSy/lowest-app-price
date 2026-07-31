@@ -163,7 +163,11 @@
     "converting": "Conversione…",
     "lockedHintUnsignedB": "Accedi come membro per vedere tutti i livelli",
     "lockedHintExhaustedB": "Accedi per vedere tutti i livelli",
-    "buyCtaB": "Accedi per sbloccare"
+    "buyCtaB": "Accedi per sbloccare",
+    "appPurchaseTier": "Download app",
+    "shareText": "LowestAppPrice confronto prezzi: {name} più basso {price} ({region})",
+    "prevTier": "Precedente",
+    "nextTier": "Successivo"
   },
   "RelatedApps": {
     "title": "Potrebbero interessarti",
@@ -186,7 +190,7 @@
     "loadingMore": "Caricamento...",
     "allLoaded": "Tutte le {count} app caricate",
     "noLocalMatch": "Nessuna corrispondenza locale, {count} risultati dalla directory Apple aggiungibili",
-    "addHint": "Clicca \"Aggiungi\" per recuperare da Apple e avviare la raccolta prezzi in 40 regioni. Accesso richiesto."
+    "addHint": "Cliccando «Aggiungi» si ottengono le informazioni dell'app da Apple e si avvia una scansione dei prezzi di 40 regioni. Solo per membri paganti."
   },
   "UserMenu": {
     "proBadge": "Pro",
@@ -425,6 +429,7 @@
     "ogTitle": "{app} - comparatore prezzi in {count} regioni",
     "ogDescription": "Prezzi degli abbonamenti di {count} regioni, dal più economico - il più basso a colpo d'occhio.",
     "faqQ1": "In quale regione dell'App Store {app} è più economico?",
-    "cheapestAnswer": "La regione App Store più economica per {app} è {region} a {price}. Questa pagina confronta i prezzi degli abbonamenti e acquisti in-app di {app} in {count} regioni App Store, convertiti in una sola valuta e dal più economico."
+    "cheapestAnswer": "La regione App Store più economica per {app} è {region} a {price}. Questa pagina confronta i prezzi degli abbonamenti e acquisti in-app di {app} in {count} regioni App Store, convertiti in una sola valuta e dal più economico.",
+    "viewOnAppStore": "Vedi sull'App Store {country}"
   }
 }

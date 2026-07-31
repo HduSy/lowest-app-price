@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import type { App, PriceRow } from "@/lib/types";
 import type { AppViewAuth } from "@/lib/entitlement";
 import { PriceTable } from "./PriceTable";
@@ -37,6 +38,7 @@ export function AppDetailClient({
   needsRefresh?: boolean;
   isAdmin?: boolean;
 }) {
+  const t = useTranslations("AppDetail");
   const [app, setApp] = useState<App>(initialApp);
   // "上次更新"本地时间字符串：SSR 阶段已转换，客户端刷新后用同一时区重新格式化
   const [lastFetchedAtLocal, setLastFetchedAtLocal] = useState<string | null>(
@@ -51,8 +53,8 @@ export function AppDetailClient({
           href={`https://apps.apple.com/${detectedCountry}/app/id${appId}`}
           target="_blank"
           rel="noopener noreferrer"
-          title={`在 ${detectedCountry.toUpperCase()} App Store 中查看`}
-          aria-label={`在 ${detectedCountry.toUpperCase()} App Store 中查看`}
+          title={t("viewOnAppStore", { country: detectedCountry.toUpperCase() })}
+          aria-label={t("viewOnAppStore", { country: detectedCountry.toUpperCase() })}
           className="group/icon relative block h-28 w-28 shrink-0 overflow-hidden rounded-[var(--radius-lg)] transition-opacity hover:opacity-90"
         >
           {app.icon_url ? (

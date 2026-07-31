@@ -163,7 +163,11 @@
     "converting": "Conversie…",
     "lockedHintUnsignedB": "Log in als lid om alle niveaus te zien",
     "lockedHintExhaustedB": "Log in om alle lagen te zien",
-    "buyCtaB": "Log in om te ontgrendelen"
+    "buyCtaB": "Log in om te ontgrendelen",
+    "appPurchaseTier": "App downloaden",
+    "shareText": "LowestAppPrice prijzen vergelijken: {name} laagste {price} ({region})",
+    "prevTier": "Vorige",
+    "nextTier": "Volgende"
   },
   "RelatedApps": {
     "title": "Misschien vind je dit ook leuk",
@@ -186,7 +190,7 @@
     "loadingMore": "Meer laden...",
     "allLoaded": "Alle {count} apps geladen",
     "noLocalMatch": "Geen lokale match, {count} resultaten van Apple-directory kunnen worden toegevoegd",
-    "addHint": "Klik op \"Toevoegen\" om van Apple te fetchen en 40-regio prijscrawling te starten. Login vereist."
+    "addHint": "Klik op «Toevoegen» om app-info van Apple op te halen en een prijscrawl van 40 regio's te starten. Alleen voor betalende leden."
   },
   "UserMenu": {
     "proBadge": "Pro",
@@ -425,6 +429,7 @@
     "ogTitle": "{app} - prijsvergelijking over {count} regio's",
     "ogDescription": "Abonnementsprijzen uit {count} regio's, van goedkoopste eerst - de laagste in één oogopslag.",
     "faqQ1": "In welke App Store-regio is {app} het goedkoopst?",
-    "cheapestAnswer": "De goedkoopste App Store-regio voor {app} is {region} bij {price}. Deze pagina vergelijkt abonnements- en in-app-aankoopprijzen van {app} uit {count} App Store-regio's, omgezet naar één valuta en van goedkoopste eerst."
+    "cheapestAnswer": "De goedkoopste App Store-regio voor {app} is {region} bij {price}. Deze pagina vergelijkt abonnements- en in-app-aankoopprijzen van {app} uit {count} App Store-regio's, omgezet naar één valuta en van goedkoopste eerst.",
+    "viewOnAppStore": "Bekijk op {country} App Store"
   }
 }

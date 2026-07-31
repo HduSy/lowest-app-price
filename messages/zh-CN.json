@@ -164,7 +164,11 @@
     "converting": "换算中…",
     "lockedHintUnsignedB": "登录成为会员，查看全部档位",
     "lockedHintExhaustedB": "登录后即可查看全部档位",
-    "buyCtaB": "登录解锁"
+    "buyCtaB": "登录解锁",
+    "appPurchaseTier": "App 下载",
+    "shareText": "LowestAppPrice 全区比价：{name} 最低 {price}（{region}）",
+    "prevTier": "上一个",
+    "nextTier": "下一个"
   },
   "RelatedApps": {
     "title": "你可能也喜欢",
@@ -187,7 +191,7 @@
     "loadingMore": "正在加载更多…",
     "allLoaded": "已加载全部 {count} 个 App",
     "noLocalMatch": "本地库暂无匹配，Apple 目录有 {count} 个结果可添加",
-    "addHint": "点击「添加」会从 Apple 拉取该 App 信息并触发 40 区价格抓取，需要登录。",
+    "addHint": "点击「添加」会从 Apple 拉取该 App 信息并触发 40 区价格抓取，需要付费会员。",
     "addHintB": "点击「添加」会从 Apple 拉取该 App 信息并触发 40 区价格抓取，需要会员（登录即会员）。"
   },
   "UserMenu": {
@@ -433,6 +437,7 @@
     "ogTitle": "{app} 全区比价",
     "ogDescription": "{count} 个地区的订阅价格从低到高排开，哪个区最便宜一目了然。",
     "faqQ1": "{app} 在哪个 App Store 区最便宜？",
-    "cheapestAnswer": "{app} 最便宜的 App Store 区是 {region}，价格 {price}。本页对比 {app} 在 {count} 个 App Store 地区的订阅与内购价格，按统一币种换算从低到高排名。"
+    "cheapestAnswer": "{app} 最便宜的 App Store 区是 {region}，价格 {price}。本页对比 {app} 在 {count} 个 App Store 地区的订阅与内购价格，按统一币种换算从低到高排名。",
+    "viewOnAppStore": "在 {country} App Store 中查看"
   }
 }

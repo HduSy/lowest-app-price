@@ -163,7 +163,11 @@
     "converting": "جارٍ التحويل…",
     "lockedHintUnsignedB": "سجّل الدخول كعضو لرؤية كل المستويات",
     "lockedHintExhaustedB": "سجّل الدخول لعرض جميع الفئات",
-    "buyCtaB": "سجّل الدخول للفتح"
+    "buyCtaB": "سجّل الدخول للفتح",
+    "appPurchaseTier": "تنزيل التطبيق",
+    "shareText": "LowestAppPrice مقارنة الأسعار: {name} الأرخص {price} ({region})",
+    "prevTier": "السابق",
+    "nextTier": "التالي"
   },
   "RelatedApps": {
     "title": "قد يعجبك أيضًا",
@@ -186,7 +190,7 @@
     "loadingMore": "جارٍ التحميل...",
     "allLoaded": "تم تحميل {count} تطبيق",
     "noLocalMatch": "لا نتائج محلية، {count} نتيجة من دليل Apple يمكن إضافتها",
-    "addHint": "انقر \"إضافة\" لجلب البيانات من Apple وبدء تجميع الأسعار في 40 منطقة. تسجيل الدخول مطلوب."
+    "addHint": "بالضغط على «إضافة» يتم جلب معلومات التطبيق من Apple وجلب أسعار 40 منطقة. للأعضاء المدفوعين فقط."
   },
   "UserMenu": {
     "proBadge": "Pro",
@@ -425,6 +429,7 @@
     "ogTitle": "{app} - مقارنة الأسعار في {count} منطقة",
     "ogDescription": "أسعار الاشتراك من {count} منطقة، من الأرخص أولاً - الأقل بنظرة واحدة.",
     "faqQ1": "في أي منطقة من App Store يكون {app} أرخص؟",
-    "cheapestAnswer": "أرخص منطقة في App Store لـ {app} هي {region} بسعر {price}. تقارن هذه الصفحة أسعار اشتراكات ومشتريات داخل التطبيق لـ {app} في {count} منطقة من App Store، محوّلة إلى عملة واحدة ومن الأرخص."
+    "cheapestAnswer": "أرخص منطقة في App Store لـ {app} هي {region} بسعر {price}. تقارن هذه الصفحة أسعار اشتراكات ومشتريات داخل التطبيق لـ {app} في {count} منطقة من App Store، محوّلة إلى عملة واحدة ومن الأرخص.",
+    "viewOnAppStore": "عرض على متجر تطبيقات {country}"
   }
 }

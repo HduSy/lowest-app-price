@@ -105,6 +105,7 @@ export async function RelatedApps({
   if (items.length === 0) return null;
 
   const t = await getTranslations("RelatedApps");
+  const tExt = await getTranslations("ExternalAppCard");
 
   return (
     <section className="mt-10">
@@ -123,6 +124,7 @@ export async function RelatedApps({
               category={null}
               country={country}
               index={i}
+              developerUnknown={tExt("developerUnknown")}
             />
           ) : (
             <ExternalAppCard
@@ -172,6 +174,7 @@ function RelatedAppCard({
   category,
   country,
   index,
+  developerUnknown,
 }: {
   appId: string;
   name: string;
@@ -180,6 +183,7 @@ function RelatedAppCard({
   category: string | null;
   country: string;
   index: number;
+  developerUnknown: string;
 }) {
   return (
     <Link
@@ -203,7 +207,7 @@ function RelatedAppCard({
       <div className="min-w-0 flex-1">
         <div className="truncate text-[15px] font-semibold">{name}</div>
         <div className="truncate text-xs text-[var(--color-ink-48)]">
-          {developer || "未知开发者"}
+          {developer || developerUnknown}
           {category ? ` · ${category}` : ""}
         </div>
       </div>

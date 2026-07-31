@@ -1,12 +1,12 @@
-// GET /api/admin/import-from-sitemap?limit=50&offset=0
-// 从 appstoreprice.org/sitemap.xml 批量导入 App
+// GET /api/admin/import-from-sitemap?sitemap=<URL>&limit=50&offset=0
+// 从管理员指定的 sitemap.xml 批量导入 App。
+// 数据源 URL 由调用方通过 `sitemap` 参数传入（不硬编码，避免绑定/暴露特定站点）。
 // 鉴权：必须 admin；QPS 控制：批量 Lookup 10 个/批，批间 sleep 300ms
 import { auth } from "@/lib/auth";
 import { getDb, getApp, insertApp } from "@/lib/db";
 import { fetchAppsMeta, type AppMeta } from "@/lib/itunes";
 import { json, error } from "@/lib/api-response";
 
-const SITEMAP_URL = "https://appstoreprice.org/sitemap.xml";
 const BATCH_SIZE = 10;
 const BATCH_SLEEP_MS = 300; // 批间间隔，控制 QPS ≈ 10-15
 
@@ -25,24 +25,37 @@ export async function GET(req: Request) {
   }
 
   const url = new URL(req.url);
+  const sitemapUrl = url.searchParams.get("sitemap");
+  if (!sitemapUrl) {
+    return error("Missing 'sitemap' query param", 400);
+  }
+  // 校验：仅允许 https，避免明文传输与协议注入
+  try {
+    const parsed = new URL(sitemapUrl);
+    if (parsed.protocol !== "https:") {
+      return error("sitemap URL must use https", 400);
+    }
+  } catch {
+    return error("Invalid sitemap URL", 400);
+  }
+
   const limit = Math.min(Number(url.searchParams.get("limit") || 50), 200);
   const offset = Number(url.searchParams.get("offset") || 0);
 
-  // 1. 拉 sitemap.xml
+  // 1. 拉 sitemap.xml（不设暴露身份的自定义 UA，用默认）
   let xml: string;
   try {
-    const resp = await fetch(SITEMAP_URL, {
-      headers: { "User-Agent": "AppStorePrice-Bot/1.0" },
-    });
+    const resp = await fetch(sitemapUrl);
     if (!resp.ok) return error(`Failed to fetch sitemap: HTTP ${resp.status}`, 502);
     xml = await resp.text();
   } catch (e) {
     return error(`Failed to fetch sitemap: ${e instanceof Error ? e.message : String(e)}`, 502);
   }
 
-  // 2. 提取 appId（/en/apps/{appId}，去重）
+  // 2. 提取 appId：兼容多种 App 路径格式
+  //    匹配 /apps/{id}、/app/{id}、/app/id{id}、/{locale}/apps/{id} 等，不绑定特定站点
   const allIds = [...new Set(
-    [...xml.matchAll(/\/en\/apps\/(\d+)/g)].map((m) => m[1])
+    [...xml.matchAll(/\/app(?:s?\/|\/id)(\d+)/gi)].map((m) => m[1])
   )];
   if (allIds.length === 0) {
     return error("No app IDs found in sitemap", 404);

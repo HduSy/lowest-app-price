@@ -163,7 +163,11 @@
     "converting": "Đang quy đổi…",
     "lockedHintUnsignedB": "Đăng nhập thành viên để xem tất cả mức",
     "lockedHintExhaustedB": "Đăng nhập để xem tất cả các mức",
-    "buyCtaB": "Đăng nhập để mở khóa"
+    "buyCtaB": "Đăng nhập để mở khóa",
+    "appPurchaseTier": "Tải ứng dụng",
+    "shareText": "LowestAppPrice so sánh giá: {name} rẻ nhất {price} ({region})",
+    "prevTier": "Trước",
+    "nextTier": "Tiếp"
   },
   "RelatedApps": {
     "title": "Bạn có thể cũng thích",
@@ -186,7 +190,7 @@
     "loadingMore": "Đang tải thêm...",
     "allLoaded": "Đã tải tất cả {count} ứng dụng",
     "noLocalMatch": "Không có kết quả nội bộ, {count} kết quả từ danh bạ Apple có thể thêm",
-    "addHint": "Nhấp \"Thêm\" để lấy từ Apple và bắt đầu thu thập giá 40 khu vực. Cần đăng nhập."
+    "addHint": "Nhấn «Thêm» để lấy thông tin ứng dụng từ Apple và kích hoạt thu thập giá 40 khu vực. Chỉ dành cho thành viên trả phí."
   },
   "UserMenu": {
     "proBadge": "Pro",
@@ -425,6 +429,7 @@
     "ogTitle": "{app} - so sánh giá tại {count} khu vực",
     "ogDescription": "Giá đăng ký từ {count} khu vực, từ rẻ nhất - giá thấp nhất nhìn thấy ngay.",
     "faqQ1": "{app} rẻ nhất ở khu vực App Store nào?",
-    "cheapestAnswer": "Khu vực App Store rẻ nhất cho {app} là {region} với giá {price}. Trang này so sánh giá đăng ký và mua hàng trong ứng dụng của {app} tại {count} khu vực App Store, quy đổi sang một loại tiền và từ rẻ nhất."
+    "cheapestAnswer": "Khu vực App Store rẻ nhất cho {app} là {region} với giá {price}. Trang này so sánh giá đăng ký và mua hàng trong ứng dụng của {app} tại {count} khu vực App Store, quy đổi sang một loại tiền và từ rẻ nhất.",
+    "viewOnAppStore": "Xem trên App Store {country}"
   }
 }

@@ -3,6 +3,7 @@
 
 import type { IapEntry, Region, RegionFetchResult, SubscriptionPeriod } from "./types";
 import { parsePrice, resolveCurrency } from "./currencies";
+import { APP_PURCHASE_KEY, isAppPurchaseName } from "./iap-constants";
 
 const UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15";
@@ -431,7 +432,8 @@ export function isSubscriptionIap(
   period: SubscriptionPeriod
 ): boolean {
   // 付费下载 App 的合成买断价档位，始终保留用于跨区比价
-  if (iapName === "App 下载") return true;
+  // isAppPurchaseName 兼容 DB 历史值 "App 下载"（旧 crawler 中文硬编码），无需迁移
+  if (isAppPurchaseName(iapName)) return true;
   if (period === "one_time") return false;
   if (/^@[\w.]+\s+subscription\b/i.test(iapName)) return false;
   return true;
@@ -477,7 +479,7 @@ export async function crawlAllRegions(
       // 付费下载 App：买断价格作为一个档位加入 iaps（免费 App paidPrice=null 跳过）
       if (parsed.paidPrice) {
         parsed.iaps.unshift({
-          name: "App 下载",
+          name: APP_PURCHASE_KEY,
           priceRaw: parsed.paidPrice.formattedPrice,
           amount: parsed.paidPrice.price,
           currency: parsed.paidPrice.currency,

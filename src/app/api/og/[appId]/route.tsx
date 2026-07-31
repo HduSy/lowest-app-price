@@ -2,10 +2,11 @@ import { ImageResponse } from "next/og";
 import { getDb, getApp, getPrices } from "@/lib/db";
 import { aggregatePrices, filterSubscriptionIaps } from "@/lib/compare";
 import { REGION_MAP } from "@/lib/regions";
+import { isAppPurchaseName } from "@/lib/iap-constants";
 
 export const runtime = "nodejs";
 
-export const alt = "LowestAppPrice 全区比价";
+export const alt = "LowestAppPrice - App Store Compare";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -130,7 +131,7 @@ export async function GET(
               border: "1px solid #e0e0e0",
             }}
           >
-            {targetIap.name}
+            {isAppPurchaseName(targetIap.name) ? "App Download" : targetIap.name}
           </div>
           {spread != null && (
             <div
@@ -140,7 +141,7 @@ export async function GET(
                 color: "#0071e3",
               }}
             >
-              最高比最低贵 {spread}%
+              {spread}% price spread
             </div>
           )}
         </div>
@@ -254,7 +255,7 @@ export async function GET(
             {entries.length} regions · {currency}
           </div>
           <div style={{ fontSize: 18, fontWeight: 700, color: "#0071e3" }}>
-            LowestAppPrice 全区比价
+            LowestAppPrice - App Store Compare
           </div>
         </div>
       </div>

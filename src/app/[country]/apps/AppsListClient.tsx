@@ -6,6 +6,7 @@ import type { App, ExternalSearchItem } from "@/lib/types";
 import type { AppSortKey } from "@/lib/db";
 import { AppCard } from "@/components/AppCard";
 import { ExternalAppCard } from "@/components/ExternalAppCard";
+import { usePricingVariant } from "@/lib/app-store";
 
 interface Props {
   initialItems: App[];
@@ -36,6 +37,7 @@ export function AppsListClient({
   const [hasMore, setHasMore] = useState(initialHasMore);
   const [loading, setLoading] = useState(false);
   const t = useTranslations("AppsList");
+  const variant = usePricingVariant();
   const [error, setError] = useState<string | null>(null);
   // 外部搜索结果：仅在本地库 0 结果时展示。SSR 已做过滤，这里直接当受控状态
   const [external, setExternal] = useState(initialExternal);
@@ -191,7 +193,7 @@ export function AppsListClient({
             ))}
           </div>
           <p className="mt-4 text-xs text-[var(--color-ink-48)]">
-            {t("addHint")}
+            {variant === "B" ? t("addHintB") : t("addHint")}
           </p>
         </div>
       )}

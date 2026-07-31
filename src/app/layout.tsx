@@ -29,11 +29,24 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       siteName: title,
+      // 静态 /og.png（由 scripts/generate-og.mjs 在 prebuild 阶段生成）：
+      // 带扩展名、无查询串、无 RSC vary headers，规避 X/Twitter 爬虫对动态
+      // /opengraph-image route（extensionless + ?hash）的静默降级。
+      images: [
+        {
+          url: "/og.png",
+          width: 1200,
+          height: 630,
+          alt: title,
+          type: "image/png",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: ["/og.png"],
     },
   };
 }

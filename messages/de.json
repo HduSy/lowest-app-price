@@ -163,7 +163,11 @@
     "converting": "Umrechnen…",
     "lockedHintUnsignedB": "Als Mitglied anmelden, um alle Tarife zu sehen",
     "lockedHintExhaustedB": "Anmelden, um alle Stufen zu sehen",
-    "buyCtaB": "Anmelden zum Freischalten"
+    "buyCtaB": "Anmelden zum Freischalten",
+    "appPurchaseTier": "App-Download",
+    "shareText": "LowestAppPrice Preisvergleich: {name} günstigste {price} ({region})",
+    "prevTier": "Vorherige",
+    "nextTier": "Nächste"
   },
   "RelatedApps": {
     "title": "Das könnte dir auch gefallen",
@@ -186,7 +190,7 @@
     "loadingMore": "Mehr laden...",
     "allLoaded": "Alle {count} Apps geladen",
     "noLocalMatch": "Kein lokaler Treffer, {count} Ergebnisse aus dem Apple-Verzeichnis können hinzugefügt werden",
-    "addHint": "Klicke auf \"Hinzufügen\", um Daten von Apple abzurufen und 40-Regionen-Preis-Crawling auszulösen. Anmeldung erforderlich."
+    "addHint": "Auf „Hinzufügen“ klicken ruft App-Infos von Apple ab und startet einen 40-Regionen-Preiscrawl. Nur für zahlende Mitglieder."
   },
   "UserMenu": {
     "proBadge": "Pro",
@@ -425,6 +429,7 @@
     "ogTitle": "{app} Preisvergleich über {count} Regionen",
     "ogDescription": "Abo-Preise aus {count} Regionen, ab dem günstigsten sortiert - der niedrigste Preis auf einen Blick.",
     "faqQ1": "In welcher App Store-Region ist {app} am günstigsten?",
-    "cheapestAnswer": "Die günstigste App Store-Region für {app} ist {region} bei {price}. Diese Seite vergleicht Abo- und In-App-Kauf-Preise von {app} aus {count} App Store-Regionen, umgerechnet in eine Währung und ab dem günstigsten sortiert."
+    "cheapestAnswer": "Die günstigste App Store-Region für {app} ist {region} bei {price}. Diese Seite vergleicht Abo- und In-App-Kauf-Preise von {app} aus {count} App Store-Regionen, umgerechnet in eine Währung und ab dem günstigsten sortiert.",
+    "viewOnAppStore": "Im {country} App Store ansehen"
   }
 }

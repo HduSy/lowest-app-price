@@ -24,12 +24,12 @@ npm run lint          # ESLint 9 flat config. NOTE: build ignores lint+type erro
 npm run cf-typegen    # Regenerate Cloudflare binding types from wrangler.toml
 tsc --noEmit          # Type-check independently (build skips this)
 
-# Database (D1 binding name: DB, database name: appstore-price)
+# Database (D1 binding name: DB, database name: lowest-app-price)
 npm run db:init       # Apply base schema remotely
 npm run db:seed       # Seed regions remotely
 npm run db:local      # Init + seed the local shadow DB
 # Apply a specific migration locally:
-wrangler d1 execute appstore-price --local --file=migrations/00NN_xxx.sql
+wrangler d1 execute lowest-app-price --local --file=migrations/00NN_xxx.sql
 ```
 
 There is **no test framework** configured (no jest/vitest, no `*.test.*` files). The `debug/norton360` route is the only manual test hook.
@@ -116,7 +116,7 @@ All routes are Next.js Route Handlers under `/api/*`:
 - `GET /api/entitlement`, `POST /api/views/record`.
 - `POST /api/paddle/checkout`, `POST /api/paddle/webhook` (records `paid` purchase).
 - `GET /api/og/[appId]` - dynamic OG image.
-- `/api/admin/*` - require `ADMIN_TOKEN` env: `backfill-period`, `cleanup-no-developer`, `cleanup-unavailable`, `import-from-sitemap`.
+- `/api/admin/*` - require `ADMIN_TOKEN` env: `backfill-period`, `cleanup-no-developer`, `cleanup-unavailable`, `import-from-sitemap` (需传 `sitemap` 参数指定数据源 URL，不硬编码).
 - `/api/auth/[...nextauth]` - Auth.js handlers.
 - `POST /api/auth/magic/request` (body: `{email}`) + `GET /api/auth/magic/verify?token=...` - magic link send + verify. Both respond 200 even on failure to avoid leaking which emails exist.
 

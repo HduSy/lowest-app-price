@@ -163,7 +163,11 @@
     "converting": "換算中…",
     "lockedHintUnsignedB": "会員としてログインして全ティアを表示",
     "lockedHintExhaustedB": "すべてのプランを見るにはログイン",
-    "buyCtaB": "ログインしてアンロック"
+    "buyCtaB": "ログインしてアンロック",
+    "appPurchaseTier": "アプリダウンロード",
+    "shareText": "LowestAppPrice 価格比較: {name} 最安 {price} ({region})",
+    "prevTier": "前へ",
+    "nextTier": "次へ"
   },
   "RelatedApps": {
     "title": "こちらもおすすめ",
@@ -186,7 +190,7 @@
     "loadingMore": "さらに読み込み中...",
     "allLoaded": "全 {count} アプリを読み込みました",
     "noLocalMatch": "ローカルに一致なし、Apple ディレクトリに {count} 件追加可能",
-    "addHint": "「追加」をクリックすると Apple から情報を取得し、40 地域の価格取得を開始します。ログインが必要です。"
+    "addHint": "「追加」をクリックすると Apple からアプリ情報を取得し、40 地域の価格クロールを開始します。有料会員限定。"
   },
   "UserMenu": {
     "proBadge": "Pro",
@@ -425,6 +429,7 @@
     "ogTitle": "{app} の {count} 地域価格比較",
     "ogDescription": "{count} 地域のサブスク価格を最安値順に表示 - 一目でわかります。",
     "faqQ1": "{app} はどの App Store 地域が最安ですか？",
-    "cheapestAnswer": "{app} の最安の App Store 地域は {region}（{price}）です。本ページでは {app} のサブスク・アプリ内課金の価格を {count} 地域で比較し、単一通貨に換算して最安値順に並べています。"
+    "cheapestAnswer": "{app} の最安の App Store 地域は {region}（{price}）です。本ページでは {app} のサブスク・アプリ内課金の価格を {count} 地域で比較し、単一通貨に換算して最安値順に並べています。",
+    "viewOnAppStore": "{country}の App Store で表示"
   }
 }

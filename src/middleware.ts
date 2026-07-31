@@ -17,6 +17,9 @@ const EXEMPT_PREFIXES = [
   "/apple-icon",
   "/opengraph-image",
   "/twitter-image",
+  // 静态 OG image（public/og.png，由 scripts/generate-og.mjs 预渲染）：
+  // 爬虫直接请求 /og.png，必须放行，否则被 301 重定向到 /<country>/og.png → 404
+  "/og.png",
   // AI SEO 机器可读文件 + 爬虫协议
   "/robots",
   "/sitemap",

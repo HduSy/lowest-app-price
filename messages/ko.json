@@ -163,7 +163,11 @@
     "converting": "환산 중…",
     "lockedHintUnsignedB": "회원으로 로그인하여 모든 등급 보기",
     "lockedHintExhaustedB": "모든 플랜을 보려면 로그인",
-    "buyCtaB": "로그인하여 잠금 해제"
+    "buyCtaB": "로그인하여 잠금 해제",
+    "appPurchaseTier": "앱 다운로드",
+    "shareText": "LowestAppPrice 가격 비교: {name} 최저 {price} ({region})",
+    "prevTier": "이전",
+    "nextTier": "다음"
   },
   "RelatedApps": {
     "title": "이것도 좋아할 수 있어요",
@@ -186,7 +190,7 @@
     "loadingMore": "더 불러오는 중...",
     "allLoaded": "모든 {count}개 앱 로드됨",
     "noLocalMatch": "로컬 일치 없음, Apple 디렉토리에서 {count}개 결과 추가 가능",
-    "addHint": "\"추가\"를 클릭하면 Apple에서 정보를 가져오고 40개 지역 가격 크롤링이 시작됩니다. 로그인 필요."
+    "addHint": "「추가」를 클릭하면 Apple에서 앱 정보를 가져와 40개 지역 가격 크롤링을 시작합니다. 유료 멤버 전용."
   },
   "UserMenu": {
     "proBadge": "Pro",
@@ -425,6 +429,7 @@
     "ogTitle": "{app} {count}개 지역 가격 비교",
     "ogDescription": "{count}개 지역의 구독 가격을 저렴한 순으로 - 최저가가 한눈에.",
     "faqQ1": "{app}은(는) 어떤 App Store 지역이 가장 저렴한가요?",
-    "cheapestAnswer": "{app}의 가장 저렴한 App Store 지역은 {region}으로 {price}입니다. 이 페이지는 {app}의 구독 및 인앱 결제 가격을 {count}개 지역에서 비교해 단일 통화로 변환하고 저렴한 순으로 정렬합니다."
+    "cheapestAnswer": "{app}의 가장 저렴한 App Store 지역은 {region}으로 {price}입니다. 이 페이지는 {app}의 구독 및 인앱 결제 가격을 {count}개 지역에서 비교해 단일 통화로 변환하고 저렴한 순으로 정렬합니다.",
+    "viewOnAppStore": "{country} App Store에서 보기"
   }
 }

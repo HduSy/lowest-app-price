@@ -163,7 +163,11 @@
     "converting": "Mengonversi…",
     "lockedHintUnsignedB": "Masuk sebagai anggota untuk melihat semua tingkat",
     "lockedHintExhaustedB": "Masuk untuk melihat semua tingkat",
-    "buyCtaB": "Masuk untuk membuka"
+    "buyCtaB": "Masuk untuk membuka",
+    "appPurchaseTier": "Unduh app",
+    "shareText": "LowestAppPrice bandingkan harga: {name} termurah {price} ({region})",
+    "prevTier": "Sebelumnya",
+    "nextTier": "Berikutnya"
   },
   "RelatedApps": {
     "title": "Mungkin juga kamu suka",
@@ -186,7 +190,7 @@
     "loadingMore": "Memuat lebih banyak...",
     "allLoaded": "Semua {count} app dimuat",
     "noLocalMatch": "Tidak ada hasil lokal, {count} hasil dari direktori Apple dapat ditambahkan",
-    "addHint": "Klik \"Tambah\" untuk mengambil dari Apple dan memulai perayapan harga 40 wilayah. Login diperlukan."
+    "addHint": "Klik «Tambah» untuk mengambil info app dari Apple dan memicu crawl harga 40 wilayah. Khusus anggota berbayar."
   },
   "UserMenu": {
     "proBadge": "Pro",
@@ -425,6 +429,7 @@
     "ogTitle": "{app} - pembanding harga di {count} wilayah",
     "ogDescription": "Harga langganan dari {count} wilayah, dari termurah - terendah dalam sekejap.",
     "faqQ1": "Di wilayah App Store mana {app} paling murah?",
-    "cheapestAnswer": "Wilayah App Store termurah untuk {app} adalah {region} seharga {price}. Halaman ini membandingkan harga langganan dan pembelian dalam aplikasi {app} di {count} wilayah App Store, dikonversi ke satu mata uang dan dari termurah."
+    "cheapestAnswer": "Wilayah App Store termurah untuk {app} adalah {region} seharga {price}. Halaman ini membandingkan harga langganan dan pembelian dalam aplikasi {app} di {count} wilayah App Store, dikonversi ke satu mata uang dan dari termurah.",
+    "viewOnAppStore": "Lihat di App Store {country}"
   }
 }

@@ -9,6 +9,7 @@ import { formatCurrency } from "@/lib/currencies";
 import { useCurrency, usePricingVariant } from "@/lib/app-store";
 import type { AppViewAuth } from "@/lib/entitlement";
 import { DAILY_VIEW_LIMIT } from "@/lib/entitlement";
+import { isAppPurchaseName } from "@/lib/iap-constants";
 import { Flag } from "./Flag";
 import { ShareButton } from "./ShareButton";
 
@@ -312,10 +313,11 @@ export function PriceTable({
           )}
           {activeIap && activeIap.lowest && (
             <ShareButton
-              text={
-                `LowestAppPrice 全区比价：${activeIap.name} 最低 ${activeIap.lowest.convertedDisplay}` +
-                `（${activeIap.lowest.region.name_en}）`
-              }
+              text={t("shareText", {
+                name: isAppPurchaseName(activeIap.name) ? t("appPurchaseTier") : activeIap.name,
+                price: activeIap.lowest.convertedDisplay,
+                region: activeIap.lowest.region.name_en,
+              })}
             />
           )}
         </div>
@@ -526,7 +528,7 @@ function IapTabs({
                  }`}
                >
                  {isLocked && <i className="ph ph-lock-key text-[11px]" />}
-                 <span className="whitespace-nowrap">{iap.name}</span>
+                 <span className="whitespace-nowrap">{isAppPurchaseName(iap.name) ? t("appPurchaseTier") : iap.name}</span>
                </button>
              );
            })}
@@ -541,7 +543,7 @@ function IapTabs({
           <button
             type="button"
             onClick={() => scrollByDir(-1)}
-            aria-label="上一个"
+            aria-label={t("prevTier")}
             className="pointer-events-auto ml-1 flex h-6 w-6 items-center justify-center rounded-full bg-white shadow-[0_1px_3px_rgba(0,0,0,0.12)] transition-colors hover:bg-[var(--color-parchment)]"
           >
             <i className="ph ph-caret-left text-[12px]" />
@@ -557,7 +559,7 @@ function IapTabs({
           <button
             type="button"
             onClick={() => scrollByDir(1)}
-            aria-label="下一个"
+            aria-label={t("nextTier")}
             className="pointer-events-auto mr-1 flex h-6 w-6 items-center justify-center rounded-full bg-white shadow-[0_1px_3px_rgba(0,0,0,0.12)] transition-colors hover:bg-[var(--color-parchment)]"
           >
             <i className="ph ph-caret-right text-[12px]" />
@@ -602,7 +604,7 @@ function IapPriceList({
       {/* 头部：档位名 + 价差摘要 */}
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-black/[0.08] bg-[var(--color-parchment)] px-4 py-3">
         <div className="min-w-0">
-          <div className="text-sm font-semibold">{iap.name}</div>
+          <div className="text-sm font-semibold">{isAppPurchaseName(iap.name) ? t("appPurchaseTier") : iap.name}</div>
           <div className="text-xs text-[var(--color-ink-48)]">
             {t("tierRegionsCount", { count: iap.entries.length })}
           </div>

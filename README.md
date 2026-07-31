@@ -47,7 +47,7 @@ npm install
 
 ```bash
 npx wrangler login
-npx wrangler d1 create appstore-price
+npx wrangler d1 create lowest-app-price
 # 输出的 database_id 填入 wrangler.toml
 ```
 

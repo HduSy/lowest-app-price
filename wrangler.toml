@@ -1,4 +1,4 @@
-name = "appstore-lowest-price"
+name = "lowest-app-price"
 compatibility_date = "2025-01-01"
 compatibility_flags = ["nodejs_compat"]
 
@@ -10,10 +10,12 @@ main = ".open-next/worker.js"
 directory = ".open-next/assets"
 
 # D1 数据库绑定
+# binding 名固定为 DB（代码里 getDb() 读 ctx.env.DB，改 binding 要动代码）
+# database_name/id 指向新库 lowest-app-price（旧库 appstore-price 已弃用，未迁移数据）
 [[d1_databases]]
 binding = "DB"
-database_name = "appstore-price"
-database_id = "15e915b3-5ba0-40a3-9602-57cf2db1aef2"
+database_name = "lowest-app-price"
+database_id = "3d626a5c-9b0f-43e6-ae62-496f85aa044e"
 
 [observability]
 enabled = true

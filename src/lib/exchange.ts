@@ -26,7 +26,7 @@ export async function getRates(base = "USD"): Promise<Rates> {
       const resp = await fetch(API + base);
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
       const json = (await resp.json()) as { rates?: Rates };
-      if (!json.rates) throw new Error("无 rates 字段");
+      if (!json.rates) throw new Error("Missing rates field");
       cacheBase = base;
       cacheRates = json.rates;
       cacheTs = Date.now();

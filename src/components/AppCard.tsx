@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import type { App } from "@/lib/types";
 
 const compactNum = new Intl.NumberFormat("en", {
@@ -17,6 +18,7 @@ export function AppCard({
   country: string;
   index?: number;
 }) {
+  const t = useTranslations("ExternalAppCard");
   const hasRating = app.rating != null && app.ratingCount != null && app.ratingCount > 0;
 
   return (
@@ -41,7 +43,7 @@ export function AppCard({
       <div className="min-w-0 flex-1">
         <div className="truncate text-[15px] font-semibold">{app.name}</div>
         <div className="truncate text-xs text-[var(--color-ink-48)]">
-          {app.developer || "未知开发者"}
+          {app.developer || t("developerUnknown")}
           {app.category ? ` · ${app.category}` : ""}
         </div>
         <div className="mt-0.5 flex flex-wrap items-center gap-1.5">

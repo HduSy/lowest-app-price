@@ -49,7 +49,9 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: t("ogTitle", { app: app.name, count }),
       description: t("ogDescription", { count }),
-      images: [ogImageUrl],
+      // X 爬虫拒绝动态 extensionless route（/api/og/{appId}），twitter 用静态 /og.png fallback。
+      // Facebook/LinkedIn 等兼容动态，openGraph.images 仍享 per-app 定制图。
+      images: ["/og.png"],
     },
   };
 }
