@@ -6,6 +6,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { Nav } from "@/components/Nav";
 import { AppStoreProvider } from "@/lib/app-store";
 import { LogoMark } from "@/components/Logo";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { auth } from "@/lib/auth";
 import { getEntitlement } from "@/lib/entitlement";
 import { getPricingVariant } from "@/lib/pricing-variant";
@@ -174,6 +175,7 @@ export default async function RootLayout({
           </footer>
         </AppStoreProvider>
         </NextIntlClientProvider>
+        <GoogleAnalytics />
       </body>
     </html>
   );
