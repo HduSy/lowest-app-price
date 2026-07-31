@@ -49,6 +49,9 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
       images: ["/og.png"],
     },
+    verification: {
+      google: "4eHrYT06sGUQh9eFprtemeIVvxpskEeZMX9DfTvlMS0",
+    },
   };
 }
 
@@ -108,6 +111,18 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
+      <head>
+        {/* VibeLoft Web Telemetry：全局遥测脚本，每页加载一次。
+            浏览器只加载 https://vibeloft.ai/telemetry/v1.js，
+            向 https://api.vibeloft.ai/api/v1/telemetry/events 发送事件。
+            项目暂未设 CSP，无需额外放行。auth key 仅存于此 data 属性，勿 log 到他处。 */}
+        <script
+          defer
+          src="https://vibeloft.ai/telemetry/v1.js"
+          data-vl-product-id="e070397a-76ca-43d1-a1d4-7adeaa121d76"
+          data-vl-auth-key="vl_web.8N-tcXjpTEsIekIJB24TqMlEC575Fx0kune_NMqjacc"
+        />
+      </head>
       <body className="flex min-h-screen flex-col">
         <NextIntlClientProvider>
           <AppStoreProvider defaultCurrency={defaultCurrency} defaultLanguage={defaultLanguage} geoSource={geoSource} pricingVariant={pricingVariant}>
