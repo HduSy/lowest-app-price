@@ -48,7 +48,7 @@ Also: OpenNext does not support `export const runtime = "edge"` in route handler
 
 ### i18n (`next-intl`)
 
-The app supports **18 languages**: `messages/{locale}.json` for `ar / de / en / es / fr / hi / id / it / ja / ko / nl / pl / pt-BR / ru / th / tr / vi / zh-CN` (default `en`). `src/i18n/request.ts` exports `getRequestConfig` and resolves locale by: cookie(`language`) > IP-detected country mapping (`src/lib/languages.ts` `languageForCountry()`) > defaultLocale (`en`). The `next-intl/plugin` is wired in `next.config.mjs` via `withNextIntl`. Server components use `getTranslations()` from `next-intl/server`; client components use `useTranslations()`. The `/<country>/...` URL segment carries only the country, never the language - language is cookie-driven. `AppStoreProvider` (client) also mirrors the language in Zustand for the in-page picker.
+The app supports **18 languages**: `messages/{locale}.json` for `ar / de / en / es / fr / hi / id / it / ja / ko / nl / pl / pt-BR / ru / th / tr / vi / zh-CN` (default `en`). `src/i18n/request.ts` exports `getRequestConfig` and resolves locale by: cookie(`language`) > URL country segment (`x-url-country` header, mapped via `languageForCountry()`) > IP-detected country mapping > defaultLocale (`en`). The URL-segment tier ensures Googlebot sees localized content per country page (e.g. `/de/` renders German, `/jp/` renders Japanese). The `next-intl/plugin` is wired in `next.config.mjs` via `withNextIntl`. Server components use `getTranslations()` from `next-intl/server`; client components use `useTranslations()`. The `/<country>/...` URL segment carries only the country, never the language - language is cookie-driven. `AppStoreProvider` (client) also mirrors the language in Zustand for the in-page picker.
 
 #### i18n 翻译流程（改任何 UI 文案必须遵守）
 
@@ -84,11 +84,13 @@ Apple serves a 302-to-homepage redirect trap for unknown/unsupported apps - `fet
 
 ### Entitlement Gating (`src/lib/entitlement.ts`)
 
-3-tier freemium logic - read this file before touching access control:
-- `DAILY_VIEW_LIMIT = 3` - shared across all apps for unpaid users.
-- `getEntitlement()` returns the current user's tier.
+Freemium logic with A/B pricing variant (controlled by `PRICING_VARIANT` env, see `src/lib/pricing-variant.ts`) - read this file before touching access control:
+- `DAILY_VIEW_LIMIT = 3` - shared across all apps for unpaid users (A-variant only).
+- `getEntitlement()` returns the current user's tier (incl. `paid` + `member` flags).
 - `consumeDailyView()` is an **atomic conditional UPDATE** (don't rewrite as read-then-write).
-- `authorizeAppView()` tiers: paid -> full access; anonymous -> locked view; logged-in unpaid -> auto-consume 1 quota + record per-app unlock (idempotent within the same day via `app_unlocks` table).
+- `authorizeAppView()` tiers differ by variant:
+  - **A-variant** (default, 3-tier): paid -> full access; anonymous -> locked view; logged-in unpaid -> auto-consume 1 quota + record per-app unlock (idempotent within the same day via `app_unlocks` table).
+  - **B-variant** (login-as-member, 2-tier): logged-in -> `member` full access (no payment, no quota); anonymous -> locked view.
 
 ### D1 Access (`src/lib/db.ts`)
 
@@ -116,7 +118,7 @@ All routes are Next.js Route Handlers under `/api/*`:
 - `GET /api/entitlement`, `POST /api/views/record`.
 - `POST /api/paddle/checkout`, `POST /api/paddle/webhook` (records `paid` purchase).
 - `GET /api/og/[appId]` - dynamic OG image.
-- `/api/admin/*` - require `ADMIN_TOKEN` env: `backfill-period`, `cleanup-no-developer`, `cleanup-unavailable`, `import-from-sitemap` (需传 `sitemap` 参数指定数据源 URL，不硬编码).
+- `/api/admin/*` - require `ADMIN_TOKEN` env: `backfill-period`, `cleanup-no-developer`, `cleanup-unavailable`, `import-from-sitemap` (需传 `sitemap` 参数指定数据源 URL，不硬编码), `refresh-prices` (强制刷新某 App 全区价格，跳过 TTL), `refresh-claude-demo` (定时刷新首页 Claude 演示区).
 - `/api/auth/[...nextauth]` - Auth.js handlers.
 - `POST /api/auth/magic/request` (body: `{email}`) + `GET /api/auth/magic/verify?token=...` - magic link send + verify. Both respond 200 even on failure to avoid leaking which emails exist.
 
@@ -126,11 +128,11 @@ All routes are Next.js Route Handlers under `/api/*`:
 
 ## Conventions
 
-- **UI 文案**：通过 next-intl 做 i18n，messages 在 `messages/{locale}.json`（**18 种语言**，详见上文「i18n 翻译流程」小节）。代码注释仍用中文。locale 来源优先级：cookie(`language`) > IP 检测国家映射 > 兜底 en。路由 `/<country>/...` 只承载国家，语种走 cookie 不进路由。**改任何 UI 文案都必须同步全 18 种语言**，不能只改 zh-CN + en。
+- **UI 文案**：通过 next-intl 做 i18n，messages 在 `messages/{locale}.json`（**18 种语言**，详见上文「i18n 翻译流程」小节）。代码注释仍用中文。locale 来源优先级：cookie(`language`) > URL 国家段映射 > IP 检测国家映射 > 兜底 en。路由 `/<country>/...` 只承载国家，语种走 cookie 不进路由。**改任何 UI 文案都必须同步全 18 种语言**，不能只改 zh-CN + en。
 - **Path alias**: `@/*` -> `./src/*`.
 - **Types**: shared interfaces live in `src/lib/types.ts` (`Region`, `App`, `PriceRow`, `IapEntry`, `RegionFetchResult`, `AggregatedIap`, `RegionRankItem`, `PricesResponse`, `ExternalSearchItem`, `SubscriptionPeriod`).
 - **Responses**: use `src/lib/api-response.ts` `json()` / `error()` helpers in route handlers.
-- **Icons**: Phosphor Icons loaded from unpkg in `src/app/layout.tsx`.
+- **Icons**: Phosphor Icons via `@phosphor-icons/web` npm package, imported in `src/app/layout.tsx`.
 - `env.d.ts` declares the global `CloudflareEnv` interface with `DB` binding + all secret keys (`AUTH_*` incl. `AUTH_GOOGLE_*` / `AUTH_TWITTER_*` / `AUTH_GITHUB_*` / `AUTH_SECRET`, `PADDLE_*`, `ADMIN_TOKEN`, `DEFAULT_CURRENCY`, `RESEND_API_KEY`, `MAIL_FROM`). Keep it in sync when adding bindings/secrets to `wrangler.toml` or `.dev.vars`.
 
 ## Local Server Port
