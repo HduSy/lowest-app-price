@@ -450,6 +450,9 @@ export async function crawlAllRegions(
 ): Promise<{
   results: RegionFetchResult[];
   meta: {
+    name: string | null;
+    developer: string | null;
+    iconUrl: string | null;
     subtitle: string | null;
     priceLabel: string | null;
     compatibility: string[] | null;
@@ -457,6 +460,9 @@ export async function crawlAllRegions(
     ratingCount: number | null;
   };
 }> {
+  let name: string | null = null;
+  let developer: string | null = null;
+  let iconUrl: string | null = null;
   let subtitle: string | null = null;
   let priceLabel: string | null = null;
   let compatibility: string[] | null = null;
@@ -470,6 +476,10 @@ export async function crawlAllRegions(
     try {
       const html = await fetchHtml(region.code, appId);
       const parsed = parseAppStoreHtml(html, region.currency);
+      // app 基本元信息（name/developer/iconUrl）取首个非空，供 refreshPrices 在新库空时 insertApp
+      if (parsed.name && !name) name = parsed.name;
+      if (parsed.developer && !developer) developer = parsed.developer;
+      if (parsed.iconUrl && !iconUrl) iconUrl = parsed.iconUrl;
       if (parsed.subtitle && !subtitle) subtitle = parsed.subtitle;
       if (parsed.priceLabel && !priceLabel) priceLabel = parsed.priceLabel;
       if (parsed.compatibility && !compatibility) compatibility = parsed.compatibility;
@@ -516,6 +526,6 @@ export async function crawlAllRegions(
   }
   return {
     results,
-    meta: { subtitle, priceLabel, compatibility, rating, ratingCount },
+    meta: { name, developer, iconUrl, subtitle, priceLabel, compatibility, rating, ratingCount },
   };
 }

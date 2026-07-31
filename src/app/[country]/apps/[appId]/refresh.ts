@@ -1,5 +1,5 @@
 // 服务端懒抓：在 SSR 中调用，分两批抓取--优先区先抓（拿 app info），其余后抓（拿价格）
-import { listRegions, upsertPrice, updateAppMeta } from "@/lib/db";
+import { listRegions, upsertPrice, updateAppMeta, getApp, insertApp } from "@/lib/db";
 import { crawlAllRegions, normalizeKey } from "@/lib/crawler";
 import { fetchAppMeta } from "@/lib/itunes";
 import type { RegionFetchResult } from "@/lib/types";
@@ -12,6 +12,10 @@ export async function refreshPrices(
 ): Promise<{ writtenRegions: number; attemptedRegions: number }> {
   const regions = await listRegions(db);
   const rates = await getRates("USD");
+  // 新库空 / 首次抓取时 app 不在 apps 表里，refreshPrices 需自行 insertApp
+  // （旧流程依赖 /api/apps POST 的 insertApp，但 CF Workers 上 iTunes Lookup 被 403，
+  //   POST 拿不到 meta；这里改用 crawlAllRegions 的 HTML meta 兜底初始化）
+  const appExists = !!(await getApp(db, appId));
 
   // 分两批：优先区先抓（拿 app info），其余后抓（拿价格）
   let priorityRegions = regions;
@@ -41,7 +45,25 @@ export async function refreshPrices(
   writtenRegions += await writePrices(db, appId, pResults, rates);
   attemptedRegions += countAttempted(pResults);
   try {
-    await updateAppMeta(db, appId, pMeta);
+    if (!appExists && pMeta.name) {
+      // app 不在库：用 HTML 解析到的完整 meta insertApp（bundle_id/category/genres HTML 不解析，留 null 后续补）
+      await insertApp(db, {
+        app_id: appId,
+        name: pMeta.name,
+        developer: pMeta.developer,
+        icon_url: pMeta.iconUrl,
+        bundle_id: null,
+        category: null,
+        genres: null,
+        compatibility: pMeta.compatibility,
+        subtitle: pMeta.subtitle,
+        priceLabel: pMeta.priceLabel,
+        rating: pMeta.rating,
+        ratingCount: pMeta.ratingCount,
+      });
+    } else {
+      await updateAppMeta(db, appId, pMeta);
+    }
   } catch (e) {
     console.error(`[refresh ${appId}] updateAppMeta (priority) failed:`, e);
   }
