@@ -8,6 +8,7 @@ import GitHub from "next-auth/providers/github";
 import Credentials from "next-auth/providers/credentials";
 import { getDb, getUserByProvider, upsertUser, upsertUserByEmail } from "./db";
 import { verifyEmailSignature } from "./magic-token";
+import { error } from "./api-response";
 
 // 扩展类型：把 D1 内部 user id + role 注入 session.user 和 jwt token
 declare module "next-auth" {
@@ -137,3 +138,19 @@ export const authConfig = {
 };
 
 export const { handlers, auth, signIn, signOut } = NextAuth(authConfig);
+
+// Admin 路由统一鉴权：登录用户 role=admin，或 query 参数 token === env.ADMIN_TOKEN
+// 返回 null 表示通过，返回 Response 表示拒绝（直接 return 该 Response 即可）
+// 接受 Request 基类，兼容 NextRequest 与 web 标准 Request 两种 route handler 签名
+export async function requireAdmin(req: Request): Promise<Response | null> {
+  const session = await auth();
+  if (session?.user?.role === "admin") return null;
+  const token = new URL(req.url).searchParams.get("token");
+  const { getCloudflareContext } = await import("@opennextjs/cloudflare");
+  const ctx = getCloudflareContext();
+  const env = ctx?.env as { ADMIN_TOKEN?: string } | undefined;
+  if (!env?.ADMIN_TOKEN || token !== env.ADMIN_TOKEN) {
+    return error("Unauthorized", 401);
+  }
+  return null;
+}

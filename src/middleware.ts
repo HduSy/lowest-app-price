@@ -74,15 +74,15 @@ export function middleware(req: NextRequest) {
   const firstSeg = segments[0];
   const firstIsCountry = firstSeg && VALID_CODES.has(firstSeg);
 
-  // 4. 非 country 前缀：永久重定向到 /<detectedCountry>/...
-  //    用 301（而非 307）：这是一条稳定的规范化路由，Google 会把根路径的链接权重
-  //    传递到目标国家页。geo 维度由 cookie 兜底，不影响爬虫判定。
-  //    注：301 对 GET 语义等价于 308，且兼容性更好（部分旧爬虫不认 308）。
+  // 4. 非 country 前缀：临时重定向到 /<detectedCountry>/...
+  //    用 307（临时）：保持方法/Body 语义，不缓存，允许后续 geo 变化时即时调整目标。
+  //    注：spec（CLAUDE.md）规定用 307；301 会被浏览器/搜索引擎永久缓存，
+  //    导致 IP 变化后仍跳旧国家。
   if (!firstIsCountry) {
     const rest = segments.length ? "/" + segments.join("/") : "";
     const url = req.nextUrl.clone();
     url.pathname = `/${detectedCountry}${rest}`;
-    const res = NextResponse.redirect(url, 301);
+    const res = NextResponse.redirect(url, 307);
     res.cookies.set("detected_country", detectedCountry, {
       maxAge: COOKIE_MAX_AGE,
       path: "/",
@@ -102,9 +102,8 @@ export function middleware(req: NextRequest) {
   requestHeaders.set("x-detected-country", detectedCountry);
   requestHeaders.set("x-url-country", firstSeg);
   requestHeaders.set("x-geo-source", geoSource);
-  if (detectedTimezone) {
-    requestHeaders.set("x-detected-timezone", detectedTimezone);
-  }
+  // 无条件注入：spec 要求三个 header 始终存在；消费方用 `|| null` 兜底，空串等价于未检测
+  requestHeaders.set("x-detected-timezone", detectedTimezone ?? "");
   const res = NextResponse.next({
     request: { headers: requestHeaders },
   });

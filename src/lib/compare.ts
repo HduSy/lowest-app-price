@@ -7,13 +7,9 @@ import type {
   RegionFetchResult,
   PriceRow,
 } from "./types";
-import { isSubscriptionIap } from "./crawler";
+import { isSubscriptionIap, normalizeKey } from "./crawler";
 import { convertSync, getRates, type Rates } from "./exchange";
 import { formatCurrency } from "./currencies";
-
-function normalizeIapName(name: string): string {
-  return name.trim().toLowerCase().replace(/\s+/g, " ");
-}
 
 /** 聚合多区结果 → 按 IAP 档位分组 */
 export function aggregate(
@@ -27,7 +23,7 @@ export function aggregate(
     if (r.status === "error" || !r.data?.iaps?.length) continue;
     const region = r.region;
     for (const iap of r.data.iaps) {
-      const key = normalizeIapName(iap.name);
+      const key = normalizeKey(iap.name);
       if (!byKey.has(key)) {
         byKey.set(key, { name: iap.name, key, entries: new Map() });
       }

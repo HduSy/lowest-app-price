@@ -114,7 +114,7 @@ export function AppDetailClient({
                     {Icon ? (
                       <Icon />
                     ) : (
-                      <i className={`ph ${platformIcon(p)} text-sm`} />
+                      <i className={`ph ${platformIconFallback(p)} text-sm`} />
                     )}
                     {p}
                   </span>
@@ -151,14 +151,10 @@ export function AppDetailClient({
   );
 }
 
-function platformIcon(p: string): string {
-  const m: Record<string, string> = {
-    iPhone: "ph-device-mobile",
-    iPad: "ph-device-tablet",
-    Mac: "ph-laptop",
-    "iPod touch": "ph-device-mobile",
-    "Apple TV": "ph-television",
-    "Apple Watch": "ph-watch",
-  };
-  return m[p] || "ph-device-mobile";
+// deviceIcon() 不覆盖的平台 -> Phosphor class 兜底
+// （iPhone/iPad/Mac/iPod touch/Apple TV/iMessage 都已被 deviceIcon SVG 覆盖，
+//  这里只剩 Apple Watch 一项需要 Phosphor 兜底）
+function platformIconFallback(p: string): string {
+  if (p === "Apple Watch") return "ph-watch";
+  return "ph-device-mobile";
 }

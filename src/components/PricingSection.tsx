@@ -6,6 +6,7 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import { usePricingVariant } from "@/lib/app-store";
+import { startCheckout } from "@/lib/paddle";
 
 // 弹窗仅在点击时才需要：懒加载，减小首屏 JS。
 const LoginDialog = dynamic(
@@ -33,14 +34,7 @@ export function PricingSection({ loggedIn, paid = false }: PricingSectionProps) 
     setBuying(true);
     setError(null);
     try {
-      const res = await fetch("/api/paddle/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ callbackUrl: window.location.href }),
-      });
-      if (!res.ok) throw new Error("Failed to create checkout session");
-      const { url } = await res.json();
-      if (url) window.location.href = url;
+      await startCheckout(window.location.href);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Purchase failed");
     } finally {

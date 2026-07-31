@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import type { ExternalSearchItem } from "@/lib/types";
+import { startCheckout } from "@/lib/paddle";
 
 // 弹窗仅在点击"添加"且需要登录/付费引导时才需要：懒加载。
 const LoginDialog = dynamic(
@@ -108,14 +109,7 @@ export function ExternalAppCard({
     setUnlocking(true);
     setUnlockError(null);
     try {
-      const res = await fetch("/api/paddle/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ callbackUrl: window.location.href }),
-      });
-      if (!res.ok) throw new Error("Failed to create checkout session");
-      const { url } = (await res.json()) as { url?: string };
-      if (url) window.location.href = url;
+      await startCheckout(window.location.href);
     } catch (e) {
       setUnlockError(e instanceof Error ? e.message : "Purchase failed");
     } finally {

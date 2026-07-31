@@ -14,6 +14,7 @@ import { getDb, getApp, getPrices, isStale } from "@/lib/db";
 import { getRates, type Rates } from "@/lib/exchange";
 import { getPricingVariant } from "@/lib/pricing-variant";
 import { countryAlternates, countryUrl, SITE_ORIGIN } from "@/lib/seo";
+import { readCookie } from "@/lib/cookie";
 import { refreshPrices } from "./apps/[appId]/refresh";
 
 // 首页 metadata：keyword-rich 标题 + 自指 canonical + 全 40 国 hreflang + x-default
@@ -63,10 +64,8 @@ export default async function HomePage({
   // detectedCurrency 优先级：cookie(currency) > IP 检测国家映射
   // 跟 layout.tsx 的 defaultCurrency 逻辑一致，SSR 直接读到用户选择，无闪烁
   const cookieHeader = h.get("cookie") || "";
-  const curMatch = cookieHeader.match(/(?:^|;\s*)currency=([^;]+)/);
-  const detectedCurrency = curMatch
-    ? decodeURIComponent(curMatch[1])
-    : currencyForCountry(detectedCode);
+  const cookieCurrency = readCookie(cookieHeader, "currency");
+  const detectedCurrency = cookieCurrency || currencyForCountry(detectedCode);
 
   // 当前登录状态（定价区 CTA 用）
   const currentUser = await getCurrentUser();

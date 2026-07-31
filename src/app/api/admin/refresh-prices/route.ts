@@ -8,22 +8,13 @@ import { NextRequest } from "next/server";
 import { getDb, getApp, getPrices, markAppFetched } from "@/lib/db";
 import { refreshPrices } from "@/app/[country]/apps/[appId]/refresh";
 import { json, error } from "@/lib/api-response";
-import { auth } from "@/lib/auth";
+import { requireAdmin } from "@/lib/auth";
 import { filterSubscriptionIaps, extractIapMetadata } from "@/lib/compare";
 
 export async function GET(req: NextRequest) {
   // 鉴权
-  const session = await auth();
-  const isAdmin = session?.user?.role === "admin";
-  if (!isAdmin) {
-    const token = req.nextUrl.searchParams.get("token");
-    const { getCloudflareContext } = await import("@opennextjs/cloudflare");
-    const ctx = getCloudflareContext();
-    const env = ctx?.env as { ADMIN_TOKEN?: string } | undefined;
-    if (!env?.ADMIN_TOKEN || token !== env.ADMIN_TOKEN) {
-      return error("Unauthorized", 401);
-    }
-  }
+  const authResp = await requireAdmin(req);
+  if (authResp) return authResp;
 
   const appId = req.nextUrl.searchParams.get("appId");
   if (!appId) return error("Missing appId", 400);

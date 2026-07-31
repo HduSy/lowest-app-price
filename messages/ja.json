@@ -84,12 +84,12 @@
     "freeTierB": "FREE",
     "freePriceB": "ゲスト",
     "freeNoteB": "ログイン不要",
-    "freeFeature1B": "最安の3つのサブスクリプションティアを表示",
+    "freeFeature1B": "最安の3つのサブスクリプションプランを表示",
     "freeFeature2B": "すべてのAppを閲覧",
     "memberTier": "PRO",
     "memberPriceB": "会員",
     "memberNote": "ログインで解放",
-    "memberFeature1": "すべてのサブスクリプションティアを解除",
+    "memberFeature1": "すべてのサブスクリプションプランを解除",
     "memberFeature2": "全40地域、無制限閲覧",
     "memberFeature3": "カスタム App を追加",
     "loginToUse": "ログインして利用",
@@ -105,7 +105,8 @@
     "isLowest": "すでに最安値",
     "isHighest": "すでに最高値",
     "vsYourRegion": "あなたの地域と比較",
-    "noPrice": "この地域の価格はありません"
+    "noPrice": "この地域の価格はありません",
+    "offLabel": "OFF"
   },
   "AppsPage": {
     "title": "すべてのアプリ",
@@ -124,7 +125,8 @@
     "adding": "追加中...",
     "clearSearch": "検索をクリア",
     "loginRequired": "アプリを追加するにはログインしてください",
-    "viewOnAppStore": "App Store で表示"
+    "viewOnAppStore": "App Store で表示",
+    "searchPlaceholderB": "名前で検索、または App Store リンク / ID を貼り付け（メンバーが追加可）"
   },
   "AppsSort": {
     "sortBy": "並び替え",
@@ -167,7 +169,8 @@
     "appPurchaseTier": "アプリダウンロード",
     "shareText": "LowestAppPrice 価格比較: {name} 最安 {price} ({region})",
     "prevTier": "前へ",
-    "nextTier": "次へ"
+    "nextTier": "次へ",
+    "viewOnAppStore": "{region} App Store で表示"
   },
   "RelatedApps": {
     "title": "こちらもおすすめ",
@@ -190,7 +193,8 @@
     "loadingMore": "さらに読み込み中...",
     "allLoaded": "全 {count} アプリを読み込みました",
     "noLocalMatch": "ローカルに一致なし、Apple ディレクトリに {count} 件追加可能",
-    "addHint": "「追加」をクリックすると Apple からアプリ情報を取得し、40 地域の価格クロールを開始します。有料会員限定。"
+    "addHint": "「追加」をクリックすると Apple からアプリ情報を取得し、40 地域の価格クロールを開始します。有料会員限定。",
+    "addHintB": "「追加」をクリックすると Apple からアプリ情報を取得し、40 地域の価格クロールを開始します。会員限定（ログインで会員になれます）。"
   },
   "UserMenu": {
     "proBadge": "Pro",
@@ -215,7 +219,7 @@
     "ariaLabel": "ログイン",
     "descB": "メンバーとしてログイン — 完全無料",
     "titleAdd": "アプリを追加するにはログイン",
-    "descAdd": "アプリの追加はメンバー限定 · 1.99 ドルの一括購入",
+    "descAdd": "アプリの追加はメンバー限定 · $1.99 の一括購入",
     "descAddB": "ログインしてメンバーになれば、どんなアプリも無料で追加できます"
   },
   "Currencies": {
@@ -401,7 +405,7 @@
     "feature3Title": "明確なランキング、安い順",
     "feature3Body": "すべての価格をリアルタイムの為替で一通貨に換算し、安い順に並べます。最安・最高・あなたの地域がハイライトされ、差額がそこにあります。",
     "feature4Title": "ログイン不要でも使える",
-    "feature4Body": "匿名ユーザーは一部の結果を見られ、ログインすれば 1 日 3 回無料、よく使うなら 1.99 ドル一回で永久無制限アクセスが解放されます。",
+    "feature4Body": "匿名ユーザーは一部の結果を見られ、ログインすれば 1 日 3 回無料、よく使うなら $1.99一回で永久無制限アクセスが解放されます。",
     "howToUseTitle": "使い方",
     "howToUseIntro": "最安地域を見つける 3 ステップ:",
     "step1Title": "名前で検索、リンク貼り付け、または ID 入力",
@@ -431,5 +435,11 @@
     "faqQ1": "{app} はどの App Store 地域が最安ですか？",
     "cheapestAnswer": "{app} の最安の App Store 地域は {region}（{price}）です。本ページでは {app} のサブスク・アプリ内課金の価格を {count} 地域で比較し、単一通貨に換算して最安値順に並べています。",
     "viewOnAppStore": "{country}の App Store で表示"
+  },
+  "ExternalAppCard": {
+    "add": "追加",
+    "adding": "追加中",
+    "indexed": "インデックス済み",
+    "developerUnknown": "不明な開発者"
   }
 }

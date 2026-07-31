@@ -2,7 +2,7 @@
 
 // 登录弹窗：居中 Modal + 半透明 backdrop，复用 Picker 视觉 token
 // Google OAuth + 邮箱 Magic Link 两种登录方式
-// Twitter / GitHub 暂时隐藏（OAuth Console 审核未过，恢复时把下方注释块改回即可）
+// Twitter / GitHub providers 在 auth.ts 保留配置，但 LoginDialog 不展示（OAuth Console 审核未过）
 // 用 createPortal 渲染到 document.body，避免祖先 backdrop-blur 创建包含块导致 fixed 定位偏移
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
@@ -81,24 +81,6 @@ export function LoginDialog({ open, onClose, purpose = "view" }: LoginDialogProp
             <GoogleIcon size={18} />
             {t("google")}
           </button>
-          {/* Twitter / GitHub 暂时隐藏 — 恢复时取消注释：
-          <button
-            type="button"
-            onClick={() => handleSignIn("twitter")}
-            className="flex w-full items-center justify-center gap-3 rounded-full bg-black px-5 py-3 text-[15px] font-medium text-white transition-colors hover:bg-[#111]"
-          >
-            <XIcon size={15} />
-            使用 X 登录
-          </button>
-          <button
-            type="button"
-            onClick={() => handleSignIn("github")}
-            className="flex w-full items-center justify-center gap-3 rounded-full bg-[#24292e] px-5 py-3 text-[15px] font-medium text-white transition-colors hover:bg-[#1a1e22]"
-          >
-            <GitHubIcon size={18} />
-            使用 GitHub 登录
-          </button>
-          */}
         </div>
 
         {/* 分隔线 */}

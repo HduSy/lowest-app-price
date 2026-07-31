@@ -105,7 +105,8 @@
     "isLowest": "Sudah termurah",
     "isHighest": "Sudah termahal",
     "vsYourRegion": "vs wilayah Anda",
-    "noPrice": "Tidak ada harga untuk wilayah ini"
+    "noPrice": "Tidak ada harga untuk wilayah ini",
+    "offLabel": "DISKON"
   },
   "AppsPage": {
     "title": "Semua app",
@@ -124,7 +125,8 @@
     "adding": "Menambahkan...",
     "clearSearch": "Hapus pencarian",
     "loginRequired": "Masuk untuk menambahkan app",
-    "viewOnAppStore": "Lihat di App Store"
+    "viewOnAppStore": "Lihat di App Store",
+    "searchPlaceholderB": "Cari nama, atau tempel link / ID App Store (anggota bisa menambahkan)"
   },
   "AppsSort": {
     "sortBy": "Urutkan",
@@ -165,9 +167,10 @@
     "lockedHintExhaustedB": "Masuk untuk melihat semua tingkat",
     "buyCtaB": "Masuk untuk membuka",
     "appPurchaseTier": "Unduh app",
-    "shareText": "LowestAppPrice bandingkan harga: {name} termurah {price} ({region})",
+    "shareText": "LowestAppPrice bandingkan harga: {name} termurah {price} ({wilayah})",
     "prevTier": "Sebelumnya",
-    "nextTier": "Berikutnya"
+    "nextTier": "Berikutnya",
+    "viewOnAppStore": "Lihat di {region} App Store"
   },
   "RelatedApps": {
     "title": "Mungkin juga kamu suka",
@@ -180,8 +183,8 @@
   },
   "ShareBar": {
     "title": "Berguna? Bagikan!",
-    "subtitle": "Bagikan LowestAppPrice ke teman-teman dan temukan region App Store termurah bersama-sama",
-    "shareText": "LowestAppPrice - Bandingkan harga App Store di semua region dan temukan yang termurah",
+    "subtitle": "Bagikan LowestAppPrice ke teman-teman dan temukan wilayah App Store termurah bersama-sama",
+    "shareText": "LowestAppPrice - Bandingkan harga App Store di semua wilayah dan temukan yang termurah",
     "copyLink": "Salin tautan",
     "copied": "Tersalin",
     "ariaLabel": "Bagikan ke media sosial"
@@ -190,7 +193,8 @@
     "loadingMore": "Memuat lebih banyak...",
     "allLoaded": "Semua {count} app dimuat",
     "noLocalMatch": "Tidak ada hasil lokal, {count} hasil dari direktori Apple dapat ditambahkan",
-    "addHint": "Klik «Tambah» untuk mengambil info app dari Apple dan memicu crawl harga 40 wilayah. Khusus anggota berbayar."
+    "addHint": "Klik «Tambah» untuk mengambil info app dari Apple dan memicu crawl harga 40 wilayah. Khusus anggota berbayar.",
+    "addHintB": "Klik «Tambah» untuk mengambil info app dari Apple dan memicu crawl harga 40 wilayah. Khusus anggota (masuk untuk menjadi anggota)."
   },
   "UserMenu": {
     "proBadge": "Pro",
@@ -215,7 +219,7 @@
     "ariaLabel": "Login",
     "descB": "Masuk sebagai anggota — sepenuhnya gratis",
     "titleAdd": "Masuk untuk menambahkan app",
-    "descAdd": "Menambahkan app khusus anggota · $1,99 sekali bayar",
+    "descAdd": "Menambahkan app khusus anggota · $1.99 sekali bayar",
     "descAddB": "Masuk untuk menjadi anggota dan tambahkan app apa pun secara gratis"
   },
   "Currencies": {
@@ -384,32 +388,32 @@
   },
   "About": {
     "metaTitle": "Tentang kami - {siteName}",
-    "metaDescription": "Pelajari latar belakang, niat, fitur inti, dan cara pakai {siteName} - alat yang menemukan region App Store termurah untuk langganan apa pun.",
+    "metaDescription": "Pelajari latar belakang, niat, fitur inti, dan cara pakai {siteName} - alat yang menemukan wilayah App Store termurah untuk langganan apa pun.",
     "backToHome": "Kembali ke beranda",
     "title": "Tentang kami",
-    "subtitle": "Kami membantu Anda menemukan satu region App Store termurah untuk langganan apa pun.",
+    "subtitle": "Kami membantu Anda menemukan satu wilayah App Store termurah untuk langganan apa pun.",
     "backgroundTitle": "Latar belakang",
-    "backgroundBody": "Aplikasi yang sama sering dihargai berkali-kali lipat berbeda antar region App Store. Kurs antara dolar, euro, dan yen berubah setiap hari, dan harga lokal pun bervariasi - namun hampir tak ada yang membandingkan puluhan region secara manual sebelum berlangganan. {siteName} hadir tepat untuk itu: mengumpulkan harga yang tersebar di 40 region ke dalam satu tabel.",
+    "backgroundBody": "Aplikasi yang sama sering dihargai berkali-kali lipat berbeda antar wilayah App Store. Kurs antara dolar, euro, dan yen berubah setiap hari, dan harga lokal pun bervariasi - namun hampir tak ada yang membandingkan puluhan wilayah secara manual sebelum berlangganan. {siteName} hadir tepat untuk itu: mengumpulkan harga yang tersebar di 40 wilayah ke dalam satu tabel.",
     "intentTitle": "Mengapa kami membuatnya",
-    "intentBody": "Kami percaya kesenjangan informasi adalah biaya yang paling diabaikan dalam pengalaman konsumen. Saka langganan tahunan hanya berpuluhan di region termurah tapi beberapa ratus di yang termahal, sekadar mengetahui selisihnya saja sudah bernilai. Kami membuat alat ini agar harga transparan - supaya sebelum berlangganan, siapa pun bisa melihat sekilas apakah region-nya benar-benar tawaran terbaik.",
+    "intentBody": "Kami percaya kesenjangan informasi adalah biaya yang paling diabaikan dalam pengalaman konsumen. Harga langganan tahunan hanya berpuluhan di wilayah termurah tapi beberapa ratus di yang termahal, sekadar mengetahui selisihnya saja sudah bernilai. Kami membuat alat ini agar harga transparan - supaya sebelum berlangganan, siapa pun bisa melihat sekilas apakah wilayah-nya benar-benar tawaran terbaik.",
     "featuresTitle": "Apa yang kami tawarkan",
-    "featuresIntro": "Fokus pada satu hal - perbandingan harga App Store antar region - dikerjakan hingga tuntas:",
-    "feature1Title": "Perbandingan real-time di 40 region",
-    "feature1Body": "Dari AS, Jepang, dan Turki hingga India dan Brasil - satu kueri mengambil harga langganan dan pembelian dalam aplikasi secara paralel dari 40 region App Store, dikonversi ke mata uang pilihan Anda.",
+    "featuresIntro": "Fokus pada satu hal - perbandingan harga App Store antar wilayah - dikerjakan hingga tuntas:",
+    "feature1Title": "Perbandingan real-time di 40 wilayah",
+    "feature1Body": "Dari AS, Jepang, dan Turki hingga India dan Brasil - satu kueri mengambil harga langganan dan pembelian dalam aplikasi secara paralel dari 40 wilayah App Store, dikonversi ke mata uang pilihan Anda.",
     "feature2Title": "Langganan dan pembelian dalam aplikasi",
     "feature2Body": "Langganan bulanan / tahunan, pembelian sekali, Family Sharing - tier pembelian dalam aplikasi yang ditampilkan publik di halaman detail App Store dipecah menjadi baris yang dapat dibandingkan.",
     "feature3Title": "Peringkat jelas, termurah lebih dulu",
-    "feature3Body": "Semua harga dikonversi pada kurs langsung ke satu mata uang, lalu diurutkan dari termurah. Termurah, termahal, dan region Anda sendiri disorot - selisihnya terlihat jelas.",
+    "feature3Body": "Semua harga dikonversi pada kurs langsung ke satu mata uang, lalu diurutkan dari termurah. Termurah, termahal, dan wilayah Anda sendiri disorot - selisihnya terlihat jelas.",
     "feature4Title": "Bisa tanpa login",
     "feature4Body": "Pengguna anonim melihat hasil parsial; pengguna yang login memperoleh 3 pencarian gratis per hari; jika sering dipakai, $1.99 sekali membuka akses seumur hidup tanpa batas.",
     "howToUseTitle": "Cara pakai",
-    "howToUseIntro": "Tiga langkah menemukan region termurah:",
+    "howToUseIntro": "Tiga langkah menemukan wilayah termurah:",
     "step1Title": "Cari nama, tempel tautan, atau masukkan ID",
     "step1Body": "Di input halaman Semua Aplikasi, ketik nama aplikasi untuk mencari (jatuh ke direktori Apple jika tidak ada di pustaka lokal); atau tempel tautan App Store / masukkan ID numerik lalu klik \"Tambahkan ke pustaka\".",
     "step2Title": "Tunggu pengambilan global",
-    "step2Body": "Pemuatan pertama mengambil 40 region secara paralel, biasanya beberapa detik. Setelah itu diperbarui otomatis tiap 6 jam, sehingga kurs dan harga tetap mendekati kenyataan.",
+    "step2Body": "Pemuatan pertama mengambil 40 wilayah secara paralel, biasanya beberapa detik. Setelah itu diperbarui otomatis tiap 6 jam, sehingga kurs dan harga tetap mendekati kenyataan.",
     "step3Title": "Baca peringkat, putuskan",
-    "step3Body": "Tabel harga diurutkan dari termurah dalam mata uang pilihan Anda, dengan termurah, termahal, dan region Anda disorot dan selisihnya jelas. Pindah ke region mana menjadi keputusan Anda.",
+    "step3Body": "Tabel harga diurutkan dari termurah dalam mata uang pilihan Anda, dengan termurah, termahal, dan wilayah Anda disorot dan selisihnya jelas. Pindah ke wilayah mana menjadi keputusan Anda.",
     "howToUseNote": "Catatan: data harga berasal dari App Store publik, dikonversi pada kurs langsung, hanya untuk referensi. Pembelian aktual tunduk pada yang ditampilkan di App Store saat itu dan harus mematuhi Persyaratan Layanan Apple serta hukum lokal.",
     "feature4BodyB": "Pengguna anonim melihat hasil sebagian; masuk sebagai anggota untuk membuka semua aplikasi, wilayah, dan tingkat secara gratis — sepenuhnya gratis."
   },
@@ -429,7 +433,13 @@
     "ogTitle": "{app} - pembanding harga di {count} wilayah",
     "ogDescription": "Harga langganan dari {count} wilayah, dari termurah - terendah dalam sekejap.",
     "faqQ1": "Di wilayah App Store mana {app} paling murah?",
-    "cheapestAnswer": "Wilayah App Store termurah untuk {app} adalah {region} seharga {price}. Halaman ini membandingkan harga langganan dan pembelian dalam aplikasi {app} di {count} wilayah App Store, dikonversi ke satu mata uang dan dari termurah.",
+    "cheapestAnswer": "Wilayah App Store termurah untuk {app} adalah {wilayah} seharga {price}. Halaman ini membandingkan harga langganan dan pembelian dalam aplikasi {app} di {count} wilayah App Store, dikonversi ke satu mata uang dan dari termurah.",
     "viewOnAppStore": "Lihat di App Store {country}"
+  },
+  "ExternalAppCard": {
+    "add": "Tambah",
+    "adding": "Menambah",
+    "indexed": "Terindeks",
+    "developerUnknown": "Pengembang tidak diketahui"
   }
 }

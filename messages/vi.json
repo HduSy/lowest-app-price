@@ -105,7 +105,8 @@
     "isLowest": "Đã rẻ nhất",
     "isHighest": "Đã đắt nhất",
     "vsYourRegion": "so với khu vực của bạn",
-    "noPrice": "Không có giá cho khu vực này"
+    "noPrice": "Không có giá cho khu vực này",
+    "offLabel": "GIẢM"
   },
   "AppsPage": {
     "title": "Tất cả ứng dụng",
@@ -124,7 +125,8 @@
     "adding": "Đang thêm...",
     "clearSearch": "Xóa tìm kiếm",
     "loginRequired": "Đăng nhập để thêm ứng dụng",
-    "viewOnAppStore": "Xem trên App Store"
+    "viewOnAppStore": "Xem trên App Store",
+    "searchPlaceholderB": "Tìm theo tên, hoặc dán link / ID App Store (thành viên có thể thêm)"
   },
   "AppsSort": {
     "sortBy": "Sắp xếp",
@@ -167,7 +169,8 @@
     "appPurchaseTier": "Tải ứng dụng",
     "shareText": "LowestAppPrice so sánh giá: {name} rẻ nhất {price} ({region})",
     "prevTier": "Trước",
-    "nextTier": "Tiếp"
+    "nextTier": "Tiếp",
+    "viewOnAppStore": "Xem trên {region} App Store"
   },
   "RelatedApps": {
     "title": "Bạn có thể cũng thích",
@@ -180,8 +183,8 @@
   },
   "ShareBar": {
     "title": "Hữu ích? Chia sẻ ngay!",
-    "subtitle": "Chia sẻ LowestAppPrice với bạn bè và cùng tìm vùng App Store rẻ nhất",
-    "shareText": "LowestAppPrice - So sánh giá App Store ở tất cả các vùng và tìm nơi rẻ nhất",
+    "subtitle": "Chia sẻ LowestAppPrice với bạn bè và cùng tìm khu vực App Store rẻ nhất",
+    "shareText": "LowestAppPrice - So sánh giá App Store ở tất cả các khu vực và tìm nơi rẻ nhất",
     "copyLink": "Sao chép liên kết",
     "copied": "Đã sao chép",
     "ariaLabel": "Chia sẻ lên mạng xã hội"
@@ -190,7 +193,8 @@
     "loadingMore": "Đang tải thêm...",
     "allLoaded": "Đã tải tất cả {count} ứng dụng",
     "noLocalMatch": "Không có kết quả nội bộ, {count} kết quả từ danh bạ Apple có thể thêm",
-    "addHint": "Nhấn «Thêm» để lấy thông tin ứng dụng từ Apple và kích hoạt thu thập giá 40 khu vực. Chỉ dành cho thành viên trả phí."
+    "addHint": "Nhấn «Thêm» để lấy thông tin ứng dụng từ Apple và kích hoạt thu thập giá 40 khu vực. Chỉ dành cho thành viên trả phí.",
+    "addHintB": "Nhấn «Thêm» để lấy thông tin ứng dụng từ Apple và kích hoạt thu thập giá 40 khu vực. Chỉ thành viên (đăng nhập để trở thành thành viên)."
   },
   "UserMenu": {
     "proBadge": "Pro",
@@ -215,7 +219,7 @@
     "ariaLabel": "Đăng nhập",
     "descB": "Đăng nhập với tư cách thành viên — hoàn toàn miễn phí",
     "titleAdd": "Đăng nhập để thêm ứng dụng",
-    "descAdd": "Thêm ứng dụng dành riêng cho thành viên · 1,99 USD thanh toán một lần",
+    "descAdd": "Thêm ứng dụng dành riêng cho thành viên · $1.99 thanh toán một lần",
     "descAddB": "Đăng nhập để trở thành thành viên và thêm bất kỳ ứng dụng nào miễn phí"
   },
   "Currencies": {
@@ -384,32 +388,32 @@
   },
   "About": {
     "metaTitle": "Về chúng tôi - {siteName}",
-    "metaDescription": "Tìm hiểu bối cảnh, ý định, tính năng cốt lõi và cách dùng {siteName} - công cụ tìm vùng App Store rẻ nhất cho bất kỳ gói đăng ký nào.",
+    "metaDescription": "Tìm hiểu bối cảnh, ý định, tính năng cốt lõi và cách dùng {siteName} - công cụ tìm khu vực App Store rẻ nhất cho bất kỳ gói đăng ký nào.",
     "backToHome": "Về trang chủ",
     "title": "Về chúng tôi",
-    "subtitle": "Chúng tôi giúp bạn tìm vùng App Store rẻ nhất cho bất kỳ gói đăng ký nào.",
+    "subtitle": "Chúng tôi giúp bạn tìm khu vực App Store rẻ nhất cho bất kỳ gói đăng ký nào.",
     "backgroundTitle": "Bối cảnh",
-    "backgroundBody": "Cùng một ứng dụng thường được định giá khác nhau nhiều lần giữa các vùng App Store. Tỷ giá giữa dollar, euro và yen thay đổi mỗi ngày, giá địa phương cũng khác nhau - nhưng hầu như không ai so sánh thủ công hàng chục vùng trước khi đăng ký. {siteName} ra đời chính xác cho việc đó: tập hợp giá rải rác tại 40 vùng vào một bảng.",
+    "backgroundBody": "Cùng một ứng dụng thường được định giá khác nhau nhiều lần giữa các khu vực App Store. Tỷ giá giữa dollar, euro và yen thay đổi mỗi ngày, giá địa phương cũng khác nhau - nhưng hầu như không ai so sánh thủ công hàng chục khu vực trước khi đăng ký. {siteName} ra đời chính xác cho việc đó: tập hợp giá rải rác tại 40 khu vực vào một bảng.",
     "intentTitle": "Vì sao chúng tôi xây dựng",
-    "intentBody": "Chúng tôi tin rằng khoảng thông tin là chi phí bị bỏ qua nhiều nhất trong trải nghiệm người tiêu dùng. Khi một gói năm ở vùng rẻ nhất chỉ vài chục nhưng ở vùng đắt nhất lên đến vài trăm, chỉ cần biết khoảng cách đó đã là giá trị. Chúng tôi xây dựng công cụ này để làm giá cả minh bạch - để bất kỳ ai, trước khi đăng ký, đều thấy ngay vùng của mình có thực sự là thỏa thuận tốt nhất không.",
+    "intentBody": "Chúng tôi tin rằng khoảng thông tin là chi phí bị bỏ qua nhiều nhất trong trải nghiệm người tiêu dùng. Khi một gói năm ở khu vực rẻ nhất chỉ vài chục nhưng ở khu vực đắt nhất lên đến vài trăm, chỉ cần biết khoảng cách đó đã là giá trị. Chúng tôi xây dựng công cụ này để làm giá cả minh bạch - để bất kỳ ai, trước khi đăng ký, đều thấy ngay khu vực của mình có thực sự là thỏa thuận tốt nhất không.",
     "featuresTitle": "Chúng tôi cung cấp gì",
-    "featuresIntro": "Tập trung vào một việc - so sánh giá App Store giữa các vùng - và làm đến cùng:",
-    "feature1Title": "So sánh thời gian thực trên 40 vùng",
-    "feature1Body": "Từ Mỹ, Nhật, Thổ Nhĩ Kỳ đến Ấn Độ và Brazil - một truy vấn lấy song song giá đăng ký và mua trong ứng dụng từ 40 vùng App Store, quy đổi sang loại tiền bạn chọn.",
+    "featuresIntro": "Tập trung vào một việc - so sánh giá App Store giữa các khu vực - và làm đến cùng:",
+    "feature1Title": "So sánh thời gian thực trên 40 khu vực",
+    "feature1Body": "Từ Mỹ, Nhật, Thổ Nhĩ Kỳ đến Ấn Độ và Brazil - một truy vấn lấy song song giá đăng ký và mua trong ứng dụng từ 40 khu vực App Store, quy đổi sang loại tiền bạn chọn.",
     "feature2Title": "Đăng ký và mua trong ứng dụng",
     "feature2Body": "Đăng ký tháng / năm, mua một lần, chia sẻ gia đình - bất kỳ hạng mục mua trong ứng dụng nào hiển thị công khai trên trang chi tiết App Store đều được tách thành các hàng có thể so sánh.",
     "feature3Title": "Bảng xếp hạng rõ ràng, rẻ trước",
-    "feature3Body": "Tất cả giá được quy đổi theo tỷ giá trực tiếp sang một loại tiền, rồi xếp từ thấp nhất. Rẻ nhất, đắt nhất và vùng của bạn được tô đậm - khoảng cách hiển hiện ngay.",
+    "feature3Body": "Tất cả giá được quy đổi theo tỷ giá trực tiếp sang một loại tiền, rồi xếp từ thấp nhất. Rẻ nhất, đắt nhất và khu vực của bạn được tô đậm - khoảng cách hiển hiện ngay.",
     "feature4Title": "Dùng được không cần đăng nhập",
-    "feature4Body": "Người dùng ẩn danh thấy kết quả một phần; người đã đăng ký có 3 lượt tra cứu miễn phí mỗi ngày; nếu dùng thường xuyên, 1,99 $ một lần mở khóa truy cập trọn đời không giới hạn.",
+    "feature4Body": "Người dùng ẩn danh thấy kết quả một phần; người đã đăng ký có 3 lượt tra cứu miễn phí mỗi ngày; nếu dùng thường xuyên, $1.99 một lần mở khóa truy cập trọn đời không giới hạn.",
     "howToUseTitle": "Cách sử dụng",
-    "howToUseIntro": "Ba bước để tìm vùng rẻ nhất:",
+    "howToUseIntro": "Ba bước để tìm khu vực rẻ nhất:",
     "step1Title": "Tìm theo tên, dán liên kết hoặc nhập ID",
     "step1Body": "Trong ô nhập trang Tất cả ứng dụng, chỉ cần gõ tên ứng dụng để tìm (dự phòng vào thư mục Apple nếu không có trong thư viện cục bộ); hoặc dán liên kết App Store / nhập ID dạng số rồi bấm «Thêm vào thư viện».",
     "step2Title": "Chờ lấy dữ liệu toàn cầu",
-    "step2Body": "Lần tải đầu tiên lấy song song 40 vùng, thường vài giây. Sau đó tự động làm mới mỗi 6 giờ, giữ tỷ giá và giá sát với thực tế.",
+    "step2Body": "Lần tải đầu tiên lấy song song 40 khu vực, thường vài giây. Sau đó tự động làm mới mỗi 6 giờ, giữ tỷ giá và giá sát với thực tế.",
     "step3Title": "Đọc xếp hạng và quyết định",
-    "step3Body": "Bảng giá được xếp từ thấp nhất theo loại tiền bạn chọn, với rẻ nhất, đắt nhất và vùng của bạn được tô đậm, khoảng cách rõ ràng. Chuyển sang vùng nào là quyết định của bạn.",
+    "step3Body": "Bảng giá được xếp từ thấp nhất theo loại tiền bạn chọn, với rẻ nhất, đắt nhất và khu vực của bạn được tô đậm, khoảng cách rõ ràng. Chuyển sang khu vực nào là quyết định của bạn.",
     "howToUseNote": "Lưu ý: dữ liệu giá đến từ App Store công khai, quy đổi theo tỷ giá trực tiếp, chỉ mang tính tham khảo. Việc mua thực tế phụ thuộc nội dung App Store hiển thị tại thời điểm đó và phải tuân Điều khoản Dịch vụ của Apple cùng luật pháp địa phương.",
     "feature4BodyB": "Người dùng ẩn danh thấy kết quả một phần; đăng nhập với tư cách thành viên để mở khóa mọi ứng dụng, khu vực và mức miễn phí — hoàn toàn miễn phí."
   },
@@ -431,5 +435,11 @@
     "faqQ1": "{app} rẻ nhất ở khu vực App Store nào?",
     "cheapestAnswer": "Khu vực App Store rẻ nhất cho {app} là {region} với giá {price}. Trang này so sánh giá đăng ký và mua hàng trong ứng dụng của {app} tại {count} khu vực App Store, quy đổi sang một loại tiền và từ rẻ nhất.",
     "viewOnAppStore": "Xem trên App Store {country}"
+  },
+  "ExternalAppCard": {
+    "add": "Thêm",
+    "adding": "Đang thêm",
+    "indexed": "Đã đánh chỉ mục",
+    "developerUnknown": "Nhà phát triển không rõ"
   }
 }

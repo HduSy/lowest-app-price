@@ -2,7 +2,7 @@
 // 批量验证 DB 里的 App 是否仍可用（iTunes Lookup），删除下架/不可用的
 // 游标分页：WHERE app_id > lastId，不受删除影响
 // 鉴权：admin 用户，或提供 ADMIN_TOKEN（兜底）
-import { auth } from "@/lib/auth";
+import { requireAdmin } from "@/lib/auth";
 import { getDb } from "@/lib/db";
 import { json, error } from "@/lib/api-response";
 
@@ -11,17 +11,8 @@ const BATCH_SLEEP_MS = 300;
 
 export async function GET(req: Request) {
   // 鉴权
-  const session = await auth();
-  const isAdmin = session?.user?.role === "admin";
-  if (!isAdmin) {
-    const token = new URL(req.url).searchParams.get("token");
-    const { getCloudflareContext } = await import("@opennextjs/cloudflare");
-    const ctx = getCloudflareContext();
-    const env = ctx?.env as { ADMIN_TOKEN?: string } | undefined;
-    if (!env?.ADMIN_TOKEN || token !== env.ADMIN_TOKEN) {
-      return error("Unauthorized", 401);
-    }
-  }
+  const authResp = await requireAdmin(req);
+  if (authResp) return authResp;
 
   const url = new URL(req.url);
   const limit = Math.min(Number(url.searchParams.get("limit") || 100), 500);

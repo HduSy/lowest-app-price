@@ -105,7 +105,8 @@
     "isLowest": "이미 최저가",
     "isHighest": "이미 최고가",
     "vsYourRegion": "현재 지역 대비",
-    "noPrice": "이 지역 가격 정보 없음"
+    "noPrice": "이 지역 가격 정보 없음",
+    "offLabel": "할인"
   },
   "AppsPage": {
     "title": "모든 앱",
@@ -124,7 +125,8 @@
     "adding": "추가 중...",
     "clearSearch": "검색 지우기",
     "loginRequired": "앱을 추가하려면 로그인하세요",
-    "viewOnAppStore": "App Store에서 보기"
+    "viewOnAppStore": "App Store에서 보기",
+    "searchPlaceholderB": "이름 검색, 또는 App Store 링크 / ID 붙여넣기 (멤버 추가 가능)"
   },
   "AppsSort": {
     "sortBy": "정렬",
@@ -167,7 +169,8 @@
     "appPurchaseTier": "앱 다운로드",
     "shareText": "LowestAppPrice 가격 비교: {name} 최저 {price} ({region})",
     "prevTier": "이전",
-    "nextTier": "다음"
+    "nextTier": "다음",
+    "viewOnAppStore": "{region} App Store에서 보기"
   },
   "RelatedApps": {
     "title": "이것도 좋아할 수 있어요",
@@ -190,7 +193,8 @@
     "loadingMore": "더 불러오는 중...",
     "allLoaded": "모든 {count}개 앱 로드됨",
     "noLocalMatch": "로컬 일치 없음, Apple 디렉토리에서 {count}개 결과 추가 가능",
-    "addHint": "「추가」를 클릭하면 Apple에서 앱 정보를 가져와 40개 지역 가격 크롤링을 시작합니다. 유료 멤버 전용."
+    "addHint": "「추가」를 클릭하면 Apple에서 앱 정보를 가져와 40개 지역 가격 크롤링을 시작합니다. 유료 멤버 전용.",
+    "addHintB": "「추가」를 클릭하면 Apple에서 앱 정보를 가져와 40개 지역 가격 크롤링을 시작합니다. 회원 전용 (로그인 시 회원 가능)."
   },
   "UserMenu": {
     "proBadge": "Pro",
@@ -215,7 +219,7 @@
     "ariaLabel": "로그인",
     "descB": "멤버로 로그인하세요 — 완전 무료",
     "titleAdd": "앱을 추가하려면 로그인",
-    "descAdd": "앱 추가는 멤버 전용 · 1.99달러 일회성 결제",
+    "descAdd": "앱 추가는 멤버 전용 · $1.99 일회성 결제",
     "descAddB": "로그인하여 멤버가 되면 모든 앱을 무료로 추가할 수 있습니다"
   },
   "Currencies": {
@@ -401,7 +405,7 @@
     "feature3Title": "명확한 순위, 저렴한 순",
     "feature3Body": "모든 가격을 실시간 환율로 단일 통화에 변환한 뒤 낮은 순으로 정렬합니다. 최저·최고·본인 지역이 강조되고, 격차가 바로 보입니다.",
     "feature4Title": "로그인 없이도 작동",
-    "feature4Body": "익명 사용자는 일부 결과를 보고, 로그인 사용자는 매일 3 회 무료 조회, 자주 쓴다면 1.99 달러 한 번으로 평생 무제한 접근이 열립니다.",
+    "feature4Body": "익명 사용자는 일부 결과를 보고, 로그인 사용자는 매일 3 회 무료 조회, 자주 쓴다면 $1.99 한 번으로 평생 무제한 접근이 열립니다.",
     "howToUseTitle": "사용 방법",
     "howToUseIntro": "가장 저렴한 지역을 찾는 세 단계:",
     "step1Title": "이름으로 검색, 링크 붙여넣기 또는 ID 입력",
@@ -431,5 +435,11 @@
     "faqQ1": "{app}은(는) 어떤 App Store 지역이 가장 저렴한가요?",
     "cheapestAnswer": "{app}의 가장 저렴한 App Store 지역은 {region}으로 {price}입니다. 이 페이지는 {app}의 구독 및 인앱 결제 가격을 {count}개 지역에서 비교해 단일 통화로 변환하고 저렴한 순으로 정렬합니다.",
     "viewOnAppStore": "{country} App Store에서 보기"
+  },
+  "ExternalAppCard": {
+    "add": "추가",
+    "adding": "추가 중",
+    "indexed": "인덱싱됨",
+    "developerUnknown": "알 수 없는 개발자"
   }
 }

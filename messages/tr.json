@@ -84,12 +84,12 @@
     "freeTierB": "FREE",
     "freePriceB": "Misafir",
     "freeNoteB": "Giriş gerekmez",
-    "freeFeature1B": "En ucuz 3 abonelik katmanı",
+    "freeFeature1B": "En ucuz 3 abonelik seviyeı",
     "freeFeature2B": "Tüm Apps gezilebilir",
     "memberTier": "PRO",
     "memberPriceB": "Üye",
     "memberNote": "Açmak için giriş yap",
-    "memberFeature1": "Tüm abonelik katmanlarını aç",
+    "memberFeature1": "Tüm abonelik seviyelarını aç",
     "memberFeature2": "Tüm 40 bölge, sınırsız görüntüleme",
     "memberFeature3": "Özel uygulama ekle",
     "loginToUse": "Kullanmak için giriş yap",
@@ -105,7 +105,8 @@
     "isLowest": "Zaten en ucuz",
     "isHighest": "Zaten en pahalı",
     "vsYourRegion": "bölgenize göre",
-    "noPrice": "Bu bölge için fiyat yok"
+    "noPrice": "Bu bölge için fiyat yok",
+    "offLabel": "İNDİRİM"
   },
   "AppsPage": {
     "title": "Tüm uygulamalar",
@@ -124,7 +125,8 @@
     "adding": "Ekleniyor...",
     "clearSearch": "Aramayı temizle",
     "loginRequired": "Uygulama eklemek için giriş yapın",
-    "viewOnAppStore": "App Store'da gör"
+    "viewOnAppStore": "App Store'da gör",
+    "searchPlaceholderB": "İsme göre ara, veya App Store bağlantısı / ID'sini yapıştır (üyeler ekleyebilir)"
   },
   "AppsSort": {
     "sortBy": "Sırala",
@@ -161,13 +163,14 @@
     "initialLoadingHint": "İlk yükleme 40 bölgeyi getirir, birkaç saniye sürer",
     "refreshingBanner": "Küresel fiyatlar yenileniyor…",
     "converting": "Dönüştürülüyor…",
-    "lockedHintUnsignedB": "Tüm katmanları görmek için üye olarak giriş yap",
-    "lockedHintExhaustedB": "Tüm katmanları görmek için giriş yapın",
+    "lockedHintUnsignedB": "Tüm seviyeları görmek için üye olarak giriş yap",
+    "lockedHintExhaustedB": "Tüm seviyeları görmek için giriş yapın",
     "buyCtaB": "Açmak için giriş yapın",
     "appPurchaseTier": "Uygulama indirme",
     "shareText": "LowestAppPrice fiyat karşılaştırma: {name} en düşük {price} ({region})",
     "prevTier": "Önceki",
-    "nextTier": "Sonraki"
+    "nextTier": "Sonraki",
+    "viewOnAppStore": "{region} App Store'da görüntüle"
   },
   "RelatedApps": {
     "title": "Şunlar da hoşunuza gidebilir",
@@ -190,7 +193,8 @@
     "loadingMore": "Daha fazla yükleniyor...",
     "allLoaded": "Tüm {count} uygulama yüklendi",
     "noLocalMatch": "Yerel eşleşme yok, Apple dizininden {count} sonuç eklenebilir",
-    "addHint": "«Ekle»ye tıklamak uygulama bilgilerini Apple'dan çeker ve 40 bölge için fiyat taraması başlatır. Yalnızca ücretli üyeler için."
+    "addHint": "«Ekle»ye tıklamak uygulama bilgilerini Apple'dan çeker ve 40 bölge için fiyat taraması başlatır. Yalnızca ücretli üyeler için.",
+    "addHintB": "«Ekle»ye tıklamak uygulama bilgilerini Apple'dan çeker ve 40 bölge için fiyat taraması başlatır. Yalnızca üyeler (giriş yaparak üye olun)."
   },
   "UserMenu": {
     "proBadge": "Pro",
@@ -215,7 +219,7 @@
     "ariaLabel": "Giriş",
     "descB": "Üye olarak giriş yapın — tamamen ücretsiz",
     "titleAdd": "Uygulama eklemek için giriş yap",
-    "descAdd": "Uygulama ekleme yalnızca üyelere özeldir · 1,99 $ tek seferlik ödeme",
+    "descAdd": "Uygulama ekleme yalnızca üyelere özeldir · $1.99 tek seferlik ödeme",
     "descAddB": "Üye olmak için giriş yap ve herhangi bir uygulamayı ücretsiz ekle"
   },
   "Currencies": {
@@ -310,7 +314,7 @@
     "changesTitle": "Bu şartlardaki değişiklikler",
     "changesBody": "Bu şartları zaman zaman güncelleyebiliriz. Önemli değişiklikler bu sayfada yayınlanacaktır - Hizmeti kullanmaya devam etmeniz, güncellenmiş şartları kabul ettiğiniz anlamına gelir.",
     "accountTitleB": "Hesap ve üyelik",
-    "accountBodyB": "Hizmet tamamen ücretsizdir — <link>üye olmak için giriş yapın</link> ve tüm abonelik katmanı fiyatlarını ödemesiz olarak ücretsiz görüntüleyin.",
+    "accountBodyB": "Hizmet tamamen ücretsizdir — <link>üye olmak için giriş yapın</link> ve tüm abonelik seviyeı fiyatlarını ödemesiz olarak ücretsiz görüntüleyin.",
     "accountBindingB": "<bold>Üyelik, giriş yöntemine bağlıdır.</bold> Hizmet Google girişi ve e-posta sihirli bağlantı girişini destekler. Farklı giriş yöntemleri ayrı hesaplar olarak kabul edilir — üyelik, kullanılan giriş yöntemine bağlıdır ve hesaplar arasında paylaşılmaz. Örneğin, Google ile giriş yaparak elde edilen üyelik, sihirli bağlantı ile giriş yaparken kullanılamaz. Lütfen giriş yönteminizi unutmayın."
   },
   "Refunds": {
@@ -401,7 +405,7 @@
     "feature3Title": "Net sıralama, en ucuz önce",
     "feature3Body": "Tüm fiyatlar canlı kurlarla tek para birimine çevrilir ve sonra en düşükten sıralanır. En ucuz, en pahalı ve kendi bölgeniz vurgulanır - fark hemen orada.",
     "feature4Title": "Giriş yapmadan çalışır",
-    "feature4Body": "Anonim kullanıcılar kısmi sonuçlar görür; giriş yapanlar günde 3 ücretsiz arama elde eder; sık kullanıyorsanız 1.99 $ bir kez sınırsız ömür boyu erişimi açar.",
+    "feature4Body": "Anonim kullanıcılar kısmi sonuçlar görür; giriş yapanlar günde 3 ücretsiz arama elde eder; sık kullanıyorsanız $1.99 bir kez sınırsız ömür boyu erişimi açar.",
     "howToUseTitle": "Nasıl kullanılır",
     "howToUseIntro": "En ucuz bölgeyi bulmak için üç adım:",
     "step1Title": "İsme göre ara, bağlantı yapıştır veya ID gir",
@@ -411,14 +415,14 @@
     "step3Title": "Sıralamayı okuyun, karar verin",
     "step3Body": "Fiyat tablosu seçtiğiniz para biriminde en düşükten sıralanır; en ucuz, en pahalı ve bölgeniz vurgulanır ve fark barizdir. Hangi bölgeye geçeceğiniz size kalmış.",
     "howToUseNote": "Not: Fiyat verileri herkese açık App Store'dan gelir, canlı kurlarla çevrilir, yalnızca referans içindir. Gerçek satın almalar o an App Store'da gösterilene bağlıdır ve Apple Hizmet Şartları ile yerel yasalara uymalıdır.",
-    "feature4BodyB": "Anonim kullanıcılar kısmi sonuçlar görür; her uygulamayı, bölgeyi ve katmanı ücretsiz olarak açmak için üye olarak giriş yapın — tamamen ücretsiz."
+    "feature4BodyB": "Anonim kullanıcılar kısmi sonuçlar görür; her uygulamayı, bölgeyi ve seviyeı ücretsiz olarak açmak için üye olarak giriş yapın — tamamen ücretsiz."
   },
   "PricingDialog": {
     "ariaLabel": "Üyeliği yükselt",
     "title": "$1.99 ömür boyu kilit açma",
-    "subtitle": "Bir kez ödeyin — tüm uygulamalar, tüm katmanlar, tüm bölgeler, sonsuza dek sınırsız",
+    "subtitle": "Bir kez ödeyin — tüm uygulamalar, tüm seviyelar, tüm bölgeler, sonsuza dek sınırsız",
     "feature1": "Ömür boyu sınırsız erişim",
-    "feature2": "Her uygulama için tüm abonelik katmanları ve bölgeler",
+    "feature2": "Her uygulama için tüm abonelik seviyeları ve bölgeler",
     "feature3": "Günlük kota sınırı yok",
     "buyCta": "$1.99 satın al",
     "later": "Belki daha sonra"
@@ -431,5 +435,11 @@
     "faqQ1": "{app} hangi App Store bölgesinde en ucuz?",
     "cheapestAnswer": "{app} için en ucuz App Store bölgesi {price} ile {region}. Bu sayfa, {app} abonelik ve uygulama içi satın alma fiyatlarını {count} App Store bölgesinde karşılaştırır, tek para birimine çevirip en ucuzdan sıralar.",
     "viewOnAppStore": "{country} App Store'da görüntüle"
+  },
+  "ExternalAppCard": {
+    "add": "Ekle",
+    "adding": "Ekleniyor",
+    "indexed": "Dizine eklendi",
+    "developerUnknown": "Bilinmeyen geliştirici"
   }
 }

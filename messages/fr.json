@@ -60,11 +60,11 @@
   },
   "Pricing": {
     "title": "Essayez d'abord gratuitement, payez si ça vaut le coup",
-    "desc": "Connectez-vous pour voir 3 apps gratuitement par jour, ou payez $1.99 une fois - toutes les apps, tous les paliers d'abonnement, toutes les régions, illimité pour toujours.",
+    "desc": "Connectez-vous pour voir 3 apps gratuitement par jour, ou payez $1.99 une fois - toutes les apps, tous les niveaux d'abonnement, toutes les régions, illimité pour toujours.",
     "freeTier": "Essai gratuit",
     "freePrice": "3 par jour, gratuit",
     "freeNote": "Connectez-vous simplement",
-    "freeFeature1": "Voir tous les paliers d'abonnement",
+    "freeFeature1": "Voir tous les niveaux d'abonnement",
     "freeFeature2": "Réinitialisé à UTC 00:00 chaque jour",
     "freeFeature3": "Quota partagé entre toutes les apps",
     "currentPlan": "Offre actuelle",
@@ -74,13 +74,13 @@
     "paidPriceNote": "une fois, à vie",
     "paidNote": "Apps, régions, recherches illimitées",
     "paidFeature1": "Accès illimité à vie",
-    "paidFeature2": "Tous les paliers d'abonnement et régions pour chaque app",
+    "paidFeature2": "Tous les niveaux d'abonnement et régions pour chaque app",
     "paidFeature3": "Aucune limite de quota quotidienne",
     "buyButton": "Acheter $1.99",
     "loginToBuy": "Connectez-vous pour acheter",
     "owned": "Acheté",
     "titleB": "Essayez gratuitement, connectez-vous pour tout débloquer",
-    "descB": "Consultez les 3 paliers les moins chers sans compte, ou connectez-vous pour devenir membre et tout débloquer - entièrement gratuit.",
+    "descB": "Consultez les 3 niveaux les moins chers sans compte, ou connectez-vous pour devenir membre et tout débloquer - entièrement gratuit.",
     "freeTierB": "FREE",
     "freePriceB": "Invité",
     "freeNoteB": "Sans connexion",
@@ -105,7 +105,8 @@
     "isLowest": "Déjà le moins cher",
     "isHighest": "Déjà le plus cher",
     "vsYourRegion": "vs votre région",
-    "noPrice": "Pas de prix pour cette région"
+    "noPrice": "Pas de prix pour cette région",
+    "offLabel": "RÉDUC"
   },
   "AppsPage": {
     "title": "Toutes les apps",
@@ -124,7 +125,8 @@
     "adding": "Ajout...",
     "clearSearch": "Effacer la recherche",
     "loginRequired": "Connectez-vous pour ajouter des apps",
-    "viewOnAppStore": "Voir sur l'App Store"
+    "viewOnAppStore": "Voir sur l'App Store",
+    "searchPlaceholderB": "Rechercher par nom, ou coller lien / ID App Store (les membres peuvent ajouter)"
   },
   "AppsSort": {
     "sortBy": "Trier",
@@ -162,12 +164,13 @@
     "refreshingBanner": "Actualisation des prix mondiaux…",
     "converting": "Conversion…",
     "lockedHintUnsignedB": "Connectez-vous en tant que membre pour voir tous les niveaux",
-    "lockedHintExhaustedB": "Connectez-vous pour voir tous les paliers",
+    "lockedHintExhaustedB": "Connectez-vous pour voir tous les niveaux",
     "buyCtaB": "Connectez-vous pour débloquer",
     "appPurchaseTier": "Téléchargement de l'app",
     "shareText": "LowestAppPrice comparaison de prix : {name} le moins cher {price} ({region})",
     "prevTier": "Précédent",
-    "nextTier": "Suivant"
+    "nextTier": "Suivant",
+    "viewOnAppStore": "Voir sur l'App Store {region}"
   },
   "RelatedApps": {
     "title": "Vous pourriez aussi aimer",
@@ -190,7 +193,8 @@
     "loadingMore": "Chargement...",
     "allLoaded": "Toutes les {count} apps chargées",
     "noLocalMatch": "Pas de résultat local, {count} résultats du catalogue Apple ajoutables",
-    "addHint": "Cliquer sur « Ajouter » récupère les infos de l'app depuis Apple et lance un crawl des prix sur 40 régions. Réservé aux membres payants."
+    "addHint": "Cliquer sur « Ajouter » récupère les infos de l'app depuis Apple et lance un crawl des prix sur 40 régions. Réservé aux membres payants.",
+    "addHintB": "Cliquer sur « Ajouter » récupère les infos de l'app depuis Apple et lance un crawl des prix sur 40 régions. Membres uniquement (connectez-vous pour devenir membre)."
   },
   "UserMenu": {
     "proBadge": "Pro",
@@ -215,7 +219,7 @@
     "ariaLabel": "Connexion",
     "descB": "Connectez-vous en tant que membre — entièrement gratuit",
     "titleAdd": "Connectez-vous pour ajouter des apps",
-    "descAdd": "L'ajout d'apps est réservé aux membres · 1,99 $ achat unique",
+    "descAdd": "L'ajout d'apps est réservé aux membres · $1.99 achat unique",
     "descAddB": "Connectez-vous pour devenir membre et ajouter gratuitement n'importe quelle app"
   },
   "Currencies": {
@@ -401,7 +405,7 @@
     "feature3Title": "Un classement clair, du moins cher au plus cher",
     "feature3Body": "Tous les prix sont convertis aux taux en direct vers une seule devise, puis triés du moins cher. Le moins cher, le plus cher et votre propre région sont mis en évidence - l'écart est là.",
     "feature4Title": "Fonctionne sans connexion",
-    "feature4Body": "Les utilisateurs anonymes voient des résultats partiels ; les utilisateurs connectés obtiennent 3 consultations gratuites par jour ; en cas d'usage fréquent, 1,99 $ une fois débloque un accès à vie illimité.",
+    "feature4Body": "Les utilisateurs anonymes voient des résultats partiels ; les utilisateurs connectés obtiennent 3 consultations gratuites par jour ; en cas d'usage fréquent, $1.99 une fois débloque un accès à vie illimité.",
     "howToUseTitle": "Mode d'emploi",
     "howToUseIntro": "Trois étapes pour trouver la région la moins chère :",
     "step1Title": "Rechercher par nom, coller un lien ou saisir un ID",
@@ -416,9 +420,9 @@
   "PricingDialog": {
     "ariaLabel": "Améliorer l'adhésion",
     "title": "Déblocage à vie $1.99",
-    "subtitle": "Payez une fois — toutes les apps, tous les paliers, toutes les régions, illimité pour toujours",
+    "subtitle": "Payez une fois — toutes les apps, tous les niveaux, toutes les régions, illimité pour toujours",
     "feature1": "Accès illimité à vie",
-    "feature2": "Tous les paliers d'abonnement et régions pour chaque app",
+    "feature2": "Tous les niveaux d'abonnement et régions pour chaque app",
     "feature3": "Aucune limite de quota quotidienne",
     "buyCta": "Acheter $1.99",
     "later": "Peut-être plus tard"
@@ -431,5 +435,11 @@
     "faqQ1": "Dans quelle région de l'App Store {app} est-il le moins cher ?",
     "cheapestAnswer": "La région App Store la moins chère pour {app} est {region} à {price}. Cette page compare les prix d'abonnement et d'achat intégré de {app} dans {count} régions App Store, convertis en une seule devise et classés du moins cher au plus cher.",
     "viewOnAppStore": "Voir sur l'App Store {country}"
+  },
+  "ExternalAppCard": {
+    "add": "Ajouter",
+    "adding": "Ajout en cours",
+    "indexed": "Indexé",
+    "developerUnknown": "Développeur inconnu"
   }
 }

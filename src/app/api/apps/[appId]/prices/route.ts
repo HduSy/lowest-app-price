@@ -3,6 +3,7 @@ import { getDb, getApp, getPrices, markAppFetched, isStale } from "@/lib/db";
 import { refreshPrices } from "@/app/[country]/apps/[appId]/refresh";
 import { auth } from "@/lib/auth";
 import { authorizeAppView } from "@/lib/entitlement";
+import { readCookie } from "@/lib/cookie";
 import {
   filterPricesByAuth,
   extractIapMetadata,
@@ -51,9 +52,7 @@ export async function GET(
       // 优先抓取用户所在区：从 cookie 或 query 参数取国家 code
       const country =
         url.searchParams.get("country") ||
-        req.headers
-          .get("cookie")
-          ?.match(/(?:^|;\s*)detected_country=([^;]+)/)?.[1] ||
+        readCookie(req.headers.get("cookie") || "", "detected_country") ||
         undefined;
       const { attemptedRegions } = await refreshPrices(db, appId, country || undefined);
       // 只要爬虫成功拿到页面（attempted>0）就更新 last_fetched_at，

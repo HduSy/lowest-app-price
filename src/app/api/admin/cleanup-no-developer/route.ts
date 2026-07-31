@@ -4,23 +4,14 @@
 // 游标分页：WHERE app_id > lastId，删除后下一轮自动跳过已删的
 // 鉴权：admin 用户，或提供 ADMIN_TOKEN（兜底）
 // 不声明 runtime：OpenNext for Cloudflare 默认 nodejs（已开 nodejs_compat）
-import { auth } from "@/lib/auth";
+import { requireAdmin } from "@/lib/auth";
 import { getDb } from "@/lib/db";
 import { json, error } from "@/lib/api-response";
 
 export async function GET(req: Request) {
   // 鉴权
-  const session = await auth();
-  const isAdmin = session?.user?.role === "admin";
-  if (!isAdmin) {
-    const token = new URL(req.url).searchParams.get("token");
-    const { getCloudflareContext } = await import("@opennextjs/cloudflare");
-    const ctx = getCloudflareContext();
-    const env = ctx?.env as { ADMIN_TOKEN?: string } | undefined;
-    if (!env?.ADMIN_TOKEN || token !== env.ADMIN_TOKEN) {
-      return error("Unauthorized", 401);
-    }
-  }
+  const authResp = await requireAdmin(req);
+  if (authResp) return authResp;
 
   const url = new URL(req.url);
   const limit = Math.min(Number(url.searchParams.get("limit") || 500), 1000);

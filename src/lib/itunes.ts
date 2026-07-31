@@ -31,6 +31,29 @@ export interface AppMeta {
   currency: string | null;
 }
 
+// 全 null 的 AppMeta 占位值：fetchAppMeta/fetchAppsMeta 失败或未命中时统一返回
+function emptyAppMeta(): AppMeta {
+  return {
+    name: null,
+    developer: null,
+    iconUrl: null,
+    bundleId: null,
+    category: null,
+    genres: null,
+    compatibility: null,
+    rating: null,
+    ratingCount: null,
+    price: null,
+    formattedPrice: null,
+    currency: null,
+  };
+}
+
+// 把 Apple artwork URL 缩略图尺寸（100x100 / 60x60）替换为目标尺寸（如 "200x200"）
+function upscaleIconUrl(url: string, size: string): string {
+  return url.replace(/100x100|60x60/, size);
+}
+
 interface ItunesResult {
   trackName?: string;
   artistName?: string;
@@ -86,10 +109,8 @@ function mapResult(r: ItunesResult): AppMeta {
     name: r.trackName ?? null,
     developer: r.artistName ?? null,
     iconUrl:
-      (r.artworkUrl100 || r.artworkUrl60 || "").replace(
-        /100x100|60x60/,
-        "200x200"
-      ) || null,
+      upscaleIconUrl(r.artworkUrl100 || r.artworkUrl60 || "", "200x200") ||
+      null,
     bundleId: r.bundleId ?? null,
     category: r.primaryGenreName ?? null,
     genres: Array.isArray(r.genres) ? r.genres : null,
@@ -118,20 +139,7 @@ export async function fetchAppMeta(appId: string): Promise<AppMeta> {
   } catch (e) {
     console.error(`fetchAppMeta(${appId}):`, e);
   }
-  return {
-    name: null,
-    developer: null,
-    iconUrl: null,
-    bundleId: null,
-    category: null,
-    genres: null,
-    compatibility: null,
-    rating: null,
-    ratingCount: null,
-    price: null,
-    formattedPrice: null,
-    currency: null,
-  };
+  return emptyAppMeta();
 }
 
 // 批量 lookup（最多 10 个/次）
@@ -157,20 +165,7 @@ export async function fetchAppsMeta(
       for (const id of batch) {
         if (!found.has(id)) {
           // 未命中：name 设为 null（与 fetchAppMeta 一致），调用方应据此跳过
-          out[id] = {
-            name: null,
-            developer: null,
-            iconUrl: null,
-            bundleId: null,
-            category: null,
-            genres: null,
-            compatibility: null,
-            rating: null,
-            ratingCount: null,
-            price: null,
-            formattedPrice: null,
-            currency: null,
-          };
+          out[id] = emptyAppMeta();
         }
       }
     } catch (e) {
@@ -178,20 +173,7 @@ export async function fetchAppsMeta(
       for (const id of batch) {
         if (!out[id]) {
           // 批次整体失败：name 设为 null，调用方应据此重试或跳过
-          out[id] = {
-            name: null,
-            developer: null,
-            iconUrl: null,
-            bundleId: null,
-            category: null,
-            genres: null,
-            compatibility: null,
-            rating: null,
-            ratingCount: null,
-            price: null,
-            formattedPrice: null,
-            currency: null,
-          };
+          out[id] = emptyAppMeta();
         }
       }
     }
@@ -240,10 +222,8 @@ export async function searchAppStore(
           name: r.trackName ?? "",
           developer: r.artistName ?? null,
           iconUrl:
-            (r.artworkUrl100 || r.artworkUrl60 || "").replace(
-              /100x100|60x60/,
-              "120x120"
-            ) || null,
+            upscaleIconUrl(r.artworkUrl100 || r.artworkUrl60 || "", "120x120") ||
+            null,
           category: r.primaryGenreName ?? null,
         };
       })

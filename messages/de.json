@@ -80,16 +80,16 @@
     "loginToBuy": "Anmelden zum Kaufen",
     "owned": "Gekauft",
     "titleB": "Kostenlos testen, anmelden für Vollzugriff",
-    "descB": "Ohne Anmeldung die 3 günstigsten Tarife sehen, oder anmelden und Mitglied werden, um alles freizuschalten - komplett kostenlos.",
+    "descB": "Ohne Anmeldung die 3 günstigsten Stufe sehen, oder anmelden und Mitglied werden, um alles freizuschalten - komplett kostenlos.",
     "freeTierB": "FREE",
     "freePriceB": "Gast",
     "freeNoteB": "Keine Anmeldung nötig",
-    "freeFeature1B": "Die 3 günstigsten Abo-Tarife",
+    "freeFeature1B": "Die 3 günstigsten Abo-Stufe",
     "freeFeature2B": "Alle Apps durchsuchen",
     "memberTier": "PRO",
     "memberPriceB": "Mitglied",
     "memberNote": "Anmelden zum Freischalten",
-    "memberFeature1": "Alle Abo-Tarife freischalten",
+    "memberFeature1": "Alle Abo-Stufe freischalten",
     "memberFeature2": "Alle 40 Regionen, unbegrenzt",
     "memberFeature3": "Eigene Apps hinzufügen",
     "loginToUse": "Anmelden zum Nutzen",
@@ -105,7 +105,8 @@
     "isLowest": "Bereits am günstigsten",
     "isHighest": "Bereits am teuersten",
     "vsYourRegion": "ggü. deiner Region",
-    "noPrice": "Kein Preis für diese Region"
+    "noPrice": "Kein Preis für diese Region",
+    "offLabel": "RABATT"
   },
   "AppsPage": {
     "title": "Alle Apps",
@@ -124,7 +125,8 @@
     "adding": "Wird hinzugefügt...",
     "clearSearch": "Suche löschen",
     "loginRequired": "Bitte melde dich an, um Apps hinzuzufügen",
-    "viewOnAppStore": "Im App Store ansehen"
+    "viewOnAppStore": "Im App Store ansehen",
+    "searchPlaceholderB": "Nach Name suchen, oder App Store-Link / ID einfügen (Mitglieder können hinzufügen)"
   },
   "AppsSort": {
     "sortBy": "Sortieren",
@@ -161,13 +163,14 @@
     "initialLoadingHint": "Erster Abruf lädt 40 Regionen, dauert wenige Sekunden",
     "refreshingBanner": "Globale Preise werden aktualisiert…",
     "converting": "Umrechnen…",
-    "lockedHintUnsignedB": "Als Mitglied anmelden, um alle Tarife zu sehen",
+    "lockedHintUnsignedB": "Als Mitglied anmelden, um alle Stufe zu sehen",
     "lockedHintExhaustedB": "Anmelden, um alle Stufen zu sehen",
     "buyCtaB": "Anmelden zum Freischalten",
     "appPurchaseTier": "App-Download",
     "shareText": "LowestAppPrice Preisvergleich: {name} günstigste {price} ({region})",
     "prevTier": "Vorherige",
-    "nextTier": "Nächste"
+    "nextTier": "Nächste",
+    "viewOnAppStore": "Auf {region} App Store ansehen"
   },
   "RelatedApps": {
     "title": "Das könnte dir auch gefallen",
@@ -190,7 +193,8 @@
     "loadingMore": "Mehr laden...",
     "allLoaded": "Alle {count} Apps geladen",
     "noLocalMatch": "Kein lokaler Treffer, {count} Ergebnisse aus dem Apple-Verzeichnis können hinzugefügt werden",
-    "addHint": "Auf „Hinzufügen“ klicken ruft App-Infos von Apple ab und startet einen 40-Regionen-Preiscrawl. Nur für zahlende Mitglieder."
+    "addHint": "Auf „Hinzufügen“ klicken ruft App-Infos von Apple ab und startet einen 40-Regionen-Preiscrawl. Nur für zahlende Mitglieder.",
+    "addHintB": "Auf „Hinzufügen“ klicken ruft App-Infos von Apple ab und startet einen 40-Regionen-Preiscrawl. Nur für Mitglieder (Anmelden = Mitglied werden)."
   },
   "UserMenu": {
     "proBadge": "Pro",
@@ -215,7 +219,7 @@
     "ariaLabel": "Anmelden",
     "descB": "Als Mitglied anmelden — komplett kostenlos",
     "titleAdd": "Anmelden, um Apps hinzuzufügen",
-    "descAdd": "Apps hinzufügen ist nur für Mitglieder · 1,99 $ einmalig",
+    "descAdd": "Apps hinzufügen ist nur für Mitglieder · $1.99 einmalig",
     "descAddB": "Melde dich an, um Mitglied zu werden und beliebig viele Apps kostenlos hinzuzufügen"
   },
   "Currencies": {
@@ -401,7 +405,7 @@
     "feature3Title": "Klare Rangfolge, günstigste zuerst",
     "feature3Body": "Alle Preise werden zu Live-Wechselkursen in eine Währung umgerechnet und dann aufsteigend sortiert. Günstigste, teuerste und deine eigene Region sind hervorgehoben - der Abstand steht direkt da.",
     "feature4Title": "Funktioniert ohne Anmeldung",
-    "feature4Body": "Anonyme Nutzer sehen teilweise Ergebnisse; angemeldete Nutzer erhalten 3 kostenlose Abfragen pro Tag; bei häufiger Nutzung entsperrt 1.99 $ einmalig unbegrenzten lebenslangen Zugriff.",
+    "feature4Body": "Anonyme Nutzer sehen teilweise Ergebnisse; angemeldete Nutzer erhalten 3 kostenlose Abfragen pro Tag; bei häufiger Nutzung entsperrt $1.99 einmalig unbegrenzten lebenslangen Zugriff.",
     "howToUseTitle": "So nutzt du es",
     "howToUseIntro": "Drei Schritte zur günstigsten Region:",
     "step1Title": "Nach Namen suchen, Link einfügen oder ID eingeben",
@@ -431,5 +435,11 @@
     "faqQ1": "In welcher App Store-Region ist {app} am günstigsten?",
     "cheapestAnswer": "Die günstigste App Store-Region für {app} ist {region} bei {price}. Diese Seite vergleicht Abo- und In-App-Kauf-Preise von {app} aus {count} App Store-Regionen, umgerechnet in eine Währung und ab dem günstigsten sortiert.",
     "viewOnAppStore": "Im {country} App Store ansehen"
+  },
+  "ExternalAppCard": {
+    "add": "Hinzufügen",
+    "adding": "Wird hinzugefügt",
+    "indexed": "Indiziert",
+    "developerUnknown": "Unbekannter Entwickler"
   }
 }

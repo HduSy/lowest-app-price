@@ -36,9 +36,3 @@ export async function detectGeo(): Promise<GeoInfo | null> {
     return null;
   }
 }
-
-/** 旧接口保留：只返回国家 code，内部转发到 detectGeo */
-export async function detectGeoCountry(): Promise<string | null> {
-  const r = await detectGeo();
-  return r?.country ?? null;
-}

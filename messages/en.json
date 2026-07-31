@@ -105,7 +105,8 @@
     "isLowest": "Already lowest",
     "isHighest": "Already highest",
     "vsYourRegion": "vs your region",
-    "noPrice": "No price for this region"
+    "noPrice": "No price for this region",
+    "offLabel": "OFF"
   },
   "AppsPage": {
     "title": "All Apps",
@@ -168,7 +169,8 @@
     "appPurchaseTier": "App Download",
     "shareText": "LowestAppPrice price compare: {name} lowest {price} ({region})",
     "prevTier": "Previous",
-    "nextTier": "Next"
+    "nextTier": "Next",
+    "viewOnAppStore": "View on {region} App Store"
   },
   "RelatedApps": {
     "title": "You might also like",

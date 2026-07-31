@@ -169,52 +169,20 @@ export async function authorizeAppView(
   const ent = await getEntitlement(userId);
   // 付费用户（A/B 版通用，历史买断优先）
   if (ent.paid) {
-    return {
-      canViewFull: true,
-      reason: "paid",
-      dailyUsed: 0,
-      dailyLimit: DAILY_VIEW_LIMIT,
-      paid: true,
-      member: ent.member,
-      loggedIn: true,
-    };
+    return buildViewAuth(ent, { canViewFull: true, reason: "paid", dailyUsed: 0 });
   }
   // B 版：登录即会员
   if (ent.member) {
-    return {
-      canViewFull: true,
-      reason: "member",
-      dailyUsed: 0,
-      dailyLimit: DAILY_VIEW_LIMIT,
-      paid: false,
-      member: true,
-      loggedIn: true,
-    };
+    return buildViewAuth(ent, { canViewFull: true, reason: "member", dailyUsed: 0 });
   }
   if (!userId) {
-    return {
-      canViewFull: false,
-      reason: "anonymous",
-      dailyUsed: 0,
-      dailyLimit: DAILY_VIEW_LIMIT,
-      paid: false,
-      member: false,
-      loggedIn: false,
-    };
+    return buildViewAuth(ent, { canViewFull: false, reason: "anonymous", dailyUsed: 0 });
   }
   // A 版已登录未付费：检查今天是否已解锁此 App
   const today = todayUTC();
   const unlocked = await hasUnlockedApp(userId, appId, today);
   if (unlocked) {
-    return {
-      canViewFull: true,
-      reason: "unlocked_today",
-      dailyUsed: ent.dailyUsed,
-      dailyLimit: DAILY_VIEW_LIMIT,
-      paid: false,
-      member: false,
-      loggedIn: true,
-    };
+    return buildViewAuth(ent, { canViewFull: true, reason: "unlocked_today", dailyUsed: ent.dailyUsed });
   }
   // 今天未解锁此 App
   if (ent.dailyUsed < DAILY_VIEW_LIMIT) {
@@ -222,25 +190,26 @@ export async function authorizeAppView(
     const result = await consumeDailyView(userId);
     if (result.success) {
       await recordAppUnlock(userId, appId);
-      return {
-        canViewFull: true,
-        reason: "quota_consumed",
-        dailyUsed: result.dailyUsed,
-        dailyLimit: DAILY_VIEW_LIMIT,
-        paid: false,
-        member: false,
-        loggedIn: true,
-      };
+      return buildViewAuth(ent, { canViewFull: true, reason: "quota_consumed", dailyUsed: result.dailyUsed });
     }
   }
   // 配额已满
+  return buildViewAuth(ent, { canViewFull: false, reason: "quota_exhausted", dailyUsed: ent.dailyUsed });
+}
+
+// 把 Entitlement + 变量字段拼成 AppViewAuth；paid/member/loggedIn 直接镜像 ent
+// （authorizeAppView 各分支的条件已保证 ent 字段与原硬编码值等价）
+function buildViewAuth(
+  ent: Entitlement,
+  overrides: { canViewFull: boolean; reason: ViewAuthReason; dailyUsed: number }
+): AppViewAuth {
   return {
-    canViewFull: false,
-    reason: "quota_exhausted",
-    dailyUsed: ent.dailyUsed,
+    canViewFull: overrides.canViewFull,
+    reason: overrides.reason,
+    dailyUsed: overrides.dailyUsed,
     dailyLimit: DAILY_VIEW_LIMIT,
-    paid: false,
-    member: false,
-    loggedIn: true,
+    paid: ent.paid,
+    member: ent.member,
+    loggedIn: ent.loggedIn,
   };
 }

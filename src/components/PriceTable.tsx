@@ -1,17 +1,18 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import type { PriceRow } from "@/lib/types";
 import { aggregatePrices, computeFreeCount } from "@/lib/compare";
-import { formatCurrency } from "@/lib/currencies";
-import { useCurrency, usePricingVariant } from "@/lib/app-store";
-import type { AppViewAuth } from "@/lib/entitlement";
-import { DAILY_VIEW_LIMIT } from "@/lib/entitlement";
 import { isAppPurchaseName } from "@/lib/iap-constants";
-import { Flag } from "./Flag";
+import { useCurrency } from "@/lib/app-store";
+import type { AppViewAuth } from "@/lib/entitlement";
+import { startCheckout } from "@/lib/paddle";
 import { ShareButton } from "./ShareButton";
+import { LockedBanner } from "./price-table/LockedBanner";
+import { IapTabs } from "./price-table/IapTabs";
+import { IapPriceList } from "./price-table/IapPriceList";
 
 // 弹窗仅在点击解锁/购买时才需要：懒加载，避免 next-auth/react + checkout 逻辑
 // 进入详情页的初始包（详情页首屏只需价格表，弹窗是交互副作用）。
@@ -194,14 +195,7 @@ export function PriceTable({
     setUnlocking(true);
     setUnlockError(null);
     try {
-      const res = await fetch("/api/paddle/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ callbackUrl: window.location.href }),
-      });
-      if (!res.ok) throw new Error("Failed to create checkout session");
-      const { url } = await res.json();
-      if (url) window.location.href = url;
+      await startCheckout(window.location.href);
     } catch (e) {
       setUnlockError(e instanceof Error ? e.message : "Purchase failed");
     } finally {
@@ -291,21 +285,7 @@ export function PriceTable({
                 </>
               ) : (
                 <>
-                  <svg
-                    width="1em"
-                    height="1em"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-rotate-cw"
-                    aria-hidden="true"
-                  >
-                    <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" />
-                    <path d="M21 3v5h-5" />
-                  </svg>{" "}
+                  <i className="ph ph-arrow-clockwise" aria-hidden="true" />{" "}
                   {t("forceRefresh")}
                 </>
               )}
@@ -398,322 +378,6 @@ export function PriceTable({
   }
 }
 
-// 锁定提示条：未登录引导登录，配额用完引导购买
-function LockedBanner({
-  auth,
-  unlocking,
-  error,
-  onBuy,
-  onLogin,
-}: {
-  auth: AppViewAuth;
-  unlocking: boolean;
-  error: string | null;
-  onBuy: () => void;
-  onLogin: () => void;
-}) {
-  const t = useTranslations("PriceTable");
-  const variant = usePricingVariant();
-  return (
-    <div className="mb-4 rounded-[var(--radius-md)] border border-[var(--color-primary-focus)]/20 bg-[rgba(0,113,227,0.06)] px-4 py-3">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div className="flex items-center gap-2 text-sm">
-          <i className="ph ph-lock-key text-[var(--color-primary-focus)]" />
-          {!auth.loggedIn ? (
-            <span>{variant === "B" ? t("lockedHintUnsignedB") : t("lockedHintUnsigned", { limit: DAILY_VIEW_LIMIT })}</span>
-          ) : (
-            <span>{variant === "B" ? t("lockedHintExhaustedB") : t("lockedHintExhausted", { limit: DAILY_VIEW_LIMIT })}</span>
-          )}
-        </div>
-        <div className="flex items-center gap-2">
-          {!auth.loggedIn ? (
-            <button
-              type="button"
-              onClick={onLogin}
-              className="rounded-full bg-[var(--color-primary-focus)] px-4 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-[var(--color-primary)]"
-            >
-              {t("loginCta")}
-            </button>
-          ) : (
-            <button
-              type="button"
-              onClick={variant === "B" ? onLogin : onBuy}
-              disabled={unlocking}
-              className="rounded-full bg-[var(--color-primary-focus)] px-4 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-[var(--color-primary)] disabled:opacity-50"
-            >
-              {unlocking ? <span className="spinner" /> : variant === "B" ? t("buyCtaB") : t("buyCta")}
-            </button>
-          )}
-        </div>
-      </div>
-      {error && (
-        <div className="mt-2 text-xs text-[var(--color-red)]">
-          <i className="ph ph-warning-circle" /> {error}
-        </div>
-      )}
-    </div>
-  );
-}
-
 function LegendDot({ className }: { className: string }) {
   return <span className={`inline-block h-2 w-2 rounded-full ${className}`} />;
-}
-
-// ============ IAP 档位 Tab（locked 时第 freeCount+ 个套餐显示锁图标，点击触发解锁）============
-function IapTabs({
-  iaps,
-  activeKey,
-  onChange,
-  locked,
-  freeCount,
-  onLockedClick,
-}: {
-  iaps: { key: string; name: string }[];
-  activeKey: string | null;
-  onChange: (key: string) => void;
-  locked: boolean;
-  freeCount: number;
-  onLockedClick: () => void;
-}) {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [canLeft, setCanLeft] = useState(false);
-  const [canRight, setCanRight] = useState(false);
-  const t = useTranslations("PriceTable");
-
-  const syncScrollState = () => {
-    const el = scrollRef.current;
-    if (!el) return;
-    setCanLeft(el.scrollLeft > 4);
-    setCanRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
-  };
-
-  useEffect(() => {
-    syncScrollState();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [iaps]);
-
-  if (iaps.length === 0) return null;
-
-  const scrollByDir = (dir: 1 | -1) => {
-    const el = scrollRef.current;
-    if (!el) return;
-    el.scrollBy({ left: dir * el.clientWidth * 0.8, behavior: "smooth" });
-  };
-
-  return (
-    <div className="mb-5">
-      <h3 className="mb-2.5 text-[13px] font-semibold text-[var(--color-ink-48)]">
-        {t("tierLabel")}
-      </h3>
-      <div className="relative">
-        <div
-          ref={scrollRef}
-          onScroll={syncScrollState}
-          className="flex gap-0.5 overflow-x-auto rounded-[9px] bg-[#ededf0] p-[2px] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        >
-           {iaps.map((iap, idx) => {
-             const active = iap.key === activeKey;
-             // 非会员 locked：前 freeCount 个（最便宜）解锁，其余锁定
-             const isLocked = locked && idx >= freeCount;
-             return (
-               <button
-                 key={iap.key}
-                 onClick={() => (isLocked ? onLockedClick() : onChange(iap.key))}
-                 className={`flex shrink-0 items-center gap-1 rounded-[7px] px-3.5 py-[6px] text-[13px] font-medium transition-all duration-200 ease-out ${
-                   isLocked
-                     ? "text-[var(--color-ink-48)] opacity-50 hover:opacity-100"
-                     : active
-                     ? "bg-white text-[var(--color-ink)] shadow-[0_1px_3px_rgba(0,0,0,0.06)]"
-                     : "text-[var(--color-ink-48)] hover:text-[var(--color-ink-80)]"
-                 }`}
-               >
-                 {isLocked && <i className="ph ph-lock-key text-[11px]" />}
-                 <span className="whitespace-nowrap">{isAppPurchaseName(iap.name) ? t("appPurchaseTier") : iap.name}</span>
-               </button>
-             );
-           })}
-        </div>
-
-        {/* 左侧渐隐 + 箭头，到最首时整体渐隐 */}
-        <div
-          className={`pointer-events-none absolute left-0 top-0 z-10 flex h-full w-10 items-center rounded-l-[9px] bg-gradient-to-r from-[#ededf0] via-[#ededf0]/60 to-transparent transition-opacity duration-200 ${
-            canLeft ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <button
-            type="button"
-            onClick={() => scrollByDir(-1)}
-            aria-label={t("prevTier")}
-            className="pointer-events-auto ml-1 flex h-6 w-6 items-center justify-center rounded-full bg-white shadow-[0_1px_3px_rgba(0,0,0,0.12)] transition-colors hover:bg-[var(--color-parchment)]"
-          >
-            <i className="ph ph-caret-left text-[12px]" />
-          </button>
-        </div>
-
-        {/* 右侧渐隐 + 箭头，到最尾时整体渐隐 */}
-        <div
-          className={`pointer-events-none absolute right-0 top-0 z-10 flex h-full w-10 items-center justify-end rounded-r-[9px] bg-gradient-to-l from-[#ededf0] via-[#ededf0]/60 to-transparent transition-opacity duration-200 ${
-            canRight ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <button
-            type="button"
-            onClick={() => scrollByDir(1)}
-            aria-label={t("nextTier")}
-            className="pointer-events-auto mr-1 flex h-6 w-6 items-center justify-center rounded-full bg-white shadow-[0_1px_3px_rgba(0,0,0,0.12)] transition-colors hover:bg-[var(--color-parchment)]"
-          >
-            <i className="ph ph-caret-right text-[12px]" />
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// ============ 单个 IAP 档位的地区价格表（套餐内所有地区可见）============
-function IapPriceList({
-  iap,
-  currency,
-  appId,
-}: {
-  iap: NonNullable<Awaited<ReturnType<typeof aggregatePrices>>>["iaps"][number];
-  currency: string;
-  appId: string;
-}) {
-  const t = useTranslations("PriceTable");
-  const lowest = iap.lowest;
-  // 只有当至少 3 个有效条目时，才把"最高"标红--避免和最低重叠
-  const validCount = iap.entries.filter(
-    (e) => e.convertedAmount != null
-  ).length;
-  const showHighestRed = validCount >= 3;
-  const highest = showHighestRed ? iap.highest : null;
-
-  // 价差：以绝对金额展示「最低比最高省了多少钱」，比百分比更直观
-  // 例：lowest=$9.99, highest=$16.80 → 省了 $6.81
-  const savedAmount =
-    lowest?.convertedAmount != null && iap.highest?.convertedAmount != null
-      ? formatCurrency(
-          iap.highest.convertedAmount - lowest.convertedAmount,
-          currency
-        )
-      : null;
-
-  return (
-    <div className="rounded-[var(--radius-lg)] border border-black/[0.08] overflow-hidden">
-      {/* 头部：档位名 + 价差摘要 */}
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-black/[0.08] bg-[var(--color-parchment)] px-4 py-3">
-        <div className="min-w-0">
-          <div className="text-sm font-semibold">{isAppPurchaseName(iap.name) ? t("appPurchaseTier") : iap.name}</div>
-          <div className="text-xs text-[var(--color-ink-48)]">
-            {t("tierRegionsCount", { count: iap.entries.length })}
-          </div>
-        </div>
-        <div className="flex flex-wrap items-center gap-4 text-xs">
-          {lowest && (
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-[rgba(52,199,89,0.1)] px-2.5 py-1 font-semibold text-[var(--color-green-strong)]">
-              <i className="ph ph-tag" />
-              {t("lowest")} {lowest.convertedDisplay}
-              <span className="inline-flex items-center gap-1 font-normal">
-                · <Flag code={lowest.region.code} size={14} /> {lowest.region.name_en}
-              </span>
-            </span>
-          )}
-          {highest && showHighestRed && (
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-[rgba(255,59,48,0.08)] px-2.5 py-1 font-semibold text-[var(--color-red)]">
-              <i className="ph ph-tag" />
-              {t("highest")} {highest.convertedDisplay}
-              <span className="inline-flex items-center gap-1 font-normal">
-                · <Flag code={highest.region.code} size={14} /> {highest.region.name_en}
-              </span>
-            </span>
-          )}
-          {savedAmount != null && (
-            <span className="rounded-full bg-white px-2.5 py-1 font-semibold text-[var(--color-ink-48)]">
-              {t.rich("savedHint", {
-                amount: savedAmount,
-                bold: (chunks) => (
-                  <span className="text-sm font-bold text-[var(--color-ink)]">
-                    {chunks}
-                  </span>
-                ),
-              })}
-            </span>
-          )}
-        </div>
-      </div>
-
-      {/* 表格头 */}
-      <div className="grid grid-cols-[2rem_1fr_1fr_auto] gap-3 border-b border-[var(--color-divider)] px-4 py-2 text-xs font-semibold uppercase tracking-wide text-[var(--color-ink-48)]">
-        <span>#</span>
-        <span>{t("colRegion")}</span>
-        <span>{t("colLocalPrice")}</span>
-        <span className="text-right">{t("colConverted", { currency })}</span>
-      </div>
-      <div>
-        {iap.entries.map((e, idx) => {
-          const isLowest = lowest && e.region.code === lowest.region.code;
-          const isHighest =
-            highest && showHighestRed && e.region.code === highest.region.code;
-          const rowBg = isLowest
-            ? "bg-[rgba(52,199,89,0.07)]"
-            : isHighest
-            ? "bg-[rgba(255,59,48,0.06)]"
-            : "";
-          const labelChip =
-            isLowest || isHighest ? (
-              <span
-                className={`ml-1.5 inline-flex items-center rounded-full px-1.5 py-0.5 text-[10px] font-semibold ${
-                  isLowest
-                    ? "bg-[rgba(52,199,89,0.15)] text-[var(--color-green-strong)]"
-                    : "bg-[rgba(255,59,48,0.12)] text-[var(--color-red)]"
-                }`}
-              >
-                {isLowest ? t("lowest") : t("highest")}
-              </span>
-            ) : null;
-          const priceColor = isLowest
-            ? "text-[var(--color-green-strong)]"
-            : isHighest
-            ? "text-[var(--color-red)]"
-            : "";
-          return (
-            <div
-              key={e.region.code}
-              className={`group grid grid-cols-[2rem_1fr_1fr_auto] items-center gap-3 px-4 py-2.5 text-sm transition-colors ${rowBg}`}
-            >
-              <span className="text-[var(--color-ink-48)] mono-num">
-                {idx + 1}
-              </span>
-              <span className="flex items-center gap-2">
-                <Flag code={e.region.code} size={18} />
-                <span>
-                  {e.region.name_en}
-                  {labelChip}
-                </span>
-                <a
-                  href={`https://apps.apple.com/${e.region.code}/app/id${appId}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title={`View on ${e.region.name_en} App Store`}
-                  aria-label={`View on ${e.region.name_en} App Store`}
-                  className="inline-flex items-center text-[var(--color-ink-48)] opacity-0 transition-opacity hover:text-[var(--color-primary-focus)] group-hover:opacity-100"
-                >
-                  <i className="ph ph-arrow-square-out" />
-                </a>
-              </span>
-              <span className="mono-num text-[var(--color-ink-48)]">
-                {e.priceRaw}
-              </span>
-              <span
-                className={`text-right font-semibold mono-num ${priceColor}`}
-              >
-                {e.convertedDisplay}
-              </span>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
 }

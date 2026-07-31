@@ -4,22 +4,13 @@ import { NextRequest } from "next/server";
 import { getDb } from "@/lib/db";
 import { detectPeriod } from "@/lib/crawler";
 import { json, error } from "@/lib/api-response";
-import { auth } from "@/lib/auth";
+import { requireAdmin } from "@/lib/auth";
 import type { SubscriptionPeriod } from "@/lib/types";
 
 export async function GET(req: NextRequest) {
   // 鉴权：登录用户 role=admin，或提供正确的 ADMIN_TOKEN（兜底）
-  const session = await auth();
-  const isAdmin = session?.user?.role === "admin";
-  if (!isAdmin) {
-    const token = req.nextUrl.searchParams.get("token");
-    const { getCloudflareContext } = await import("@opennextjs/cloudflare");
-    const ctx = getCloudflareContext();
-    const env = ctx?.env as { ADMIN_TOKEN?: string } | undefined;
-    if (!env?.ADMIN_TOKEN || token !== env.ADMIN_TOKEN) {
-      return error("Unauthorized", 401);
-    }
-  }
+  const authResp = await requireAdmin(req);
+  if (authResp) return authResp;
 
   const db = await getDb();
   const rows = await db

@@ -105,7 +105,8 @@
     "isLowest": "Già il più economico",
     "isHighest": "Già il più caro",
     "vsYourRegion": "vs la tua regione",
-    "noPrice": "Nessun prezzo per questa regione"
+    "noPrice": "Nessun prezzo per questa regione",
+    "offLabel": "OFF"
   },
   "AppsPage": {
     "title": "Tutte le app",
@@ -124,7 +125,8 @@
     "adding": "Aggiunta...",
     "clearSearch": "Cancella ricerca",
     "loginRequired": "Accedi per aggiungere app",
-    "viewOnAppStore": "Vedi su App Store"
+    "viewOnAppStore": "Vedi su App Store",
+    "searchPlaceholderB": "Cerca per nome, o incolla link / ID App Store (i membri possono aggiungere)"
   },
   "AppsSort": {
     "sortBy": "Ordina",
@@ -167,7 +169,8 @@
     "appPurchaseTier": "Download app",
     "shareText": "LowestAppPrice confronto prezzi: {name} più basso {price} ({region})",
     "prevTier": "Precedente",
-    "nextTier": "Successivo"
+    "nextTier": "Successivo",
+    "viewOnAppStore": "Visualizza su {region} App Store"
   },
   "RelatedApps": {
     "title": "Potrebbero interessarti",
@@ -190,7 +193,8 @@
     "loadingMore": "Caricamento...",
     "allLoaded": "Tutte le {count} app caricate",
     "noLocalMatch": "Nessuna corrispondenza locale, {count} risultati dalla directory Apple aggiungibili",
-    "addHint": "Cliccando «Aggiungi» si ottengono le informazioni dell'app da Apple e si avvia una scansione dei prezzi di 40 regioni. Solo per membri paganti."
+    "addHint": "Cliccando «Aggiungi» si ottengono le informazioni dell'app da Apple e si avvia una scansione dei prezzi di 40 regioni. Solo per membri paganti.",
+    "addHintB": "Cliccando «Aggiungi» si ottengono le informazioni dell'app da Apple e si avvia una scansione dei prezzi di 40 regioni. Solo membri (accedi per diventare membro)."
   },
   "UserMenu": {
     "proBadge": "Pro",
@@ -215,7 +219,7 @@
     "ariaLabel": "Accesso",
     "descB": "Accedi come membro — completamente gratuito",
     "titleAdd": "Accedi per aggiungere app",
-    "descAdd": "L'aggiunta di app è riservata ai membri · 1,99 $ pagamento unico",
+    "descAdd": "L'aggiunta di app è riservata ai membri · $1.99 pagamento unico",
     "descAddB": "Accedi per diventare membro e aggiungere qualsiasi app gratuitamente"
   },
   "Currencies": {
@@ -401,7 +405,7 @@
     "feature3Title": "Classifica chiara, prima il più economico",
     "feature3Body": "Tutti i prezzi sono convertiti ai cambi live in un'unica valuta e poi ordinati dal più basso. Il più economico, il più caro e la tua regione sono evidenziati - il divario è lì.",
     "feature4Title": "Funziona senza accesso",
-    "feature4Body": "Gli utenti anonimi vedono risultati parziali; gli utenti collegati ottengono 3 ricerche gratuite al giorno; se lo usi spesso, 1,99 $ una volta sbloccano l'accesso illimitato a vita.",
+    "feature4Body": "Gli utenti anonimi vedono risultati parziali; gli utenti collegati ottengono 3 ricerche gratuite al giorno; se lo usi spesso, $1.99 una volta sbloccano l'accesso illimitato a vita.",
     "howToUseTitle": "Come si usa",
     "howToUseIntro": "Tre passaggi per trovare la regione più economica:",
     "step1Title": "Cerca per nome, incolla un link o inserisci un ID",
@@ -431,5 +435,11 @@
     "faqQ1": "In quale regione dell'App Store {app} è più economico?",
     "cheapestAnswer": "La regione App Store più economica per {app} è {region} a {price}. Questa pagina confronta i prezzi degli abbonamenti e acquisti in-app di {app} in {count} regioni App Store, convertiti in una sola valuta e dal più economico.",
     "viewOnAppStore": "Vedi sull'App Store {country}"
+  },
+  "ExternalAppCard": {
+    "add": "Aggiungi",
+    "adding": "Aggiunta in corso",
+    "indexed": "Indicizzato",
+    "developerUnknown": "Sviluppatore sconosciuto"
   }
 }

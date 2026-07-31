@@ -105,7 +105,8 @@
     "isLowest": "Al goedkoopste",
     "isHighest": "Al duurste",
     "vsYourRegion": "vs jouw regio",
-    "noPrice": "Geen prijs voor deze regio"
+    "noPrice": "Geen prijs voor deze regio",
+    "offLabel": "KORTING"
   },
   "AppsPage": {
     "title": "Alle apps",
@@ -124,7 +125,8 @@
     "adding": "Toevoegen...",
     "clearSearch": "Zoekopdracht wissen",
     "loginRequired": "Log in om apps toe te voegen",
-    "viewOnAppStore": "Bekijk in App Store"
+    "viewOnAppStore": "Bekijk in App Store",
+    "searchPlaceholderB": "Zoek op naam, of plak App Store-link / ID (leden kunnen toevoegen)"
   },
   "AppsSort": {
     "sortBy": "Sorteren",
@@ -167,7 +169,8 @@
     "appPurchaseTier": "App downloaden",
     "shareText": "LowestAppPrice prijzen vergelijken: {name} laagste {price} ({region})",
     "prevTier": "Vorige",
-    "nextTier": "Volgende"
+    "nextTier": "Volgende",
+    "viewOnAppStore": "Bekijk op {region} App Store"
   },
   "RelatedApps": {
     "title": "Misschien vind je dit ook leuk",
@@ -190,7 +193,8 @@
     "loadingMore": "Meer laden...",
     "allLoaded": "Alle {count} apps geladen",
     "noLocalMatch": "Geen lokale match, {count} resultaten van Apple-directory kunnen worden toegevoegd",
-    "addHint": "Klik op «Toevoegen» om app-info van Apple op te halen en een prijscrawl van 40 regio's te starten. Alleen voor betalende leden."
+    "addHint": "Klik op «Toevoegen» om app-info van Apple op te halen en een prijscrawl van 40 regio's te starten. Alleen voor betalende leden.",
+    "addHintB": "Klik op «Toevoegen» om app-info van Apple op te halen en een prijscrawl van 40 regio's te starten. Alleen leden (inloggen = lid worden)."
   },
   "UserMenu": {
     "proBadge": "Pro",
@@ -215,7 +219,7 @@
     "ariaLabel": "Inloggen",
     "descB": "Log in als lid — volledig gratis",
     "titleAdd": "Log in om apps toe te voegen",
-    "descAdd": "Apps toevoegen is alleen voor leden · $1,99 eenmalig",
+    "descAdd": "Apps toevoegen is alleen voor leden · $1.99 eenmalig",
     "descAddB": "Log in om lid te worden en voeg elke app gratis toe"
   },
   "Currencies": {
@@ -401,7 +405,7 @@
     "feature3Title": "Duidelijke rankschikking, goedkoopste eerst",
     "feature3Body": "Alle prijzen worden tegen live koersen omgezet naar één valuta en vervolgens van laag naar hoog gesorteerd. Goedkoopste, duurste en je eigen regio worden gemarkeerd - het verschil staat er direct.",
     "feature4Title": "Werkt zonder aanmelden",
-    "feature4Body": "Anonieme gebruikers zien gedeeltelijke resultaten; aangemelde gebruikers krijgen 3 gratis opzoekingen per dag; bij veel gebruik ontsluit $1,99 eenmaal onbeperkte levenslange toegang.",
+    "feature4Body": "Anonieme gebruikers zien gedeeltelijke resultaten; aangemelde gebruikers krijgen 3 gratis opzoekingen per dag; bij veel gebruik ontsluit $1.99 eenmaal onbeperkte levenslange toegang.",
     "howToUseTitle": "Hoe te gebruiken",
     "howToUseIntro": "Drie stappen naar de goedkoopste regio:",
     "step1Title": "Zoek op naam, plak een link of voer een ID in",
@@ -431,5 +435,11 @@
     "faqQ1": "In welke App Store-regio is {app} het goedkoopst?",
     "cheapestAnswer": "De goedkoopste App Store-regio voor {app} is {region} bij {price}. Deze pagina vergelijkt abonnements- en in-app-aankoopprijzen van {app} uit {count} App Store-regio's, omgezet naar één valuta en van goedkoopste eerst.",
     "viewOnAppStore": "Bekijk op {country} App Store"
+  },
+  "ExternalAppCard": {
+    "add": "Toevoegen",
+    "adding": "Toevoegen…",
+    "indexed": "Geïndexeerd",
+    "developerUnknown": "Onbekende ontwikkelaar"
   }
 }

@@ -2,7 +2,7 @@
 // 从管理员指定的 sitemap.xml 批量导入 App。
 // 数据源 URL 由调用方通过 `sitemap` 参数传入（不硬编码，避免绑定/暴露特定站点）。
 // 鉴权：必须 admin；QPS 控制：批量 Lookup 10 个/批，批间 sleep 300ms
-import { auth } from "@/lib/auth";
+import { requireAdmin } from "@/lib/auth";
 import { getDb, getApp, insertApp } from "@/lib/db";
 import { fetchAppsMeta, type AppMeta } from "@/lib/itunes";
 import { json, error } from "@/lib/api-response";
@@ -12,17 +12,8 @@ const BATCH_SLEEP_MS = 300; // 批间间隔，控制 QPS ≈ 10-15
 
 export async function GET(req: Request) {
   // 鉴权：admin 用户，或提供 ADMIN_TOKEN（兜底）
-  const session = await auth();
-  const isAdmin = session?.user?.role === "admin";
-  if (!isAdmin) {
-    const token = new URL(req.url).searchParams.get("token");
-    const { getCloudflareContext } = await import("@opennextjs/cloudflare");
-    const ctx = getCloudflareContext();
-    const env = ctx?.env as { ADMIN_TOKEN?: string } | undefined;
-    if (!env?.ADMIN_TOKEN || token !== env.ADMIN_TOKEN) {
-      return error("Unauthorized", 401);
-    }
-  }
+  const authResp = await requireAdmin(req);
+  if (authResp) return authResp;
 
   const url = new URL(req.url);
   const sitemapUrl = url.searchParams.get("sitemap");

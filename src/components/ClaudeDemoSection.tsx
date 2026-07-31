@@ -284,7 +284,7 @@ function PriceCard({
           <div className="text-[28px] font-bold leading-none tracking-tight text-[var(--color-green-strong)] mono-num">
             <AnimatedNumber value={discountPct} format="percent-negative" />
             <span className="ml-0.5 text-lg">%</span>
-            <span className="ml-1.5 text-sm font-bold tracking-wide">OFF</span>
+            <span className="ml-1.5 text-sm font-bold tracking-wide">{t("offLabel")}</span>
           </div>
           <div className="mt-1.5 text-[11px] text-[var(--color-ink-48)]">
             {t("vsYourRegion")}

@@ -1,6 +1,7 @@
 import { getRequestConfig } from "next-intl/server";
 import { headers } from "next/headers";
 import { languageForCountry, LANGUAGES, type Language } from "@/lib/languages";
+import { readCookie } from "@/lib/cookie";
 
 // 与 src/lib/languages.ts 的 LANGUAGES 保持同步（单一数据源）
 export const locales = LANGUAGES.map((l) => l.code) as readonly Language[];
@@ -23,10 +24,9 @@ export async function resolveLocale(): Promise<Locale> {
   // 1. 用户手动切换的语种（client 端 setLanguage 时写入此 cookie）
   const h = await headers();
   const cookieHeader = h.get("cookie") || "";
-  const match = cookieHeader.match(/(?:^|;\s*)language=([^;]+)/);
-  if (match) {
-    const val = decodeURIComponent(match[1]);
-    if (locales.includes(val as Locale)) return val as Locale;
+  const cookieLang = readCookie(cookieHeader, "language");
+  if (cookieLang && locales.includes(cookieLang as Locale)) {
+    return cookieLang as Locale;
   }
 
   // 2. URL 国家段（middleware 在 country 前缀路由上注入 x-url-country）

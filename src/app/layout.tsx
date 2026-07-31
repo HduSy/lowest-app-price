@@ -11,6 +11,7 @@ import { getEntitlement } from "@/lib/entitlement";
 import { getPricingVariant } from "@/lib/pricing-variant";
 import { currencyForCountry, REGION_MAP } from "@/lib/regions";
 import { languageForCountry, LANGUAGES, type Language } from "@/lib/languages";
+import { readCookie } from "@/lib/cookie";
 import "@phosphor-icons/web/regular";
 import "@phosphor-icons/web/bold";
 import "@phosphor-icons/web/fill";
@@ -66,13 +67,11 @@ export default async function RootLayout({
   // defaultCurrency 优先级：cookie(currency) > IP 检测国家映射
   // cookie 由用户在 header 切换币种时写入，SSR 直接读到，跳过 IP 检测，无闪烁
   const cookieHeader = h.get("cookie") || "";
-  const curMatch = cookieHeader.match(/(?:^|;\s*)currency=([^;]+)/);
-  const cookieCurrency = curMatch ? decodeURIComponent(curMatch[1]) : null;
+  const cookieCurrency = readCookie(cookieHeader, "currency");
   const defaultCurrency = cookieCurrency || currencyForCountry(detectedCountry);
   // defaultLanguage 优先级：cookie(language) > IP 检测国家映射
   // 跟 i18n/request.ts 的 resolveLocale 保持一致，避免 client store 跟 SSR locale 不一致
-  const langMatch = cookieHeader.match(/(?:^|;\s*)language=([^;]+)/);
-  const cookieLang = langMatch ? decodeURIComponent(langMatch[1]) : null;
+  const cookieLang = readCookie(cookieHeader, "language");
   const validLangCodes = LANGUAGES.map((l) => l.code);
   const defaultLanguage: Language =
     cookieLang && (validLangCodes as string[]).includes(cookieLang)
