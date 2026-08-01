@@ -170,7 +170,9 @@
     "shareText": "LowestAppPrice сравнение цен: {name} самый низкий {price} ({region})",
     "prevTier": "Предыдущий",
     "nextTier": "Следующий",
-    "viewOnAppStore": "Смотреть в {region} App Store"
+    "viewOnAppStore": "Смотреть в {region} App Store",
+    "shareText2": "Сэкономьте на {name}: всего {price} в {region}. Найдите самый дешёвый регион App Store с LowestAppPrice",
+    "shareText3": "🔥 {name} всего за {price} в {region}?! Только что нашёл самый дешёвый регион App Store на LowestAppPrice"
   },
   "RelatedApps": {
     "title": "Вам также может понравиться",
@@ -187,7 +189,9 @@
     "shareText": "LowestAppPrice - Сравнивайте цены App Store во всех регионах и находите самый дешёвый",
     "copyLink": "Копировать ссылку",
     "copied": "Скопировано",
-    "ariaLabel": "Поделиться в соцсетях"
+    "ariaLabel": "Поделиться в соцсетях",
+    "shareText2": "Одно и то же приложение в App Store — цены по регионам сильно разнятся. LowestAppPrice сравнивает все регионы разом, чтобы вы всегда получали лучшую цену.",
+    "shareText3": "Не покупайте приложение, не проверив сначала здесь. 🔍 LowestAppPrice сравнивает каждый регион App Store и находит для вас самую низкую цену."
   },
   "AppsList": {
     "loadingMore": "Загрузка...",

@@ -170,7 +170,9 @@
     "shareText": "LowestAppPrice मूल्य तुलना: {name} सबसे कम {price} ({region})",
     "prevTier": "पिछला",
     "nextTier": "अगला",
-    "viewOnAppStore": "{region} App Store पर देखें"
+    "viewOnAppStore": "{region} App Store पर देखें",
+    "shareText2": "{name} पर बचत करें: सिर्फ़ {price} ({region} में)। LowestAppPrice के साथ सबसे सस्ती App Store क्षेत्र खोजें",
+    "shareText3": "🔥 {name} सिर्फ़ {price} में ({region})?! मुझे LowestAppPrice पर सबसे सस्ती App Store क्षेत्र मिली"
   },
   "RelatedApps": {
     "title": "आपको यह भी पसंद आ सकता है",
@@ -187,7 +189,9 @@
     "shareText": "LowestAppPrice - सभी क्षेत्रों में App Store की कीमतों की तुलना करें और सबसे सस्ती खोजें",
     "copyLink": "लिंक कॉपी करें",
     "copied": "कॉपी हो गया",
-    "ariaLabel": "सोशल मीडिया पर साझा करें"
+    "ariaLabel": "सोशल मीडिया पर साझा करें",
+    "shareText2": "App Store पर एक ही App, हर क्षेत्र में कीमतें बहुत अलग। LowestAppPrice एक बार में हर क्षेत्र की तुलना करता है ताकि आपको हमेशा सबसे सस्ता सौदा मिले।",
+    "shareText3": "यहाँ जाँच किए बिना कोई App खरीदें नहीं। 🔍 LowestAppPrice हर App Store क्षेत्र की तुलना करके आपके लिए सबसे कम कीमत ढूँढता है।"
   },
   "AppsList": {
     "loadingMore": "और लोड हो रहा है...",

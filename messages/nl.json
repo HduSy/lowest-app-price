@@ -170,7 +170,9 @@
     "shareText": "LowestAppPrice prijzen vergelijken: {name} laagste {price} ({region})",
     "prevTier": "Vorige",
     "nextTier": "Volgende",
-    "viewOnAppStore": "Bekijk op {region} App Store"
+    "viewOnAppStore": "Bekijk op {region} App Store",
+    "shareText2": "Bespaar op {name}: slechts {price} in {region}. Vind de goedkoopste App Store-regio met LowestAppPrice",
+    "shareText3": "🔥 {name} voor slechts {price} in {region}?! Ik vond net de goedkoopste App Store-regio op LowestAppPrice"
   },
   "RelatedApps": {
     "title": "Misschien vind je dit ook leuk",
@@ -187,7 +189,9 @@
     "shareText": "LowestAppPrice - Vergelijk App Store-prijzen in alle regio's en vind de goedkoopste",
     "copyLink": "Link kopiëren",
     "copied": "Gekopieerd",
-    "ariaLabel": "Delen op sociale media"
+    "ariaLabel": "Delen op sociale media",
+    "shareText2": "Dezelfde App Store-app, sterk uiteenlopende prijzen per regio. LowestAppPrice vergelijkt alle regio's in één keer, zodat je altijd de beste prijs pakt.",
+    "shareText3": "Koop geen app zonder dit eerst te checken. 🔍 LowestAppPrice vergelijkt elke App Store-regio en vindt de laagste prijs voor je."
   },
   "AppsList": {
     "loadingMore": "Meer laden...",

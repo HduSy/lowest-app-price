@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import type { PriceRow } from "@/lib/types";
@@ -95,6 +95,13 @@ export function PriceTable({
   const [refreshing, setRefreshing] = useState(false);
   // admin 手动刷新独立 loading，避免和 stale 自动刷新 spinner 撞车
   const [adminRefreshing, setAdminRefreshing] = useState(false);
+
+  // 随机分享文案：3 套轮换。useRef 在客户端挂载时定一次，避免 SSR/CSR hydration
+  // mismatch；ShareButton 只在点击时用 text，不会渲染出来，所以没有可见闪烁。
+  const shareTextKeys = ["shareText", "shareText2", "shareText3"] as const;
+  const shareVariantIdx = useRef(
+    typeof window === "undefined" ? 0 : Math.floor(Math.random() * shareTextKeys.length)
+  );
 
   // 数据过期或首次加载时，客户端触发刷新（避免 SSR 阻塞导致点击进详情页白屏）
   useEffect(() => {
@@ -293,7 +300,7 @@ export function PriceTable({
           )}
           {activeIap && activeIap.lowest && (
             <ShareButton
-              text={t("shareText", {
+              text={t(shareTextKeys[shareVariantIdx.current], {
                 name: isAppPurchaseName(activeIap.name) ? t("appPurchaseTier") : activeIap.name,
                 price: activeIap.lowest.convertedDisplay,
                 region: activeIap.lowest.region.name_en,

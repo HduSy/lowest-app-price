@@ -167,7 +167,9 @@
     "lockedHintExhaustedB": "Sign in to view all tiers",
     "buyCtaB": "Sign in to unlock",
     "appPurchaseTier": "App Download",
-    "shareText": "LowestAppPrice price compare: {name} lowest {price} ({region})",
+    "shareText": "{name} is only {price} in {region}! Find the cheapest App Store region with LowestAppPrice",
+    "shareText2": "Save big on {name}: just {price} in {region}. Find the cheapest App Store region with LowestAppPrice",
+    "shareText3": "🔥 {name} for just {price} in {region}?! I just found the cheapest App Store region on LowestAppPrice",
     "prevTier": "Previous",
     "nextTier": "Next",
     "viewOnAppStore": "View on {region} App Store"
@@ -184,7 +186,9 @@
   "ShareBar": {
     "title": "Found this useful? Share it",
     "subtitle": "Share LowestAppPrice with friends and find the cheapest App Store region together",
-    "shareText": "LowestAppPrice - Compare App Store prices across all regions to find the cheapest",
+    "shareText": "🔥 Same app, prices up to 2-3x different across regions! Find the cheapest App Store region with LowestAppPrice 👇",
+    "shareText2": "Same App Store app, wildly different prices across regions. LowestAppPrice compares every region at once so you always get the cheapest deal.",
+    "shareText3": "Don't buy an App without checking this first. 🔍 LowestAppPrice compares every App Store region to find you the lowest price.",
     "copyLink": "Copy link",
     "copied": "Copied",
     "ariaLabel": "Share to social channels"

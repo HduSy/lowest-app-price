@@ -167,10 +167,12 @@
     "lockedHintExhaustedB": "Masuk untuk melihat semua tingkat",
     "buyCtaB": "Masuk untuk membuka",
     "appPurchaseTier": "Unduh app",
-    "shareText": "LowestAppPrice bandingkan harga: {name} termurah {price} ({wilayah})",
+    "shareText": "LowestAppPrice bandingkan harga: {name} termurah {price} ({region})",
     "prevTier": "Sebelumnya",
     "nextTier": "Berikutnya",
-    "viewOnAppStore": "Lihat di {region} App Store"
+    "viewOnAppStore": "Lihat di {region} App Store",
+    "shareText2": "Hemat di {name}: hanya {price} di {region}. Temukan wilayah App Store termurah dengan LowestAppPrice",
+    "shareText3": "🔥 {name} cuma {price} di {region}?! Baru saja ketemu wilayah App Store termurah di LowestAppPrice"
   },
   "RelatedApps": {
     "title": "Mungkin juga kamu suka",
@@ -187,7 +189,9 @@
     "shareText": "LowestAppPrice - Bandingkan harga App Store di semua wilayah dan temukan yang termurah",
     "copyLink": "Salin tautan",
     "copied": "Tersalin",
-    "ariaLabel": "Bagikan ke media sosial"
+    "ariaLabel": "Bagikan ke media sosial",
+    "shareText2": "App yang sama di App Store, harga sangat beda antarwilayah. LowestAppPrice membandingkan semua wilayah sekaligus agar Anda selalu dapat harga termurah.",
+    "shareText3": "Jangan beli app sebelum cek di sini dulu. 🔍 LowestAppPrice membandingkan setiap wilayah App Store untuk menemukan harga termurah buat Anda."
   },
   "AppsList": {
     "loadingMore": "Memuat lebih banyak...",

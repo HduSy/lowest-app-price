@@ -170,7 +170,9 @@
     "shareText": "LowestAppPrice comparar precios: {name} más bajo {price} ({region})",
     "prevTier": "Anterior",
     "nextTier": "Siguiente",
-    "viewOnAppStore": "Ver en {region} App Store"
+    "viewOnAppStore": "Ver en {region} App Store",
+    "shareText2": "Ahorra en {name}: solo {price} en {region}. Encuentra la región más barata de App Store con LowestAppPrice",
+    "shareText3": "🔥 ¿{name} por solo {price} en {region}?! Acabo de encontrar la región más barata de App Store en LowestAppPrice"
   },
   "RelatedApps": {
     "title": "También te puede gustar",
@@ -187,7 +189,9 @@
     "shareText": "LowestAppPrice - Compara precios de App Store en todas las regiones y encuentra la más barata",
     "copyLink": "Copiar enlace",
     "copied": "Copiado",
-    "ariaLabel": "Compartir en redes sociales"
+    "ariaLabel": "Compartir en redes sociales",
+    "shareText2": "Misma app de App Store, precios muy distintos según la región. LowestAppPrice compara todas las regiones a la vez para que siempre consigas la mejor oferta.",
+    "shareText3": "No compres una app sin revisar esto primero. 🔍 LowestAppPrice compara todas las regiones de App Store para encontrarte el precio más bajo."
   },
   "AppsList": {
     "loadingMore": "Cargando más...",

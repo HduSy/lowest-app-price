@@ -170,7 +170,9 @@
     "shareText": "LowestAppPrice 価格比較: {name} 最安 {price} ({region})",
     "prevTier": "前へ",
     "nextTier": "次へ",
-    "viewOnAppStore": "{region} App Store で表示"
+    "viewOnAppStore": "{region} App Store で表示",
+    "shareText2": "{name} をお得に：{region} ならたった {price}。LowestAppPrice で最安の App Store リージョンを見つけよう",
+    "shareText3": "🔥 {name} が {region} でたった {price}？！LowestAppPrice で最安の App Store リージョンを見つけたよ"
   },
   "RelatedApps": {
     "title": "こちらもおすすめ",
@@ -187,7 +189,9 @@
     "shareText": "LowestAppPrice - すべてのリージョンの App Store 価格を比較して最安値を見つけよう",
     "copyLink": "リンクをコピー",
     "copied": "コピーしました",
-    "ariaLabel": "ソーシャルでシェア"
+    "ariaLabel": "ソーシャルでシェア",
+    "shareText2": "同じ App Store アプリでも、リージョンで価格が大きく違う。LowestAppPrice が全リージョンを一括比較して、いつでも最安値をお届けします。",
+    "shareText3": "アプリを買う前にまずここでチェック。🔍 LowestAppPrice が App Store の全リージョンを比較して、最安値を見つけます。"
   },
   "AppsList": {
     "loadingMore": "さらに読み込み中...",

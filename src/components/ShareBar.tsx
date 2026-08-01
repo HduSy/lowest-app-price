@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import { useTranslations } from "next-intl";
 
 // SSR 兜底域名；client 端点击时取 window.location.origin（首页即站点根）
@@ -68,6 +68,13 @@ export function ShareBar() {
   const t = useTranslations("ShareBar");
   const [copied, setCopied] = useState(false);
 
+  // 随机分享文案：3 套轮换。useRef 客户端挂载时定一次，避免 SSR/CSR hydration
+  // mismatch；文案只在点击时被各渠道 share endpoint 消费，不渲染到页面，无可见闪烁。
+  const shareTextKeys = ["shareText", "shareText2", "shareText3"] as const;
+  const shareVariantIdx = useRef(
+    typeof window === "undefined" ? 0 : Math.floor(Math.random() * shareTextKeys.length)
+  );
+
   // 点击时才取 url，避免 SSR/client hydration mismatch
   const getUrl = () =>
     typeof window !== "undefined" ? window.location.origin : SITE_URL;
@@ -127,7 +134,7 @@ export function ShareBar() {
               type="button"
               onClick={() => {
                 const url = getUrl();
-                openShare(c.href(url, t("shareText")));
+                openShare(c.href(url, t(shareTextKeys[shareVariantIdx.current])));
               }}
               className={btnCls}
               aria-label={c.label}

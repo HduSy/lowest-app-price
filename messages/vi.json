@@ -170,7 +170,9 @@
     "shareText": "LowestAppPrice so sánh giá: {name} rẻ nhất {price} ({region})",
     "prevTier": "Trước",
     "nextTier": "Tiếp",
-    "viewOnAppStore": "Xem trên {region} App Store"
+    "viewOnAppStore": "Xem trên {region} App Store",
+    "shareText2": "Tiết kiệm trên {name}: chỉ {price} tại {region}. Tìm khu vực App Store rẻ nhất với LowestAppPrice",
+    "shareText3": "🔥 {name} chỉ {price} tại {region}?! Vừa tìm thấy khu vực App Store rẻ nhất trên LowestAppPrice"
   },
   "RelatedApps": {
     "title": "Bạn có thể cũng thích",
@@ -187,7 +189,9 @@
     "shareText": "LowestAppPrice - So sánh giá App Store ở tất cả các khu vực và tìm nơi rẻ nhất",
     "copyLink": "Sao chép liên kết",
     "copied": "Đã sao chép",
-    "ariaLabel": "Chia sẻ lên mạng xã hội"
+    "ariaLabel": "Chia sẻ lên mạng xã hội",
+    "shareText2": "Cùng một app trên App Store, giá chênh lệch mạnh giữa các khu vực. LowestAppPrice so sánh mọi khu vực cùng lúc để bạn luôn có được giá rẻ nhất.",
+    "shareText3": "Đừng mua app khi chưa kiểm tra ở đây trước. 🔍 LowestAppPrice so sánh mọi khu vực App Store để tìm cho bạn mức giá thấp nhất."
   },
   "AppsList": {
     "loadingMore": "Đang tải thêm...",

@@ -170,7 +170,9 @@
     "shareText": "LowestAppPrice 가격 비교: {name} 최저 {price} ({region})",
     "prevTier": "이전",
     "nextTier": "다음",
-    "viewOnAppStore": "{region} App Store에서 보기"
+    "viewOnAppStore": "{region} App Store에서 보기",
+    "shareText2": "{name} 저렴하게: {region}에서 단 {price}. LowestAppPrice로 가장 저렴한 App Store 지역을 찾아보세요",
+    "shareText3": "🔥 {name}이 {region}에서 단 {price}?! LowestAppPrice에서 가장 저렴한 App Store 지역을 찾았어요"
   },
   "RelatedApps": {
     "title": "이것도 좋아할 수 있어요",
@@ -187,7 +189,9 @@
     "shareText": "LowestAppPrice - 모든 지역의 App Store 가격을 비교하고 가장 저렴한 곳을 찾아보세요",
     "copyLink": "링크 복사",
     "copied": "복사됨",
-    "ariaLabel": "소셜에 공유"
+    "ariaLabel": "소셜에 공유",
+    "shareText2": "같은 App Store 앱이 지역마다 가격이 천차만별. LowestAppPrice가 모든 지역을 한 번에 비교해 가장 저렴한 거래를 보장합니다.",
+    "shareText3": "먼저 여기서 확인하지 않고는 앱을 사지 마세요. 🔍 LowestAppPrice가 App Store의 모든 지역을 비교해 최저가를 찾아드립니다."
   },
   "AppsList": {
     "loadingMore": "더 불러오는 중...",

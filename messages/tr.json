@@ -170,7 +170,9 @@
     "shareText": "LowestAppPrice fiyat karşılaştırma: {name} en düşük {price} ({region})",
     "prevTier": "Önceki",
     "nextTier": "Sonraki",
-    "viewOnAppStore": "{region} App Store'da görüntüle"
+    "viewOnAppStore": "{region} App Store'da görüntüle",
+    "shareText2": "{name}'da tasarruf et: sadece {price} ({region}). LowestAppPrice ile en ucuz App Store bölgesini bulun",
+    "shareText3": "🔥 {name} sadece {price} ({region})?! LowestAppPrice'ta en ucuz App Store bölgesini yeni buldum"
   },
   "RelatedApps": {
     "title": "Şunlar da hoşunuza gidebilir",
@@ -187,7 +189,9 @@
     "shareText": "LowestAppPrice - Tüm bölgelerdeki App Store fiyatlarını karşılaştırın ve en ucuzunu bulun",
     "copyLink": "Bağlantıyı kopyala",
     "copied": "Kopyalandı",
-    "ariaLabel": "Sosyal medyada paylaş"
+    "ariaLabel": "Sosyal medyada paylaş",
+    "shareText2": "Aynı App Store uygulaması, bölgeler arası çok farklı fiyatlar. LowestAppPrice tüm bölgeleri tek seferde karşılaştırır, en iyi fiyatı her zaman garantiler.",
+    "shareText3": "Önce burayı kontrol etmeden bir uygulama satın alma. 🔍 LowestAppPrice her App Store bölgesini karşılaştırır ve senin için en düşük fiyatı bulur."
   },
   "AppsList": {
     "loadingMore": "Daha fazla yükleniyor...",

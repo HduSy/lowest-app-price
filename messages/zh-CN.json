@@ -167,7 +167,9 @@
     "lockedHintExhaustedB": "登录后即可查看全部档位",
     "buyCtaB": "登录解锁",
     "appPurchaseTier": "App 下载",
-    "shareText": "LowestAppPrice 全区比价：{name} 最低 {price}（{region}）",
+    "shareText": "{name} 在 {region} 区只要 {price}！用 LowestAppPrice 查 App Store 全区最低价",
+    "shareText2": "{name} 在 {region} 只要 {price}，帮你省下一笔——来 LowestAppPrice 查全区最低价",
+    "shareText3": "🔥 {name} 在 {region} 只要 {price}？！刚在 LowestAppPrice 查到全区最低价，快看",
     "prevTier": "上一个",
     "nextTier": "下一个",
     "viewOnAppStore": "在{region} App Store 查看"
@@ -184,7 +186,9 @@
   "ShareBar": {
     "title": "觉得有用？分享给朋友",
     "subtitle": "把 LowestAppPrice 分享给朋友，一起查最低价",
-    "shareText": "LowestAppPrice - App Store 全区比价，查哪个区订阅最便宜",
+    "shareText": "🔥 同一个 App，不同区差价能到 2-3 倍！来 LowestAppPrice 一起查哪个区最便宜 👇",
+    "shareText2": "App Store 同一款 App，各区价格天差地别。LowestAppPrice 帮你一键查完全区，永远买到最低价",
+    "shareText3": "买 App 前先来 LowestAppPrice 查一下 🔍 40 个区一次比完，绝不花冤枉钱",
     "copyLink": "复制链接",
     "copied": "已复制",
     "ariaLabel": "分享到社交渠道"

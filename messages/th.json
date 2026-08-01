@@ -170,7 +170,9 @@
     "shareText": "LowestAppPrice เปรียบเทียบราคา: {name} ถูกที่สุด {price} ({region})",
     "prevTier": "ก่อนหน้า",
     "nextTier": "ถัดไป",
-    "viewOnAppStore": "ดูบน {region} App Store"
+    "viewOnAppStore": "ดูบน {region} App Store",
+    "shareText2": "ประหยัดบน {name}: ที่ {region} แค่ {price} หาภูมิภาค App Store ที่ถูกที่สุดกับ LowestAppPrice",
+    "shareText3": "🔥 {name} ที่ {region} แค่ {price}?! เพิ่งเจอภูมิภาค App Store ที่ถูกที่สุดบน LowestAppPrice"
   },
   "RelatedApps": {
     "title": "แอปที่คุณอาจสนใจ",
@@ -187,7 +189,9 @@
     "shareText": "LowestAppPrice - เปรียบเทียบราคา App Store ทุกภูมิภาคและหาที่ถูกที่สุด",
     "copyLink": "คัดลอกลิงก์",
     "copied": "คัดลอกแล้ว",
-    "ariaLabel": "แชร์ไปยังโซเชียล"
+    "ariaLabel": "แชร์ไปยังโซเชียล",
+    "shareText2": "แอปเดียวกันใน App Store ราคาต่างกันมากตามภูมิภาค LowestAppPrice เปรียบเทียบทุกภูมิภาคในครั้งเดียว ให้คุณได้ราคาถูกที่สุดเสมอ",
+    "shareText3": "อย่าซื้อแอปก่อนเช็กที่นี่ 🔍 LowestAppPrice เปรียบเทียบทุกภูมิภาคของ App Store เพื่อหาราคาถูกที่สุดให้คุณ"
   },
   "AppsList": {
     "loadingMore": "กำลังโหลดเพิ่ม...",
