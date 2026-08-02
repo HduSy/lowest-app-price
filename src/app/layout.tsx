@@ -166,6 +166,10 @@ export default async function RootLayout({
                     {t("legal")}
                   </Link>
                   <span className="text-black/15">|</span>
+                  <Link href="/insights" className="transition-colors hover:text-[var(--color-ink)]">
+                    {t("insights")}
+                  </Link>
+                  <span className="text-black/15">|</span>
                   <Link href="/sitemap" className="transition-colors hover:text-[var(--color-ink)]">
                     {t("sitemap")}
                   </Link>

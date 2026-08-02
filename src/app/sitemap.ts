@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { REGIONS } from "@/lib/regions";
 import { SITE_ORIGIN, countryUrl, countryHreflangMap } from "@/lib/seo";
 import { getDb, listSitemapApps } from "@/lib/db";
+import { ARTICLES } from "@/lib/insights";
 
 // 强制动态渲染：sitemap 依赖 D1 的 app 列表，必须在请求时生成（CF Workers 运行时
 // 才有 D1 binding；静态预渲染阶段 getCloudflareContext 不可用）。不加此声明 Next 会
@@ -12,7 +13,8 @@ export const dynamic = "force-dynamic";
 //   1. 根级静态页（/about /privacy 等，单 URL，无 hreflang）
 //   2. 40 国首页（含全 40 国 hreflang + x-default）
 //   3. 40 国应用列表页（含 hreflang）
-//   4. 全部已抓取价格的 app 详情页 /<country>/apps/<appId>（含 hreflang + 真实 lastmod）
+//   4. 40 国 Insights 列表页 + 每篇文章页（含 hreflang）
+//   5. 全部已抓取价格的 app 详情页 /<country>/apps/<appId>（含 hreflang + 真实 lastmod）
 //
 // 设计要点：
 // - base 固定为 SITE_ORIGIN，避免 workers.dev / 自定义域名并存时 host 漂移
@@ -43,6 +45,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   // 2 + 3. 40 国首页 + 应用列表页
+  // 4.    40 国 Insights 列表页 + 每篇文章页（文章 lastmod 用 publishedAt）
   for (const r of REGIONS) {
     pages.push({
       url: countryUrl(r.code, ""),
@@ -56,9 +59,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
       alternates: { languages: countryHreflangMap("/apps") },
     });
+    pages.push({
+      url: countryUrl(r.code, "/insights"),
+      changeFrequency: "weekly",
+      priority: 0.6,
+      alternates: { languages: countryHreflangMap("/insights") },
+    });
+    for (const a of ARTICLES) {
+      const articlePath = `/insights/${a.slug}`;
+      pages.push({
+        url: countryUrl(r.code, articlePath),
+        lastModified: new Date(a.publishedAt + "T00:00:00Z"),
+        changeFrequency: "weekly",
+        priority: 0.6,
+        alternates: { languages: countryHreflangMap(articlePath) },
+      });
+    }
   }
 
-  // 4. app 详情页（全部 40 国各一份，含 hreflang + 真实 lastmod）
+  // 5. app 详情页（全部 40 国各一份，含 hreflang + 真实 lastmod）
   //    D1 不可用时静默跳过（本地 dev 无 binding 场景），不阻塞 sitemap 生成
   try {
     const db = await getDb();
