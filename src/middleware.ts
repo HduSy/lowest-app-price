@@ -40,7 +40,13 @@ export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   // 1. 豁免：API / 静态资源直接放行
-  if (EXEMPT_PREFIXES.some((p) => pathname.startsWith(p))) {
+  //    静态图片文件（public/ 下的 png/jpg/avif 等）也直接放行，
+  //    否则 /insights/foo.png 会被重定向到 /<country>/insights/foo.png，
+  //    匹配 [country]/insights/[slug] 路由后因 slug 无效返回 404。
+  if (
+    EXEMPT_PREFIXES.some((p) => pathname.startsWith(p)) ||
+    /\.(?:png|jpe?g|gif|webp|avif|svg|ico|bmp|tiff)$/i.test(pathname)
+  ) {
     return NextResponse.next();
   }
 

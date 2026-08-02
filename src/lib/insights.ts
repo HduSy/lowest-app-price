@@ -42,6 +42,13 @@ export const ARTICLES: ArticleMeta[] = [
     preferredIap: null,
     publishedAt: "2026-01-15",
   },
+  {
+    slug: "app-store-region-change-guide",
+    messageKey: "regionChangeGuide",
+    appId: null,
+    preferredIap: null,
+    publishedAt: "2026-08-02",
+  },
 ];
 
 /** slug -> meta 映射，文章页快速查表 */

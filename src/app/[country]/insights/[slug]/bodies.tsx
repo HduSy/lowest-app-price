@@ -556,3 +556,240 @@ export async function CheapestRegionGuideBody({
     </article>
   );
 }
+
+// ============ 步骤图网格（用于切区教程的 8 张 iOS 截图）============
+function StepGallery({
+  steps,
+  altTemplate,
+}: {
+  steps: { src: string; caption: string }[];
+  altTemplate: (n: number) => string;
+}) {
+  return (
+    <div className="my-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+      {steps.map((s, i) => {
+        const n = i + 1;
+        return (
+          <figure key={n}>
+            <div className="overflow-hidden rounded-[var(--radius-md)] border border-black/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.06)]">
+              <img
+                src={s.src}
+                alt={altTemplate(n)}
+                className="block w-full h-auto"
+                loading="lazy"
+              />
+            </div>
+            <figcaption className="mt-2 text-center text-xs text-[var(--color-ink-48)]">
+              <span className="font-medium text-[var(--color-ink-80)]">
+                {n}.
+              </span>{" "}
+              {s.caption}
+            </figcaption>
+          </figure>
+        );
+      })}
+    </div>
+  );
+}
+
+// ============ 步骤列表（数字编号 + 文字，用于 Mac/Web 切区步骤）============
+function StepList({ items }: { items: string[] }) {
+  return (
+    <ol className="mb-6 space-y-2">
+      {items.map((item, i) => (
+        <li
+          key={i}
+          className="flex items-start gap-3 leading-[1.7] text-[var(--color-ink-80)]"
+        >
+          <span className="mt-[1px] inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-[var(--color-primary-focus)]/10 text-xs font-semibold text-[var(--color-primary-focus)]">
+            {i + 1}
+          </span>
+          <span>{item}</span>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+// ============ 第 3 篇：App Store 切区购买全流程指南 ============
+// 纯教程文章，不渲染价格表，只接收 messageKey
+export async function RegionChangeGuideBody({
+  messageKey,
+}: {
+  messageKey: string;
+}) {
+  const t = await getTranslations(`Insights.${messageKey}`);
+
+  return (
+    <article className="prose-insights">
+      {/* TL;DR */}
+      <div className="mb-10 rounded-[var(--radius-md)] border border-[var(--color-primary-focus)]/20 bg-[var(--color-primary-focus)]/[0.04] p-5">
+        <h2 className="mb-3 text-lg font-semibold">{t("tldrTitle")}</h2>
+        <ul className="space-y-2">
+          {[1, 2, 3, 4, 5].map((n) => (
+            <li
+              key={n}
+              className="flex items-start gap-2 text-sm leading-relaxed text-[var(--color-ink-80)]"
+            >
+              <i className="ph-fill ph-circle-half text-[var(--color-primary-focus)] mt-[3px] text-[8px]" />
+              <span>{t(`tldr${n}`)}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* 第 1 节：切区前清单 */}
+      <h2 className="mb-4 mt-10 text-2xl font-semibold tracking-tight">
+        {t("h2Preflight")}
+      </h2>
+      <RichParagraph text={t("pPreflightIntro")} />
+      <FeatureList
+        items={[
+          t("pPreflight1"),
+          t("pPreflight2"),
+          t("pPreflight3"),
+          t("pPreflight4"),
+        ]}
+      />
+
+      {/* 第 2 节：iPhone/iPad 切区路径 + 8 张截图 */}
+      <h2 className="mb-4 mt-10 text-2xl font-semibold tracking-tight">
+        {t("h2Iphone")}
+      </h2>
+      <RichParagraph text={t("pIphoneIntro")} />
+      <StepGallery
+        steps={[
+          {
+            src: "/insights/region-change-iphone-1.jpg",
+            caption: t("figureStep1Caption"),
+          },
+          {
+            src: "/insights/region-change-iphone-2.jpg",
+            caption: t("figureStep2Caption"),
+          },
+          {
+            src: "/insights/region-change-iphone-3.jpg",
+            caption: t("figureStep3Caption"),
+          },
+          {
+            src: "/insights/region-change-iphone-4.avif",
+            caption: t("figureStep4Caption"),
+          },
+          {
+            src: "/insights/region-change-iphone-5.avif",
+            caption: t("figureStep5Caption"),
+          },
+          {
+            src: "/insights/region-change-iphone-6.avif",
+            caption: t("figureStep6Caption"),
+          },
+          {
+            src: "/insights/region-change-iphone-7.avif",
+            caption: t("figureStep7Caption"),
+          },
+          {
+            src: "/insights/region-change-iphone-8.avif",
+            caption: t("figureStep8Caption"),
+          },
+        ]}
+        altTemplate={(n) => t("figureStepAlt", { n })}
+      />
+      <RichParagraph text={t("pIphoneNote")} />
+
+      {/* 第 3 节：Mac 切区路径 */}
+      <h2 className="mb-4 mt-10 text-2xl font-semibold tracking-tight">
+        {t("h2Mac")}
+      </h2>
+      <RichParagraph text={t("pMacIntro")} />
+      <StepList items={[t("pMac1"), t("pMac2"), t("pMac3"), t("pMac4")]} />
+
+      {/* 第 4 节：Web 切区路径 */}
+      <h2 className="mb-4 mt-10 text-2xl font-semibold tracking-tight">
+        {t("h2Web")}
+      </h2>
+      <RichParagraph text={t("pWebIntro")} />
+      <StepList items={[t("pWeb1"), t("pWeb2"), t("pWeb3"), t("pWeb4")]} />
+
+      {/* 第 5 节：支付方式匹配 */}
+      <h2 className="mb-4 mt-10 text-2xl font-semibold tracking-tight">
+        {t("h2Payment")}
+      </h2>
+      <RichParagraph text={t("pPayment1")} />
+      <RichParagraph text={t("pPayment2")} />
+      <div className="my-6 rounded-[var(--radius-md)] border border-[var(--color-divider)] bg-[var(--color-parchment)] p-4">
+        <p className="mb-1 text-sm font-semibold text-[var(--color-ink)]">
+          {t("pPaymentBlockerTitle")}
+        </p>
+        <p className="text-sm leading-relaxed text-[var(--color-ink-80)]">
+          {t("pPaymentBlocker")}
+        </p>
+      </div>
+
+      {/* 第 6 节：续费日决策流程 */}
+      <h2 className="mb-4 mt-10 text-2xl font-semibold tracking-tight">
+        {t("h2Renewal")}
+      </h2>
+      <RichParagraph text={t("pRenewalIntro")} />
+      <StepList items={[t("pRenewal1"), t("pRenewal2"), t("pRenewal3")]} />
+      <RichParagraph text={t("pRenewalNote")} />
+
+      {/* 第 7 节：Apple 官方参考文档 */}
+      <h2 className="mb-4 mt-10 text-2xl font-semibold tracking-tight">
+        {t("h2References")}
+      </h2>
+      <RichParagraph text={t("pReferencesIntro")} />
+      <ul className="mb-6 space-y-2">
+        {[
+          {
+            text: t("pReference1"),
+            href: "https://support.apple.com/en-us/118283",
+          },
+          {
+            text: t("pReference2"),
+            href: "https://support.apple.com/en-us/118429",
+          },
+          {
+            text: t("pReference3"),
+            href: "https://support.apple.com/en-us/118428",
+          },
+          {
+            text: t("pReference4"),
+            href: "https://www.apple.com/legal/internet-services/itunes/us/terms.html",
+          },
+        ].map((r, i) => (
+          <li
+            key={i}
+            className="flex items-start gap-2 leading-[1.7] text-[var(--color-ink-80)]"
+          >
+            <i className="ph ph-arrow-square-out mt-[2px] text-[var(--color-ink-48)]" />
+            <a
+              href={r.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--color-primary-focus)] hover:underline break-all"
+            >
+              {r.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      {/* 第 8 节：FAQ */}
+      <h2 className="mb-4 mt-10 text-2xl font-semibold tracking-tight">
+        {t("h2Faq")}
+      </h2>
+      <div className="mt-4">
+        {[1, 2, 3, 4, 5, 6].map((n) => (
+          <FaqItem key={n} q={t(`faqQ${n}`)} a={t(`faqA${n}`)} />
+        ))}
+      </div>
+
+      {/* 第 9 节：下一步 */}
+      <h2 className="mb-4 mt-10 text-2xl font-semibold tracking-tight">
+        {t("h2Next")}
+      </h2>
+      <FeatureList items={[t("pNext1"), t("pNext2"), t("pNext3")]} />
+      <RichParagraph text={t("pNextNote")} />
+    </article>
+  );
+}

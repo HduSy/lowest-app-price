@@ -8,7 +8,7 @@ import { countryUrl, countryAlternates, SITE_ORIGIN } from "@/lib/seo";
 import { getDb, getApp, getPrices } from "@/lib/db";
 import { aggregatePrices } from "@/lib/compare";
 import type { AggregatedIap } from "@/lib/types";
-import { ClaudeProGlobalPricingBody, CheapestRegionGuideBody } from "./bodies";
+import { ClaudeProGlobalPricingBody, CheapestRegionGuideBody, RegionChangeGuideBody } from "./bodies";
 
 // 文章页是 D1 数据驱动的（每次访问取最新价格），必须请求时渲染。
 export const dynamic = "force-dynamic";
@@ -222,6 +222,10 @@ export default async function ArticlePage({
           appMeta={appMeta}
           country={country}
         />
+      )}
+
+      {slug === "app-store-region-change-guide" && (
+        <RegionChangeGuideBody messageKey={article.messageKey} />
       )}
 
       {/* 结构化数据 */}
