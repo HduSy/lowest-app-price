@@ -468,8 +468,8 @@
     "usNote": "Harga dasar pengembang",
     "savingsLine": "Wilayah termurah {cheapestRegion} sekitar {savingsPct} lebih murah dibanding yang termahal {dearestRegion}.",
     "claudeProGlobalPricing": {
-      "title": "Harga Global Claude Pro: Nigeria Lebih dari 60% Lebih Murah dari Inggris",
-      "description": "Langganan Claude Pro yang sama berharga sangat berbeda antar region App Store. Artikel ini membongkar mekanisme harga regional Apple dan menggunakan LowestAppPrice untuk membandingkan harga Claude Max 20x di 40 region secara real-time.",
+      "title": "Claude Pro Harga Global 2026: Region App Store Termurah",
+      "description": "Bandingkan harga langganan Claude Pro di 40 region App Store secara real-time. Temukan negara termurah dan hemat hingga 60%. Diperbarui live.",
       "lede": "Tahukah Anda? Langganan Claude Pro yang sama berharga lebih dari 60% lebih murah di App Store Nigeria daripada Inggris. Ini bukan bug — ini norma dalam sistem harga global Apple.",
       "h2Why": "Bagaimana «penetapan harga regional» Apple benar-benar bekerja?",
       "pWhy1": "Apple menetapkan tingkat harga (Price Tiers) berbeda untuk App Store di 175 negara dan region. Pengembang memilih harga dasar, dan Apple secara otomatis menghasilkan harga regional berdasarkan kurs, pajak, dan daya beli lokal. Tapi konversi ini tidak selalu presisi — fluktuasi kurs, perbedaan pajak, dan strategi «harga psikologis» Apple yang disengaja menciptakan kesenjangan harga signifikan untuk aplikasi yang sama di negara berbeda.",
@@ -511,8 +511,8 @@
       "pConclusion2": "Di era langganan digital, kesenjangan harga layanan yang sama antar pasar bisa mudah melampaui 50%. Alat ini tidak akan menghemat semua uang, tapi setidaknya membuat Anda tahu berapa banyak ekstra yang Anda bayar."
     },
     "cheapestRegionGuide": {
-      "title": "Region App Store mana yang termurah untuk langganan? Panduan region harga rendah 2026",
-      "description": "Turki, India, atau Nigeria yang termurah? Berdasarkan kebijakan resmi dan harga langsung, panduan ini merinci region harga rendah App Store di 2026, aturan ganti region Apple ID, batasan kartu hadiah, dan risiko pembekuan akun.",
+      "title": "App Store Region Termurah 2026: Panduan Perbandingan Harga",
+      "description": "Region App Store mana yang termurah di 2026? Bandingkan harga Turki, India, Nigeria live. Aturan ganti region Apple ID, batasan gift card, dan risiko banned.",
       "lede": "Tidak ada satu region App Store yang termurah untuk semuanya. Pengalaman umum di 2026: langganan AI sering dibandingkan di toko Turki, iCloud+ dan sebagian streaming di toko India; tapi apakah benar-benar lebih murah bergantung pada harga real-time di halaman checkout App Store aplikasi tersebut. Nigeria sempat viral karena ChatGPT Plus yang murah, tapi keunggulannya memudar sejak 2025 dan tak boleh lagi jadi pilihan default. Pertanyaan yang benar bukan “region mana yang termurah\", melainkan “region mana yang termurah untuk layanan X\".",
       "tldrTitle": "TL;DR",
       "tldr1": "Tidak ada region murah universal: langganan yang sama bisa 3-5 kali lebih mahal antar-region; ChatGPT Plus di Turki sudah naik mendekati level AS — ganti layanan dan jawabannya berubah.",
@@ -595,6 +595,14 @@
       "pNext3": "Pahami batasan akun dan kartu hadiah: pastikan region kartu cocok dengan akun target dan pelajari syarat mengganti region atau membuat akun baru.",
       "pNext4": "Mulai kecil-kecil: coba langganan satu bulan dulu, pastikan layanan stabil dan akun berfungsi sebelum mempertimbangkan paket jangka panjang.",
       "pNextNote": "Pengingat: harga region rendah bisa berubah tiap kuartal, terutama langganan AI. Kembali secara berkala ke halaman checkout resmi — jangan andalkan tangkapan layar atau panduan usang."
-    }
+    },
+    "figureChatgptTable": "Harga langganan ChatGPT per wilayah (data langsung dari LowestAppPrice)",
+    "figureChatgptTableAlt": "Tangkapan layar tabel peringkat harga langganan ChatGPT",
+    "figureHomepageApps": "Beranda LowestAppPrice dengan aplikasi populer untuk perbandingan harga",
+    "figureHomepageAppsAlt": "Tangkapan layar kisi kartu aplikasi populer di beranda",
+    "figureAppDetail": "Halaman detail aplikasi: grafik batang + tabel peringkat harga semua wilayah",
+    "figureAppDetailAlt": "Tangkapan layar ikhtisar halaman detail aplikasi",
+    "figurePicker": "Pemilih mata uang di navigasi atas (mendukung 40+ mata uang regional)",
+    "figurePickerAlt": "Tangkapan layar pemilih mata uang"
   }
 }

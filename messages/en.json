@@ -468,8 +468,8 @@
     "usNote": "Developer baseline",
     "savingsLine": "The cheapest region {cheapestRegion} is about {savingsPct} cheaper than the most expensive {dearestRegion}.",
     "claudeProGlobalPricing": {
-      "title": "Claude Pro Global Pricing: Nigeria Is Over 60% Cheaper Than the UK",
-      "description": "The same Claude Pro subscription costs vastly different amounts across App Store regions. This article breaks down Apple's regional pricing mechanism and uses LowestAppPrice to compare Claude Max 20x prices across 40 regions in real time.",
+      "title": "Claude Pro Global Pricing 2026: Cheapest App Store Regions",
+      "description": "See Claude Pro subscription prices across 40 App Store regions in real time. Find the cheapest country to subscribe and save up to 60%. Updated live.",
       "lede": "Did you know? The same Claude Pro subscription costs over 60% less on the Nigerian App Store than on the UK store. This isn't a bug - it's the norm under Apple's global pricing system.",
       "h2Why": "How Does Apple's \"Regional Pricing\" Actually Work?",
       "pWhy1": "Apple sets different price tiers for the App Store across 175 countries and regions. Developers pick a base price, and Apple automatically generates regional prices based on exchange rates, tax rates, and local purchasing power. But this automatic conversion isn't always precise - exchange rate fluctuations, tax differences, and Apple's intentional \"psychological pricing\" strategies create significant price gaps for the same app across different countries.",
@@ -511,8 +511,8 @@
       "pConclusion2": "In an era of ubiquitous digital subscriptions, the price gap for the same service across markets can easily exceed 50%. This tool won't save you all the money, but at least it lets you know how much extra you're paying before you pay."
     },
     "cheapestRegionGuide": {
-      "title": "Which App Store Region Is Cheapest for Subscriptions? 2026 Low-Price Region Guide",
-      "description": "Is Turkey, India, or Nigeria cheapest? Based on official policy and live prices, this guide breaks down 2026 App Store low-price regions, Apple ID region-change rules, gift card restrictions, and account-ban risks.",
+      "title": "App Store Cheapest Region 2026: Full Price Comparison Guide",
+      "description": "Which App Store region is cheapest in 2026? Compare Turkey, India, Nigeria prices live. Learn Apple ID region-change rules, gift card limits, and ban risks.",
       "lede": "There is no single cheapest App Store region for everything. In 2026, the common experience is: AI subscriptions are often compared on the Turkish store, iCloud+ and some streaming on the Indian store; but whether it's actually cheaper depends on the real-time price on that app's App Store checkout page. Nigeria went viral for cheap ChatGPT Plus, but its advantage has faded since 2025 and should no longer be a default pick. The right question isn't \"which region is cheapest\" but \"which region is cheapest for service X.\"",
       "tldrTitle": "TL;DR",
       "tldr1": "No universal cheap region: the same subscription can cost 3-5x more across regions; ChatGPT Plus in Turkey has risen near US levels — change the service and the answer changes.",
@@ -595,6 +595,14 @@
       "pNext3": "Understand account and gift card restrictions: confirm the gift card region matches the target account, and learn the conditions for changing regions or creating a new account.",
       "pNext4": "Start small: try a one-month subscription first, confirm the service is stable and the account works before considering a long-term plan.",
       "pNextNote": "Reminder: low-price-region prices can change quarterly, especially for AI subscriptions. Return to the official checkout page periodically — don't rely on outdated screenshots or guides."
-    }
+    },
+    "figureChatgptTable": "ChatGPT subscription prices ranked by region (live data from LowestAppPrice)",
+    "figureChatgptTableAlt": "Screenshot of ChatGPT subscription price ranking table across all regions",
+    "figureHomepageApps": "LowestAppPrice homepage featuring popular apps for price comparison",
+    "figureHomepageAppsAlt": "Screenshot of homepage popular apps card grid",
+    "figureAppDetail": "App detail page: bar chart + full region price ranking table",
+    "figureAppDetailAlt": "Screenshot of app detail page overview",
+    "figurePicker": "Currency switcher in the top nav (supports 40+ regional currencies)",
+    "figurePickerAlt": "Screenshot of currency picker"
   }
 }

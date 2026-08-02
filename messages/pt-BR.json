@@ -468,8 +468,8 @@
     "usNote": "Preço-base do desenvolvedor",
     "savingsLine": "A região mais barata, {cheapestRegion}, é cerca de {savingsPct} mais barata que a mais cara, {dearestRegion}.",
     "claudeProGlobalPricing": {
-      "title": "Preços globais do Claude Pro: Nigéria é mais de 60% mais barata que o Reino Unido",
-      "description": "A mesma assinatura do Claude Pro custa valores muito diferentes conforme a região da App Store. Este artigo decompõe o mecanismo de preços regionais da Apple e usa o LowestAppPrice para comparar preços do Claude Max 20x em 40 regiões em tempo real.",
+      "title": "Claude Pro Preços Globais 2026: Regiões App Store Mais Baratas",
+      "description": "Compare preços da assinatura Claude Pro em 40 regiões da App Store em tempo real. Encontre o país mais barato e economize até 60%. Atualizado ao vivo.",
       "lede": "Você sabia? A mesma assinatura do Claude Pro custa mais de 60% menos na App Store da Nigéria do que na do Reino Unido. Não é um bug — é a norma no sistema de preços global da Apple.",
       "h2Why": "Como funciona o «preço regional» da Apple, afinal?",
       "pWhy1": "A Apple define diferentes faixas de preço (Price Tiers) para a App Store em 175 países e regiões. Os desenvolvedores escolhem um preço base e a Apple gera automaticamente preços regionais com base em câmbio, impostos e poder de compra local. Mas essa conversão nem sempre é precisa — flutuações cambiais, diferenças fiscais e a estratégia intencional de «preços psicológicos» da Apple criam diferenças significativas para o mesmo app em países diferentes.",
@@ -511,8 +511,8 @@
       "pConclusion2": "Na era das assinaturas digitais, a diferença do mesmo serviço entre mercados pode passar de 50%. A ferramenta não vai economizar tudo, mas ao menos deixa você saber quanto está pagando a mais."
     },
     "cheapestRegionGuide": {
-      "title": "Qual região da App Store é a mais barata para assinaturas? Guia de regiões de baixo preço 2026",
-      "description": "Turquia, Índia ou Nigéria, qual é a mais barata? Com base em política oficial e preços em tempo real, este guia detalha as regiões de baixo preço da App Store em 2026, as regras de troca de região do Apple ID, as restrições de gift cards e o risco de banimento da conta.",
+      "title": "App Store Região Mais Barata 2026: Guia Completo de Preços",
+      "description": "Qual região da App Store é mais barata em 2026? Compare Turquia, Índia, Nigéria ao vivo. Regras de troca de região do Apple ID, limites de gift cards e riscos de banimento.",
       "lede": "Não existe uma única região da App Store mais barata para tudo. A experiência comum em 2026 é: assinaturas de IA costumam ser comparadas na loja turca, iCloud+ e alguns streaming na loja indiana; mas se é realmente mais barato depende do preço em tempo real na página de pagamento da App Store daquele app. A Nigéria viralizou por conta do ChatGPT Plus barato, mas essa vantagem desapareceu desde 2025 e não deve mais ser a escolha padrão. A pergunta certa não é “qual região é a mais barata\", e sim “qual região é a mais barata para o serviço X\".",
       "tldrTitle": "TL;DR",
       "tldr1": "Não há região barata universal: a mesma assinatura pode custar de 3 a 5 vezes mais entre regiões; o ChatGPT Plus na Turquia subiu para perto dos níveis dos EUA — troque o serviço e a resposta muda.",
@@ -595,6 +595,14 @@
       "pNext3": "Entenda as restrições de conta e gift card: confirme que a região do gift card corresponde à conta de destino e conheça as condições para trocar de região ou criar uma conta nova.",
       "pNext4": "Comece pequeno: teste primeiro uma assinatura de um mês, confirme que o serviço é estável e a conta funciona antes de considerar um plano de longo prazo.",
       "pNextNote": "Lembrete: os preços em regiões de baixo preço podem mudar a cada trimestre, especialmente em assinaturas de IA. Volte periodicamente à página de pagamento oficial — não confie em capturas ou guias desatualizados."
-    }
+    },
+    "figureChatgptTable": "Preços de assinatura do ChatGPT por região (dados ao vivo do LowestAppPrice)",
+    "figureChatgptTableAlt": "Captura de tela da tabela de classificação de preços de assinatura do ChatGPT",
+    "figureHomepageApps": "Página inicial do LowestAppPrice com apps populares para comparação de preços",
+    "figureHomepageAppsAlt": "Captura de tela da grade de cards de apps populares",
+    "figureAppDetail": "Página de detalhes do app: gráfico de barras + tabela de classificação de preços por região",
+    "figureAppDetailAlt": "Captura de tela da visão geral da página de detalhes do app",
+    "figurePicker": "Seletor de moeda na navegação superior (suporta mais de 40 moedas regionais)",
+    "figurePickerAlt": "Captura de tela do seletor de moeda"
   }
 }

@@ -3,6 +3,38 @@ import { getTranslations } from "next-intl/server";
 import { Flag } from "@/components/Flag";
 import type { AggregatedIap } from "@/lib/types";
 
+// 截图 figure：圆角边框 + 带阴影 + 图注（i18n）
+function Figure({
+  src,
+  alt,
+  caption,
+  width = 1200,
+}: {
+  src: string;
+  alt: string;
+  caption: string;
+  width?: number;
+}) {
+  return (
+    <figure className="my-8">
+      <div className="overflow-hidden rounded-[var(--radius-md)] border border-black/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.06)]">
+        <img
+          src={src}
+          alt={alt}
+          width={width}
+          className="block w-full h-auto"
+          loading="lazy"
+        />
+      </div>
+      {caption && (
+        <figcaption className="mt-2 text-center text-xs text-[var(--color-ink-48)]">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}
+
 // 段落渲染：支持 <strong>...</strong> 内联加粗
 function RichParagraph({ text }: { text: string }) {
   const parts = text.split(/(<strong>.*?<\/strong>)/g);
@@ -250,6 +282,11 @@ export async function ClaudeProGlobalPricingBody({
         {t("h2More")}
       </h2>
       <RichParagraph text={t("pMore1")} />
+      <Figure
+        src="/insights/homepage-apps.png"
+        alt={tCommon("figureHomepageAppsAlt")}
+        caption={tCommon("figureHomepageApps")}
+      />
       <CategoryList
         items={[
           t("pCategory1"),
@@ -400,6 +437,12 @@ export async function CheapestRegionGuideBody({
       </h2>
       <RichParagraph text={t("pPriceTableIntro", { currency })} />
 
+      <Figure
+        src="/insights/chatgpt-price-table.png"
+        alt={tCommon("figureChatgptTableAlt")}
+        caption={tCommon("figureChatgptTable")}
+      />
+
       {rankedEntries.length > 0 && (
         <PriceRankingTable
           entries={rankedEntries}
@@ -440,8 +483,19 @@ export async function CheapestRegionGuideBody({
         {t("h2Verify")}
       </h2>
       <RichParagraph text={t("pVerifyIntro")} />
+      <Figure
+        src="/insights/app-detail-overview.png"
+        alt={tCommon("figureAppDetailAlt")}
+        caption={tCommon("figureAppDetail")}
+      />
       <FeatureList
         items={[t("pVerify1"), t("pVerify2"), t("pVerify3"), t("pVerify4")]}
+      />
+      <Figure
+        src="/insights/region-currency-picker.png"
+        alt={tCommon("figurePickerAlt")}
+        caption={tCommon("figurePicker")}
+        width={800}
       />
 
       {/* 第 5 节：改区/礼品卡/支付 */}

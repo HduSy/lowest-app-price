@@ -468,8 +468,8 @@
     "usNote": "Giá cơ sở của nhà phát triển",
     "savingsLine": "Vùng rẻ nhất {cheapestRegion} rẻ hơn khoảng {savingsPct} so với vùng đắt nhất {dearestRegion}.",
     "claudeProGlobalPricing": {
-      "title": "Giá toàn cầu của Claude Pro: Nigeria rẻ hơn Anh hơn 60%",
-      "description": "Cùng một gói đăng ký Claude Pro nhưng giá khác biệt rất nhiều giữa các khu vực App Store. Bài viết này phân tích cơ chế định giá khu vực của Apple và dùng LowestAppPrice để so sánh giá Claude Max 20x tại 40 khu vực theo thời gian thực.",
+      "title": "Claude Pro Giá Toàn Cầu 2026: Khu Vực App Store Rẻ Nhất",
+      "description": "So sánh giá đăng ký Claude Pro tại 40 khu vực App Store theo thời gian thực. Tìm quốc gia rẻ nhất và tiết kiệm tới 60%. Cập nhật trực tiếp.",
       "lede": "Bạn có biết? Cùng một gói Claude Pro nhưng mua trên App Store Nigeria rẻ hơn Anh hơn 60%. Đây không phải lỗi — đó là bình thường trong hệ thống giá toàn cầu của Apple.",
       "h2Why": "«Định giá khu vực» của Apple thực chất hoạt động thế nào?",
       "pWhy1": "Apple thiết lập các mức giá (Price Tiers) khác nhau cho App Store tại 175 quốc gia và khu vực. Nhà phát triển chọn giá cơ sở, Apple tự động tạo giá khu vực dựa trên tỷ giá, thuế và sức mua địa phương. Nhưng phép quy đổi này không luôn chính xác — biến động tỷ giá, chênh lệch thuế và chiến lược «giá tâm lý» có chủ đích của Apple tạo ra khoảng cách giá đáng kể cho cùng một ứng dụng ở các nước khác nhau.",
@@ -511,8 +511,8 @@
       "pConclusion2": "Trong thời đại đăng ký số phổ biến, chênh lệch giá cùng một dịch vụ giữa các thị trường dễ dàng vượt 50%. Công cụ này không tiết kiệm hết tiền, nhưng ít nhất cho bạn biết mình trả thêm bao nhiêu trước khi trả."
     },
     "cheapestRegionGuide": {
-      "title": "Vùng nào của App Store rẻ nhất cho gói đăng ký? Hướng dẫn vùng giá thấp năm 2026",
-      "description": "Thổ Nhĩ Kỳ, Ấn Độ hay Nigeria rẻ nhất? Dựa trên chính sách chính thức và giá trực tiếp, hướng dẫn này phân tích các vùng giá thấp của App Store năm 2026, quy tắc đổi vùng Apple ID, giới hạn thẻ quà tặng và rủi ro khóa tài khoản.",
+      "title": "App Store Khu Vực Rẻ Nhất 2026: Hướng Dẫn So Sánh Giá Đầy Đủ",
+      "description": "Khu vực App Store nào rẻ nhất năm 2026? So sánh Thổ Nhĩ Kỳ, Ấn Độ, Nigeria trực tiếp. Điều kiện đổi vùng Apple ID, giới hạn gift card và rủi ro khóa tài khoản.",
       "lede": "Không có một vùng App Store rẻ nhất cho mọi thứ. Trải nghiệm phổ biến năm 2026: các gói AI thường được so sánh trên cửa hàng Thổ Nhĩ Kỳ, iCloud+ và một số streaming trên cửa hàng Ấn Độ; nhưng thực sự có rẻ hơn hay không phụ thuộc vào giá theo thời gian thực trên trang thanh toán App Store của ứng dụng đó. Nigeria từng nổi viral nhờ ChatGPT Plus rẻ, nhưng lợi thế đã mờ nhạt từ 2025 và không còn nên là lựa chọn mặc định. Câu hỏi đúng không phải “vùng nào rẻ nhất\", mà là “vùng nào rẻ nhất cho dịch vụ X\".",
       "tldrTitle": "TL;DR",
       "tldr1": "Không có vùng rẻ phổ quát: cùng một gói đăng ký có thể đắt gấp 3-5 lần giữa các vùng; ChatGPT Plus ở Thổ Nhĩ Kỳ đã tăng gần mức Mỹ — đổi dịch vụ thì câu trả lời cũng đổi.",
@@ -595,6 +595,14 @@
       "pNext3": "Hiểu các giới hạn về tài khoản và thẻ quà tặng: xác nhận vùng thẻ khớp với tài khoản mục tiêu và nắm điều kiện đổi vùng hoặc tạo tài khoản mới.",
       "pNext4": "Bắt đầu nhỏ: thử gói một tháng trước, xác nhận dịch vụ ổn định và tài khoản hoạt động bình thường trước khi xem xét gói dài hạn.",
       "pNextNote": "Nhắc nhở: giá vùng thấp có thể đổi mỗi quý, đặc biệt các gói AI. Định kỳ quay lại trang thanh toán chính thức — không dựa vào ảnh chụp hay hướng dẫn lỗi thời."
-    }
+    },
+    "figureChatgptTable": "Giá đăng ký ChatGPT theo khu vực (dữ liệu trực tiếp từ LowestAppPrice)",
+    "figureChatgptTableAlt": "Ảnh chụp bảng xếp hạng giá đăng ký ChatGPT toàn khu vực",
+    "figureHomepageApps": "Trang chủ LowestAppPrice với các ứng dụng phổ biến để so sánh giá",
+    "figureHomepageAppsAlt": "Ảnh chụp lưới thẻ ứng dụng phổ biến trên trang chủ",
+    "figureAppDetail": "Trang chi tiết ứng dụng: biểu đồ cột + bảng xếp hạng giá toàn khu vực",
+    "figureAppDetailAlt": "Ảnh chụp toàn cảnh trang chi tiết ứng dụng",
+    "figurePicker": "Trình chuyển đổi tiền tệ ở thanh điều hướng trên (hỗ trợ hơn 40 loại tiền tệ khu vực)",
+    "figurePickerAlt": "Ảnh chụp trình chọn tiền tệ"
   }
 }

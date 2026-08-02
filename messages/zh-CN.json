@@ -468,8 +468,8 @@
     "usNote": "开发者基准价",
     "savingsLine": "最便宜的 {cheapestRegion} 比最贵的 {dearestRegion} 便宜约 {savingsPct}。",
     "claudeProGlobalPricing": {
-      "title": "Claude Pro 全球定价差异：尼日利亚区比英国区便宜超过 60%",
-      "description": "同样是 Claude Pro 订阅，在不同国家的 App Store 价格差异巨大。本文拆解苹果区域定价机制，并用 LowestAppPrice 实时对比 Claude Max 20x 套餐全球 40 区价格。",
+      "title": "Claude Pro 2026 全球定价：哪个 App Store 区最便宜？",
+      "description": "实时查看 Claude Pro 订阅在 40 个 App Store 区域的价格，找出最便宜的国家，最多省 60%。数据实时更新，附各区排行表。",
       "lede": "你知道吗？同样是 Claude Pro 订阅，在尼日利亚区 App Store 购买，比在英国区便宜超过 60%。这不是 Bug，而是苹果全球定价体系的常态。",
       "h2Why": "苹果的\"区域定价\"到底怎么回事？",
       "pWhy1": "Apple 为全球 175 个国家和地区的 App Store 设定了不同的价格等级（Price Tiers）。开发者选择一个基准价，苹果会根据汇率、税率和当地购买力自动生成各区价格。但这个自动换算并不总是精准--汇率波动、税率差异、以及苹果人为设定的\"心理定价\"策略，让同一款应用在不同国家的实际价格出现了显著差异。",
@@ -511,8 +511,8 @@
       "pConclusion2": "在数字订阅日益普及的今天，同一个服务在不同市场的价差可以轻松超过 50%。这个工具不会帮你省下所有的钱，但至少让你在付费之前，知道自己多付了多少。"
     },
     "cheapestRegionGuide": {
-      "title": "App Store 哪个区订阅最便宜？2026 低价区价格差异指南",
-      "description": "土耳其区、印度区、尼日利亚区哪个最便宜？基于官方政策和实时价格，解析 2026 年 App Store 低价区现状、Apple ID 改区条件、礼品卡区域限制与封号风险。",
+      "title": "App Store 哪个区订阅最便宜？2026 低价区完整比价指南",
+      "description": "2026 年 App Store 哪个区订阅最便宜？实时对比土耳其、印度、尼日利亚等低价区价格。附 Apple ID 改区条件、礼品卡限制、封号风险完整指南。",
       "lede": "App Store 没有固定的全场景最低价区。2026 年常见经验是：AI 订阅常被拿土耳其区比较，iCloud+ 和部分流媒体常被拿印度区比较；但具体是否便宜，必须以该 App 在对应 App Store 结算页的实时价格为准。尼日利亚区曾因 ChatGPT Plus 低价出圈，但 2025 年后优势已明显减弱，不应再当作默认首选。正确的问法不是\"哪个区最便宜\"，而是\"我想订阅的服务 X，在哪个区最便宜\"。",
       "tldrTitle": "TL;DR",
       "tldr1": "没有万能低价区：同一款订阅在不同区价格可能差 3-5 倍；ChatGPT Plus 土耳其区已涨至接近美区，换一个服务结论就不同。",
@@ -595,6 +595,14 @@
       "pNext3": "了解账号和礼品卡限制：确认礼品卡区域与目标账号匹配，了解改区或新建账号的条件。",
       "pNext4": "小额试订：先用一个月余额试订，确认服务稳定、账号正常后再考虑长期方案。",
       "pNextNote": "提醒：低价区价格每季度都可能变动，尤其 AI 类订阅。定期回到官方结算页核实，不要依赖过时的截图或攻略。"
-    }
+    },
+    "figureChatgptTable": "ChatGPT 各区订阅价格排行（LowestAppPrice 实时抓取）",
+    "figureChatgptTableAlt": "ChatGPT 全区订阅价格排行表截图",
+    "figureHomepageApps": "LowestAppPrice 首页热门应用比价入口",
+    "figureHomepageAppsAlt": "首页热门应用卡片网格截图",
+    "figureAppDetail": "应用详情页：柱状图 + 全区价格排行表",
+    "figureAppDetailAlt": "应用详情页全景截图",
+    "figurePicker": "顶部导航的币种切换器（支持 40+ 地区货币）",
+    "figurePickerAlt": "币种选择器截图"
   }
 }

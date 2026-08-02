@@ -468,8 +468,8 @@
     "usNote": "Basiswawtwikkelaar",
     "savingsLine": "De goedkoopste regio, {cheapestRegion}, is ongeveer {savingsPct} goedkoper dan de duurste, {dearestRegion}.",
     "claudeProGlobalPricing": {
-      "title": "Claude Pro wereldwijde prijzen: Nigeria is meer dan 60% goedkoper dan het VK",
-      "description": "Hetzelfde Claude Pro abonnement kost heel verschillend per App Store regio. Dit artikel legt Apples regionale prijsmechanisme uit en gebruikt LowestAppPrice om Claude Max 20x prijzen in 40 regio's real-time te vergelijken.",
+      "title": "Claude Pro Wereldwijde Prijzen 2026: Goedkoopste App Store Regio's",
+      "description": "Vergelijk Claude Pro abonnementsprijzen in 40 App Store regio's in real-time. Vind het goedkoopste land om te abonneren en bespaar tot 60%. Live bijgewerkt.",
       "lede": "Wist je dat? Hetzelfde Claude Pro abonnement kost meer dan 60% minder in de Nigeriaanse App Store dan in de Britse. Dit is geen bug — het is de norm onder Apples wereldwijde prijssysteem.",
       "h2Why": "Hoe werkt Apples «regionale prijzen» eigenlijk?",
       "pWhy1": "Apple stelt verschillende prijstiers (Price Tiers) in voor de App Store in 175 landen en regio's. Ontwikkelaars kiezen een basisprijs en Apple genereert automatisch regionale prijzen op basis van wisselkoersen, belastingen en lokale koopkracht. Maar deze automatische conversie is niet altijd nauwkeurig — wisselkoerschommelingen, belastingverschillen en Apples opzettelijke «psychologische prijsstrategieën» creëren aanzienlijke prijskloven voor dezelfde app in verschillende landen.",
@@ -511,8 +511,8 @@
       "pConclusion2": "In een tijdperk van alomtegenwoordige digitale abonnementen kan het prijsverschil voor dezelfde dienst tussen markten makkelijk meer dan 50% bedragen. Dit gereedschap bespaart niet al je geld, maar laat je tenminste weten hoeveel extra je betaalt voordat je betaalt."
     },
     "cheapestRegionGuide": {
-      "title": "Welke App Store-regio is het goedkoopst voor abonnementen? Gids voor regio's met lage prijzen 2026",
-      "description": "Is Turkije, India of Nigeria het goedkoopst? Op basis van officieel beleid en live prijzen analyseert deze gids de App Store-regio's met lage prijzen in 2026, de regels voor wijzigen van Apple ID-regio, de beperkingen van cadeaukaarten en het risico op accountverbanning.",
+      "title": "App Store Goedkoopste Regio 2026: Volledige Prijsvergelijking",
+      "description": "Welke App Store regio is het goedkoopst in 2026? Vergelijk Turkije, India, Nigeria live. Apple ID regio wijzigen, giftcard limieten en ban-risico's uitgelegd.",
       "lede": "Er is niet één App Store-regio die voor alles het goedkoopst is. De gangbare ervaring in 2026: AI-abonnementen worden vaak vergeleken in de Turkse store, iCloud+ en bepaalde streaming in de Indiase; maar of het echt goedkoper is hangt af van de realtime-prijs op de afrekenpagina van de App Store van die app. Nigeria ging viraal vanwege goedkope ChatGPT Plus, maar dat voordeel is sinds 2025 vervaagd en hoort niet langer de standaardkeuze te zijn. De juiste vraag is niet “welke regio is het goedkoopst\", maar “welke regio is het goedkoopst voor dienst X\".",
       "tldrTitle": "TL;DR",
       "tldr1": "Geen universele goedkope regio: hetzelfde abonnement kan regio-overstijgend 3-5 keer meer kosten; ChatGPT Plus in Turkije is gestegen tot bijna VS-niveau — wissel de dienst en het antwoord verandert.",
@@ -595,6 +595,14 @@
       "pNext3": "Begrijp de account- en cadeaukaartbeperkingen: bevestig dat de regio van de cadeaukaart overeenkomt met het doelaccount en maak je de voorwaarden voor wijzigen of nieuw account eigen.",
       "pNext4": "Begin klein: probeer eerst een abonnement van één maand, bevestig dat de dienst stabiel is en het account werkt voordat je een langetermijnplan overweegt.",
       "pNextNote": "Herinnering: prijzen in regio's met lage prijzen kunnen elk kwartaal veranderen, zeker bij AI-abonnementen. Keer regelmatig terug naar de officiële afrekenpagina — vertrouw niet op verouderde screenshots of gidsen."
-    }
+    },
+    "figureChatgptTable": "ChatGPT-abonnementsprijzen per regio (live gegevens van LowestAppPrice)",
+    "figureChatgptTableAlt": "Schermafbeelding van de ChatGPT-abonnementsprijsklassementtabel",
+    "figureHomepageApps": "LowestAppPrice-startpagina met populaire apps voor prijsvergelijking",
+    "figureHomepageAppsAlt": "Schermafbeelding van het raster met populaire app-kaarten",
+    "figureAppDetail": "App-detailpagina: staafdiagram + volledige regio prijsklassementstabel",
+    "figureAppDetailAlt": "Schermafbeelding van het overzicht van de app-detailpagina",
+    "figurePicker": "Valutawisselaar in de toppnavigatie (ondersteunt 40+ regionale valuta's)",
+    "figurePickerAlt": "Schermafbeelding van de valutakiezer"
   }
 }

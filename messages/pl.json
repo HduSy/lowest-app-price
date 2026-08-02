@@ -468,8 +468,8 @@
     "usNote": "Cena bazowa dewelopera",
     "savingsLine": "Najtańszy region {cheapestRegion} jest o około {savingsPct} tańszy niż najdroższy {dearestRegion}.",
     "claudeProGlobalPricing": {
-      "title": "Globalne ceny Claude Pro: Nigeria jest ponad 60% tańsza niż Wielka Brytania",
-      "description": "Ta sama subskrypcja Claude Pro kosztuje bardzo różnie w zależności od regionu App Store. Ten artykuł analizuje mechanizm cen regionalnych Apple i używa LowestAppPrice do porównania cen Claude Max 20x w 40 regionach w czasie rzeczywistym.",
+      "title": "Claude Pro Ceny Globalne 2026: Najtańsze Regiony App Store",
+      "description": "Porównaj ceny subskrypcji Claude Pro w 40 regionach App Store w czasie rzeczywistym. Znajdź najtańszy kraj i zaoszczędź do 60%. Aktualizowane na żywo.",
       "lede": "Czy wiesz? Ta sama subskrypcja Claude Pro kosztuje ponad 60% mniej w nigeryjskim App Store niż w brytyjskim. To nie błąd — to norma w globalnym systemie cen Apple.",
       "h2Why": "Jak działa «regionalne ustalanie cen» Apple?",
       "pWhy1": "Apple ustala różne poziomy cen (Price Tiers) dla App Store w 175 krajach i regionach. Twórcy wybierają cenę bazową, a Apple automatycznie generuje ceny regionalne na podstawie kursów walut, stawek podatkowych i lokalnej siły nabywczej. Ta automatyczna konwersja nie zawsze jest precyzyjna — wahania kursów, różnice podatkowe i celowe strategie «cen psychologicznych» Apple tworzą znaczące luki cenowe dla tej samej aplikacji w różnych krajach.",
@@ -511,8 +511,8 @@
       "pConclusion2": "W epoce wszechobecnych subskrypcji cyfrowych różnica cen tej samej usługi między rynkami może łatwo przekroczyć 50%. To narzędzie nie zaoszczędzi wszystkich pieniędzy, ale przynajmniej da ci wiedzieć, ile dopłacasz, zanim zapłacisz."
     },
     "cheapestRegionGuide": {
-      "title": "Który region App Store jest najtańszy dla subskrypcji? Przewodnik po regionach niskocenowych 2026",
-      "description": "Czy Turcja, Indie czy Nigeria są najtańsze? Na podstawie oficjalnej polityki i cen na żywo ten przewodnik rozkłada na czynniki pierwsze regiony niskocenowe App Store w 2026, zasady zmiany regionu Apple ID, ograniczenia kart podarunkowych i ryzyko bana konta.",
+      "title": "App Store Najtańszy Region 2026: Pełny Przewodnik Cen",
+      "description": "Który region App Store jest najtańszy w 2026? Porównaj na żywo Turcję, Indie, Nigerię. Zasady zmiany regionu Apple ID, limity gift cards i ryzyko bana wyjaśnione.",
       "lede": "Nie ma jednego najtańszego regionu App Store dla wszystkiego. Powszechne doświadczenie w 2026: subskrypcje AI są często porównywane w tureckim sklepie, iCloud+ i niektóre serwisy streamingowe w indyjskim; ale czy faktycznie jest taniej, zależy od ceny w czasie rzeczywistym na stronie płatności App Store danej aplikacji. Nigeria stała się viralem dzięki taniej usłudze ChatGPT Plus, ale jej przewaga wyblakła od 2025 i nie powinna być już domyślnym wyborem. Właściwe pytanie nie brzmi „który region jest najtańszy\", lecz „który region jest najtańszy dla usługi X\".",
       "tldrTitle": "TL;DR",
       "tldr1": "Brak uniwersalnego taniego regionu: ta sama subskrypcja może kosztować 3-5 razy więcej w różnych regionach; ChatGPT Plus w Turcji wzrósł niemal do poziomu USA — zmień usługę i odpowiedź się zmienia.",
@@ -595,6 +595,14 @@
       "pNext3": "Poznaj ograniczenia konta i kart podarunkowych: potwierdź, że region karty pasuje do konta docelowego, i zapoznaj się z warunkami zmiany regionu lub założenia nowego konta.",
       "pNext4": "Zacznij od mało: wypróbuj najpierw subskrypcję miesięczną, potwierdź stabilność usługi i działanie konta, zanim rozważysz plan długoterminowy.",
       "pNextNote": "Przypomnienie: ceny w regionach niskocenowych mogą zmieniać się co kwartał, zwłaszcza subskrypcje AI. Regularnie wracaj na oficjalną stronę płatności — nie ufaj nieaktualnym zrzutom ani poradnikom."
-    }
+    },
+    "figureChatgptTable": "Ceny subskrypcji ChatGPT według regionu (dane na żywo z LowestAppPrice)",
+    "figureChatgptTableAlt": "Zrzut ekranu tabeli rankingowej cen subskrypcji ChatGPT",
+    "figureHomepageApps": "Strona główna LowestAppPrice z popularnymi aplikacjami do porównywania cen",
+    "figureHomepageAppsAlt": "Zrzut ekranu siatki kart popularnych aplikacji",
+    "figureAppDetail": "Strona szczegółów aplikacji: wykres słupkowy + pełna tabela rankingowa cen regionalnych",
+    "figureAppDetailAlt": "Zrzut ekranu przeglądu strony szczegółów aplikacji",
+    "figurePicker": "Przełącznik walut w górnej nawigacji (obsługuje ponad 40 walut regionalnych)",
+    "figurePickerAlt": "Zrzut ekranu selektora walut"
   }
 }

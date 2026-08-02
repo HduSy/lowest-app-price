@@ -468,8 +468,8 @@
     "usNote": "Prix de référence développeur",
     "savingsLine": "La région la moins chère, {cheapestRegion}, est environ {savingsPct} moins chère que la plus chère, {dearestRegion}.",
     "claudeProGlobalPricing": {
-      "title": "Prix mondiaux de Claude Pro : le Nigeria est plus de 60 % moins cher que le Royaume-Uni",
-      "description": "Le même abonnement Claude Pro coûte très différemment selon les régions de l'App Store. Cet article décortique le mécanisme de tarification régionale d'Apple et utilise LowestAppPrice pour comparer les prix de Claude Max 20x dans 40 régions en temps réel.",
+      "title": "Claude Pro Prix Mondiaux 2026 : Régions App Store Moins Chères",
+      "description": "Comparez les prix de l'abonnement Claude Pro dans 40 régions App Store en temps réel. Trouvez le pays le moins cher et économisez jusqu'à 60%. En direct.",
       "lede": "Le saviez-vous ? Le même abonnement Claude Pro coûte plus de 60 % moins cher sur l'App Store nigérian que sur le britannique. Ce n'est pas un bug — c'est la norme du système de prix mondial d'Apple.",
       "h2Why": "Comment fonctionne réellement la « tarification régionale » d'Apple ?",
       "pWhy1": "Apple définit différents paliers de prix (Price Tiers) pour l'App Store dans 175 pays et régions. Les développeurs choisissent un prix de base, et Apple génère automatiquement les prix régionaux selon les taux de change, les taxes et le pouvoir d'achat local. Mais cette conversion n'est pas toujours précise — les fluctuations de change, les différences fiscales et les stratégies délibérées de « prix psychologique » d'Apple créent des écarts significatifs pour une même app selon les pays.",
@@ -511,8 +511,8 @@
       "pConclusion2": "À l'ère des abonnements numériques omniprésents, l'écart de prix d'un même service entre marchés peut facilement dépasser 50 %. Cet outil ne vous économisera pas tout, mais au moins il vous dira combien vous payez en plus avant de payer."
     },
     "cheapestRegionGuide": {
-      "title": "Quelle région de l'App Store est la moins chère pour les abonnements ? Guide des régions à bas prix 2026",
-      "description": "Turquie, Inde ou Nigeria, laquelle est la moins chère ? À partir de la politique officielle et des prix en direct, ce guide décortique les régions à bas prix de l'App Store en 2026, les règles de changement de région de l'Apple ID, les restrictions des cartes cadeaux et le risque de bannissement.",
+      "title": "App Store Région la Moins Chère 2026 : Guide Complet de Prix",
+      "description": "Quelle région App Store est la moins chère en 2026 ? Comparez Turquie, Inde, Nigeria en direct. Changement de région Apple ID, limites de gift cards et risques de bannissement.",
       "lede": "Il n'existe pas une seule région de l'App Store la moins chère pour tout. En 2026, l'expérience courante est : les abonnements IA sont souvent comparés sur le magasin turc, iCloud+ et certains services de streaming sur le magasin indien ; mais la réelle économie dépend du prix en temps réel sur la page de paiement App Store de cette app. Le Nigeria est devenu viral pour son ChatGPT Plus bon marché, mais son avantage s'est estompé depuis 2025 et ne doit plus être le choix par défaut. La bonne question n'est pas « quelle région est la moins chère », mais « quelle région est la moins chère pour le service X ».",
       "tldrTitle": "TL;DR",
       "tldr1": "Pas de région bon marché universelle : un même abonnement peut coûter 3 à 5 fois plus selon la région ; ChatGPT Plus en Turquie a grimpé près des niveaux américains — changez de service et la réponse change.",
@@ -595,6 +595,14 @@
       "pNext3": "Comprenez les restrictions de compte et de carte cadeau : confirmez que la région de la carte correspond au compte cible et connaissez les conditions de changement de région ou de création d'un nouveau compte.",
       "pNext4": "Commencez petit : testez d'abord un abonnement d'un mois, confirmez que le service est stable et le compte fonctionne avant d'envisager un plan long terme.",
       "pNextNote": "Rappel : les prix en régions à bas prix peuvent changer chaque trimestre, surtout pour les abonnements IA. Revenez périodiquement à la page de paiement officielle — ne vous fiez pas à des captures ou guides obsolètes."
-    }
+    },
+    "figureChatgptTable": "Prix des abonnements ChatGPT par région (données en direct de LowestAppPrice)",
+    "figureChatgptTableAlt": "Capture d'écran du tableau de classement des prix d'abonnement ChatGPT",
+    "figureHomepageApps": "Page d'accueil de LowestAppPrice avec des applications populaires pour comparer les prix",
+    "figureHomepageAppsAlt": "Capture d'écran de la grille de cartes des applications populaires",
+    "figureAppDetail": "Page de détail de l'app : graphique à barres + tableau de classement des prix par région",
+    "figureAppDetailAlt": "Capture d'écran de la page de détail de l'app",
+    "figurePicker": "Sélecteur de devise dans la navigation supérieure (prend en charge plus de 40 devises régionales)",
+    "figurePickerAlt": "Capture d'écran du sélecteur de devise"
   }
 }

@@ -468,8 +468,8 @@
     "usNote": "개발자 기준가",
     "savingsLine": "가장 저렴한 {cheapestRegion}은(는) 가장 비싼 {dearestRegion}보다 약 {savingsPct} 저렴합니다.",
     "claudeProGlobalPricing": {
-      "title": "Claude Pro 글로벌 가격: 나이지리아가 영국보다 60% 이상 저렴",
-      "description": "같은 Claude Pro 구독도 App Store 지역에 따라 가격이 크게 다릅니다. 이 글은 Apple의 지역 가격 책정机制을 분해하고 LowestAppPrice로 Claude Max 20x 가격을 40개 지역에서 실시간 비교합니다.",
+      "title": "Claude Pro 글로벌 가격 2026: 가장 저렴한 App Store 지역",
+      "description": "40개 App Store 지역의 Claude Pro 구독 가격을 실시간으로 비교하세요. 가장 저렴한 국가를 찾아 최대 60% 절약. 실시간 업데이트.",
       "lede": "아셨나요? 같은 Claude Pro 구독이 나이지리아 App Store에서 영국보다 60% 이상 저렴합니다. 이건 버그가 아니라 Apple의 글로벌 가격 체계의 일상입니다.",
       "h2Why": "Apple의 «지역별 가격 책정»은 실제로 어떻게 작동하나?",
       "pWhy1": "Apple은 175개국과 지역의 App Store에 서로 다른 가격 등급(Price Tiers)을 설정합니다. 개발자가 기준 가격을 선택하면 Apple이 환율, 세율, 현지 구매력을 바탕으로 지역별 가격을 자동 생성합니다. 그러나 이 변환이 항상 정확하지는 않습니다 — 환율 변동, 세금 차이, Apple의 의도적인 «심리 가격» 전략이 같은 앱의 국가별 가격 차이를 만듭니다.",
@@ -511,8 +511,8 @@
       "pConclusion2": "디지털 구독이 어디에나 있는 시대, 같은 서비스의 시장 간 가격 격차는 쉽게 50%를 넘습니다. 이 도구가 모든 돈을 절약해주지는 않지만, 적어도 결제 전에 얼마나 더 내는지 알게 해줍니다."
     },
     "cheapestRegionGuide": {
-      "title": "App Store 어느 지역이 구독 가장 저렴할까? 2026 저렴한 지역 가이드",
-      "description": "터키, 인도, 나이지리아 중 어디가 가장 저렴할까? 공식 정책과 실시간 가격을 기반으로, 이 가이드는 2026년 App Store 저렴한 지역, Apple ID 지역 변경 규칙, 기프트카드 제한, 계정 정지 리스크를 분석합니다.",
+      "title": "App Store 최저가 지역 2026: 완전한 가격 비교 가이드",
+      "description": "2026년 App Store에서 가장 저렴한 지역은? 터키, 인도, 나이지리아 가격을 실시간 비교. Apple ID 지역 변경 조건, 기프트카드 한도, 정지 위험을 안내합니다.",
       "lede": "모든 면에서 가장 저렴한 단일 App Store 지역은 없습니다. 2026년 일반적인 경험: AI 구독은 터키 스토어에서 비교되는 경우가 많고, iCloud+와 일부 스트리밍은 인도 스토어에서 비교됩니다; 하지만 실제로 더 저렴한지는 해당 앱의 App Store 결제 페이지 실시간 가격에 따라 다릅니다. 나이지리아는 저렴한 ChatGPT Plus로 입소문났지만, 2025년 이후 장점이 희미해졌고 더 이상 기본 선택이 되어서는 안 됩니다. 올바른 질문은 “어느 지역이 가장 저렴한가\"가 아니라 “서비스 X는 어느 지역이 가장 저렴한가\"입니다.",
       "tldrTitle": "TL;DR",
       "tldr1": "보편적인 저렴한 지역은 없음: 같은 구독이라도 지역에 따라 3~5배 비싸질 수 있음; 터키의 ChatGPT Plus는 미국 수준으로 상승 — 서비스를 바꾸면 답도 바뀜.",
@@ -595,6 +595,14 @@
       "pNext3": "계정과 기프트카드 제한 이해: 기프트카드 지역이 대상 계정과 일치하는지 확인하고 지역 변경 또는 신규 계정 생성 조건 숙지.",
       "pNext4": "작게 시작: 먼저 1개월 구독으로 시도, 서비스 안정성과 계정 정상 작동을 확인한 뒤 장기 플랜 고려.",
       "pNextNote": "알림: 저렴한 지역 가격은 분기마다 변동할 수 있으며 특히 AI 구독에서 뚜렷. 주기적으로 공식 결제 페이지로 돌아가 확인 — 오래된 스크린샷이나 가이드에 의존하지 말 것."
-    }
+    },
+    "figureChatgptTable": "ChatGPT 지역별 구독 가격(LowestAppPrice 실시간 데이터)",
+    "figureChatgptTableAlt": "ChatGPT 전 지역 구독 가격 순위표 스크린샷",
+    "figureHomepageApps": "LowestAppPrice 홈페이지의 인기 앱 가격 비교 입구",
+    "figureHomepageAppsAlt": "홈페이지 인기 앱 카드 그리드 스크린샷",
+    "figureAppDetail": "앱 상세 페이지: 막대 그래프 + 전 지역 가격 순위표",
+    "figureAppDetailAlt": "앱 상세 페이지 개요 스크린샷",
+    "figurePicker": "상단 네비게이션의 통화 전환기(40개 이상 지역 통화 지원)",
+    "figurePickerAlt": "통화 선택기 스크린샷"
   }
 }

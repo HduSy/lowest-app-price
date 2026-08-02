@@ -468,8 +468,8 @@
     "usNote": "Entwickler-Basispreis",
     "savingsLine": "Die günstigste Region {cheapestRegion} ist etwa {savingsPct} günstiger als die teuerste {dearestRegion}.",
     "claudeProGlobalPricing": {
-      "title": "Claude Pro globale Preise: Nigeria ist über 60 % günstiger als Großbritannien",
-      "description": "Dasselbe Claude Pro Abo kostet in verschiedenen App Store Regionen sehr unterschiedlich. Dieser Artikel erklärt Apples regionale Preisgestaltung und vergleicht Claude Max 20x Preise in 40 Regionen in Echtzeit mit LowestAppPrice.",
+      "title": "Claude Pro Globale Preise 2026: Günstigste App Store Regionen",
+      "description": "Claude Pro Abo-Preise in 40 App Store Regionen live vergleichen. Finde das günstigste Land zum Abonnieren und spare bis zu 60%. Täglich aktualisiert.",
       "lede": "Wussten Sie schon? Dasselbe Claude Pro Abo kostet im nigerianischen App Store über 60 % weniger als im britischen. Das ist kein Bug – es ist die Norm unter Apples globalem Preissystem.",
       "h2Why": "Wie funktioniert Apples „regionale Preisgestaltung\" eigentlich?",
       "pWhy1": "Apple legt verschiedene Preisstufen (Price Tiers) für den App Store in 175 Ländern und Regionen fest. Entwickler wählen einen Basispreis, und Apple generiert automatisch Regionalpreise basierend auf Wechselkursen, Steuersätzen und lokaler Kaufkraft. Diese automatische Umrechnung ist jedoch nicht immer präzise – Wechselkursschwankungen, Steuerunterschiede und Apples bewusste „psychologische Preisstrategien\" sorgen für erhebliche Preisunterschiede derselben App in verschiedenen Ländern.",
@@ -511,8 +511,8 @@
       "pConclusion2": "Im Zeitalter allgegenwärtiger digitaler Abos kann die Preisspanne für denselben Dienst across Märkten leicht 50 % überschreiten. Dieses Tool wird nicht alles Geld sparen, aber es lässt Sie zumindest wissen, wie viel extra Sie zahlen, bevor Sie zahlen."
     },
     "cheapestRegionGuide": {
-      "title": "Welche App-Store-Region ist am günstigsten für Abos? Leitfaden für Niedrigpreisregionen 2026",
-      "description": "Ist die Türkei, Indien oder Nigeria am günstigsten? Basierend auf offizieller Politik und Live-Preisen erklärt dieser Leitfaden die Niedrigpreisregionen des App Store 2026, die Regeln zum Apple-ID-Regionswechsel, die Geschenkkarten-Einschränkungen und die Sperrrisiken.",
+      "title": "App Store Günstigste Region 2026: Kompletter Preisvergleich",
+      "description": "Welche App Store Region ist 2026 am günstigsten? Vergleiche Türkei, Indien, Nigeria live. Apple ID Regionswechsel, Giftcard-Limits und Bann-Risiken erklärt.",
       "lede": "Es gibt keine einzige günstigste App-Store-Region für alles. 2026 lautet die gängige Erfahrung: KI-Abos werden oft im türkischen Store verglichen, iCloud+ und einige Streaming-Dienste im indischen Store; ob es wirklich günstiger ist, hängt aber vom Echtzeitpreis auf der App-Store-Kassenseite der jeweiligen App ab. Nigeria ging wegen des günstigen ChatGPT Plus viral, aber dieser Vorteil ist seit 2025 verblasst und sollte nicht mehr die Standardwahl sein. Die richtige Frage lautet nicht „welche Region ist am günstigsten\", sondern „welche Region ist am günstigsten für Dienst X\".",
       "tldrTitle": "TL;DR",
       "tldr1": "Keine universelle Billigregion: Dasselbe Abo kann regionenübergreifend 3- bis 5-mal mehr kosten; ChatGPT Plus ist in der Türkei auf fast US-Niveau gestiegen — wechselt man den Dienst, ändert sich die Antwort.",
@@ -595,6 +595,14 @@
       "pNext3": "Konto- und Geschenkkarten-Einschränkungen verstehen: sicherstellen, dass die Geschenkkartenregion zum Zielkonto passt, und die Bedingungen für Regionswechsel oder Neukonto kennenlernen.",
       "pNext4": "Klein anfangen: erst einmonatiges Abo testen, Service und Konto bestätigen, bevor ein Langzeitplan in Betracht gezogen wird.",
       "pNextNote": "Erinnerung: Preise in Niedrigpreisregionen können sich vierteljährlich ändern, besonders bei KI-Abos. Regelmäßig zur offiziellen Kassenseite zurückkehren — nicht auf veraltete Screenshots oder Leitfäden verlassen."
-    }
+    },
+    "figureChatgptTable": "ChatGPT-Abopreise nach Region (Live-Daten von LowestAppPrice)",
+    "figureChatgptTableAlt": "Screenshot der ChatGPT-Abopreis-Ranglistentabelle aller Regionen",
+    "figureHomepageApps": "LowestAppPrice-Startseite mit beliebten Apps zum Preisvergleich",
+    "figureHomepageAppsAlt": "Screenshot des Startseiten-Beliebte-Apps-Kartenrasters",
+    "figureAppDetail": "App-Detailseite: Balkendiagramm + vollständige Regionalpreis-Rangliste",
+    "figureAppDetailAlt": "Screenshot der App-Detailseitenübersicht",
+    "figurePicker": "Währungsumschalter in der oberen Navigation (unterstützt 40+ Regionalwährungen)",
+    "figurePickerAlt": "Screenshot der Währungsauswahl"
   }
 }

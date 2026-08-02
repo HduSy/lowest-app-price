@@ -468,8 +468,8 @@
     "usNote": "Geliştirici taban fiyatı",
     "savingsLine": "En ucuz bölge {cheapestRegion}, en pahalı {dearestRegion} bölgesinden yaklaşık {savingsPct} daha ucuz.",
     "claudeProGlobalPricing": {
-      "title": "Claude Pro Küresel Fiyatlar: Nijerya, İngiltere'den %60'tan Fazla Ucuz",
-      "description": "Aynı Claude Pro aboneliği, App Store bölgelerine göre çok farklı fiyatlara mal oluyor. Bu makale Apple'ın bölgesel fiyatlandırma mekanizmasını çözümlüyor ve LowestAppPrice ile Claude Max 20x fiyatlarını 40 bölgede gerçek zamanlı karşılaştırıyor.",
+      "title": "Claude Pro Küresel Fiyatlar 2026: En Ucuz App Store Bölgeleri",
+      "description": "40 App Store bölgesindeki Claude Pro abonelik fiyatlarını canlı karşılaştırın. Abone olmak için en ucuz ülkeyi bulun ve %60'a kadar kazanın. Anlık güncel.",
       "lede": "Biliyor muydunuz? Aynı Claude Pro aboneliği Nijerya App Store'unda İngiltere'dekinden %60'tan daha az maliyetle. Bu bir hata değil — Apple'ın küresel fiyat sisteminin normalidir.",
       "h2Why": "Apple'ın «bölgesel fiyatlandırması» gerçekten nasıl çalışıyor?",
       "pWhy1": "Apple, 175 ülke ve bölge için App Store'da farklı fiyat seviyeleri (Price Tiers) belirler. Geliştiriciler bir taban fiyat seçer ve Apple döviz kurları, vergiler ve yerel satın alma gücüne göre bölgesel fiyatları otomatik üretir. Ama bu dönüşüm her zaman keskin değil — kur dalgalanmaları, vergi farklılıkları ve Apple'ın kasıtlı «psikolojik fiyat» stratejileri aynı uygulama için ülkeler arasında önemli fiyat farkları yaratır.",
@@ -511,8 +511,8 @@
       "pConclusion2": "Dijital aboneliklerin yaygınlaştığı bir çağda, aynı hizmetin pazarlar arası fiyat farkı kolayca %50'yi geçebilir. Bu araç tüm parayı tasarruf ettirmeyecek ama en azından ödemeden önce ne kadar fazla ödediğinizi bilmenizi sağlar."
     },
     "cheapestRegionGuide": {
-      "title": "Abonelikler için App Store bölgesi en ucuzu hangisi? 2026 düşük fiyatlı bölge rehberi",
-      "description": "Türkiye, Hindistan mı yoksa Nijerya en ucuzu mü? Resmi politika ve canlı fiyatlara dayanarak bu rehber, 2026'da App Store'un düşük fiyatlı bölgelerini, Apple ID bölge değiştirme kurallarını, hediye kartı kısıtlamalarını ve hesap banı risklerini ele alıyor.",
+      "title": "App Store En Ucuz Bölge 2026: Tam Fiyat Karşılaştırma Rehberi",
+      "description": "2026'da hangi App Store bölgesi en ucuz? Türkiye, Hindistan, Nijerya fiyatlarını canlı karşılaştırın. Apple ID bölge değiştirme, gift card limitleri ve ban riski.",
       "lede": "Her şey için tek bir en ucuz App Store bölgesi yok. 2026'daki yaygın deneyim şu: yapay zekâ abonelikleri genellikle Türkiye mağazasında karşılaştırılır, iCloud+ ve bazı yayın hizmetleri Hindistan mağazasında; ama gerçekten daha ucuz olup olmadığı o uygulamanın App Store ödeme sayfasındaki gerçek zamanlı fiyata bağlı. Nijerya ucuz ChatGPT Plus ile viral olmuştu, ama avantajı 2025'ten beri soldu ve artık varsayılan seçim olmamalı. Doğru soru \"en ucuz bölge hangisi\" değil, \"X hizmeti için en ucuz bölge hangisi\" olmalıdır.",
       "tldrTitle": "Özet",
       "tldr1": "Evrensel ucuz bölge yok: aynı abonelik bölgeler arasında 3-5 kat fazla tutabilir; ChatGPT Plus Türkiye'de ABD seviyelerine yakın yükseldi — hizmeti değiştirin, yanıt da değişir.",
@@ -595,6 +595,14 @@
       "pNext3": "Hesap ve hediye kartı kısıtlamalarını anlayın: hediye kartı bölgesinin hedef hesapla eşleştiğini doğrulayın ve bölge değişikliği veya yeni hesap oluşturma koşullarını öğrenin.",
       "pNext4": "Küçük başlayın: önce bir aylık bir abonelik deneyin, hizmetin stabil olduğunu ve hesabın çalıştığını doğruladıktan sonra uzun vadeli planı düşünün.",
       "pNextNote": "Hatırlatma: düşük fiyatlı bölge fiyatları her çeyrek değişebilir, özellikle yapay zekâ aboneliklerinde. Düzenli olarak resmi ödeme sayfasına dönün — eski ekran görüntülerine veya rehberlere güvenmeyin."
-    }
+    },
+    "figureChatgptTable": "ChatGPT abonelik fiyatları bölgeye göre (LowestAppPrice canlı verileri)",
+    "figureChatgptTableAlt": "ChatGPT abonelik fiyat sıralama tablosu ekran görüntüsü",
+    "figureHomepageApps": "LowestAppPrice ana sayfası, fiyat karşılaştırması için popüler uygulamalar",
+    "figureHomepageAppsAlt": "Ana sayfa popüler uygulama kartı ızgarası ekran görüntüsü",
+    "figureAppDetail": "Uygulama detay sayfası: çubuk grafik + tam bölge fiyat sıralama tablosu",
+    "figureAppDetailAlt": "Uygulama detay sayfası genel görünüm ekran görüntüsü",
+    "figurePicker": "Üst navigasyonda para birimi değiştirici (40+ bölgesel para birimini destekler)",
+    "figurePickerAlt": "Para birimi seçici ekran görüntüsü"
   }
 }
