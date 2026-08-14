@@ -597,8 +597,8 @@
       "pNextNote": "알림: 저렴한 지역 가격은 분기마다 변동할 수 있으며 특히 AI 구독에서 뚜렷. 주기적으로 공식 결제 페이지로 돌아가 확인 — 오래된 스크린샷이나 가이드에 의존하지 말 것."
     },
     "regionChangeGuide": {
-      "title": "App Store 지역 변경 가이드 2026: iPhone / Mac / Web 단계별 안내",
-      "description": "App Store 국가 또는 지역을 변경하는 완전한 가이드: iPhone 8단계 스크린샷, Mac 및 Web 경로, 결제 수단 매칭, 갱신일 의사결정 흐름, Apple 공식 참조.",
+      "title": "App Store 지역 변경 2026: 매 단계 스크린샷 포함 + 가장 저렴한 지역 추천",
+      "description": "현명하게 변경: 모든 화면을 캡처한 iPhone 8단계 가이드, 그리고 2026년에 전환할 가장 저렴한 지역의 실시간 순위.",
       "lede": "지역 변경 자체는 어렵지 않습니다. 어려운 것은 사전 체크리스트, 결제 수단 매칭, 갱신일 의사결정입니다. 이 가이드는 iPhone, Mac, Web으로 나누어 설명하며, 각 단계마다 iOS 스크린샷과 Apple 공식 문서 링크를 제공합니다.",
       "tldrTitle": "TL;DR",
       "tldr1": "변경 전 네 가지: 활성 구독, 계정 잔액, 미결제 청구, Family Sharing.",
