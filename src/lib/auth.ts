@@ -26,23 +26,26 @@ declare module "next-auth/jwt" {
   }
 }
 
+// OAuth 凭据必须请求时读取：OpenNext 生产环境只在请求作用域注入 secret
+// （getCloudflareContext().env），模块顶层读 process.env 拿到 undefined，
+// 会导致全部 OAuth provider 报 error=Configuration。
+// 本地 dev（initOpenNextCloudflareForDev）ctx.env 同样可用，process.env 兜底双保险。
+async function getAuthEnv(): Promise<Record<string, string | undefined>> {
+  try {
+    const { getCloudflareContext } = await import("@opennextjs/cloudflare");
+    const ctx = getCloudflareContext();
+    // CloudflareEnv 含 D1 binding 等非 string 字段，双跳转 unknown 再取 string 键
+    const cfEnv = ctx?.env as unknown as Record<string, string | undefined> | undefined;
+    return { ...process.env, ...cfEnv };
+  } catch {
+    return { ...process.env };
+  }
+}
+
 export const authConfig = {
   session: { strategy: "jwt" as const },
   trustHost: true,
   providers: [
-    Google({
-      clientId: process.env.AUTH_GOOGLE_ID,
-      clientSecret: process.env.AUTH_GOOGLE_SECRET,
-    }),
-    // Twitter / GitHub 暂不展示在 LoginDialog，但 provider 配置保留以便审核过后直接放出
-    Twitter({
-      clientId: process.env.AUTH_TWITTER_ID,
-      clientSecret: process.env.AUTH_TWITTER_SECRET,
-    }),
-    GitHub({
-      clientId: process.env.AUTH_GITHUB_ID,
-      clientSecret: process.env.AUTH_GITHUB_SECRET,
-    }),
     // Magic Link 桥接：verify 接口验完 DB token 后，签 HMAC 走此 provider 登入
     // authorize 只信任本服务签的 HMAC，外部直接调 signIn("credentials", {...}) 会被 sig 校验拦下
     Credentials({
@@ -137,7 +140,31 @@ export const authConfig = {
   },
 };
 
-export const { handlers, auth, signIn, signOut } = NextAuth(authConfig);
+// 懒初始化：每次请求时构建完整 config，OAuth 凭据从请求作用域 env 读取
+// （next-auth v5 支持 config 函数形式，见 node_modules/next-auth/index.d.ts）
+export const { handlers, auth, signIn, signOut } = NextAuth(async () => {
+  const env = await getAuthEnv();
+  return {
+    ...authConfig,
+    secret: env.AUTH_SECRET,
+    providers: [
+      Google({
+        clientId: env.AUTH_GOOGLE_ID,
+        clientSecret: env.AUTH_GOOGLE_SECRET,
+      }),
+      // Twitter / GitHub 暂不展示在 LoginDialog，但 provider 配置保留以便审核过后直接放出
+      Twitter({
+        clientId: env.AUTH_TWITTER_ID,
+        clientSecret: env.AUTH_TWITTER_SECRET,
+      }),
+      GitHub({
+        clientId: env.AUTH_GITHUB_ID,
+        clientSecret: env.AUTH_GITHUB_SECRET,
+      }),
+      ...authConfig.providers,
+    ],
+  };
+});
 
 // Admin 路由统一鉴权：登录用户 role=admin，或 query 参数 token === env.ADMIN_TOKEN
 // 返回 null 表示通过，返回 Response 表示拒绝（直接 return 该 Response 即可）
