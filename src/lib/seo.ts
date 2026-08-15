@@ -14,6 +14,13 @@ import { LANGUAGES } from "@/lib/languages";
 export const SITE_ORIGIN = "https://lowestappprice.com";
 
 /**
+ * sitemap app 分片容量：每片容纳的 app 数（× 18 语言 = URL 数，片大小 ~4MB）。
+ * /sitemap.xml（index）与 /sitemaps/apps-N.xml（分片）共用，保证分片数计算一致。
+ * route 文件不允许导出非白名单成员，故常量放这里。
+ */
+export const APPS_PER_SHARD = 100;
+
+/**
  * 语言前缀页面的绝对 URL。
  * @param locale 语言 code（如 "en" / "zh-CN"）
  * @param pathAfterLocale 以 "/" 开头的路径（如 "/apps"、"/apps/123"），首页传 ""
