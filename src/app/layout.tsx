@@ -52,6 +52,10 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     verification: {
       google: "4eHrYT06sGUQh9eFprtemeIVvxpskEeZMX9DfTvlMS0",
+      // Bing Webmaster 平台站点所有权验证（Meta 标签方式）
+      other: {
+        "msvalidate.01": "AB6E5DE3821D6902F37F222AEDC91131",
+      },
     },
   };
 }
@@ -122,6 +126,12 @@ export default async function RootLayout({
           src="https://vibeloft.ai/telemetry/v1.js"
           data-vl-product-id="e070397a-76ca-43d1-a1d4-7adeaa121d76"
           data-vl-auth-key="vl_web.8N-tcXjpTEsIekIJB24TqMlEC575Fx0kune_NMqjacc"
+        />
+        {/* Ahrefs Analytics：官方 async 脚本，data-key 为站点标识 */}
+        <script
+          async
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="ic7VhxpbYBUrVXt0HG+t6Q"
         />
       </head>
       <body className="flex min-h-screen flex-col">
