@@ -1,29 +1,29 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { REGION_MAP } from "@/lib/regions";
+import { LOCALE_CODES } from "@/lib/languages";
 import { ARTICLES } from "@/lib/insights";
-import { countryUrl, countryAlternates } from "@/lib/seo";
+import { localeUrl, localeAlternates } from "@/lib/seo";
 import { getTranslations } from "next-intl/server";
 
-// 列表页 metadata：自指 canonical + 全 40 国 hreflang
+// 列表页 metadata：自指 canonical + 18 语言 hreflang
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ country: string }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { country } = await params;
+  const { locale } = await params;
   const t = await getTranslations("Insights");
-  const pathAfterCountry = "/insights";
+  const pathAfterLocale = "/insights";
   return {
     title: t("indexMetaTitle"),
     description: t("indexMetaDescription"),
-    alternates: countryAlternates(country, pathAfterCountry),
+    alternates: localeAlternates(locale, pathAfterLocale),
     openGraph: {
       type: "website",
       title: t("indexMetaTitle"),
       description: t("indexMetaDescription"),
-      url: countryUrl(country, pathAfterCountry),
+      url: localeUrl(locale, pathAfterLocale),
     },
     twitter: {
       card: "summary_large_image",
@@ -36,10 +36,10 @@ export async function generateMetadata({
 export default async function InsightsIndexPage({
   params,
 }: {
-  params: Promise<{ country: string }>;
+  params: Promise<{ locale: string }>;
 }) {
-  const { country } = await params;
-  if (!REGION_MAP[country]) notFound();
+  const { locale } = await params;
+  if (!LOCALE_CODES.includes(locale)) notFound();
 
   const t = await getTranslations("Insights");
 
@@ -72,7 +72,7 @@ export default async function InsightsIndexPage({
         {items.map((item) => (
           <li key={item.slug}>
             <Link
-              href={`/${country}/insights/${item.slug}`}
+              href={`/${locale}/insights/${item.slug}`}
               className="group block rounded-[var(--radius-md)] border border-black/[0.08] bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--color-primary-focus)]/40 hover:shadow-[0_6px_20px_rgba(0,0,0,0.08)]"
             >
               <time

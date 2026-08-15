@@ -1,6 +1,6 @@
 import { json, error } from "@/lib/api-response";
 import { getDb, getApp, getPrices, markAppFetched, isStale } from "@/lib/db";
-import { refreshPrices } from "@/app/[country]/apps/[appId]/refresh";
+import { refreshPrices } from "@/app/[locale]/apps/[appId]/refresh";
 import { auth } from "@/lib/auth";
 import { authorizeAppView } from "@/lib/entitlement";
 import { readCookie } from "@/lib/cookie";

@@ -14,7 +14,7 @@ import type { App } from "@/lib/types";
  * - group hover 同时暂停
  * 服务端渲染，静默失败--DB 不可用或无 App 时不渲染。
  */
-export async function SupportedAppsSection({ country }: { country: string }) {
+export async function SupportedAppsSection({ locale }: { locale: string }) {
   const t = await getTranslations("SupportedApps");
   let apps: App[] = [];
   let total = 0;
@@ -103,7 +103,7 @@ export async function SupportedAppsSection({ country }: { country: string }) {
             <MarqueeRow
               key={idx}
               apps={row.apps}
-              country={country}
+              locale={locale}
               duration={duration}
               delay={row.delay}
               reverse={row.reverse}
@@ -115,7 +115,7 @@ export async function SupportedAppsSection({ country }: { country: string }) {
       {/* 查看全部 */}
       <div className="mt-10 text-center">
         <Link
-          href={`/${country}/apps`}
+          href={`/${locale}/apps`}
           className="inline-flex items-center gap-2 rounded-full border border-[var(--color-primary-focus)] px-6 py-2.5 text-sm font-semibold text-[var(--color-primary-focus)] transition-all hover:bg-[var(--color-primary-focus)] hover:text-white active:scale-95"
         >
           {t("viewAll")}
@@ -128,13 +128,13 @@ export async function SupportedAppsSection({ country }: { country: string }) {
 
 function MarqueeRow({
   apps,
-  country,
+  locale,
   duration,
   delay,
   reverse,
 }: {
   apps: App[];
-  country: string;
+  locale: string;
   duration: number;
   delay: number;
   reverse: boolean;
@@ -154,7 +154,7 @@ function MarqueeRow({
       {apps.map((app, i) => (
         <Link
           key={`${app.app_id}-${i}`}
-          href={`/${country}/apps/${app.app_id}`}
+          href={`/${locale}/apps/${app.app_id}`}
           className="group/card flex w-[240px] shrink-0 items-center gap-3 rounded-[var(--radius-lg)] border border-black/[0.08] bg-white p-4 transition-shadow hover:shadow-[0_4px_16px_rgba(0,0,0,0.08)]"
         >
           {app.icon_url ? (

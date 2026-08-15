@@ -6,31 +6,32 @@ import { searchAppStore } from "@/lib/itunes";
 import { AppsListClient } from "./AppsListClient";
 import { AppsToolbar } from "./AppsToolbar";
 import { AppsSortPicker } from "./AppsSortPicker";
-import { REGION_MAP, REGIONS } from "@/lib/regions";
+import { REGIONS } from "@/lib/regions";
+import { LOCALE_CODES } from "@/lib/languages";
 import { getCurrentUser } from "@/lib/session";
-import { countryAlternates, countryUrl } from "@/lib/seo";
+import { localeAlternates, localeUrl } from "@/lib/seo";
 import type { ExternalSearchItem } from "@/lib/types";
 
 const VALID_SORTS = new Set<AppSortKey>(["recent", "rating_count", "rating", "name"]);
 
-// 应用列表页 metadata：每国自指 canonical + 全 40 国 hreflang + x-default
+// 应用列表页 metadata：每语言自指 canonical + 18 语言 hreflang + x-default
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ country: string }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { country } = await params;
+  const { locale } = await params;
   const t = await getTranslations("AppsPage");
-  const pathAfterCountry = "/apps";
+  const pathAfterLocale = "/apps";
   return {
     title: t("metaTitle"),
     description: t("metaDescription", { count: REGIONS.length }),
-    alternates: countryAlternates(country, pathAfterCountry),
+    alternates: localeAlternates(locale, pathAfterLocale),
     openGraph: {
       type: "website",
       title: t("metaTitle"),
       description: t("metaDescription", { count: REGIONS.length }),
-      url: countryUrl(country, pathAfterCountry),
+      url: localeUrl(locale, pathAfterLocale),
     },
     twitter: {
       card: "summary_large_image",
@@ -44,11 +45,11 @@ export default async function AppsPage({
   params,
   searchParams,
 }: {
-  params: Promise<{ country: string }>;
+  params: Promise<{ locale: string }>;
   searchParams: Promise<{ q?: string; sort?: string }>;
 }) {
-  const { country } = await params;
-  if (!REGION_MAP[country]) notFound();
+  const { locale } = await params;
+  if (!LOCALE_CODES.includes(locale)) notFound();
 
   const sp = await searchParams;
   const q = sp.q || "";
@@ -102,7 +103,7 @@ export default async function AppsPage({
       </div>
 
       <AppsToolbar
-        country={country}
+        locale={locale}
         initialQ={q}
         initialSort={sort}
         canAddApp={canAddApp}
@@ -117,7 +118,7 @@ export default async function AppsPage({
                 <h2 className="text-sm font-semibold text-[var(--color-ink-48)]">
                   {q ? t("searchResults", { count: initial.total }) : t("totalCount", { count: initial.total })}
                 </h2>
-                <AppsSortPicker country={country} q={q} sort={sort} />
+                <AppsSortPicker locale={locale} q={q} sort={sort} />
               </div>
             )}
             <AppsListClient
@@ -127,7 +128,7 @@ export default async function AppsPage({
               initialExternal={initialExternal}
               query={q}
               sort={sort}
-              country={country}
+              locale={locale}
               canAddApp={canAddApp}
               loggedIn={loggedIn}
             />

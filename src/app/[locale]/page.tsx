@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { headers } from "next/headers";
 import type { Metadata } from "next";
 import { REGIONS, REGION_MAP, currencyForCountry } from "@/lib/regions";
+import { LOCALE_CODES } from "@/lib/languages";
 import { Flag } from "@/components/Flag";
 import { PricingSection } from "@/components/PricingSection";
 import { ClaudeDemoSection } from "@/components/ClaudeDemoSection";
@@ -13,29 +14,29 @@ import { getTranslations } from "next-intl/server";
 import { getDb, getApp, getPrices, isStale } from "@/lib/db";
 import { getRates, type Rates } from "@/lib/exchange";
 import { getPricingVariant } from "@/lib/pricing-variant";
-import { countryAlternates, countryUrl, SITE_ORIGIN } from "@/lib/seo";
+import { localeAlternates, localeUrl, SITE_ORIGIN } from "@/lib/seo";
 import { readCookie } from "@/lib/cookie";
 import { refreshPrices } from "./apps/[appId]/refresh";
 
-// 首页 metadata：keyword-rich 标题 + 自指 canonical + 全 40 国 hreflang + x-default
+// 首页 metadata：keyword-rich 标题 + 自指 canonical + 18 语言 hreflang + x-default
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ country: string }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { country } = await params;
+  const { locale } = await params;
   const t = await getTranslations("HomePage");
-  const pathAfterCountry = "";
+  const pathAfterLocale = "";
   return {
     title: t("metaTitle"),
     description: t("metadataDescription", { count: REGIONS.length }),
-    alternates: countryAlternates(country, pathAfterCountry),
+    alternates: localeAlternates(locale, pathAfterLocale),
     openGraph: {
       type: "website",
       title: t("metaTitle"),
       description: t("metadataDescription", { count: REGIONS.length }),
       siteName: t("siteName"),
-      url: countryUrl(country, pathAfterCountry),
+      url: localeUrl(locale, pathAfterLocale),
     },
     twitter: {
       card: "summary_large_image",
@@ -48,18 +49,18 @@ export async function generateMetadata({
 export default async function HomePage({
   params,
 }: {
-  params: Promise<{ country: string }>;
+  params: Promise<{ locale: string }>;
 }) {
-  const { country } = await params;
-  if (!REGION_MAP[country]) notFound();
+  const { locale } = await params;
+  if (!LOCALE_CODES.includes(locale)) notFound();
 
-  // IP 检测到的真实国家（事实，不随 URL 变化）
+  // IP 检测到的真实国家（事实，不随 URL 变化；URL 段是语言，不能当国家兜底）
   const h = await headers();
   const detectedCode =
     h.get("x-detected-country") &&
     REGION_MAP[h.get("x-detected-country")!.toLowerCase()]
       ? h.get("x-detected-country")!.toLowerCase()
-      : country;
+      : "us";
   const detectedRegion = REGION_MAP[detectedCode];
   // detectedCurrency 优先级：cookie(currency) > IP 检测国家映射
   // 跟 layout.tsx 的 defaultCurrency 逻辑一致，SSR 直接读到用户选择，无闪烁
@@ -88,7 +89,7 @@ export default async function HomePage({
       "@context": "https://schema.org",
       "@type": "WebApplication",
       name: t("siteName"),
-      url: countryUrl(country, ""),
+      url: localeUrl(locale, ""),
       description: t("metadataDescription", { count: regionCount }),
       applicationCategory: "UtilityApplication",
       operatingSystem: "Web",
@@ -126,7 +127,7 @@ export default async function HomePage({
         "@type": "SearchAction",
         target: {
           "@type": "EntryPoint",
-          urlTemplate: `${countryUrl(country, "/apps")}?q={search_term_string}`,
+          urlTemplate: `${localeUrl(locale, "/apps")}?q={search_term_string}`,
         },
         "query-input": "required name=search_term_string",
       },
@@ -166,7 +167,7 @@ export default async function HomePage({
           </div>
           <div>
             <Link
-              href={`/${country}/apps`}
+              href={`/${locale}/apps`}
               className="inline-flex items-center gap-2 rounded-full bg-[var(--color-primary-focus)] px-7 py-3.5 text-lg text-white transition-colors hover:bg-[var(--color-primary)]"
             >
               {t("heroCta")} <i className="ph ph-arrow-right" />
@@ -180,7 +181,7 @@ export default async function HomePage({
       <ClaudeDemoFetcher
         detectedCode={detectedCode}
         initialCurrency={detectedCurrency}
-        country={country}
+        locale={locale}
       />
       </div>
 
@@ -221,7 +222,7 @@ export default async function HomePage({
       <PricingSection loggedIn={!!currentUser} paid={currentUser?.paid ?? false} />
 
       {/* 已收录的 App 滚动 */}
-      <SupportedAppsSection country={country} />
+      <SupportedAppsSection locale={locale} />
 
       {/* FAQ */}
       <section id="faq" className="px-[22px] py-20">
@@ -284,11 +285,11 @@ function FaqItem({ q, children }: { q: string; children: React.ReactNode }) {
 async function ClaudeDemoFetcher({
   detectedCode,
   initialCurrency,
-  country,
+  locale,
 }: {
   detectedCode: string;
   initialCurrency: string;
-  country: string;
+  locale: string;
 }) {
   let app, prices, rates;
   try {
@@ -322,7 +323,7 @@ async function ClaudeDemoFetcher({
       detectedCode={detectedCode}
       initialCurrency={initialCurrency}
       initialRates={rates}
-      country={country}
+      locale={locale}
       app={app}
       prices={prices}
     />

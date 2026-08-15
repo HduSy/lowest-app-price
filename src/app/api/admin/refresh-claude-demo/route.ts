@@ -5,7 +5,7 @@ import { NextRequest } from "next/server";
 import { getDb } from "@/lib/db";
 import { json, error } from "@/lib/api-response";
 import { requireAdmin } from "@/lib/auth";
-import { refreshPrices } from "@/app/[country]/apps/[appId]/refresh";
+import { refreshPrices } from "@/app/[locale]/apps/[appId]/refresh";
 
 const CLAUDE_APP_ID = "6473753684";
 

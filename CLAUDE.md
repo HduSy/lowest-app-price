@@ -42,13 +42,13 @@ Also: OpenNext does not support `export const runtime = "edge"` in route handler
 
 ## Architecture
 
-### Geo-Localized Routing (middleware-first)
+### Locale Routing (middleware-first, migrated from 40-country URLs)
 
-`src/middleware.ts` runs on every request: detects the user's IP country (via `req.cf.country` -> `cf-ipcountry` header -> `detected_country` cookie, fallback `"us"`), injects `x-detected-country` / `x-detected-timezone` / `x-geo-source` headers, and 307-redirects any bare URL to `/<country>/...`. Exempts `/api`, `/_next`, legal pages (`/privacy`, `/terms`, `/refunds`, `/legal`), SEO files (`/robots`, `/sitemap`, `/llms`, `/pricing`), and Next metadata routes. **Every public page lives under `src/app/[country]/...`** with one of 40 valid country codes (see `src/lib/regions.ts`).
+`src/middleware.ts` runs on every request and routes by the **first URL segment** (three branches): (a) one of the **18 language codes** -> pass through + inject `x-url-locale` (case-insensitive; non-canonical casing like `/zh-cn/` gets a 301 to `/zh-CN/`); (b) a **legacy country code** (29 countries whose code isn't a language code, e.g. `us`/`jp`/`cn`) -> **301 redirect** to the mapped language URL via `LEGACY_COUNTRY_REDIRECT` in `src/lib/languages.ts` — this map is a permanent migration contract, never delete it (10 countries like `de`/`fr`/`tr` whose code equals a language code kept their URLs unchanged; `ar` = Arabic wins over legacy Argentina by design); (c) anything else -> 307 to `/<detected-language>/...`. IP country detection (`req.cf.country` -> `cf-ipcountry` header -> `detected_country` cookie, fallback `"us"`) still runs on every request and injects `x-detected-country` / `x-detected-timezone` / `x-geo-source` — the IP country drives default currency + detail-page priority refresh region, but no longer appears in URLs. Exempts `/api`, `/_next`, legal pages (`/privacy`, `/terms`, `/refunds`, `/legal`), SEO files (`/robots`, `/sitemap`, `/llms`, `/pricing`), and Next metadata routes. **Every public page lives under `src/app/[locale]/...`** with one of 18 valid language codes (see `src/lib/languages.ts`).
 
 ### i18n (`next-intl`)
 
-The app supports **18 languages**: `messages/{locale}.json` for `ar / de / en / es / fr / hi / id / it / ja / ko / nl / pl / pt-BR / ru / th / tr / vi / zh-CN` (default `en`). `src/i18n/request.ts` exports `getRequestConfig` and resolves locale by: cookie(`language`) > URL country segment (`x-url-country` header, mapped via `languageForCountry()`) > IP-detected country mapping > defaultLocale (`en`). The URL-segment tier ensures Googlebot sees localized content per country page (e.g. `/de/` renders German, `/jp/` renders Japanese). The `next-intl/plugin` is wired in `next.config.mjs` via `withNextIntl`. Server components use `getTranslations()` from `next-intl/server`; client components use `useTranslations()`. The `/<country>/...` URL segment carries only the country, never the language - language is cookie-driven. `AppStoreProvider` (client) also mirrors the language in Zustand for the in-page picker.
+The app supports **18 languages**: `messages/{locale}.json` for `ar / de / en / es / fr / hi / id / it / ja / ko / nl / pl / pt-BR / ru / th / tr / vi / zh-CN` (default `en`). `src/i18n/request.ts` exports `getRequestConfig` and resolves locale by: cookie(`language`) > URL language segment (`x-url-locale` header, the value IS a locale code - no mapping) > IP-detected country mapping > defaultLocale (`en`). The URL-segment tier ensures Googlebot sees localized content per language page (e.g. `/de/` renders German, `/ja/` renders Japanese). The `next-intl/plugin` is wired in `next.config.mjs` via `withNextIntl`. Server components use `getTranslations()` from `next-intl/server`; client components use `useTranslations()`. The `/<locale>/...` URL segment carries the **language** (one per language, hreflang-compliant - this replaced the old 40-country-per-URL model that caused ~990 duplicate/wasted pages in GSC); the cookie can still override the rendered language per user. `AppStoreProvider` (client) also mirrors the language in Zustand; the header language picker swaps the URL segment on change (Nav.tsx).
 
 #### i18n 翻译流程（改任何 UI 文案必须遵守）
 
@@ -71,7 +71,7 @@ The app supports **18 languages**: `messages/{locale}.json` for `ar / de / en / 
 ### Data Flow
 
 1. User submits App Store URL/ID -> `POST /api/apps` -> `src/lib/parse-input.ts` extracts `appId` -> dedupe -> `src/lib/itunes.ts` `fetchAppMeta()` -> insert into D1 `apps`.
-2. On app detail page (`src/app/[country]/apps/[appId]/page.tsx`), `src/app/[country]/apps/[appId]/refresh.ts` lazily refreshes prices if stale (`PRICE_TTL_HOURS = 6` in `src/lib/db.ts`):
+2. On app detail page (`src/app/[locale]/apps/[appId]/page.tsx`), `src/app/[locale]/apps/[appId]/refresh.ts` lazily refreshes prices if stale (`PRICE_TTL_HOURS = 6` in `src/lib/db.ts`):
    - **Phase 1**: fetch one priority region first for instant meta display.
    - **Phase 2**: crawl remaining regions concurrently via `src/lib/crawler.ts` `crawlAllRegions()`.
    - **Phase 3**: iTunes Lookup fallback to backfill ratings if the HTML scrape missed them.
@@ -128,7 +128,7 @@ All routes are Next.js Route Handlers under `/api/*`:
 
 ## Conventions
 
-- **UI 文案**：通过 next-intl 做 i18n，messages 在 `messages/{locale}.json`（**18 种语言**，详见上文「i18n 翻译流程」小节）。代码注释仍用中文。locale 来源优先级：cookie(`language`) > URL 国家段映射 > IP 检测国家映射 > 兜底 en。路由 `/<country>/...` 只承载国家，语种走 cookie 不进路由。**改任何 UI 文案都必须同步全 18 种语言**，不能只改 zh-CN + en。
+- **UI 文案**：通过 next-intl 做 i18n，messages 在 `messages/{locale}.json`（**18 种语言**，详见上文「i18n 翻译流程」小节）。代码注释仍用中文。locale 来源优先级：cookie(`language`) > URL 语言段（`x-url-locale`）> IP 检测国家映射 > 兜底 en。路由 `/<locale>/...` 承载语言码（18 个，见 `src/lib/languages.ts`）；老 `/<country>/` URL 由 middleware 301 到语言 URL（`LEGACY_COUNTRY_REDIRECT`，永久契约不可删）。**改任何 UI 文案都必须同步全 18 种语言**，不能只改 zh-CN + en。
 - **Path alias**: `@/*` -> `./src/*`.
 - **Types**: shared interfaces live in `src/lib/types.ts` (`Region`, `App`, `PriceRow`, `IapEntry`, `RegionFetchResult`, `AggregatedIap`, `RegionRankItem`, `PricesResponse`, `ExternalSearchItem`, `SubscriptionPeriod`).
 - **Responses**: use `src/lib/api-response.ts` `json()` / `error()` helpers in route handlers.

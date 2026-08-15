@@ -8,41 +8,42 @@ import { getDb, getApp, getPrices, isStale } from "@/lib/db";
 import { AppDetailClient } from "@/components/AppDetailClient";
 import { RelatedApps, RelatedAppsSkeleton } from "@/components/RelatedApps";
 import { REGION_MAP, REGIONS } from "@/lib/regions";
+import { LOCALE_CODES } from "@/lib/languages";
 import { getCurrentUser } from "@/lib/session";
 import { authorizeAppView } from "@/lib/entitlement";
 import { filterPricesByAuth, extractIapMetadata, computeFreeCount, filterSubscriptionIaps } from "@/lib/compare";
 import { formatUtcInTimezone } from "@/lib/format-time";
-import { countryAlternates, countryUrl } from "@/lib/seo";
+import { localeAlternates, localeUrl } from "@/lib/seo";
 import type { PriceRow } from "@/lib/types";
 
 const PRICE_TTL_HOURS = 6;
 
 // 动态 metadata：title/description/og:image 都按 app 定制，全 18 语种 i18n 化
 // - title/description 用 AppDetail namespace（ICU 占位符 {app}/{count}）
-// - canonical 自指当前 /<country>/apps/<appId>，hreflang 覆盖全 40 国 + x-default
+// - canonical 自指当前 /<locale>/apps/<appId>，hreflang 覆盖 18 语言 + x-default
 // - og:image 指向 /api/og/[appId]，社交平台爬虫读 meta 时会触发 OG 图生成
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ country: string; appId: string }>;
+  params: Promise<{ locale: string; appId: string }>;
 }): Promise<Metadata> {
-  const { country, appId } = await params;
+  const { locale, appId } = await params;
   const t = await getTranslations("AppDetail");
   const db = await getDb();
   const app = await getApp(db, appId);
   if (!app) return {};
 
   const ogImageUrl = `/api/og/${appId}`;
-  const pathAfterCountry = `/apps/${appId}`;
+  const pathAfterLocale = `/apps/${appId}`;
   const count = REGIONS.length;
   return {
     title: t("metaTitle", { app: app.name }),
     description: t("metaDescription", { app: app.name, count }),
-    alternates: countryAlternates(country, pathAfterCountry),
+    alternates: localeAlternates(locale, pathAfterLocale),
     openGraph: {
       title: t("ogTitle", { app: app.name, count }),
       description: t("ogDescription", { count }),
-      url: countryUrl(country, pathAfterCountry),
+      url: localeUrl(locale, pathAfterLocale),
       images: [{ url: ogImageUrl, width: 1200, height: 630, alt: t("ogTitle", { app: app.name, count }) }],
     },
     twitter: {
@@ -59,18 +60,19 @@ export async function generateMetadata({
 export default async function AppDetailPage({
   params,
 }: {
-  params: Promise<{ country: string; appId: string }>;
+  params: Promise<{ locale: string; appId: string }>;
 }) {
-  const { country, appId } = await params;
-  // 校验 country 合法性
-  if (!REGION_MAP[country]) notFound();
+  const { locale, appId } = await params;
+  // 校验 locale 合法性
+  if (!LOCALE_CODES.includes(locale)) notFound();
 
   // IP 检测到的真实国家 + 时区（由 middleware 注入 x-detected-country / x-detected-timezone 头）
-  // 与 URL 里的 country 区分：用户可能手动切换到别的区，但图标跳转应去 IP 检测区
+  // 与 URL 里的 locale 区分：URL 段是语言不是国家，国家事实只来自 IP 头；
+  // 图标跳转应去 IP 检测区（URL 段不能当国家兜底，缺头时兜底 us）
   const h = await headers();
   const headerCountry = h.get("x-detected-country")?.toLowerCase();
   const detectedCountry =
-    headerCountry && REGION_MAP[headerCountry] ? headerCountry : country;
+    headerCountry && REGION_MAP[headerCountry] ? headerCountry : "us";
   // 时区：用于"上次更新"等时间字段的本地化展示（IANA，如 "Asia/Shanghai"）
   const detectedTimezone = h.get("x-detected-timezone") || null;
 
@@ -135,9 +137,9 @@ export default async function AppDetailPage({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: tNav("home"), item: countryUrl(country, "") },
-        { "@type": "ListItem", position: 2, name: tNav("apps"), item: countryUrl(country, "/apps") },
-        { "@type": "ListItem", position: 3, name: app.name, item: countryUrl(country, appPath) },
+        { "@type": "ListItem", position: 1, name: tNav("home"), item: localeUrl(locale, "") },
+        { "@type": "ListItem", position: 2, name: tNav("apps"), item: localeUrl(locale, "/apps") },
+        { "@type": "ListItem", position: 3, name: app.name, item: localeUrl(locale, appPath) },
       ],
     },
   ];
@@ -167,7 +169,7 @@ export default async function AppDetailPage({
   return (
     <main className="mx-auto max-w-[1100px] px-[22px] py-10">
       <Link
-        href={`/${country}/apps`}
+        href={`/${locale}/apps`}
         className="mb-6 inline-flex items-center gap-1 text-sm text-[var(--color-primary-focus)] hover:underline"
       >
         <i className="ph ph-arrow-left" /> {t("backToAll")}
@@ -205,7 +207,7 @@ export default async function AppDetailPage({
 
       {/* 相关推荐 App：独立服务端组件流式加载，不阻塞主体渲染 */}
       <Suspense fallback={<RelatedAppsSkeleton />}>
-        <RelatedApps appId={appId} country={country} />
+        <RelatedApps appId={appId} locale={locale} />
       </Suspense>
 
       {/* AI SEO：结构化数据（BreadcrumbList + FAQPage） */}

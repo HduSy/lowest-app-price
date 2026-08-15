@@ -4,7 +4,7 @@ import { create, useStore } from "zustand";
 import { createContext, useContext, useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import type { Language } from "./languages";
-import { languageForCountry } from "./languages";
+import { languageForCountry, LOCALE_CODES } from "./languages";
 import { currencyForCountry, REGION_MAP } from "./regions";
 import { detectGeo } from "./geo";
 import type { PricingVariant } from "./pricing-variant";
@@ -161,14 +161,15 @@ export function AppStoreProvider({
         } catch {
           /* 忽略隐私模式等写入失败 */
         }
-        // URL 国家段与检测到的不一致时切换路由（fallback 场景：落地时服务端没检到，
-        // 用 "us" 兜底，客户端补检后纠正 URL）。仅当 URL 有合法国家前缀时才切，
-        // 避免影响 /legal /privacy 等无国家前缀的豁免路径。
-        const urlCountry = window.location.pathname.split("/")[1];
-        if (urlCountry !== country && REGION_MAP[urlCountry]) {
+        // URL 语言段与 IP 检测的默认语种不一致时切换路由（fallback 场景：落地时服务端
+        // 没检到，用 "en" 兜底，客户端补检后纠正 URL）。仅当 URL 有合法语言前缀时才切，
+        // 避免影响 /legal /privacy 等无语言前缀的豁免路径。
+        const lang = languageForCountry(country);
+        const urlLang = window.location.pathname.split("/")[1];
+        if (urlLang !== lang && LOCALE_CODES.includes(urlLang)) {
           const parts = window.location.pathname.split("/");
-          parts[1] = country;
-          router.replace(parts.join("/") || `/${country}`);
+          parts[1] = lang;
+          router.replace(parts.join("/") || `/${lang}`);
         } else {
           router.refresh();
         }

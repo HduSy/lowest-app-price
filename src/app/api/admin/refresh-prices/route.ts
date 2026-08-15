@@ -6,7 +6,7 @@
 //   3. 返回写入统计，便于前端展示。
 import { NextRequest } from "next/server";
 import { getDb, getApp, getPrices, markAppFetched } from "@/lib/db";
-import { refreshPrices } from "@/app/[country]/apps/[appId]/refresh";
+import { refreshPrices } from "@/app/[locale]/apps/[appId]/refresh";
 import { json, error } from "@/lib/api-response";
 import { requireAdmin } from "@/lib/auth";
 import { filterSubscriptionIaps, extractIapMetadata } from "@/lib/compare";

@@ -9,6 +9,7 @@
 // 完全绕开 itunes.apple.com。
 import { fetchHtml, parseAppStoreHtml } from "@/lib/crawler";
 import { getDb, getExistingAppIds } from "@/lib/db";
+import { languageOption } from "@/lib/languages";
 import { ExternalAppCard } from "./ExternalAppCard";
 import { getTranslations } from "next-intl/server";
 import { getCurrentUser } from "@/lib/session";
@@ -27,7 +28,7 @@ type RelatedMeta = {
 /** 并发抓 appIds 的 HTML 解析 meta，限并发避免被 Apple 限流 */
 async function fetchRelatedMeta(
   appIds: string[],
-  country: string
+  storefront: string
 ): Promise<Record<string, RelatedMeta>> {
   const out: Record<string, RelatedMeta> = {};
   let cursor = 0;
@@ -35,7 +36,7 @@ async function fetchRelatedMeta(
     while (cursor < appIds.length) {
       const id = appIds[cursor++];
       try {
-        const html = await fetchHtml(country, id);
+        const html = await fetchHtml(storefront, id);
         const parsed = parseAppStoreHtml(html);
         if (parsed.name) {
           out[id] = {
@@ -59,11 +60,14 @@ async function fetchRelatedMeta(
 
 export async function RelatedApps({
   appId,
-  country,
+  locale,
 }: {
   appId: string;
-  country: string;
+  locale: string;
 }) {
+  // 抓 App Store HTML 需要商店区域码（如 us/jp/cn），URL 段已是语言码（如 en/ja/zh-CN）。
+  // 用语种的代表国家（LANGUAGES.flag，18 个均落在 40 个 App Store 定价区内）映射回商店码。
+  const storefront = languageOption(locale).flag;
   // 添加 App 是会员专属：SSR 算出 canAddApp 传给 ExternalAppCard
   const currentUser = await getCurrentUser();
   const loggedIn = !!currentUser;
@@ -72,7 +76,7 @@ export async function RelatedApps({
   // 抓取当前 App 在 App Store 的详情页 HTML，解析出相关推荐 app id 列表
   let relatedIds: string[] = [];
   try {
-    const html = await fetchHtml(country, appId);
+    const html = await fetchHtml(storefront, appId);
     const parsed = parseAppStoreHtml(html);
     // 排除当前 App 自身（Apple 页面里可能含其 canonical 链接）
     relatedIds = parsed.relatedAppIds.filter((id) => id !== appId);
@@ -90,7 +94,7 @@ export async function RelatedApps({
   const existingIds = await getExistingAppIds(db, relatedIds);
 
   // 并发抓每个推荐 App 的 HTML 解析 meta（绕过被 Workers 封禁的 itunes.apple.com）
-  const metaMap = await fetchRelatedMeta(relatedIds, country);
+  const metaMap = await fetchRelatedMeta(relatedIds, storefront);
 
   // 配对 appId + meta + 是否已收录，过滤掉没抓到 name 的（HTML 抓取失败或 404）
   type Item = { appId: string; meta: RelatedMeta; indexed: boolean };
@@ -122,14 +126,14 @@ export async function RelatedApps({
               developer={x.meta.developer}
               iconUrl={x.meta.iconUrl}
               category={null}
-              country={country}
+              locale={locale}
               index={i}
               developerUnknown={tExt("developerUnknown")}
             />
           ) : (
             <ExternalAppCard
               key={x.appId}
-              country={country}
+              locale={locale}
               canAddApp={canAddApp}
               loggedIn={loggedIn}
               item={{
@@ -172,7 +176,7 @@ function RelatedAppCard({
   developer,
   iconUrl,
   category,
-  country,
+  locale,
   index,
   developerUnknown,
 }: {
@@ -181,13 +185,13 @@ function RelatedAppCard({
   developer: string | null;
   iconUrl: string | null;
   category: string | null;
-  country: string;
+  locale: string;
   index: number;
   developerUnknown: string;
 }) {
   return (
     <Link
-      href={`/${country}/apps/${appId}`}
+      href={`/${locale}/apps/${appId}`}
       style={{ animationDelay: `${Math.min(index * 50, 400)}ms` }}
       className="group flex items-center gap-3 rounded-[var(--radius-md)] border border-black/[0.08] bg-white p-3 transition-colors hover:border-[var(--color-primary-focus)]/40 hover:bg-[var(--color-parchment)] animate-fade-up"
     >

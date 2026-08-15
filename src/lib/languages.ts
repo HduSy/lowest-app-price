@@ -1,6 +1,8 @@
 // 语种定义 + 国家->语种映射
 // header 里"国旗 + 语种"合并下拉：每个语种绑定一个代表国家国旗
 
+import { REGIONS } from "./regions";
+
 export type Language =
   | "en"
   | "zh-CN"
@@ -83,7 +85,38 @@ export function languageForCountry(code: string): Language {
   return COUNTRY_LANGUAGE[code.toLowerCase()] ?? "en";
 }
 
-/** 根据语种 code 拿选项（含国旗 + 标签） */
-export function languageOption(code: Language): LanguageOption {
+/** 根据语种 code 拿选项（含国旗 + 标签）；入参放宽为 string（URL 段直传场景），未命中回退英文 */
+export function languageOption(code: string): LanguageOption {
   return LANGUAGE_MAP[code] ?? LANGUAGES[0];
 }
+
+// ============ URL locale 路由派生（40 国 URL -> 18 语言 URL 迁移） ============
+
+/** 全部 locale code（URL 语言段白名单），与 LANGUAGES 同源 */
+export const LOCALE_CODES: readonly string[] = LANGUAGES.map((l) => l.code);
+
+// 小写 -> 规范 locale（URL 段大小写不敏感匹配用，如 /zh-cn/ -> zh-CN）
+const LOCALE_LOWER_MAP: Record<string, Language> = Object.fromEntries(
+  LANGUAGES.map((l) => [l.code.toLowerCase(), l.code])
+);
+
+/** URL 首段 -> 规范 locale code；非法段返回 null（大小写不敏感） */
+export function normalizeLocaleSegment(seg: string): Language | null {
+  return LOCALE_LOWER_MAP[seg.toLowerCase()] ?? null;
+}
+
+/**
+ * 老 /<country>/ URL -> locale 的 301 重定向表（迁移固化，middleware 永久保留）。
+ * 从 REGIONS + COUNTRY_LANGUAGE 派生，不手写，避免两处数据漂移：
+ * - 国家码恰为 locale code 的 10 国（de/es/fr/it/nl/pl/ru/th/tr/id）不在此表，
+ *   它们的 URL 一字不变，直接被 locale 路由接管；
+ * - 特例 ar（阿根廷）：老国家码与阿拉伯语 locale 同码，locale 匹配优先，
+ *   老 /ar/ 链接落到阿拉伯语页（西语信号由 hreflang 集群归并到 /es/）。
+ */
+export const LEGACY_COUNTRY_REDIRECT: Readonly<Record<string, Language>> =
+  Object.fromEntries(
+    REGIONS.filter((r) => !LOCALE_CODES.includes(r.code)).map((r) => [
+      r.code,
+      languageForCountry(r.code),
+    ])
+  );

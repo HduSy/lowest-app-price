@@ -10,12 +10,12 @@ export const defaultLocale: Locale = "en";
 
 /**
  * 从请求上下文解析当前 locale。
- * 优先级：cookie(language) > URL 国家段映射 > IP 国家映射（仅静态页兜底） > defaultLocale(en)
+ * 优先级：cookie(language) > URL 语言段 > IP 国家映射（仅静态页兜底） > defaultLocale(en)
  *
- * 关键 SEO 决策：country 前缀页面的默认语种跟随 **URL 国家段**（x-url-country），
- * 而非 IP 国家。这样 Googlebot（US IP、无 cookie）抓 /de/ 时见到德语、/jp/ 时见到日语，
- * 40 个国家页各自有差异化语种内容，避免同质化重复。用户仍可通过 cookie(language) 覆盖。
- * 静态页（/about 等，无 country 前缀）没有 URL 国家段，回退到 IP 国家映射，保持既有体验。
+ * 关键 SEO 决策：locale 前缀页面的渲染语种跟随 **URL 语言段**（x-url-locale），
+ * 而非 IP 国家。这样 Googlebot（US IP、无 cookie）抓 /de/ 时见到德语、/zh-CN/ 时见到中文，
+ * 18 个语言页各自有差异化内容。用户仍可通过 cookie(language) 覆盖。
+ * 静态页（/about 等，无 locale 前缀）没有 URL 语言段，回退到 IP 国家映射，保持既有体验。
  *
  * 在 edge runtime / Cloudflare Workers 上跑：只读 headers + import messages，
  * 不用 fs / path，跟 OpenNext 完全兼容。
@@ -29,12 +29,11 @@ export async function resolveLocale(): Promise<Locale> {
     return cookieLang as Locale;
   }
 
-  // 2. URL 国家段（middleware 在 country 前缀路由上注入 x-url-country）
-  //    决定 country 前缀页面的默认渲染语种——SEO 关键，让 /de/ 出德语、/jp/ 出日语
-  const urlCountry = h.get("x-url-country");
-  if (urlCountry) {
-    const lang = languageForCountry(urlCountry);
-    if (locales.includes(lang as Locale)) return lang as Locale;
+  // 2. URL 语言段（middleware 在 locale 前缀路由上注入 x-url-locale，
+  //    值本身就是 18 个 locale code 之一，直接采用，无需映射）
+  const urlLocale = h.get("x-url-locale");
+  if (urlLocale && locales.includes(urlLocale as Locale)) {
+    return urlLocale as Locale;
   }
 
   // 3. IP 检测到的国家 -> 默认语种（仅静态页 / API 等无 country 前缀路径兜底）

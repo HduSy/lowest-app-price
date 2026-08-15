@@ -18,13 +18,13 @@ const PricingDialog = dynamic(
 );
 
 export function AppsToolbar({
-  country,
+  locale,
   initialQ,
   initialSort,
   canAddApp,
   loggedIn,
 }: {
-  country: string;
+  locale: string;
   initialQ: string;
   initialSort: AppSortKey;
   /** 是否有添加 App 权限（登录 && (会员 || 付费)）；false 时按钮显示为锁定态 */
@@ -58,9 +58,9 @@ export function AppsToolbar({
       // 默认排序（rating_count）不写进 URL，保持链接简洁
       if (sort && sort !== "rating_count") params.set("sort", sort);
       const qs = params.toString();
-      router.push(`/${country}/apps${qs ? `?${qs}` : ""}`);
+      router.push(`/${locale}/apps${qs ? `?${qs}` : ""}`);
     },
-    [router, country]
+    [router, locale]
   );
 
   const onSearchChange = (val: string) => {
@@ -129,7 +129,7 @@ export function AppsToolbar({
       }
       // 添加成功（或已存在）后跳转详情页，触发价格抓取
       const targetId = data.app?.app_id ?? parsedInput.appId;
-      router.push(`/${country}/apps/${targetId}`);
+      router.push(`/${locale}/apps/${targetId}`);
     } catch (e) {
       setAdding(false);
       setAddError(e instanceof Error ? e.message : String(e));

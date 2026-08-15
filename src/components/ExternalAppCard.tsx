@@ -27,12 +27,12 @@ type Status = "idle" | "adding" | "error";
 
 export function ExternalAppCard({
   item,
-  country,
+  locale,
   canAddApp,
   loggedIn,
 }: {
   item: ExternalSearchItem;
-  country: string;
+  locale: string;
   /** 是否有添加权限（会员/付费）；false 时按钮锁定态，点击弹窗 */
   canAddApp: boolean;
   /** 是否已登录（决定锁定态点击弹登录框还是付费框） */
@@ -82,7 +82,7 @@ export function ExternalAppCard({
         throw new Error(data.error || `HTTP ${resp.status}`);
       }
       // 成功：跳详情页，触发价格抓取
-      router.push(`/${country}/apps/${item.appId}`);
+      router.push(`/${locale}/apps/${item.appId}`);
     } catch (e) {
       setStatus("error");
       setErrorMsg(e instanceof Error ? e.message : String(e));
@@ -121,7 +121,7 @@ export function ExternalAppCard({
   if (item.isIndexed) {
     return (
       <Link
-        href={`/${country}/apps/${item.appId}`}
+        href={`/${locale}/apps/${item.appId}`}
         className="group flex items-center gap-3 rounded-[var(--radius-md)] border border-black/[0.08] bg-white p-3 transition-colors hover:border-[var(--color-primary-focus)]/40 hover:bg-[var(--color-parchment)]"
       >
         <CardMedia item={item} />

@@ -47,14 +47,14 @@ export function ClaudeDemoSection({
   detectedCode,
   initialCurrency,
   initialRates,
-  country,
+  locale,
   app,
   prices,
 }: {
   detectedCode: string;
   initialCurrency: string;
   initialRates: Rates;
-  country: string;
+  locale: string;
   app: App;
   prices: PriceRow[];
 }) {
@@ -182,7 +182,7 @@ export function ClaudeDemoSection({
         {/* CTA */}
         <div className="mt-6 text-center">
           <a
-            href={`/${country}/apps/${CLAUDE_APP_ID}`}
+            href={`/${locale}/apps/${CLAUDE_APP_ID}`}
             className="inline-flex items-center gap-2 rounded-full border border-[var(--color-primary-focus)] px-6 py-2.5 text-sm font-semibold text-[var(--color-primary-focus)] transition-all hover:bg-[var(--color-primary-focus)] hover:text-white active:scale-95"
           >
             {t("cta", { count: regionCount })}

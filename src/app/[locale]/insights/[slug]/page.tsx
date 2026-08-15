@@ -2,9 +2,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { REGION_MAP, REGIONS } from "@/lib/regions";
+import { LANGUAGES, LOCALE_CODES } from "@/lib/languages";
 import { ARTICLE_BY_SLUG, ARTICLES } from "@/lib/insights";
-import { countryUrl, countryAlternates, SITE_ORIGIN } from "@/lib/seo";
+import { localeUrl, localeAlternates, SITE_ORIGIN } from "@/lib/seo";
 import { getDb, getApp, getPrices } from "@/lib/db";
 import { aggregatePrices } from "@/lib/compare";
 import type { AggregatedIap } from "@/lib/types";
@@ -13,34 +13,34 @@ import { ClaudeProGlobalPricingBody, CheapestRegionGuideBody, RegionChangeGuideB
 // 文章页是 D1 数据驱动的（每次访问取最新价格），必须请求时渲染。
 export const dynamic = "force-dynamic";
 
-// 预渲染参数空间：40 国 × 已注册文章 slug。
+// 预渲染参数空间：18 语言 × 已注册文章 slug。
 // force-dynamic 下 Next 仍用此列表决定可探索的 URL（爬虫可达性）。
 export function generateStaticParams() {
-  return REGIONS.flatMap((r) =>
-    ARTICLES.map((a) => ({ country: r.code, slug: a.slug })),
+  return LANGUAGES.flatMap((l) =>
+    ARTICLES.map((a) => ({ locale: l.code, slug: a.slug })),
   );
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ country: string; slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-  const { country, slug } = await params;
+  const { locale, slug } = await params;
   const article = ARTICLE_BY_SLUG[slug];
   if (!article) notFound();
 
   const t = await getTranslations(`Insights.${article.messageKey}`);
-  const pathAfterCountry = `/insights/${slug}`;
+  const pathAfterLocale = `/insights/${slug}`;
   return {
     title: t("title"),
     description: t("description"),
-    alternates: countryAlternates(country, pathAfterCountry),
+    alternates: localeAlternates(locale, pathAfterLocale),
     openGraph: {
       type: "article",
       title: t("title"),
       description: t("description"),
-      url: countryUrl(country, pathAfterCountry),
+      url: localeUrl(locale, pathAfterLocale),
       publishedTime: article.publishedAt,
     },
     twitter: {
@@ -54,10 +54,10 @@ export async function generateMetadata({
 export default async function ArticlePage({
   params,
 }: {
-  params: Promise<{ country: string; slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { country, slug } = await params;
-  if (!REGION_MAP[country]) notFound();
+  const { locale, slug } = await params;
+  if (!LOCALE_CODES.includes(locale)) notFound();
   const article = ARTICLE_BY_SLUG[slug];
   if (!article) notFound();
 
@@ -123,10 +123,10 @@ export default async function ArticlePage({
     }
   }
 
-  const articleUrl = countryUrl(country, `/insights/${slug}`);
+  const articleUrl = localeUrl(locale, `/insights/${slug}`);
 
   // JSON-LD：Article（headline / datePublished / mainEntity）+ BreadcrumbList
-  // 两者都指回当前 country URL，避免 40 国 hreflang 实体信号分裂
+  // 两者都指回当前 locale URL，与 hreflang 集群保持实体信号一致
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -160,7 +160,7 @@ export default async function ArticlePage({
           "@type": "ListItem",
           position: 1,
           name: tInsights("indexTitle"),
-          item: countryUrl(country, "/insights"),
+          item: localeUrl(locale, "/insights"),
         },
         {
           "@type": "ListItem",
@@ -176,7 +176,7 @@ export default async function ArticlePage({
     <main className="mx-auto max-w-[760px] px-[22px] py-12">
       {/* 面包屑 */}
       <Link
-        href={`/${country}/insights`}
+        href={`/${locale}/insights`}
         className="mb-8 inline-flex items-center gap-1 text-sm text-[var(--color-primary-focus)] hover:underline"
       >
         <i className="ph ph-arrow-left" /> {tInsights("backToIndex")}
@@ -206,7 +206,7 @@ export default async function ArticlePage({
           savingsPct={savingsPct}
           rankedEntries={rankedEntries}
           appMeta={appMeta}
-          country={country}
+          locale={locale}
         />
       )}
 
@@ -220,7 +220,7 @@ export default async function ArticlePage({
           savingsPct={savingsPct}
           rankedEntries={rankedEntries}
           appMeta={appMeta}
-          country={country}
+          locale={locale}
         />
       )}
 

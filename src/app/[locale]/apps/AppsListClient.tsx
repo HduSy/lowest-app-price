@@ -15,7 +15,7 @@ interface Props {
   initialExternal: ExternalSearchItem[];
   query: string;
   sort: AppSortKey;
-  country: string;
+  locale: string;
   /** 是否有添加 App 权限（透传给 ExternalAppCard） */
   canAddApp: boolean;
   /** 是否已登录（透传给 ExternalAppCard） */
@@ -29,7 +29,7 @@ export function AppsListClient({
   initialExternal,
   query,
   sort,
-  country,
+  locale,
   canAddApp,
   loggedIn,
 }: Props) {
@@ -153,7 +153,7 @@ export function AppsListClient({
               <AppCard
                 key={app.app_id}
                 app={app}
-                country={country}
+                locale={locale}
                 index={i % 30}
               />
             ))}
@@ -186,7 +186,7 @@ export function AppsListClient({
               <ExternalAppCard
                 key={item.appId}
                 item={item}
-                country={country}
+                locale={locale}
                 canAddApp={canAddApp}
                 loggedIn={loggedIn}
               />

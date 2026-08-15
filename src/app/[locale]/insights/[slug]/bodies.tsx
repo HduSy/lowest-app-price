@@ -180,7 +180,7 @@ export async function ClaudeProGlobalPricingBody({
   savingsPct,
   rankedEntries,
   appMeta,
-  country,
+  locale,
 }: {
   messageKey: string;
   iaps: AggregatedIap[];
@@ -190,7 +190,7 @@ export async function ClaudeProGlobalPricingBody({
   savingsPct: string;
   rankedEntries: AggregatedIap["entries"];
   appMeta: { name: string; appId: string } | null;
-  country: string;
+  locale: string;
 }) {
   const t = await getTranslations(`Insights.${messageKey}`);
   const tCommon = await getTranslations("Insights");
@@ -258,7 +258,7 @@ export async function ClaudeProGlobalPricingBody({
         <p className="mt-6 mb-4 leading-[1.7] text-[var(--color-ink-80)]">
           {tCommon("relatedAppNote")}{" "}
           <Link
-            href={`/${country}/apps/${appMeta.appId}`}
+            href={`/${locale}/apps/${appMeta.appId}`}
             className="text-[var(--color-primary-focus)] hover:underline"
           >
             {tCommon("relatedAppCta", { app: appMeta.name })}
@@ -378,7 +378,7 @@ export async function CheapestRegionGuideBody({
   savingsPct,
   rankedEntries,
   appMeta,
-  country,
+  locale,
 }: {
   messageKey: string;
   iaps: AggregatedIap[];
@@ -388,7 +388,7 @@ export async function CheapestRegionGuideBody({
   savingsPct: string;
   rankedEntries: AggregatedIap["entries"];
   appMeta: { name: string; appId: string } | null;
-  country: string;
+  locale: string;
 }) {
   const t = await getTranslations(`Insights.${messageKey}`);
   const tCommon = await getTranslations("Insights");
@@ -467,7 +467,7 @@ export async function CheapestRegionGuideBody({
         <p className="mt-6 mb-4 leading-[1.7] text-[var(--color-ink-80)]">
           {tCommon("relatedAppNote")}{" "}
           <Link
-            href={`/${country}/apps/${appMeta.appId}`}
+            href={`/${locale}/apps/${appMeta.appId}`}
             className="text-[var(--color-primary-focus)] hover:underline"
           >
             {tCommon("relatedAppCta", { app: appMeta.name })}

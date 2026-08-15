@@ -11,11 +11,11 @@ const compactNum = new Intl.NumberFormat("en", {
 
 export function AppCard({
   app,
-  country,
+  locale,
   index = 0,
 }: {
   app: App;
-  country: string;
+  locale: string;
   index?: number;
 }) {
   const t = useTranslations("ExternalAppCard");
@@ -23,7 +23,7 @@ export function AppCard({
 
   return (
     <Link
-      href={`/${country}/apps/${app.app_id}`}
+      href={`/${locale}/apps/${app.app_id}`}
       style={{ animationDelay: `${Math.min(index * 50, 500)}ms` }}
       className="group flex animate-fade-up items-center gap-3 rounded-[var(--radius-md)] border border-black/[0.08] bg-white p-3 transition-colors hover:border-[var(--color-primary-focus)]/40 hover:bg-[var(--color-parchment)]"
     >

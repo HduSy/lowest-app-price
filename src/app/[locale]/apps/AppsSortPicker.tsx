@@ -8,11 +8,11 @@ import { Picker, type PickerOption } from "@/components/Picker";
 const SORT_KEYS: AppSortKey[] = ["recent", "rating_count", "rating", "name"];
 
 export function AppsSortPicker({
-  country,
+  locale,
   q,
   sort,
 }: {
-  country: string;
+  locale: string;
   q: string;
   sort: AppSortKey;
 }) {
@@ -24,7 +24,7 @@ export function AppsSortPicker({
     if (q) params.set("q", q);
     if (newSort && newSort !== "rating_count") params.set("sort", newSort);
     const qs = params.toString();
-    router.push(`/${country}/apps${qs ? `?${qs}` : ""}`);
+    router.push(`/${locale}/apps${qs ? `?${qs}` : ""}`);
   };
 
   const options: PickerOption[] = SORT_KEYS.map((key) => ({

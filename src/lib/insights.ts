@@ -5,7 +5,7 @@
 //   1. 在 messages/{18 种 locale}.json 的 Insights namespace 下加新子 namespace
 //      （slug 用 camelCase，messages key 不能用 dash）。slug 文件名用 kebab-case。
 //   2. 在下面 ARTICLES 数组里加一项 { slug, messageKey, appId, publishedAt }。
-//   3. 在 src/app/[country]/insights/[slug]/page.tsx 的 ARTICLE_RENDERERS 里
+//   3. 在 src/app/[locale]/insights/[slug]/page.tsx 的 ARTICLE_RENDERERS 里
 //      注册 slug -> 渲染函数映射（文章正文 JSX）。
 //
 // 设计要点：

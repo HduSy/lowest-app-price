@@ -4,11 +4,11 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { REGIONS, REGION_MAP } from "@/lib/regions";
+import { REGIONS } from "@/lib/regions";
 import dynamic from "next/dynamic";
 import { Picker } from "./Picker";
 import { useCurrency, useLanguage } from "@/lib/app-store";
-import { LANGUAGES, languageOption } from "@/lib/languages";
+import { LANGUAGES, LOCALE_CODES, languageOption } from "@/lib/languages";
 import type { Language } from "@/lib/languages";
 
 // 登录弹窗仅在用户点击"登录"时才需要：懒加载，避免 next-auth/react + createPortal
@@ -23,7 +23,7 @@ import { LogoMark } from "./Logo";
 // 可切换的币种列表（40 地区去重 + 排序）
 const CURRENCY_OPTIONS = [...new Set(REGIONS.map((r) => r.currency))].sort();
 
-// 相对路径链接（会自动拼上当前 URL country 前缀，仅用于浏览区导航）
+// 相对路径链接（会自动拼上当前 URL locale 前缀，仅用于浏览区导航）
 const REL_LINKS = [
   { path: "", labelKey: "home" },
   { path: "/apps", labelKey: "apps" },
@@ -45,9 +45,10 @@ export function Nav({ user = null }: { user?: NavUser | null }) {
   const t = useTranslations("Nav");
   const tCur = useTranslations("Currencies");
   const pathname = usePathname() || "/";
-  // URL 段 = 浏览区（可随意输），仅用于拼 nav 链接前缀
+  // URL 段 = 语言码；不在 locale 白名单时（如 /about 豁免页）仅作链接前缀兜底 "en"
   const segs = pathname.split("/").filter(Boolean);
-  const urlCountry = segs[0] && REGION_MAP[segs[0]] ? segs[0] : "us";
+  const onLocalePage = segs.length > 0 && LOCALE_CODES.includes(segs[0]);
+  const urlLocale = onLocalePage ? segs[0] : "en";
 
   // 全局展示币种 + 语种（用户可在 header 切换）
   const currency = useCurrency((s) => s.currency);
@@ -69,7 +70,7 @@ export function Nav({ user = null }: { user?: NavUser | null }) {
     >
       <div className="mx-auto flex h-full max-w-[1024px] items-center justify-center gap-6 px-[22px]">
         <Link
-          href={`/${urlCountry}`}
+          href={`/${urlLocale}`}
           className="brand flex items-center gap-2 font-semibold"
         >
           <LogoMark size={22} />
@@ -77,7 +78,7 @@ export function Nav({ user = null }: { user?: NavUser | null }) {
 
         {/* 导航链接：间距 24px，每个链接左右 padding 8px */}
         {REL_LINKS.map((l) => {
-          const href = `/${urlCountry}${l.path}`;
+          const href = `/${urlLocale}${l.path}`;
           const relPath = "/" + segs.slice(1).join("/");
           const active =
             l.path === ""
@@ -103,10 +104,19 @@ export function Nav({ user = null }: { user?: NavUser | null }) {
           variant="text"
           value={language}
           onChange={(v) => {
-            setLanguage(v as Language);
-            // cookie-based locale 模式：client 切换后必须 reload 让 SSR 重读 cookie
-            // setLanguage 内部不直接 reload（避免 useEffect 恢复 prefs 时死循环）
-            setTimeout(() => window.location.reload(), 0);
+            const next = v as Language;
+            setLanguage(next);
+            // URL 段承载语种（SEO 关键）：切语言 = 换首段整页导航，
+            // SSR 用新 URL + cookie 渲染对应语种。
+            // setLanguage 内部不直接导航（避免 useEffect 恢复 prefs 时死循环）
+            if (onLocalePage && urlLocale !== next) {
+              const rest = segs.length > 1 ? "/" + segs.slice(1).join("/") : "";
+              const qs = window.location.search;
+              window.location.assign(`/${next}${rest}${qs}`);
+            } else {
+              // 豁免页（/about 等）无语言段可换：cookie 驱动，reload 重读即可
+              setTimeout(() => window.location.reload(), 0);
+            }
           }}
           options={LANGUAGES.map((l) => ({
             value: l.code,
