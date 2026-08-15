@@ -9,7 +9,10 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
     rules: [
       {
         userAgent: "*",
-        allow: "/",
+        // /api/og/ 单独放行：app 详情页 og:image 指向动态 OG 图路由，
+        // 屏蔽它会导致 Facebook/LinkedIn/Discord 等尊重 robots.txt 的社交爬虫
+        // 拿不到分享卡片图（robots 最长匹配优先，/api/og/ 比 /api/ 更具体）
+        allow: ["/", "/api/og/"],
         disallow: ["/api/"],
       },
       // AI 搜索引擎显式放行（不屏蔽 = 允许引用）
